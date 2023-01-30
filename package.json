@@ -1,0 +1,20 @@
+{
+  "name": "project-cattus",
+  "version": "1.0.0",
+  "description": "Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/dawson2223/620-w23/s01/TeamA/project-cattus.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/dawson2223/620-w23/s01/TeamA/project-cattus/issues"
+  },
+  "homepage": "https://gitlab.com/dawson2223/620-w23/s01/TeamA/project-cattus#readme"
+}
