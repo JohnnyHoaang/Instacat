@@ -6,7 +6,7 @@ const Footer = () => {
             <p id="footer-contact">
                 Contact us <br/>
                 Address: Montreal, InstaCat <br/>
-                Email: <a href='url' id='footer-a'>instacar@gmail.com </a><br/>
+                Email: <a href='url' id='footer-a'>instacat@gmail.com </a><br/>
                 © 2023 All rights reserved — Montreal InstaCat
             </p>
             <p id="footer-info">

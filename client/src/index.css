@@ -19,6 +19,7 @@ html, body , div#root, .App
   flex-direction: column;
   width: 99.9%;
   font-family: "Lato","Trebuchet MS",sans-serif;
+  background-color: #f4ebdd;
   /* justify-content: space-around; */
   
   /* background-size: cover; */
@@ -57,14 +58,16 @@ div#profile-div{
   font-size: 12px;
 }
 
+
 /* ------------------------------- footer ------------------------*/
 footer{
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   width: 99%;
-  background-color: #7e5843;
-  color: white;
+  background-color: #733c2d;
+  /* #7e5843; */
+  color: rgb(212, 186, 147);
   /* padding: 50px 0 5px 400px; */
 }
 
@@ -87,7 +90,7 @@ footer{
 /* ------------------------------- navigation ------------------------*/
 nav.navigation-bar{
   display: flex;
-  border-bottom: 2px solid rgb(68, 64, 64);
+  /* border-bottom: 2px solid rgb(68, 64, 64); */
   padding: 0;
   margin: 0;
   /* justify-content: space-between; */
@@ -98,13 +101,14 @@ nav.navigation-bar{
 
 nav.navigation-bar div{
   display: flex;
+  border-left: 2px solid rgb(213, 199, 199);
   /* justify-content: end; */
   list-style-type: none;
   align-items: center;
   justify-content: space-around;
-  font-size: 40px;
-  padding: 12px;
-  margin: 0 14px 0 15px;
+  font-size: 30px;
+  padding: 15px;
+  margin: 0 60px 0 50px;
   
 }
 
@@ -114,12 +118,12 @@ nav.navigation-bar div{
 } */
 
 #search{
-  width: 30%;
-  height: 50%;
+  width: 25%;
+  height: 60%;
   /* margin: 0 10px; */
 }
 
-nav.navigation-bar a{
+nav.navigation-bar  a{
   text-decoration: none;
   /* border: 1px solid red; */
   padding: 5px;
@@ -133,18 +137,22 @@ nav.navigation-bar a{
 } */
 
 nav.navigation-bar a:hover{
-  background-color: #F0A500;
+  background-color: #F9B384;
   color: black;
   /* font-size: 40.5px; */
   border-radius: 2px;
   /* border: 3px solid #F0A500; CF7500 */
-  box-shadow: 0 0 0 2px #F0A500;
+  box-shadow: 0 0 0 2px #F9B384;
 }
+
 
 /* ------------------------------- main -----------------------------*/
 .main-top{
   display: flex;
+  flex-direction: column;
   text-align: center;
+
+
 }
 #mainCat{
   width: 99.3%;
@@ -153,7 +161,22 @@ nav.navigation-bar a:hover{
 }
 
 
+        /*----------- adding post -------------*/
+        #adding{
+          width: 3%;
+          height: auto;
+        }
 
+        #adding-user-post{
+          display: flex;
+          justify-content: right;
+          margin: 5px 15px 5px 5px;
+        }
+        
+        #adding:hover{
+          background-color: rgb(147, 77, 16);
+          margin: 2px;
+        }
 
 
 /* ------------------------------- link, hover ------------------------*/
