@@ -102,47 +102,35 @@ nav.navigation-bar{
 nav.navigation-bar div{
   display: flex;
   border-left: 2px solid rgb(213, 199, 199);
-  /* justify-content: end; */
   list-style-type: none;
   align-items: center;
   justify-content: space-around;
   font-size: 30px;
-  padding: 15px;
+  padding: 13px;
   margin: 0 60px 0 50px;
-  
 }
-
-/* nav.navigation-bar li{
-  display: inline;
-  margin: 0 40px;
-} */
 
 #search{
   width: 25%;
   height: 60%;
-  /* margin: 0 10px; */
+}
+
+#search:hover{
+  transform: scale(1.3);
 }
 
 nav.navigation-bar  a{
   text-decoration: none;
-  /* border: 1px solid red; */
   padding: 5px;
   color: rgb(68, 64, 64);
-  margin: 0 10px 0 0px;
+  margin: 0 5px 0 5px;
 }
 
-/* nav.navigation-bar a:link{
-  text-decoration: none;
-  color: green;
-} */
-
 nav.navigation-bar a:hover{
-  background-color: #F9B384;
+  background-color: #ffc29a;
   color: black;
-  /* font-size: 40.5px; */
   border-radius: 2px;
-  /* border: 3px solid #F0A500; CF7500 */
-  box-shadow: 0 0 0 2px #F9B384;
+  transform: scale(1.2);
 }
 
 
@@ -150,7 +138,7 @@ nav.navigation-bar a:hover{
 .main-top{
   display: flex;
   flex-direction: column;
-  text-align: center;
+  /* text-align: center; */
 
 
 }
@@ -160,11 +148,61 @@ nav.navigation-bar a:hover{
   margin: 5px;
 }
 
+section.card-container{
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  background-color: E6D5B8;
+  border: 2px solid rgb(125, 125, 34);
+  margin: 10px;
+  /* overflow-y: auto; */
 
-        /*----------- adding post -------------*/
+}
+         /* ------------------------- cards ------------------------*/
+       .cat-card{
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        justify-content: flex-start;
+        flex-grow: 1;
+        flex-wrap: wrap;
+        /* width: calc(30% - 2px);      */
+        height: 380px; 
+        background: #fdf9f1;
+        border: 2px solid rgb(55, 149, 8);
+        margin: 10px;
+       }
+
+       .each-cat-img{
+        border: #733c2d;
+        margin: 8px;
+        width: 250px;
+        height: 250px;        
+       }
+
+       .caption-heart{
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        margin: 2px 15px 2px 5px;
+       } 
+
+       .each-card-outer{
+        display: flex;
+        flex-wrap: wrap;
+        flex-grow: 1; 
+        width: calc(17% - 2px); 
+        height: 400px;
+        margin: 2px;
+        /* height: 100px;  */
+        background: rgb(23, 68, 141);        
+       }
+
+        /*----------- adding post + -------------*/
         #adding{
-          width: 3%;
+          width: 2.5%;
           height: auto;
+          margin: 5px;
         }
 
         #adding-user-post{
@@ -174,12 +212,27 @@ nav.navigation-bar a:hover{
         }
         
         #adding:hover{
-          background-color: rgb(147, 77, 16);
-          margin: 2px;
+          background-color: rgb(147, 90, 16);
+          border-radius: 5px;
+          /* transition: transform 0s; */
+          transform: scale(1.2);
+        }
+
+        /*-------------caption-----------------------*/
+        .heart-like{
+          width: 30px;
+          padding: 5px
+        }
+
+        .heart-like:hover{
+          transform: scale(1.06);
         }
 
 
-/* ------------------------------- link, hover ------------------------*/
+      
+
+       
+
 
 
 
