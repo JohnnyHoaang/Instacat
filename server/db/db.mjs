@@ -2,20 +2,21 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config()
 
-async function connect() {
-    await mongoose.connect(process.env.ATLAS_URI)
-}
+// async function connect() {
+//     await mongoose.connect(process.env.ATLAS_URI)
+// }
 
-async function disconnect() {
-    await mongoose.disconnect()
-}
+// async function disconnect() {
+//     await mongoose.disconnect()
+// }
 
+_instance = null
 class Mongo {
     constructor() {
-        if (Mongo._instance) {
-          return Mongo._instance
+        if (_instance) {
+          return _instance
         }
-        Mongo._instance = this;    
+        _instance = this;    
     }
     
     async connect() {
