@@ -10,7 +10,7 @@ dotenv.config()
 //     await mongoose.disconnect()
 // }
 
-_instance = null
+let _instance = null
 class Mongo {
     constructor() {
         if (_instance) {
