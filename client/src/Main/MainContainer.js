@@ -35,8 +35,9 @@ function Main() {
 
     return(
         <div className="main-top"> 
-            <section>
-                <img src={catBkg} alt="mainCat" id="mainCat"></img>
+            <section id='top-image'>
+                hi
+                {/* <img src={catBkg} alt="mainCat" id="mainCat"></img> */}
             </section>
             <div id='adding-user-post'>
                 <img src={addingPost} alt="adding post" id="adding"></img>
