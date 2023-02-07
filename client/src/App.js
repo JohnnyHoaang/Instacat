@@ -4,7 +4,7 @@ import './App.css';
 import Form from './components/Form.js'
 import ImageForm from './components/ImageForm.js'
 import PostSection from './components/PostSection';
-
+import ProfileSection from './components/ProfileSection';
 
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
       <h2>User Comments:</h2>
       <PostSection />
       <h2>User profiles:</h2>
+      {/* <ProfileSection/> */}
     </div>
   );
 }
