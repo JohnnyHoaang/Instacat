@@ -7,54 +7,72 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using MongoDB.Driver;
 using MongoDB.Bson;
+using System.Threading.Tasks;
 
 namespace DatabaseApp
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            // Get from the Cat API
-            var json = getResponseFromAPI("https://api.thecatapi.com/v1/images/search", "?limit=3");
-            WriteToFile("catapi_image.json", json.ToString());
+            const string ENV_FILE_PATH = "../.env";
 
-            Thread.Sleep(1000);
+            // Set up env variables (Might need some redesigning to not take ALL of them)
+            if (!File.Exists(ENV_FILE_PATH))
+            {
+                System.Console.WriteLine(".env file not found. Exiting...");
+                Environment.Exit(0);
+            }
+
+            foreach (string line in File.ReadAllLines(ENV_FILE_PATH))
+            {
+                int index = line.IndexOf("=");
+                string envVarName = line.Substring(0, index);
+                string envVar = line.Substring(index + 1).Replace("\"", "");
+
+                Environment.SetEnvironmentVariable(envVarName, envVar);
+            }
+            
+
+            // Get from the Cat API
+            var json = GetResponseFromAPI("https://api.thecatapi.com/v1/images/search", "?limit=3");
+            foreach (JObject j in json) 
+            {
+                j.Remove("height");
+                j.Remove("width");
+            } 
+            await WriteToFile("catapi_image.json", json.ToString());
 
             // Get from the Random Word API
-            json = getResponseFromAPI("https://random-word-api.herokuapp.com/word", "?number=6");
-            WriteToFile("random_word.json", json.ToString());
+            json = GetResponseFromAPI("https://random-word-api.herokuapp.com/word", "?number=6");
+            await WriteToFile("random_word.json", json.ToString());
             
             // Connect to the DB
             MongoClient dbClient = null;
-            while (true)
+            try
             {
-                try
-                {
-                    System.Console.WriteLine("Input Mongo username: ");
-                    string username = Console.ReadLine();
-                    System.Console.WriteLine("Input password: ");
-                    string password = Console.ReadLine();
-                    
-                    dbClient = new MongoClient(
-                        "mongodb+srv://" + username + ":" + password + "@cluster0.cebsx9s.mongodb.net/?retryWrites=true&w=majority"
-                    );
-                    // This checks if connection is valid
-                    var dbList = dbClient.ListDatabases().ToList();
-                    break;
-                }
-                catch (MongoAuthenticationException)
-                {
-                    System.Console.WriteLine("The connection is invalid, your credentials might have been wrong");
-                }
-
-                // Testing pushing to DB
-                string catImages = File.ReadAllText("catapi_image.json");
-                var bson = BsonDocument.Parse(catImages);
-                
+                dbClient = new MongoClient(
+                    Environment.GetEnvironmentVariable("ATLAS_URI")
+                );
+                // This checks if connection is valid
+                dbClient.ListDatabases().ToList();
             }
+            catch (MongoAuthenticationException)
+            {
+                System.Console.WriteLine("The connection is invalid, your credentials might have been wrong");
+                Environment.Exit(0);
+            }
+
+            // Testing pushing to DB
+            var db = dbClient.GetDatabase("Database Name");
+            var collection = db.GetCollection<BsonDocument>("Collection Name");
+
+            string catImages = File.ReadAllText("catapi_image.json");
+            // var bson = BsonDocument.Parse(catImages);
+            // collection.InsertManyAsync(bson);
         }
 
-        public static JArray getResponseFromAPI(string url, string parameters)
+        public static JArray GetResponseFromAPI(string url, string parameters)
         {
             var client = new HttpClient();
             client.BaseAddress = new Uri(url);
@@ -72,9 +90,9 @@ namespace DatabaseApp
             return null;
         }
 
-        public static void WriteToFile(string fileName, string str)
+        public static async Task WriteToFile(string fileName, string str)
         {
-            File.WriteAllText(fileName, str);
+            await File.WriteAllTextAsync(fileName, str);
             System.Console.WriteLine(fileName + " has been written");
         }
     }
