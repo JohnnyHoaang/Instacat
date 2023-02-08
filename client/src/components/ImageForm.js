@@ -1,6 +1,6 @@
 function ImageForm(){
     return(
-        <form method="POST" action="profileUpload" enctype="multipart/form-data">
+        <form method="POST" action="profile/upload" enctype="multipart/form-data">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username"></input>
             <br></br>

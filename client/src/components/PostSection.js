@@ -9,11 +9,10 @@ function PostSection() {
     )
 
     useEffect(async () => {
-        let response = await fetch(`/usercomments`)
+        let response = await fetch(`/comment/users`)
 
         if (response.ok) {
             let result = await response.json()
-            console.log(result)
             setPosts(result)
         }
     }, [])

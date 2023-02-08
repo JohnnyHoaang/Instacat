@@ -12,8 +12,7 @@ build:
     - cd server && npm install && cd ../client && npm install
   only:
     - main
-    - master
-    - staging
+    - dev
   cache:
     paths:
       - server/node_modules/
@@ -29,8 +28,7 @@ test:
   stage: test
   only:
     - main
-    - master
-    - staging
+    - dev
   dependencies:
     - build
   script:
