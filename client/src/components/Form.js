@@ -9,7 +9,7 @@ function Form() {
             comment: comment,
         })
         // send post request
-        await fetch(`/comment/upload`, {
+        await fetch(`comment/upload`, {
             method: "POST",
             body: payload,
             headers: {
