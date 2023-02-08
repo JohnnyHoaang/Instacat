@@ -20,6 +20,7 @@ html, body , div#root, .App
   width: 99.9%;
   font-family: "Lato","Trebuchet MS",sans-serif;
   background-color: #f4ebdd;
+  /* min-width: 1310px; */
   /* justify-content: space-around; */
   
   /* background-size: cover; */
@@ -34,7 +35,7 @@ header {
   justify-content: space-between;
   /* background-color: rgb(99, 59, 151); */
   width: 100%;
-  min-width: 1710px;
+  min-width: 1310px;
   padding: 0;
   margin: 2px ;
 }
@@ -69,8 +70,7 @@ footer{
   background-color: #733c2d;
   /* #7e5843; */
   color: rgb(212, 186, 147);
-  min-width: 1710px;
-  /* min-height: 650px; */
+  min-width: 1510px;
   /* padding: 50px 0 5px 400px; */
 }
 
@@ -96,8 +96,8 @@ nav.navigation-bar{
   /* border-bottom: 2px solid rgb(68, 64, 64); */
   padding: 0;
   margin: 0;
-  width: 99%;
-  min-width: 1710px;
+  width: 98%;
+  min-width: 1410px;
   justify-content: space-between;
   /* justify-self: flex-end; */
   /* padding: 10px; */
@@ -110,8 +110,8 @@ nav.navigation-bar div{
   list-style-type: none;
   align-items: center;
   justify-content: space-around;
-  font-size: 30px;
-  padding: 13px;
+  font-size: 29px;
+  padding: 12px;
   margin: 0 60px 0 50px;
 }
 
@@ -123,9 +123,10 @@ nav.navigation-bar div{
 
 nav.navigation-bar  a{
   text-decoration: none;
-  padding: 5px;
+  padding: 4px;
+  width: 113px;
   color: rgb(68, 64, 64);
-  margin: 0 5px 0 5px;
+  /* margin: 0 4px 0 4px; */
 }
 
 nav.navigation-bar a:hover{
@@ -133,12 +134,13 @@ nav.navigation-bar a:hover{
   color: black;
   border-radius: 2px;
   transform: scale(1.2);
+  /* transform: translateX(-10px); */
 }
 
 form {
   background-color: #4654e1;
-  width: 350px;
-  height: 45px;
+  width: 320px;
+  height: 38px;
   border-radius: 5px;
   display: flex;
   /* flex-direction: row; */
@@ -171,15 +173,15 @@ button {
 svg {
   color: #fff;
   fill: currentColor;
-  width: 24px;
+  width: 23px;
   height: 24px;
-  padding: 10px;
+  padding: 9px;
 }
 /* ------------------------------- main -----------------------------*/
 .main-top{
   display: flex;
   flex-direction: column;
-  min-width: 1750px;
+  /* min-width: 1050px; */
   /* text-align: center; */
 }
 
@@ -195,7 +197,7 @@ svg {
   background-repeat: no-repeat;
   width: 99.3%;
   height: auto;
-  min-width: 1700px;
+  min-width: 1500px;
   min-height: 650px;
   margin: 5px;
   
@@ -224,6 +226,11 @@ section.card-container{
         background: #fdf9f1;
         border: 2px solid rgb(55, 149, 8);
         margin: 10px;
+       }
+
+       .cat-card:hover{
+        background-color: rgb(252, 219, 205);
+        transition: background-color 2s ease-out 100ms;
        }
 
        .each-cat-img{
@@ -274,7 +281,8 @@ section.card-container{
         /*-------------caption-----------------------*/
         .heart-like{
           width: 30px;
-          padding: 5px
+          padding: 5px;
+          transform: rotateY(180deg);
         }
 
         .heart-like:hover{
