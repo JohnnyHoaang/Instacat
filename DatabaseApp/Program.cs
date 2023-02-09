@@ -34,17 +34,17 @@ namespace DatabaseApp
             
 
             // Get from the Cat API
-            var json = GetResponseFromAPI("https://api.thecatapi.com/v1/images/search", "?limit=3");
-            foreach (JObject j in json) 
+            var imagesJson = GetResponseFromAPI("https://api.thecatapi.com/v1/images/search", "?limit=3");
+            foreach (JObject j in imagesJson) 
             {
                 j.Remove("height");
                 j.Remove("width");
             } 
-            await WriteToFile("catapi_image.json", json.ToString());
+            await WriteToFile("catapi_image.json", imagesJson.ToString());
 
             // Get from the Random Word API
-            json = GetResponseFromAPI("https://random-word-api.herokuapp.com/word", "?number=6");
-            await WriteToFile("random_word.json", json.ToString());
+            var wordsJson = GetResponseFromAPI("https://random-word-api.herokuapp.com/word", "?number=20");
+            await WriteToFile("random_word.json", wordsJson.ToString());
             
             // Connect to the DB
             MongoClient dbClient = null;
@@ -62,13 +62,15 @@ namespace DatabaseApp
                 Environment.Exit(0);
             }
 
-            // Testing pushing to DB
-            var db = dbClient.GetDatabase("Database Name");
-            var collection = db.GetCollection<BsonDocument>("Collection Name");
+            // Create test posts (This method might change later)
+            var postsJson = CreatePosts(imagesJson, wordsJson);
 
-            string catImages = File.ReadAllText("catapi_image.json");
-            // var bson = BsonDocument.Parse(catImages);
-            // collection.InsertManyAsync(bson);
+            System.Console.WriteLine(postsJson.ToString());
+
+            // Testing pushing to DB
+            var db = dbClient.GetDatabase("cattus");
+            var collection = db.GetCollection<BsonDocument>("posts");
+
         }
 
         public static JArray GetResponseFromAPI(string url, string parameters)
@@ -93,6 +95,29 @@ namespace DatabaseApp
         {
             await File.WriteAllTextAsync(fileName, str);
             System.Console.WriteLine(fileName + " has been written");
+        }
+
+        public static JArray CreatePosts(JArray images, JArray captions)
+        {
+            JArray posts = new JArray();
+            Random rnd = new Random();
+            int index = 0;
+            foreach (var image in images)
+            {
+                JObject obj = new JObject();
+
+                obj["id"] = image["id"];
+                obj["image"] = image["url"];
+                obj["username"] = Path.GetRandomFileName().Replace(".", "").Substring(0, 8);
+                obj["caption"] = captions[index] + " " + captions[index + 1];
+                obj["hashtags"] = new JArray();
+                obj["likes"] = rnd.Next(0, 10);
+                obj["comments"] = new JArray();
+
+                posts.Add(obj);
+                index += 2;
+            }
+            return posts;
         }
     }
 }
