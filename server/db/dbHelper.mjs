@@ -1,19 +1,32 @@
-import Database from "./db.mjs"
-
-// Sends data from db to API
-async function sendAPI(res, table, collection) {
-    let db = new Database()
-    await db.connect(table, collection)
-    let data = await db.readAll()
-    db.close()
-    res.json(data)
+import { UserComment } from "../models/UserComment.mjs"
+import { UserProfile } from "../models/UserProfile.mjs"
+// Inserts data to DB
+async function insertToDB(response, body, type) {
+    let user
+    if(type == "usercomments"){
+        user = UserComment(body)
+    } else if (type == "userprofiles") {
+        user = UserProfile(body)
+    }
+    try {
+        await user.save()
+    } catch (error) {
+        response.status(500).send(error)
+    }
 }
-// insert body to specified table
-async function insertDB(dbName, collName, body) {
-    let db = new Database()
-    await db.connect(dbName, collName, body)
-    await db.addData(body)
-    await db.close()
+// Sends back API result
+async function sendAPI(response, type) {
+    let users
+    if(type =="usercomments"){
+        users = await UserComment.find({})
+    } else if(type== "userprofiles") {
+        users = await UserProfile.find({})
+    }
+    try {
+        response.send(users);
+    } catch (error) {
+        response.status(500).send(error);
+    }
 }
 
-export { sendAPI, insertDB }
+export { insertToDB, sendAPI }

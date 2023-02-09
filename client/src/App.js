@@ -16,7 +16,7 @@ function App() {
       <br></br>
       <ImageForm />
       <h2>User Comments:</h2>
-      {/* <PostSection /> */}
+      <PostSection />
       <h2>User profiles:</h2>
       <ProfileSection/>
     </div>

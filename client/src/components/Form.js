@@ -9,15 +9,13 @@ function Form() {
             comment: comment,
         })
         // send post request
-        await fetch(`/comment/upload`, {
+        await fetch(`comment/upload`, {
             method: "POST",
             body: payload,
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             }
         });
-        console.log(payload)
-
     }
     return (
         <form onSubmit={handleSubmit}>

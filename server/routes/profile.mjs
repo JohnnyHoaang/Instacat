@@ -13,14 +13,16 @@ router.use(
 );
 
 router.get('/users', async (req, res) => {
-    await sendAPI(res, "test", "userprofiles")
+    await sendAPI(res, "userprofiles")
 })
 
 router.post('/upload', async (req, res) => {
     const username = req.body.username
     const file = req.files.image;
-    await uploadToAzure(file, username)
-
+    if(username){
+        await uploadToAzure(file, username, res)
+        res.redirect('/')
+    }
 })
 
 export default router

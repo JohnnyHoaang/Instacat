@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://gitlab.com/dawson2223/620-w23/s01/TeamA/project-cattus/issues"
   },
-  "homepage": "https://gitlab.com/dawson2223/620-w23/s01/TeamA/project-cattus#readme"
+  "homepage": "https://gitlab.com/dawson2223/620-w23/s01/TeamA/project-cattus#readme",
+  "dependencies": {
+    "server": "^1.0.38"
+  }
 }
