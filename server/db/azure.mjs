@@ -1,6 +1,8 @@
 import { BlobServiceClient } from '@azure/storage-blob'
 import { insertToDB } from '../db/dbHelper.mjs'
+import dotenv from 'dotenv'
 
+dotenv.config()
 const storageAccountName = process.env.STORAGE_ACCOUNT_NAME
 const sasToken = process.env.AZURE_SAS
 const containerName = process.env.CONTAINER_NAME
