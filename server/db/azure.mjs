@@ -18,7 +18,7 @@ async function uploadToAzure(file, username, response) {
         await blobClient.uploadData(file.data, options)
         await insertToDB(response, { username: username, profileURL: blobURL }, "userprofiles")
     } else {
-        await insertToDB(response, { username: username, profileURL: "" })
+        await insertToDB(response, { username: username, profileURL: "" }, "userprofiles")
     }
 }
 

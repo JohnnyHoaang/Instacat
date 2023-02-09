@@ -10,7 +10,7 @@ router.get('/users', async (req, res) => {
 })
 
 router.post('/upload', async (req, res) => {
-    await insertToDB(res, req.body)
+    await insertToDB(res, req.body, "usercomments")
 })
 
 export default router

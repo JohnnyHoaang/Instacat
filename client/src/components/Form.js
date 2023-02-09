@@ -16,8 +16,6 @@ function Form() {
                 "Content-type": "application/json; charset=UTF-8"
             }
         });
-        console.log(payload)
-
     }
     return (
         <form onSubmit={handleSubmit}>
