@@ -3,6 +3,7 @@
 # Script by: Kelsey Pereira Costa
 
 # Installs dependencies
+npm install
 npm install server
 npm install client
 
