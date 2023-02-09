@@ -2,7 +2,6 @@
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using MongoDB.Driver;
@@ -28,7 +27,7 @@ namespace DatabaseApp
             {
                 int index = line.IndexOf("=");
                 string envVarName = line.Substring(0, index);
-                string envVar = line.Substring(index + 1).Replace("\"", "");
+                string envVar = line.Substring(index + 1);
 
                 Environment.SetEnvironmentVariable(envVarName, envVar);
             }
