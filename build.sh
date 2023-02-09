@@ -7,5 +7,4 @@ npm install server
 npm install client
 
 # Builds react project
-cd client
-npm run build
+npm run build --prefix client
