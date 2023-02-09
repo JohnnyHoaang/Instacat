@@ -1,20 +1,21 @@
-import express from "express"
-import * as db from "../db/db.mjs"
+import app from '../app.mjs'
+import { Mongo } from '../db/db.mjs' 
 
-const mongo = new db.Mongo()
-const app = express()
-const port = 3000
+const PORT = 3000
+const mongo = new Mongo()
 
 main()
 
 async function main() {
   await mongo.connect()
-  
-  let server = app.listen(port, () => console.log(`listening on http://localhost:${port}`))
+
+  let server = app.listen(PORT, () => {
+    console.log(`listening on http://localhost:${PORT}`)
+  })
 
   process.on('SIGTERM', shutdown)
   process.on('SIGINT', shutdown)
-  
+
   async function shutdown(){
     console.log("Shutting down");
     server.close(async () => {
