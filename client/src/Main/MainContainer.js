@@ -1,29 +1,32 @@
-import catBkg from '../images/catBackgrnd.png';
-import Cards from './Crads.js'
-import addingPost from '../images/adding-post.png'
-import { useState } from 'react';
+// import catBkg from '../images/catBackgrnd.png';
+import Cards from './Crads.js';
+import addingPost from '../images/adding-post.png';
+import { useEffect, useState } from 'react';
+// import url from "https://localhost:3001/catlist";
+
 
 
 function Main() {
-    const catlist = [
-        {id: "3cm", url: "https://cdn2.thecatapi.com/images/3cm.jpg", width: 612, height: 612},
-        {id: "47s", url: "https://cdn2.thecatapi.com/images/47s.jpg", width: 500, height: 331},
-        {id: "a1p", url: "https://cdn2.thecatapi.com/images/a1p.jpg", width: 560, height: 432},
-        {id: "2cm", url: "https://cdn2.thecatapi.com/images/2cm.jpg", width: 612, height: 612},
-        {id: "27s", url: "https://cdn2.thecatapi.com/images/27s.jpg", width: 500, height: 331},
-        {id: "b1p", url: "https://cdn2.thecatapi.com/images/b1p.jpg", width: 560, height: 432},
-        {id: "3cn", url: "https://cdn2.thecatapi.com/images/3cn.jpg", width: 612, height: 612},
-        {id: "46s", url: "https://cdn2.thecatapi.com/images/46s.jpg", width: 500, height: 331},
-        {id: "c2p", url: "https://cdn2.thecatapi.com/images/c2p.jpg", width: 560, height: 432},
-        {id: "1cm", url: "https://cdn2.thecatapi.com/images/1cm.jpg", width: 612, height: 612},
-        {id: "47h", url: "https://cdn2.thecatapi.com/images/47h.jpg", width: 500, height: 331},
-        {id: "a1p", url: "https://cdn2.thecatapi.com/images/a1p.jpg", width: 560, height: 432},
-        // {id:"", },
-        // {id:"", },
-        // {id:"", }
-    ];
+  
+    let [cards, setCards] = useState([])
+        //npx json-server --watch data/data.json --port 3001
+        useEffect(() => {
+            let url = "https://localhost:3001/catlist";
+            fetch(url)
+            .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            
+            })
+            .then(data => {
+                console.log(data);
+                setCards(data);
+                
+            })
+    });
 
-    let [cards, setCards] = useState(catlist)
+    
 
     function like(index){
         //increase the unmber 
@@ -48,11 +51,9 @@ function Main() {
                         <div key={index} className='each-card-outer'>
                             <Cards id={item.id}
                                 index={index}   
-                                imageUrl={item.url}
+                                imageUrl={item.image}
                                 like={like}
-                                unlike={unlike}
-                                width={item.width}
-                                heigh={item.height}/>
+                                unlike={unlike}/>
                         </div>
                     ))}
             </section>
@@ -63,3 +64,27 @@ function Main() {
 }
 
 export default Main;
+
+
+
+
+
+
+
+
+
+
+  // const catlist = [
+    //     {id: "3cm", url: "https://cdn2.thecatapi.com/images/3cm.jpg"},
+    //     {id: "47s", url: "https://cdn2.thecatapi.com/images/47s.jpg"},
+    //     {id: "a1p", url: "https://cdn2.thecatapi.com/images/a1p.jpg"},
+    //     {id: "2cm", url: "https://cdn2.thecatapi.com/images/2cm.jpg"},
+    //     {id: "27s", url: "https://cdn2.thecatapi.com/images/27s.jpg"},
+    //     {id: "b1p", url: "https://cdn2.thecatapi.com/images/b1p.jpg"},
+    //     {id: "3cn", url: "https://cdn2.thecatapi.com/images/3cn.jpg"},
+    //     {id: "46s", url: "https://cdn2.thecatapi.com/images/46s.jpg"},
+    //     {id: "c2p", url: "https://cdn2.thecatapi.com/images/c2p.jpg"},
+    //     {id: "1cm", url: "https://cdn2.thecatapi.com/images/1cm.jpg"},
+    //     {id: "47h", url: "https://cdn2.thecatapi.com/images/47h.jpg"},
+    //     {id: "a1p", url: "https://cdn2.thecatapi.com/images/a1p.jpg"},
+    // ];
