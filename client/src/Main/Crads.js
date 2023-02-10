@@ -1,5 +1,5 @@
 import React from 'react';
-import heartLike from '../images/heartt.png'
+import heartLike from '../images/heart2.png'
  
 function Cards (props) {
     return (

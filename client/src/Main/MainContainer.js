@@ -2,19 +2,21 @@
 import Cards from './Crads.js';
 import addingPost from '../images/adding-post.png';
 import { useEffect, useState } from 'react';
-// import url from "https://localhost:3001/catlist";
-
 
 
 function Main() {
   
-    let [cards, setCards] = useState([])
-        //npx json-server --watch data/data.json --port 3001
+    let [cards, setCards] = useState([]);
+        //npx json-server --watch data/data1.json --port 3001
+        
         useEffect(() => {
-            let url = "https://localhost:3001/catlist";
+            
+            let url = "http://localhost:3002/catlist";
             fetch(url)
             .then(response => {
-            if (response.ok) {
+            if (!response.ok) {
+                throw new Error('fetching issue', response.Error);
+            } else {
                 return response.json();
             }
             
@@ -24,7 +26,10 @@ function Main() {
                 setCards(data);
                 
             })
-    });
+            .catch(err => {
+                console.log(err.message);
+            })
+    }, []);
 
     
 

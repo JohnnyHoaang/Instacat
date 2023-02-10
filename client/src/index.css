@@ -225,6 +225,7 @@ section.card-container{
         height: 380px; 
         background: #fdf9f1;
         border: 2px solid rgb(55, 149, 8);
+        border-radius: 4px;
         margin: 10px;
        }
 
@@ -238,6 +239,7 @@ section.card-container{
         margin: 8px;
         width: 250px;
         height: 250px;        
+        border-radius: 4px;
        }
 
        .caption-heart{
@@ -245,6 +247,7 @@ section.card-container{
         flex-direction: column;
         justify-content: start;
         margin: 2px 15px 2px 5px;
+        
        } 
 
        .each-card-outer{
@@ -255,7 +258,9 @@ section.card-container{
         height: 400px;
         margin: 2px;
         /* height: 100px;  */
-        background: rgb(23, 68, 141);        
+        background: rgb(23, 68, 141);
+        border-radius: 4px;       
+
        }
 
         /*----------- adding post + -------------*/
