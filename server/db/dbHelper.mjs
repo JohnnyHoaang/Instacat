@@ -1,5 +1,3 @@
-import { UserComment } from "../models/UserComment.mjs"
-import { UserProfile } from "../models/UserProfile.mjs"
 // Inserts data to DB
 async function insertToDB(response, model, body) {
     const user = model(body)
@@ -15,6 +13,7 @@ async function sendAPI(response, model, query) {
     try {
         response.send(data);
     } catch (error) {
+        console.log(error)
         response.status(500).send(error);
     }
 }
