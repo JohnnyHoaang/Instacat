@@ -21,7 +21,7 @@ router.post('/upload', async (req, res) => {
     const username = req.body.username
     const file = req.files.image;
     if(username){
-        await uploadToAzure(file, username, res)
+        await uploadToAzure(file, username, UserProfile, res)
         res.redirect('/')
     }
 })

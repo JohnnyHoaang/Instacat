@@ -53,7 +53,8 @@ function Main() {
                 {/* <img src={catBkg} alt="mainCat" id="mainCat"></img> */}
             </section>
             <div id='adding-user-post'>
-                <img src={addingPost} alt="adding post" id="adding"></img>
+            {/* <img src={addingPost} alt="adding post" id="adding"></img> */}
+            <a href='add/post'><img src={addingPost} alt="adding post" id="adding"></img></a>
             </div>
 
             <section className='card-container'>
