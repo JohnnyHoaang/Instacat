@@ -291,7 +291,8 @@ section.card-container{
         }
 
         .heart-like:hover{
-          transform: scale(1.06);
+          /* transform: scale(1.06); */
+          transform: scale(1.2);
         }
 
         .catCaption{
