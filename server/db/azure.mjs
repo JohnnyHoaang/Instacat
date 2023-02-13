@@ -1,6 +1,7 @@
 import { BlobServiceClient } from '@azure/storage-blob'
 import { insertToDB } from '../db/dbHelper.mjs'
 import dotenv from 'dotenv'
+import { UserProfile } from '../models/UserProfile.mjs'
 
 dotenv.config()
 const storageAccountName = process.env.STORAGE_ACCOUNT_NAME
@@ -18,9 +19,9 @@ async function uploadToAzure(file, username, response) {
         const blobClient = containerClient.getBlockBlobClient(path)
         const options = { blobHTTPHeaders: { blobContentType: file.mimetype } }
         await blobClient.uploadData(file.data, options)
-        await insertToDB(response, { username: username, profileURL: blobURL }, "userprofiles")
+        await insertToDB(response, UserProfile, { username: username, profileURL: blobURL })
     } else {
-        await insertToDB(response, { username: username, profileURL: "" }, "userprofiles")
+        await insertToDB(response, UserProfile, { username: username, profileURL: "" })
     }
 }
 

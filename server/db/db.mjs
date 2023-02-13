@@ -1,9 +1,7 @@
-import { MongoClient } from 'mongodb'
+import mongoose from "mongoose";
 import dotenv from 'dotenv'
 dotenv.config()
-import mongoose from "mongoose";
-//import dotenv from "dotenv";
-dotenv.config()
+
 
 let _instance = null
 class Mongo {

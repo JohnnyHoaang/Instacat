@@ -18,7 +18,7 @@ const PostSchema = new mongoose.Schema({
         default: "",
     },
     hashtags: {
-        type: String,
+        type: Array,
         default: "",
     },
     likes: {
@@ -33,5 +33,5 @@ const PostSchema = new mongoose.Schema({
 
 const Post = mongoose.model("Post", PostSchema);
 
-export default Post
+export { Post }
 

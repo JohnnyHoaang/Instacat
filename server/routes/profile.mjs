@@ -2,6 +2,7 @@ import express from 'express'
 import fileUpload from 'express-fileupload'
 import { sendAPI } from '../db/dbHelper.mjs'
 import { uploadToAzure } from '../db/azure.mjs'
+import { UserProfile } from '../models/UserProfile.mjs'
 
 const router = express.Router()
 
@@ -13,7 +14,7 @@ router.use(
 );
 
 router.get('/users', async (req, res) => {
-    await sendAPI(res, "userprofiles")
+    await sendAPI(res, UserProfile, {})
 })
 
 router.post('/upload', async (req, res) => {
