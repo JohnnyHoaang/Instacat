@@ -13,7 +13,8 @@ function Main() {
 
     //npx json-server --watch data/data1.json --port 3001  
     useEffect(() => {
-        let url = `/api/cat/all`;
+        // let url = `/api/cat/all`;
+        let url = "http://localhost:3001/catlist"
         fetch(url)
         .then(response => {
         if (!response.ok) {

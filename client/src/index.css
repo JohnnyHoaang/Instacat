@@ -21,162 +21,19 @@ html, body , div#root, .App, .AboutUs, .Discover, .Adopt
   font-family: "Lato","Trebuchet MS",sans-serif;
   background-color: #f4ebdd;
   /* min-width: 1310px; */
-  /* justify-content: space-around; */
-  
+  /* justify-content: space-around; */ 
   /* background-size: cover; */
   /* background-repeat: no-repeat; */
-  
- 
-  
 }
 /* ------------------------------- header ------------------------*/
-header {
-  display: flex;
-  justify-content: space-between;
-  /* background-color: rgb(99, 59, 151); */
-  width: 100%;
-  min-width: 1310px;
-  padding: 0;
-  margin: 2px ;
-}
- 
-#logo{
-  width: 10%;
-  height: auto;
-}
-
-div#profile-div{
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  width: 6%;
-}
-#profile-img{
-  width: 55%;
-  height: auto;
-  padding: 60px 0 0 0;
-}
-#user-name{
-  font-size: 12px;
-}
 
 
 /* ------------------------------- footer ------------------------*/
-footer{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  width: 99%;
-  background-color: #733c2d;
-  /* #7e5843; */
-  color: rgb(212, 186, 147);
-  min-width: 1510px;
-  /* padding: 50px 0 5px 400px; */
-}
 
-#footer-info, #footer-contact{
-  padding: 30px 15px 0;
-}
-
-#footer-a{
-  color: rgb(238, 160, 132);
-}
-
-#footer-a:hover{
-  color: rgb(238, 226, 166);
-}
-
-/* a:visited {
-  color:rgb(219, 159, 214);
-} */
 
 /* ------------------------------- navigation ------------------------*/
-nav.navigation-bar{
-  display: flex;
-  /* border-bottom: 2px solid rgb(68, 64, 64); */
-  padding: 0;
-  margin: 0;
-  width: 98%;
-  min-width: 1410px;
-  justify-content: space-between;
-  /* justify-self: flex-end; */
-  /* padding: 10px; */
-  
-}
-
-nav.navigation-bar div{
-  display: flex;
-  border-left: 2px solid rgb(213, 199, 199);
-  list-style-type: none;
-  align-items: center;
-  justify-content: space-around;
-  font-size: 29px;
-  padding: 12px;
-  margin: 0 60px 0 50px;
-}
-
-#search{
-  width: 25%;
-  height: 60%;
-}
 
 
-nav.navigation-bar  a{
-  text-decoration: none;
-  padding: 4px;
-  width: 113px;
-  color: rgb(68, 64, 64);
-  /* margin: 0 4px 0 4px; */
-}
-
-nav.navigation-bar a:hover{
-  background-color: #ffc29a;
-  color: black;
-  border-radius: 2px;
-  transform: scale(1.2);
-  /* transform: translateX(-10px); */
-}
-
-form {
-  background-color: #4654e1;
-  width: 320px;
-  height: 38px;
-  border-radius: 5px;
-  display: flex;
-  /* flex-direction: row; */
-  align-items: center;
-  margin: 18px 8px 0 10px ;
-}
-
-input {
-  all: unset;
-  font: 16px system-ui;
-  color: #fff;
-  height: 100%;
-  width: 100%;
-  /* padding: 2px 5px; */
-  margin: 10px;
-}
-
-::placeholder {
-  color: #fff;
-  opacity: 0.7; 
-}
-
-button {
-  all: unset;
-  cursor: pointer;
-  width: 44px;
-  height: 44px;
-}
-
-svg {
-  color: #fff;
-  fill: currentColor;
-  width: 23px;
-  height: 24px;
-  padding: 9px;
-}
 /* ------------------------------- main -----------------------------*/
 .main-top{
   display: flex;
