@@ -1,13 +1,30 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+// import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import AboutUs from './AboutUs/AboutUs';
+import Discover from './Discover/Discover';
+import Adopt from './Adopt/Adopt';
 import reportWebVitals from './reportWebVitals';
+
+import ReactDOM from 'react-dom/client';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+
+// install --> npm install react-router-dom
+const router = createBrowserRouter(
+ [
+  { path : "/",  element : <App /> },
+  { path : "/discover", element : <Discover />},
+  { path : "/adopt", element : <Adopt />},
+  { path : "/aboutUs", element : <AboutUs />},
+ ] 
+)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

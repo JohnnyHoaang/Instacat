@@ -4,10 +4,10 @@ import searchIcon from '../images/search-icon.jpg'
 const Navigation = () => {
     return (
         <nav className='navigation-bar'>
-            <div className='nav-div'><a href='/home'>Home</a></div>
-            <div className='nav-div'><a href='url'>Discover</a></div>
-            <div className='nav-div'><a href='url'>Adopt</a></div>
-            <div className='nav-div'><a href='url'>About us</a></div>
+            <div className='nav-div'><a href='/'>Home</a></div>
+            <div className='nav-div'><a href='/discover'>Discover</a></div>
+            <div className='nav-div'><a href='/adopt'>Adopt</a></div>
+            <div className='nav-div'><a href='/aboutUs'>About us</a></div>
             <div id='language'><a href='url'>English</a></div>
             
             <form role="search" id="form">

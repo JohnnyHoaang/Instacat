@@ -7,11 +7,12 @@ import { useEffect, useState } from 'react';
 function Main() {
   
     let [cards, setCards] = useState([]);
+    // let [isLoading, setIsLoading] = useState(true);
         //npx json-server --watch data/data1.json --port 3001
         
         useEffect(() => {
             
-            let url = "http://localhost:3002/catlist";
+            let url = "http://localhost:3001/catlist";
             fetch(url)
             .then(response => {
             if (!response.ok) {
@@ -24,9 +25,11 @@ function Main() {
             .then(data => {
                 console.log(data);
                 setCards(data);
+                // setIsLoading(false);
                 
             })
             .catch(err => {
+                // setIsLoading(false);
                 console.log(err.message);
             })
     }, []);
@@ -43,8 +46,8 @@ function Main() {
 
     return(
         <div className="main-top"> 
+            {/* {isLoading && <p> Loading...</p>} */}
             <section id='top-image'>
-                hi
                 {/* <img src={catBkg} alt="mainCat" id="mainCat"></img> */}
             </section>
             <div id='adding-user-post'>
@@ -57,6 +60,7 @@ function Main() {
                             <Cards id={item.id}
                                 index={index}   
                                 imageUrl={item.image}
+                                caption={item.caption}
                                 like={like}
                                 unlike={unlike}/>
                         </div>
