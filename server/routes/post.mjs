@@ -12,5 +12,6 @@ router.get('/cat/id/:id', async (req, res) => {
 router.get('/cat/all/', async (req, res)=>{
     await sendAPI(res, Post, {})
 })
+
 export default router
 
