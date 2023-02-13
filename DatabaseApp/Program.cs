@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace DatabaseApp
 {
@@ -63,14 +64,14 @@ namespace DatabaseApp
             }
 
             // Create test posts (This method might change later)
-            var postsJson = CreatePosts(imagesJson, wordsJson);
+            var postsBson = CreatePosts(imagesJson, wordsJson);
 
-            System.Console.WriteLine(postsJson.ToString());
+            // // Testing pushing to DB
+            // var db = dbClient.GetDatabase("test");
+            // var collection = db.GetCollection<BsonDocument>("posts");
 
-            // Testing pushing to DB
-            var db = dbClient.GetDatabase("cattus");
-            var collection = db.GetCollection<BsonDocument>("posts");
-
+            // await collection.InsertManyAsync(postsBson);
+            // System.Console.WriteLine("Data pushed. Let's hope it's good");
         }
 
         public static JArray GetResponseFromAPI(string url, string parameters)
@@ -97,9 +98,9 @@ namespace DatabaseApp
             System.Console.WriteLine(fileName + " has been written");
         }
 
-        public static JArray CreatePosts(JArray images, JArray captions)
+        public static List<BsonDocument> CreatePosts(JArray images, JArray captions)
         {
-            JArray posts = new JArray();
+            List<BsonDocument> posts = new List<BsonDocument>();
             Random rnd = new Random();
             int index = 0;
             foreach (var image in images)
@@ -107,14 +108,15 @@ namespace DatabaseApp
                 JObject obj = new JObject();
 
                 obj["id"] = image["id"];
-                obj["image"] = image["url"];
                 obj["username"] = Path.GetRandomFileName().Replace(".", "").Substring(0, 8);
+                obj["image"] = image["url"];
                 obj["caption"] = captions[index] + " " + captions[index + 1];
                 obj["hashtags"] = new JArray();
                 obj["likes"] = rnd.Next(0, 10);
                 obj["comments"] = new JArray();
 
-                posts.Add(obj);
+
+                posts.Add(BsonDocument.Parse(obj.ToString()));
                 index += 2;
             }
             return posts;
