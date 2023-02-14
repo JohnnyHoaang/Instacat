@@ -1,3 +1,4 @@
+// generate random IDs
 function generateID(length) {
     let id = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
