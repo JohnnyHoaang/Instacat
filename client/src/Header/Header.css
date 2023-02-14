@@ -5,7 +5,7 @@ header {
     width: 100%;
     min-width: 1310px;
     padding: 0;
-    margin: 2px ;
+    margin: 3px ;
   }
    
   #logo{
@@ -22,9 +22,14 @@ header {
   #profile-img{
     width: 55%;
     height: auto;
-    padding: 60px 0 0 0;
+    padding: 60px 0 0 8px;
   }
   #user-name{
     font-size: 12px;
+    margin:  2px;
+    font-weight: bold;
   }
   
+  #user-name a{
+    color: rgb(139, 91, 32);
+  }

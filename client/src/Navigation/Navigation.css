@@ -45,7 +45,7 @@ nav.navigation-bar{
   }
   
   form {
-    background-color: #4654e1;
+    background-color: #733c2d;
     width: 320px;
     height: 38px;
     border-radius: 5px;
@@ -66,7 +66,7 @@ nav.navigation-bar{
   }
   
   ::placeholder {
-    color: #fff;
+    color: #fafafa;
     opacity: 0.7; 
   }
   
@@ -84,3 +84,4 @@ nav.navigation-bar{
     height: 24px;
     padding: 9px;
   }
+  
