@@ -8,8 +8,9 @@ function Main(props) {
   
     let [cards, setCards] = useState([]);
     let [numberOfLikes, setNumberOfLikes] = useState (0);
-    const increasing = true;
+    let increasing = true;
     // let [isLoading, setIsLoading] = useState(true);
+
 
 
     //npx json-server --watch data/data1.json --port 3001  
@@ -64,7 +65,7 @@ function Main(props) {
         <div className="main-top"> 
             {/* {isLoading && <p> Loading...</p>} */}
             <section id='top-image'>
-                {/* <img src={catBkg} alt="mainCat" id="mainCat"></img> */}
+                
             </section>
             <div id='adding-user-post'>
                 <img src={addingPost} alt="adding post" id="adding"></img>

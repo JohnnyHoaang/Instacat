@@ -14,13 +14,11 @@ function Cards (props) {
                     <img src={heartLike} alt="like" className="heart-like" 
                     onClick={ () => props.handleLike(props.id)}
                      ></img>
-                    {/* <p>{props.like}</p> */}
                     <span className="LikeNum" id={props.id}>{props.likeNum}</span>
                 </div>
                 
                 <p className='catCaption'>{props.caption}</p>
             </div>
-            {/* <div className='cat-caption'>{props.catCaption}</div> */}
         </div>
     );
 }
