@@ -66,12 +66,12 @@ namespace DatabaseApp
             // Create test posts (This method might change later)
             var postsBson = CreatePosts(imagesJson, wordsJson);
 
-            // // Testing pushing to DB
-            // var db = dbClient.GetDatabase("test");
-            // var collection = db.GetCollection<BsonDocument>("posts");
+            // Testing pushing to DB
+            var db = dbClient.GetDatabase("test");
+            var collection = db.GetCollection<BsonDocument>("posts");
 
-            // await collection.InsertManyAsync(postsBson);
-            // System.Console.WriteLine("Data pushed. Let's hope it's good");
+            await collection.InsertManyAsync(postsBson);
+            System.Console.WriteLine("Data pushed. Let's hope it's good");
         }
 
         public static JArray GetResponseFromAPI(string url, string parameters)
