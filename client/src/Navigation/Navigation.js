@@ -1,4 +1,5 @@
 import React from 'react';
+import './Navigation.css'
 import searchIcon from '../images/search-icon.jpg'
  
 const Navigation = () => {
@@ -9,6 +10,7 @@ const Navigation = () => {
             <div className='nav-div'><a href='/adopt'>Adopt</a></div>
             <div className='nav-div'><a href='/aboutUs'>About us</a></div>
             <div id='language'><a href='url'>English</a></div>
+            
             
             <form role="search" id="form">
                 <input type="search" id="query" name="q"

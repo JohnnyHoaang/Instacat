@@ -1,0 +1,35 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: rgb(99, 59, 151); */
+    width: 100%;
+    min-width: 1310px;
+    padding: 0;
+    margin: 3px ;
+  }
+   
+  #logo{
+    width: 10%;
+    height: auto;
+  }
+  
+  div#profile-div{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    width: 6%;
+  }
+  #profile-img{
+    width: 55%;
+    height: auto;
+    padding: 60px 0 0 8px;
+  }
+  #user-name{
+    font-size: 12px;
+    margin:  2px;
+    font-weight: bold;
+  }
+  
+  #user-name a{
+    color: rgb(139, 91, 32);
+  }
