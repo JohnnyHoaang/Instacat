@@ -1,7 +1,7 @@
 import React from 'react';
 import heartLike from '../images/heart2.png'
 
-BDb8ZXb1v
+// BDb8ZXb1v
 function Cards (props) {
 
     return (
