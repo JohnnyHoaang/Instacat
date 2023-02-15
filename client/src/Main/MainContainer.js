@@ -50,7 +50,7 @@ function Main(props) {
            document.getElementById(id).innerHTML = numberOfLikes;
            increasing = false;
 
-        } else if (increasing == false){
+        } else if (increasing === false){
            numberOfLikes = document.getElementById(id).innerHTML;
            parseInt(numberOfLikes) 
            document.getElementById(id).innerText = null
