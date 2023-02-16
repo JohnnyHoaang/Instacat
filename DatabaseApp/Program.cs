@@ -49,6 +49,7 @@ namespace DatabaseApp
                         await apiTool.MakeCatPosts();
                         break;
                     case "2":
+                        await apiTool.ReadCatPosts();
                         var posts = apiTool.CatPosts;
                         if (posts.Count != 0)
                         {

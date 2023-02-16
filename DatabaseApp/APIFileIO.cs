@@ -22,9 +22,15 @@ namespace DatabaseApp
         private string _wordApiKey;
         private string _petFinderApiKey;
 
-        public List<BsonDocument> CatPosts {get;}
-        public List<BsonDocument> AdoptPosts {get;}
+        public List<BsonDocument> CatPosts {get; internal set;}
+        public List<BsonDocument> AdoptPosts {get; internal set;}
 
+        /// <summary>
+        /// Initializes a new instance of the helper class to fetch APIs and save data to files
+        /// </summary>
+        /// <param name="catApiKey"> Cat API key </param>
+        /// <param name="wordApiKey"> API key for the Random Word API </param>
+        /// <param name="petfinderApiKey"> PetFinder API key </param>
         public APIFileIO(string catApiKey, string wordApiKey, string petfinderApiKey)
         {
             CatPosts = new List<BsonDocument>();
@@ -35,6 +41,9 @@ namespace DatabaseApp
             _petFinderApiKey = petfinderApiKey;
         }
 
+        /// <summary>
+        /// Create the posts for cats, and save it to a file
+        /// </summary>
         public async Task MakeCatPosts()
         {
             // Get the cat images
@@ -65,7 +74,6 @@ namespace DatabaseApp
                 obj["likes"] = rnd.Next(0, 10);
                 obj["comments"] = new JArray();
 
-
                 CatPosts.Add(BsonDocument.Parse(obj.ToString()));
                 index += 2;
             }
@@ -75,9 +83,24 @@ namespace DatabaseApp
             Console.WriteLine("Posts were written to file");
         }
 
-        public void ReadCatPosts() 
+        public async Task ReadCatPosts() 
         {
+            CatPosts = new List<BsonDocument>();
+            var lines = await File.ReadAllLinesAsync(POSTS_FILE_NAME);
+            foreach (string line in lines)
+            {
+                CatPosts.Add(BsonDocument.Parse(line));
+            }
+        }
 
+        public void MakeAdoptPosts()
+        {
+            // TODO
+        }
+
+        public void ReadAdoptPosts()
+        {
+            // TODO
         }
 
         private JArray GetResponseFromAPI(string url, string parameters)
