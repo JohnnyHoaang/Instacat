@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.use(express.json())
 
-router.get('*', (req,res) =>{
+router.get(["/home","/contact","/discover","/aboutUs", "/adopt"], (req,res) =>{
     res.sendFile(path.join(__dirname,'../client/build/index.html'));
 });
 
