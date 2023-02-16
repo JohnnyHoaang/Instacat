@@ -5,6 +5,7 @@ import App from './App';
 import AboutUs from './AboutUs/AboutUs';
 import Discover from './Discover/Discover';
 import Adopt from './Adopt/Adopt';
+import PostForm from './Upload/PostForm'
 import reportWebVitals from './reportWebVitals';
 
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
   { path : "/discover", element : <Discover />},
   { path : "/adopt", element : <Adopt />},
   { path : "/aboutUs", element : <AboutUs />},
+  { path : "/add/post", element : <PostForm/>}
  ] 
 )
 
