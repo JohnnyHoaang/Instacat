@@ -12,15 +12,15 @@ namespace DatabaseApp
         private const string ENV_FILE_PATH = "../.env";
         private MongoClient _client;
         private IMongoDatabase _db;
-        private IMongoCollection<BsonDocument> _coll;
-        private string _collName;
+        public string PostsCollName {get;}
+        public string AdoptCollName {get;}
 
         /// <summary>
         /// Initializes a new instance of the Mongo database
         /// </summary>
         /// <param name="databaseName">The database where the requested collection is located </param>
-        /// <param name="collectionName">The collection where data will be pushed </param>
-        public MongoDatabase(string databaseName, string collectionName)
+        /// <param name="postsCollectionName">The collection where data will be pushed </param>
+        public MongoDatabase(string databaseName, string postsCollectionName, string adoptCollectionName)
         {
             // Create the client
             try
@@ -38,17 +38,18 @@ namespace DatabaseApp
             }
 
             _db = _client.GetDatabase(databaseName);
-            _coll = _db.GetCollection<BsonDocument>(collectionName);
-            _collName = collectionName;
+            PostsCollName = postsCollectionName;
+            AdoptCollName = adoptCollectionName;
         }
 
         /// <summary>
         /// Insert fetched posts to the database collection
         /// </summary>
         /// <param name="posts">BSON Document list containing posts to insert to</param>
-        public async Task InsertData(List<BsonDocument> posts)
+        public async Task InsertData(List<BsonDocument> posts, string collName)
         {
-            await _coll.InsertManyAsync(posts);
+            var coll = _db.GetCollection<BsonDocument>(collName);
+            await coll.InsertManyAsync(posts);
             Console.WriteLine("Data was pushed to the database successfully");
         }
 
@@ -57,12 +58,14 @@ namespace DatabaseApp
         /// </summary>
         public async Task DeleteCollection()
         {
-            Console.WriteLine("WARNING! This action will delete the data in the collection.\n If you know what you are doing, type the collection name: " + _collName);
+            Console.WriteLine("WARNING! This action will delete the data in the collection.\n If you know what you are doing, type \"yes\": ");
             string input = Console.ReadLine();
-            if (_collName == input)
+            if (input == "yes")
             {
-                await _db.DropCollectionAsync(_collName);
-                await _db.CreateCollectionAsync(_collName);
+                await _db.DropCollectionAsync(PostsCollName);
+                await _db.DropCollectionAsync(AdoptCollName);
+                await _db.CreateCollectionAsync(PostsCollName);
+                await _db.CreateCollectionAsync(AdoptCollName);
                 Console.WriteLine("Database has been wiped");
             }
             else

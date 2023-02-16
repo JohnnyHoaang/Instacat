@@ -1,5 +1,4 @@
 bin
 obj
 .vscode
-catapi_image.json
-random_word.json
+posts.bson
