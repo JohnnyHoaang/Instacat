@@ -12,6 +12,7 @@ router.use(
     })
 );
 
+// route to upload image and caption to db
 router.post('/post/upload', async (req, res) => {
     const caption = req.body.caption
     const file = req.files.image

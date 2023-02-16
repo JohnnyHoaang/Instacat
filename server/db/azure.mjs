@@ -4,11 +4,20 @@ import dotenv from 'dotenv'
 import { generateID } from '../utils/idgenerator.mjs'
 import { lookForHashtags } from '../utils/captioncheck.mjs'
 dotenv.config()
+
 const storageAccountName = process.env.STORAGE_ACCOUNT_NAME
 const sasToken = process.env.AZURE_SAS
 const containerName = process.env.CONTAINER_NAME
 
-// upload image file to azure
+/**
+ * Uploads image file to azure blob storage.
+ * @param {File} file 
+ * @param {String} username 
+ * @param {String} caption 
+ * @param {Model} model 
+ * @param {Object} response 
+ * @author Johnny Hoang
+ */
 async function uploadToAzure(file, username, caption, model, response) {
     const path = file.name
     const baseURL = `https://${storageAccountName}.blob.core.windows.net/`
@@ -21,7 +30,14 @@ async function uploadToAzure(file, username, caption, model, response) {
     const data = getPostData(username, blobURL, caption)
     await insertToDB(response, model, data)
 }
-
+/**
+ * Creates a post object based on the given parameters.
+ * @param {String} username 
+ * @param {String} image 
+ * @param {String} caption 
+ * @author Johnny Hoang
+ * @returns 
+ */
 function getPostData(username, image, caption){
     return {
         id: generateID(6),

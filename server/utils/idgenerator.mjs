@@ -1,4 +1,9 @@
-// generate random IDs
+/**
+ * Generate random IDs with a given length
+ * @param {Int} length 
+ * @returns {String} ID String
+ * @author Johnny Hoang
+ */
 function generateID(length) {
     let id = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

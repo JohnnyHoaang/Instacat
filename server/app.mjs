@@ -9,7 +9,4 @@ app.use("/api", posts)
 app.use("/add", addPost)
 app.use("/", main)
 
-
-
-
 export default app

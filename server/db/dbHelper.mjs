@@ -1,4 +1,10 @@
-// Inserts data to DB
+/**
+ * Inserts model data to DB.
+ * @param {Object} response 
+ * @param {Model} model 
+ * @param {Object} body 
+ * @author Johnny Hoang
+ */
 async function insertToDB(response, model, body) {
     const user = model(body)
     try {
@@ -7,7 +13,13 @@ async function insertToDB(response, model, body) {
         response.status(500).send(error)
     }
 }
-// Sends back API result with given model and query
+/**
+ * Sends back API result with given model and query.
+ * @param {Object} response 
+ * @param {Model} model 
+ * @param {Object} query 
+ * @author Johnny Hoang
+ */
 async function sendAPI(response, model, query) {
     const data = await model.find(query)
     try {

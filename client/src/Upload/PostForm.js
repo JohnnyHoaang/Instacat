@@ -1,6 +1,10 @@
 import Header from '../Header/Header'
 import Navigation from '../Navigation/Navigation'
 import Footer from '../Footer/Footer'
+/**
+ * Returns a form that allows for post upload to database.
+ * @returns {Component} PostForm
+ */
 function PostForm() {
     return (
         <div>
