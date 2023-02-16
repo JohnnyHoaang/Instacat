@@ -7,11 +7,7 @@ import { useEffect, useState } from 'react';
 function Main(props) {
   
     let [cards, setCards] = useState([]);
-    let [numberOfLikes, setNumberOfLikes] = useState (0);
-    let increasing = true;
     // let [isLoading, setIsLoading] = useState(true);
-
-
 
     //npx json-server --watch data/data1.json --port 3001  
     useEffect(() => {
@@ -28,6 +24,9 @@ function Main(props) {
         })
         .then(data => {
             console.log(data);
+            // setTimeout(() => {
+            //     setCards(data);
+            //   }, 5000);
             setCards(data);
             // setIsLoading(false);
             
@@ -37,29 +36,6 @@ function Main(props) {
             console.log(err.message);
         })
     }, []);
-
-    
-    //increase the unmber 
-    function handleLike(id){
-        // 
-        if (increasing){
-           numberOfLikes = document.getElementById(id).innerHTML;
-           parseInt(numberOfLikes)
-           document.getElementById(id).innerText = null
-           setNumberOfLikes (numberOfLikes++ );    
-           document.getElementById(id).innerHTML = numberOfLikes;
-           increasing = false;
-
-        } else if (increasing === false){
-           numberOfLikes = document.getElementById(id).innerHTML;
-           parseInt(numberOfLikes) 
-           document.getElementById(id).innerText = null
-           setNumberOfLikes (numberOfLikes = numberOfLikes - 1 );    
-           document.getElementById(id).innerHTML = numberOfLikes;
-           increasing = true;
-        }
-            
-    }
 
     return(
         <div className="main-top"> 
@@ -79,8 +55,9 @@ function Main(props) {
                                 index={index}   
                                 imageUrl={item.image}
                                 caption={item.caption}
-                                likeNum={item.likes}
-                                handleLike={handleLike}/>
+                                likesNum={item.likes}
+                                // handleLike={handleLike}
+                                />
                         </div>
                     ))}
             </section>
