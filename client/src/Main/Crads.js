@@ -15,7 +15,7 @@ function Cards (props) {
 
             if (increasing){
                 increasing = false;
-                setNumberOfLikes (numberOfLikes++ );
+                setNumberOfLikes (numberOfLikes + 1);
                 console.log('increasing');
                 let likes = JSON.stringify( {numberOfLikes : numberOfLikes});
 
@@ -37,7 +37,7 @@ function Cards (props) {
      
              } else if (increasing === false){
                 increasing = true;
-                setNumberOfLikes (numberOfLikes = numberOfLikes - 1 );   
+                setNumberOfLikes (numberOfLikes - 1 );   
                 console.log('decreasing'); 
                 document.getElementById(idp).innerHTML = numberOfLikes;
                 
