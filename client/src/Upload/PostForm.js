@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer'
 /**
  * Returns a form that allows for post upload to database.
  * @returns {Component} PostForm
+ * @author Johnny Hoang
  */
 function PostForm() {
     return (
