@@ -19,7 +19,7 @@ function Cards (props) {
                 console.log('increasing');
                 let likes = JSON.stringify( {numberOfLikes : numberOfLikes});
 
-                fetch(`/cat/id/${props.id}` , {
+                fetch(`/cat/id/id:${props.id}` , {
                     method :"POST",
                     body: likes, 
                     headers: {
