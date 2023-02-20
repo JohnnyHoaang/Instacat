@@ -18,6 +18,7 @@
   },
   "homepage": "https://gitlab.com/dawson2223/620-w23/s01/TeamA/project-cattus#readme",
   "dependencies": {
+    "client": "^0.0.1",
     "server": "^1.0.38"
   }
 }
