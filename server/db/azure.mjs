@@ -1,8 +1,10 @@
 import { BlobServiceClient } from '@azure/storage-blob'
-import { insertToDB } from '../db/dbHelper.mjs'
 import dotenv from 'dotenv'
 import { generateID } from '../utils/idgenerator.mjs'
 import { lookForHashtags } from '../utils/captioncheck.mjs'
+import { DBHelper } from '../db/dbHelper.mjs'
+const db = new DBHelper()
+
 dotenv.config()
 
 const storageAccountName = process.env.STORAGE_ACCOUNT_NAME
@@ -28,7 +30,7 @@ async function uploadToAzure(file, username, caption, model, response) {
     const options = { blobHTTPHeaders: { blobContentType: file.mimetype } }
     await blobClient.uploadData(file.data, options)
     const data = getPostData(username, blobURL, caption)
-    await insertToDB(response, model, data)
+    await db.insertToDB(response, model, data)
 }
 /**
  * Creates a post object based on the given parameters.
