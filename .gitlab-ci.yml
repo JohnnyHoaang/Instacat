@@ -5,11 +5,12 @@ image: node:latest
 stages:
   - build
   - test
+  - deploy
 
 build:
   stage: build
   script:
-    - cd server && npm install && cd ../client && npm install
+    - . build.sh
   only:
     - main
     - dev
@@ -32,6 +33,11 @@ test:
   dependencies:
     - build
   script:
-    - cd server && npm run test
+    - npm run test --prefix server
 
-
+azure:
+  stage: deploy
+  only:
+    - dev
+  script:
+    - 
