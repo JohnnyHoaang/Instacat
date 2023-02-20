@@ -40,4 +40,4 @@ azure:
   only:
     - dev
   script:
-    - 
+    - . deploy.sh
