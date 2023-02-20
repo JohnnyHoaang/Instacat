@@ -11,9 +11,6 @@ build:
   stage: build
   script:
     - . build.sh
-  only:
-    - main
-    - dev
   cache:
     paths:
       - server/node_modules/
@@ -27,9 +24,6 @@ build:
 
 test:
   stage: test
-  only:
-    - main
-    - dev
   dependencies:
     - build
   script:
@@ -37,6 +31,7 @@ test:
 
 azure:
   stage: deploy
+  # for future use, it will run only on main
   only:
     - dev
   script:
