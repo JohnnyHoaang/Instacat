@@ -62,10 +62,11 @@ namespace DatabaseApp
             string input = Console.ReadLine();
             if (input == "yes")
             {
+                // Uncomment the lines for the Adopt API when needed
                 await _db.DropCollectionAsync(PostsCollName);
-                await _db.DropCollectionAsync(AdoptCollName);
+                // await _db.DropCollectionAsync(AdoptCollName);
                 await _db.CreateCollectionAsync(PostsCollName);
-                await _db.CreateCollectionAsync(AdoptCollName);
+                // await _db.CreateCollectionAsync(AdoptCollName);
                 Console.WriteLine("Database has been wiped");
             }
             else

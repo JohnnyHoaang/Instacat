@@ -83,6 +83,9 @@ namespace DatabaseApp
             Console.WriteLine("Posts were written to file");
         }
 
+        /// <summary>
+        /// Read the cat posts from the file containing them
+        /// </summary>
         public async Task ReadCatPosts() 
         {
             CatPosts = new List<BsonDocument>();

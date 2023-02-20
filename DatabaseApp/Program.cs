@@ -17,8 +17,8 @@ namespace DatabaseApp
         {
             const string ENV_FILE_PATH = "../.env";
             // Might change this to take input instead
-            const string DB_NAME = "test";
-            const string POSTS_COLL_NAME = "posts";
+            string dbName = DatabaseInfo.Name;
+            string postsCollName = DatabaseInfo.PostsCollName;
 
             // Set up env variables (Might need some redesigning to not take ALL of them)
             if (!File.Exists(ENV_FILE_PATH))
@@ -36,7 +36,7 @@ namespace DatabaseApp
                 Environment.SetEnvironmentVariable(envVarName, envVar);
             }
 
-            MongoDatabase mdb = new MongoDatabase(DB_NAME, POSTS_COLL_NAME, "");
+            MongoDatabase mdb = new MongoDatabase(dbName, postsCollName, "");
             Console.WriteLine("InstaCat Database App --- Connected! (=^-ω-^=)");
             
             APIFileIO apiTool = new APIFileIO("", "", "");
@@ -54,7 +54,7 @@ namespace DatabaseApp
                         if (posts.Count != 0)
                         {
                             await mdb.InsertData(posts, mdb.PostsCollName);
-                            await mdb.InsertData(null, mdb.AdoptCollName);
+                            // await mdb.InsertData(null, mdb.AdoptCollName);
                         }
                         else Console.WriteLine("No data to push");
                         break;
