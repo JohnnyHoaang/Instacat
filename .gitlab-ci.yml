@@ -29,10 +29,18 @@ test:
   script:
     - npm run test --prefix server
 
-azure:
+azure-deploy:
   stage: deploy
-  # for future use, it will run only on main
+  image:  mcr.microsoft.com/azure-cli
+  dependencies:
+    - build-frontend
+    - build-backend
   only:
+    - main
     - dev
+    before_script:
+    - "az login --allow-no-subscriptions --service-principal -u $AZ_SP_ID -p $AZ_SP_SECRET --tenant $AZ_TENANT"
   script:
     - . deploy.sh
+
+

@@ -5,7 +5,7 @@
 # Installs dependencies
 npm install
 npm install server
-npm install client
+npm install client && CI=false npm run build
 
 # Builds react project
 npm run build --prefix client
