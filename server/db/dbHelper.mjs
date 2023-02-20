@@ -29,12 +29,7 @@ class DBHelper {
      */
     async getQueryData(model, query) {
         const data = await model.find(query)
-        try {
-            return data
-        } catch (error) {
-            console.log(error)
-            response.status(500).send(error);
-        }
+        return data
     }
 
 }
