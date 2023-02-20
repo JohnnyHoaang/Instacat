@@ -5,6 +5,7 @@
  * @author Johnny Hoang
  */
 function generateID(length) {
+  if (length > 0) {
     let id = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let counter = 0;
@@ -13,6 +14,10 @@ function generateID(length) {
       counter += 1;
     }
     return id;
+  } else {
+    throw new Error("ID must have length more than 0")
+  }
+
 }
 
 export { generateID }
