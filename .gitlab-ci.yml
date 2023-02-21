@@ -33,8 +33,7 @@ azure-deploy:
   stage: deploy
   image:  mcr.microsoft.com/azure-cli
   dependencies:
-    - build-frontend
-    - build-backend
+    - build
   only:
     - main
     - dev
