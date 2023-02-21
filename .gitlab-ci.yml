@@ -10,7 +10,7 @@ stages:
 build:
   stage: build
   script:
-    - . build.sh
+    - . ./build.sh
   cache:
     paths:
       - server/node_modules/
@@ -41,6 +41,6 @@ azure-deploy:
     before_script:
     - "az login --allow-no-subscriptions --service-principal -u $AZ_SP_ID -p $AZ_SP_SECRET --tenant $AZ_TENANT"
   script:
-    - . deploy.sh
+    - . ./deploy.sh
 
 
