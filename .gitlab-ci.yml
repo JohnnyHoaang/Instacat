@@ -34,9 +34,9 @@ azure-deploy:
   image:  mcr.microsoft.com/azure-cli
   dependencies:
     - build
-  only:
-    - main
-    - dev
+  # only:
+  #   - main
+  #   - dev
   before_script:
     - "az login --allow-no-subscriptions --service-principal -u $AZ_SP_ID -p $AZ_SP_SECRET --tenant $AZ_TENANT"
   script:
