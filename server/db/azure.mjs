@@ -29,7 +29,7 @@ async function uploadToAzure(file, username, caption, model, response) {
     const blobClient = containerClient.getBlockBlobClient(path)
     const options = { blobHTTPHeaders: { blobContentType: file.mimetype } }
     await blobClient.uploadData(file.data, options)
-    const data = getPostData(username, blobURL, caption)
+    const data = getPostData(username, blobURL, caption, response)
     await db.insertToDB(response, model, data)
 }
 /**
@@ -40,7 +40,7 @@ async function uploadToAzure(file, username, caption, model, response) {
  * @author Johnny Hoang
  * @returns 
  */
-function getPostData(username, image, caption) {
+function getPostData(username, image, caption, response) {
     try {
         let post = {
             id: generateID(6),
@@ -52,8 +52,9 @@ function getPostData(username, image, caption) {
             comments: []
         }
         return post
-    } catch (e) {
-        console.log(e)
+    } catch (error) {
+        console.log(error)
+        response.status(404).send({error:"error generating the post"})
     }
 
 }

@@ -1,3 +1,4 @@
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 /**
  * Generate random IDs with a given length
  * @param {Int} length 
@@ -7,7 +8,6 @@
 function generateID(length) {
   if (length > 0) {
     let id = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let counter = 0;
     while (counter < length) {
       id += characters.charAt(Math.floor(Math.random() * characters.length));

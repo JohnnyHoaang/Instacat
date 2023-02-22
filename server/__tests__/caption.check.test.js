@@ -11,6 +11,17 @@ describe('Hashtags check', ()=>{
 
 describe('Hashtags check', ()=>{
     test("Check for non existing hashtags", ()=>{
+        let caption = "this is #cool caption"
+        let hashtags = lookForHashtags(caption)
+        expect(hashtags.length).toBe(1)
+        expect(hashtags).toEqual(
+            expect.not.arrayContaining(["caption"]),
+        );
+    })
+})
+
+describe('Hashtags check', ()=>{
+    test("Check for non existing hashtags", ()=>{
         let caption = "this is cool caption"
         let hashtags = lookForHashtags(caption)
         expect(hashtags.length).toBe(0)
