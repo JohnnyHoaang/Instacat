@@ -21,6 +21,7 @@ build:
     paths:
       - server/node_modules/
       - client/node_modules/
+      - client/build/
 
 test:
   stage: test
