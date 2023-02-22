@@ -2,6 +2,7 @@
 import Cards from './Crads.js';
 import addingPost from '../images/adding-post.png';
 import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 
 
 function Main(props) {
@@ -11,8 +12,8 @@ function Main(props) {
 
     //npx json-server --watch data/data1.json --port 3001  
     useEffect(() => {
-        let url = `/api/cat/all`;
-        // let url = "http://localhost:3001/catlist"
+        // let url = `/api/cat/all`;
+        let url = "http://localhost:3001/catlist"
         fetch(url)
         .then(response => {
         if (!response.ok) {
@@ -48,16 +49,18 @@ function Main(props) {
             </div>
 
             <section className='card-container'>
-                    {cards.map((item, index) => (
+                    {cards.map((item, index) => ( 
                         <div key={index} className='each-card-outer'>
-                            <Cards 
-                                id={item.id}
-                                index={index}   
-                                imageUrl={item.image}
-                                caption={item.caption}
-                                likesNum={item.likes}
-                                // handleLike={handleLike}
-                                />
+                            <Link to={`/cats/${item.id}`} style={{ textDecoration: 'none' }}>
+                                <Cards 
+                                    id={item.id}
+                                    index={index}   
+                                    imageUrl={item.image}
+                                    caption={item.caption}
+                                    likesNum={item.likes}
+                                    // handleLike={handleLike}
+                                    />
+                            </Link>
                         </div>
                     ))}
             </section>

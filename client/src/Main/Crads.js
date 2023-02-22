@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
 import heartLike from '../images/heart2.png'
 import { useState } from 'react';
+import { useParams } from "react-router-dom";
 
 // BDb8ZXb1v
 function Cards (props) {
     let [numberOfLikes, setNumberOfLikes] = useState (props.likesNum);
     let increasing = true; 
+    const { id } = useParams();
 
     function handleLike(idp){
         // console.log(numberOfLikes);
