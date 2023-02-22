@@ -41,21 +41,16 @@ async function uploadToAzure(file, username, caption, model, response) {
  * @returns 
  */
 function getPostData(username, image, caption) {
-    try {
-        let post = {
-            id: generateID(6),
-            image: image,
-            username: username,
-            caption: caption,
-            hashtags: lookForHashtags(caption),
-            likes: 0,
-            comments: []
-        }
-        return post
-    } catch (error) {
-        console.log(error)
+    let post = {
+        id: generateID(-6),
+        image: image,
+        username: username,
+        caption: caption,
+        hashtags: lookForHashtags(caption),
+        likes: 0,
+        comments: []
     }
-
+    return post
 }
 
 export { uploadToAzure }
