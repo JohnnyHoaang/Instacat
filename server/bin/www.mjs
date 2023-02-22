@@ -1,7 +1,7 @@
 import app from '../app.mjs'
 import { Mongo } from '../db/db.mjs' 
 
-const PORT = 3000
+const PORT = process.env.PORT || 8080
 const mongo = new Mongo()
 
 main()
