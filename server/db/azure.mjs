@@ -42,7 +42,7 @@ async function uploadToAzure(file, username, caption, model, response) {
  */
 function getPostData(username, image, caption) {
     let post = {
-        id: generateID(-6),
+        id: generateID(6),
         image: image,
         username: username,
         caption: caption,
