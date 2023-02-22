@@ -54,7 +54,6 @@ namespace DatabaseApp
                         if (posts.Count != 0)
                         {
                             await mdb.InsertData(posts, mdb.PostsCollName);
-                            // await mdb.InsertData(null, mdb.AdoptCollName);
                         }
                         else Console.WriteLine("No data to push");
                         break;
