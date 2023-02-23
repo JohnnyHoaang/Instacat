@@ -8,6 +8,8 @@ function Cards (props) {
     let increasing = true; 
     const { id } = useParams();
 
+    
+
     function handleLike(idp){
         // console.log(numberOfLikes);
         setNumberOfLikes (parseInt(document.getElementById(idp).innerHTML));
