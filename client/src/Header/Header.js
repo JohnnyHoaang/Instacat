@@ -5,13 +5,14 @@ import defaultProfile from '../images/default-profile.png'
 
 
  
-const Header = () => {
+const Header = (props) => {
     return (
         <header>
             <img src={myLogo} alt="logo" id="logo"></img>
             {/* <h1>InstaCat</h1> */}
                 <div id='profile-div'>
                     <img src={defaultProfile} alt="profile" id="profile-img"></img>
+                    {/* <p id='user-name'><a href="url">{props.username}</a></p>   */}
                     <p id='user-name'><a href="url">user-name</a></p>                
                 </div>            
         </header>

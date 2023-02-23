@@ -9,7 +9,9 @@ function App() {
 
     return(
       <div className="App">
-        <Header />
+        <Header 
+        // username={"username"}
+        />
         <Navigation />
         <Main />
         <Footer />

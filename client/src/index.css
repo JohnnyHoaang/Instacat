@@ -20,7 +20,7 @@ html, body , div#root, .App, .AboutUs, .Discover, .Adopt
   width: 99.9%;
   font-family: "Lato","Trebuchet MS",sans-serif;
   background-color: #f4ebdd;
-  /* min-width: 1310px; */
+  min-width: 1600px;
   /* justify-content: space-around; */ 
   /* background-size: cover; */
   /* background-repeat: no-repeat; */
@@ -93,8 +93,8 @@ section.card-container{
 
        .each-cat-img{
         border: #733c2d;
-        margin: 8px 25px 0 ;
-        width: 300px;
+        margin: 8px 10px 0 ;
+        width: 260px;
         height: 250px;        
         border-radius: 4px;
        }
@@ -113,7 +113,7 @@ section.card-container{
         flex-grow: 1; 
         width: calc(17% - 2px); 
         height: 400px;
-        margin: 3px;
+        margin: 2px;
         /* height: 100px;  */
         /* background: rgb(23, 68, 141); */
         background: rgb(216, 184, 145);
@@ -169,6 +169,11 @@ section.card-container{
           color: rgb(109, 96, 73);
 
         }
+
+
+        .new{
+          background-color: tomato;
+      }
 
         
 

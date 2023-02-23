@@ -51,7 +51,7 @@ function Main(props) {
             <section className='card-container'>
                     {cards.map((item, index) => ( 
                         <div key={index} className='each-card-outer'>
-                            <Link to={`/cats/${item.id}`} style={{ textDecoration: 'none' }}>
+                            {/* <Link to={`/cats/${item.id}`} style={{ textDecoration: 'none' }}> */}
                                 <Cards 
                                     id={item.id}
                                     index={index}   
@@ -60,7 +60,7 @@ function Main(props) {
                                     likesNum={item.likes}
                                     // handleLike={handleLike}
                                     />
-                            </Link>
+                            {/* </Link> */}
                         </div>
                     ))}
             </section>
