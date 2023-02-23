@@ -28,3 +28,9 @@ root.render(
 );
 
 reportWebVitals();
+
+
+// STORAGE_ACCOUNT_NAME=azuretest2036759
+// CONTAINER_NAME=helloblob
+// AZURE_SAS=sp=racwdli&st=2023-02-20T17:17:22Z&se=2023-11-10T01:17:22Z&spr=https&sv=2021-06-08&sr=c&sig=z0J8mgIgJ1mATHazC8k6wfR%2FRHWpOcTeWtPvFHbcP2M%3D
+// ATLAS_URI=mongodb+srv://maedeh:SQ2XxmT3VNWh75aQ@cluster0.cebsx9s.mongodb.net/?retryWrites=true&w=majority
