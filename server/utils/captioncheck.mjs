@@ -6,7 +6,7 @@
  */
 function lookForHashtags(caption){
     let words = caption.split(' ')
-    return words.filter(x => x[0] == '#').map(x => x.slice(1))
+    return words.filter(x => x[0] == '#').map(x => x.slice(1)).filter(x=> x!= "")
 }
 
 export { lookForHashtags }

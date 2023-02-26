@@ -40,8 +40,8 @@ async function uploadToAzure(file, username, caption, model, response) {
  * @author Johnny Hoang
  * @returns 
  */
-function getPostData(username, image, caption){
-    return {
+function getPostData(username, image, caption) {
+    let post = {
         id: generateID(6),
         image: image,
         username: username,
@@ -50,6 +50,7 @@ function getPostData(username, image, caption){
         likes: 0,
         comments: []
     }
+    return post
 }
 
 export { uploadToAzure }
