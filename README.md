@@ -5,7 +5,12 @@ https://cattus.azurewebsites.net/
 
 ## Description
 
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+Instacat is a social media network for posting and adopting cats. We provide cat adoption and exclusive cat pictures. We are going to focus on the feed features. Our set of customers are cat enjoyers, fosters, people looking to adopt cats.  
+
+## Features
+- Has an API route called `api/cat/all` that sends all existing posts in json format from the MongoDB database
+- Has an API route `api/cat/id/:id` that sends specific post in json format based on the given `id` parameter from the MongoDB database
+- Can add post with an image and a caption to the database through a POST route 
 
 ## Visuals
 
