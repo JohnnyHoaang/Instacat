@@ -1,0 +1,50 @@
+div.cat-detail{
+    display: flex;
+    justify-content: center;
+    width: 98%;
+    height: 600px;
+    /* background: rgb(194, 110, 41); */
+    margin: 14px;
+    border: 2px solid rgb(236, 223, 152);
+    border-radius: 1%;
+    background-image: url("../images/caty.jpg");
+    background-repeat: repeat;
+}
+
+div.specific-cat{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(238, 219, 182);
+    width: 80%;
+    margin: 40px;
+    border-radius: 1%;
+    justify-content: space-between;
+    padding: 10px;
+
+}
+
+div.cat-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 50%;
+    font-size: 20px;
+    padding: 5px;
+    justify-content: space-around;
+}
+
+div.specific-catImg{
+    display: flex;
+    width: 40%;
+    justify-content: center;
+    margin: 30px;
+    background-color: rgb(223, 239, 200);
+    border-radius: 1%;
+}
+
+/* div[id^=].cat-detail{
+    background-color: rgb(243, 212, 186);
+    width: 45%;
+    height: 700px;
+    border: 5ps solid green;
+} */

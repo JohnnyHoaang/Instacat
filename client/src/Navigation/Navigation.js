@@ -1,6 +1,6 @@
 import React from 'react';
 import './Navigation.css'
-import searchIcon from '../images/search-icon.jpg'
+// import searchIcon from '../images/search-icon.jpg'
  
 const Navigation = () => {
     return (

@@ -2,7 +2,7 @@
 import Cards from './Crads.js';
 import addingPost from '../images/adding-post.png';
 import { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 function Main(props) {
@@ -10,10 +10,10 @@ function Main(props) {
     let [cards, setCards] = useState([]);
     // let [isLoading, setIsLoading] = useState(true);
 
-    //npx json-server --watch data/data1.json --port 3001  
+    //npx json-server --watch data/data1.json --port 3002  
     useEffect(() => {
         let url = `/api/cat/all`;
-        // let url = "http://localhost:3001/catlist"
+        // let url = "http://localhost:3002/catlist"
         fetch(url)
         .then(response => {
         if (!response.ok) {

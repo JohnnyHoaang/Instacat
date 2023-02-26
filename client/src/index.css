@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-html, body , div#root, .App, .AboutUs, .Discover, .Adopt
+html, body , div#root, .App, .AboutUs, .Discover, .Adopt, .CatDetails
 {
   display: flex;
   align-items: center;
@@ -175,7 +175,14 @@ section.card-container{
           background-color: tomato;
       }
 
-        
+      /* div.cat-detail{
+        width: 40%;
+        height: 500px;
+        background: rgb(243,212,186);
+        margin: 14px 0 auto;
+        border: 2px solid rgb(255, 0, 174);
+        border-radius: 1%;
+    } */
 
 
 

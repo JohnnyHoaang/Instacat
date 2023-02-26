@@ -5,7 +5,8 @@ import App from './App';
 import AboutUs from './AboutUs/AboutUs';
 import Discover from './Discover/Discover';
 import Adopt from './Adopt/Adopt';
-import Cards from './Main/Crads';
+// import Cards from './Main/Crads';
+import CatDetails from './CatDetails/CatDetails'
 import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
@@ -16,7 +17,9 @@ const router = createBrowserRouter(
   { path : "/discover", element : <Discover />},
   { path : "/adopt", element : <Adopt />},
   { path : "/aboutUs", element : <AboutUs />},
-  { path : "/cats/:id", element: <Cards />}
+  // { path : "/cats/:id", element: <Cards />}
+  { path : "/cats/:id", element: <CatDetails />}
+
  ] 
 )
 
