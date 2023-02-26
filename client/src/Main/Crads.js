@@ -3,14 +3,12 @@ import heartLike from '../images/heart2.png'
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './Cards.css';
-import { useEffect } from 'react';
 import React, { useState } from 'react';
-// import cs from "classnames";
+// import CatDetails from '../CatDetails/CatDetails';
 
 // BDb8ZXb1v
 function Cards (props) {
-    // let [numberOfLikes, setNumberOfLikes] = useState (props.likesNum);
-    // let increasing = true; 
+
     const { id } = useParams();
     // let [eachCat, setEachCat] = useState([]);
     const [numberOfLikes, setNumberOfLikes] = useState(props.likesNum);
@@ -56,6 +54,7 @@ function Cards (props) {
                 {/* <p >{eachCat.caption}</p> */}
 
             </div>
+            {/* <CatDetails id={props.id} /> */}
         </div>
 
     );
@@ -102,7 +101,8 @@ export default Cards;
 
 
 
-
+// let [numberOfLikes, setNumberOfLikes] = useState (props.likesNum);
+// let increasing = true; 
 // function handleLike(idp){
 //     // console.log(numberOfLikes);
 //     setNumberOfLikes (parseInt(document.getElementById(idp).innerHTML));
