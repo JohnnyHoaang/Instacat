@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import './Cards.css';
 import React, { useState } from 'react';
 // import CatDetails from '../CatDetails/CatDetails';
+import axios from 'axios';
 
 // BDb8ZXb1v
 function Cards (props) {
@@ -29,6 +30,18 @@ function Cards (props) {
           document.getElementById(idp).innerHTML = numberOfLikes;
         }
       }
+    
+      // function handleLike(idp) {
+      //   const currentLikes = parseInt(document.getElementById(idp).innerHTML);
+      //   const newLikes = currentLikes + 1; // or currentLikes - 1, depending on if you're increasing or decreasing likes
+      //   axios.post('/api/updateLikes', {id: idp, likes: newLikes})
+      //     .then(response => {
+      //       document.getElementById(idp).innerHTML = response.data.likes;
+      //     })
+      //     .catch(error => {
+      //       console.log(error);
+      //     });
+      // }
 
     return (
 

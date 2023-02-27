@@ -7,7 +7,8 @@ div.cat-detail{
     margin: 14px;
     border: 2px solid rgb(236, 223, 152);
     border-radius: 1%;
-    background-image: url("../images/caty.jpg");
+    background-image: url("../images/catDetail.jpg");
+    /* background-repeat: repeat; */
     background-repeat: repeat;
 }
 
