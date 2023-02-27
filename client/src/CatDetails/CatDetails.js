@@ -3,12 +3,14 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import './CatDetails.css';
 import React, { useState } from 'react';
+import { useParams } from "react-router-dom";
 
-function CatDetails ({id}) { 
+function CatDetails () { 
 
 // function CatDetails (props) { 
     // let [eachCat, setEachCat] = useState([]);
     // const {id} = props;
+    const { id } = useParams();
     let [eachCat, setEachCat] = useState({
         _id: '',
         id: '',
@@ -23,8 +25,8 @@ function CatDetails ({id}) {
 
     //npx json-server --watch data/data2.json --port 3003  
     useEffect(() => {
-        // let url = `http://localhost:3000/api/cat/id/${id}`;
-        let url = 'http://localhost:3000/api/cat/id/b4'
+        let url = `http://localhost:3000/api/cat/id/${id}`;
+        // let url = 'http://localhost:3000/api/cat/id/b4'
         // let url = 'http://localhost:3003/0'
 
         console.log(url);
@@ -74,7 +76,7 @@ function CatDetails ({id}) {
 
                             <div className='caption-info'>
                                 Caption: 
-                                <section className='caption'>{eachCat.caption}</section>
+                                <section className='caption'>{eachCat.caption}{id}</section>
                             </div>
 
                             <div className='hashtag-info'>

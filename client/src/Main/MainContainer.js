@@ -1,14 +1,11 @@
-// import catBkg from '../images/catBackgrnd.png';
 import Cards from './Crads.js';
 import addingPost from '../images/adding-post.png';
 import { useEffect, useState } from 'react';
-// import { Link } from "react-router-dom";
 
 
 function Main(props) {
   
     let [cards, setCards] = useState([]);
-    // let [isLoading, setIsLoading] = useState(true);
 
     //npx json-server --watch data/data1.json --port 3002  
     useEffect(() => {
@@ -25,22 +22,16 @@ function Main(props) {
         })
         .then(data => {
             console.log(data);
-            // setTimeout(() => {
-            //     setCards(data);
-            //   }, 5000);
             setCards(data);
-            // setIsLoading(false);
             
         })
         .catch(err => {
-            // setIsLoading(false);
             console.log(err.message);
         })
     }, []);
 
     return(
         <div className="main-top"> 
-            {/* {isLoading && <p> Loading...</p>} */}
             <section id='top-image'>
                 
             </section>
@@ -51,16 +42,13 @@ function Main(props) {
             <section className='card-container'>
                     {cards.map((item, index) => ( 
                         <div key={index} className='each-card-outer'>
-                            {/* <Link to={`/cats/${item.id}`} style={{ textDecoration: 'none' }}> */}
-                                <Cards 
-                                    id={item.id}
-                                    index={index}   
-                                    imageUrl={item.image}
-                                    caption={item.caption}
-                                    likesNum={item.likes}
-                                    // handleLike={handleLike}
-                                    />
-                            {/* </Link> */}
+                        <Cards 
+                            id={item.id}
+                            index={index}   
+                            imageUrl={item.image}
+                            caption={item.caption}
+                            likesNum={item.likes}
+                        />
                         </div>
                     ))}
             </section>
