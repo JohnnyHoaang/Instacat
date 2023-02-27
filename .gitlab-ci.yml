@@ -5,14 +5,12 @@ image: node:latest
 stages:
   - build
   - test
+  - deploy
 
 build:
   stage: build
   script:
-    - cd server && npm install && cd ../client && npm install
-  only:
-    - main
-    - dev
+    - . ./build.sh
   cache:
     paths:
       - server/node_modules/
@@ -23,15 +21,26 @@ build:
     paths:
       - server/node_modules/
       - client/node_modules/
+      - client/build/
 
 test:
   stage: test
-  only:
-    - main
-    - dev
   dependencies:
     - build
   script:
-    - cd server && npm run test
+    - npm run test --prefix server
+
+azure-deploy:
+  stage: deploy
+  image:  mcr.microsoft.com/azure-cli
+  dependencies:
+    - build
+  only:
+    - main
+    - dev
+  before_script:
+    - "az login --allow-no-subscriptions --service-principal -u $AZ_SP_ID -p $AZ_SP_SECRET --tenant $AZ_TENANT"
+  script:
+    - . ./deploy.sh
 
 

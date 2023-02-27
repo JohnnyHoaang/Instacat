@@ -7,6 +7,7 @@ import Discover from './Discover/Discover';
 import Adopt from './Adopt/Adopt';
 // import Cards from './Main/Crads';
 import CatDetails from './CatDetails/CatDetails'
+import PostForm from './Upload/PostForm'
 import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
@@ -17,8 +18,8 @@ const router = createBrowserRouter(
   { path : "/discover", element : <Discover />},
   { path : "/adopt", element : <Adopt />},
   { path : "/aboutUs", element : <AboutUs />},
-  { path : "/cats/:id", element: <CatDetails />}
-
+  { path : "/cats/:id", element: <CatDetails />},
+  { path : "/add/post", element : <PostForm/>}
  ] 
 )
 

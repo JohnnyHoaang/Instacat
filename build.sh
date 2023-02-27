@@ -4,8 +4,13 @@
 
 # Installs dependencies
 npm install
-npm install server
-npm install client
+cd server && npm install
+cd ..
+cd client && npm install
+cd ..
+
+# doesnt treate warnings as errors
+CI=false
 
 # Builds react project
 npm run build --prefix client

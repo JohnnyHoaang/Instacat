@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace DatabaseApp
 {
@@ -15,6 +16,9 @@ namespace DatabaseApp
         static async Task Main(string[] args)
         {
             const string ENV_FILE_PATH = "../.env";
+            // Might change this to take input instead
+            string dbName = DatabaseInfo.Name;
+            string postsCollName = DatabaseInfo.PostsCollName;
 
             // Set up env variables (Might need some redesigning to not take ALL of them)
             if (!File.Exists(ENV_FILE_PATH))
@@ -31,68 +35,40 @@ namespace DatabaseApp
 
                 Environment.SetEnvironmentVariable(envVarName, envVar);
             }
+
+            MongoDatabase mdb = new MongoDatabase(dbName, postsCollName, "");
+            Console.WriteLine("InstaCat Database App --- Connected! (=^-ω-^=)");
             
-
-            // Get from the Cat API
-            var json = GetResponseFromAPI("https://api.thecatapi.com/v1/images/search", "?limit=3");
-            foreach (JObject j in json) 
-            {
-                j.Remove("height");
-                j.Remove("width");
-            } 
-            await WriteToFile("catapi_image.json", json.ToString());
-
-            // Get from the Random Word API
-            json = GetResponseFromAPI("https://random-word-api.herokuapp.com/word", "?number=6");
-            await WriteToFile("random_word.json", json.ToString());
+            APIFileIO apiTool = new APIFileIO("", "", "");
             
-            // Connect to the DB
-            MongoClient dbClient = null;
-            try
-            {
-                dbClient = new MongoClient(
-                    Environment.GetEnvironmentVariable("ATLAS_URI")
-                );
-                // This checks if connection is valid
-                dbClient.ListDatabases().ToList();
-            }
-            catch (MongoAuthenticationException)
-            {
-                System.Console.WriteLine("The connection is invalid, your credentials might have been wrong");
-                Environment.Exit(0);
-            }
-
-            // Testing pushing to DB
-            var db = dbClient.GetDatabase("Database Name");
-            var collection = db.GetCollection<BsonDocument>("Collection Name");
-
-            string catImages = File.ReadAllText("catapi_image.json");
-            // var bson = BsonDocument.Parse(catImages);
-            // collection.InsertManyAsync(bson);
-        }
-
-        public static JArray GetResponseFromAPI(string url, string parameters)
-        {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri(url);
-
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            var response = client.GetAsync(parameters).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                var res = response.Content.ReadAsStringAsync().Result;
-                System.Console.WriteLine("Data successfully retrieved from the requested API");
-                return JsonConvert.DeserializeObject(res) as JArray;
-            }
-            else System.Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
-            return null;
-        }
-
-        public static async Task WriteToFile(string fileName, string str)
-        {
-            await File.WriteAllTextAsync(fileName, str);
-            System.Console.WriteLine(fileName + " has been written");
+            while (true) {
+                Console.WriteLine("What would you like to do today?:\n\t1 - Fetch and save data to create posts\n\t2 - Push saved data to the DB collection\n\t3 - Flush data from collection\n\t4 - Exit App\n");
+                string input = Console.ReadLine();
+                switch (input) {
+                    case "1":
+                        await apiTool.MakeCatPosts();
+                        break;
+                    case "2":
+                        await apiTool.ReadCatPosts();
+                        var posts = apiTool.CatPosts;
+                        if (posts.Count != 0)
+                        {
+                            await mdb.InsertData(posts, mdb.PostsCollName);
+                        }
+                        else Console.WriteLine("No data to push");
+                        break;
+                    case "3":
+                        await mdb.DeleteCollection();
+                        break;
+                    case "4":
+                        Console.WriteLine("Stay PAWsitive! /ᐠ｡ꞈ｡ᐟ\\");
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("That's not a meowption...\n");
+                        break;
+                }
+            }   
         }
     }
 }
