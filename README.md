@@ -14,6 +14,9 @@ Instacat is a social media network for posting and adopting cats. We provide cat
 - Can add post with an image and a caption to the database through a POST route 
 - Navigate several cat posts on a home page
 - Can "like" a post
+- All cats can be seen on the main page
+- Can click on the cat images and see all the information about that particular cat 
+- With the first click, the number of likes increases and with the next click, it returns to the first number
 
 ## Installation
 
