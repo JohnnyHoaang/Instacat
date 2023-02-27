@@ -63,79 +63,11 @@ function Cards (props) {
  
 export default Cards;
 
-//to post and get the new number of like
-
-// function LikeButton({ idp, initialLikes }) {
-//     const [numberOfLikes, setNumberOfLikes] = useState(initialLikes);
-//     const [increasing, setIncreasing] = useState(true);
-  
-//     const handleLikeClick = async () => {
-//       try {
-//         let newLikes;
-//         if (increasing) {
-//           newLikes = numberOfLikes + 1;
-//         } else {
-//           newLikes = numberOfLikes - 1;
-//         }
-  
-//         const response = await fetch(`https://your-api.com/likes/${idp}`, {
-//           method: 'PUT',
-//           headers: {
-//             'Content-Type': 'application/json',
-//           },
-//           body: JSON.stringify({ likes: newLikes }),
-//         });
-  
-//         if (!response.ok) {
-//           throw new Error('Failed to update likes on server');
-//         }
-  
-//         setNumberOfLikes(newLikes);
-//         setIncreasing(!increasing);
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     };
 
 
 
 
 
-// let [numberOfLikes, setNumberOfLikes] = useState (props.likesNum);
-// let increasing = true; 
-// function handleLike(idp){
-//     // console.log(numberOfLikes);
-//     setNumberOfLikes (parseInt(document.getElementById(idp).innerHTML));
 
-//     if(numberOfLikes >= 0){
 
-//         if (increasing){
-//             increasing = false;
-//             setNumberOfLikes (numberOfLikes + 1);
-//             console.log('increasing');
-//             console.log(numberOfLikes);
-//             // let likes = JSON.stringify( {numberOfLikes : numberOfLikes});
 
-//             // fetch(`/cat/id/id:${props.id}` , {
-//             //     method :"POST",
-//             //     body: likes, 
-//             //     headers: {
-//             //         "Content-type": "application/json; charset=UTF-8"
-//             //     }
-//             // });
-//             // fetch()
-//             // fetch from api ==> for decreasing same id
-
-//             document.getElementById(idp).innerHTML = numberOfLikes;
-//             setNumberOfLikes = numberOfLikes;
-    
-//          } else if (increasing === false){
-//             increasing = true;
-//             setNumberOfLikes (numberOfLikes - 1 );   
-//             console.log('decreasing'); 
-//             console.log(numberOfLikes);
-//             document.getElementById(idp).innerHTML = numberOfLikes;
-//             setNumberOfLikes = numberOfLikes;
-//          }
-//     }            
-// }
