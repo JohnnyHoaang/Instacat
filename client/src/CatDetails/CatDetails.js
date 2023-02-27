@@ -7,9 +7,7 @@ import { useParams } from "react-router-dom";
 
 function CatDetails () { 
 
-// function CatDetails (props) { 
-    // let [eachCat, setEachCat] = useState([]);
-    // const {id} = props;
+
     const { id } = useParams();
     let [eachCat, setEachCat] = useState({
         _id: '',
@@ -81,7 +79,6 @@ function CatDetails () {
 
                             <div className='hashtag-info'>
                                 Hashtag(s):
-                                {/* <section className='hashtags'>{eachCat.hashtags}</section> */}
                                 <section className='hashtags'>{eachCat.hashtags.map((item, index) => {
                                     return <div key={index}>#{item}</div>
                                 })}
@@ -91,7 +88,6 @@ function CatDetails () {
 
                             <div className='comment-info'>
                                 Comment(s):
-                                {/* <section className='comments'>{eachCat.comments}</section> */}
                                 <section className='comments'>{eachCat.comments.map((item, index) =>{
                                     return <div key={index}>{item.username}: {item.comment}</div>
                                 })}

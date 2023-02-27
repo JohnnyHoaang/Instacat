@@ -3,12 +3,10 @@ div.cat-detail{
     justify-content: center;
     width: 98.5%;
     height: 550px;
-    /* background: rgb(194, 110, 41); */
     margin: 14px;
     border: 2px solid rgb(236, 223, 152);
     border-radius: 1%;
     background-image: url("../images/catDetail.jpg");
-    /* background-repeat: repeat; */
     background-repeat: repeat;
 }
 
@@ -39,7 +37,6 @@ div.specific-catImg{
     width: 40%;
     justify-content: center;
     margin: 30px;
-    /* background-color: rgb(223, 239, 200); */
     background-image: url("../images/b2.jpg");
     background-repeat: no-repeat;
     border-radius: 1%;
@@ -86,10 +83,3 @@ section.comments{
     color: rgb(115, 96, 75);
     font-size: 18px;
 }
-
-/* div[id^=].cat-detail{
-    background-color: rgb(243, 212, 186);
-    width: 45%;
-    height: 700px;
-    border: 5ps solid green;
-} */
