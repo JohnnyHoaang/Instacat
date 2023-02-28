@@ -3,6 +3,8 @@ import dotenv from 'dotenv'
 import { generateID } from '../utils/idgenerator.mjs'
 import { lookForHashtags } from '../utils/captioncheck.mjs'
 import { DBHelper } from '../db/dbHelper.mjs'
+import { doesPathExists, generateUniquePath } from '../utils/pathHandler.mjs'
+
 const db = new DBHelper()
 
 dotenv.config()
@@ -10,7 +12,7 @@ dotenv.config()
 const storageAccountName = process.env.STORAGE_ACCOUNT_NAME
 const sasToken = process.env.AZURE_SAS
 const containerName = process.env.CONTAINER_NAME
-
+const apiURL = "https://cattus.azurewebsites.net/api/cat/all"
 /**
  * Uploads image file to azure blob storage.
  * @param {File} file 
@@ -21,11 +23,18 @@ const containerName = process.env.CONTAINER_NAME
  * @author Johnny Hoang
  */
 async function uploadToAzure(file, username, caption, model, response) {
-    const path = file.name
+    let path = file.name
     const baseURL = `https://${storageAccountName}.blob.core.windows.net/`
-    const blobURL = `${baseURL}${containerName}/${path}`
+    let blobURL = `${baseURL}${containerName}/${path}`
     const blobService = new BlobServiceClient(`${baseURL}?${sasToken}`)
     const containerClient = blobService.getContainerClient(containerName)
+    // check file name exists in azure cloud
+    const check = await doesPathExists(apiURL, blobURL)
+    if(check){
+        // generate new unique file name 
+        path = await generateUniquePath(path)
+        blobURL = `${baseURL}${containerName}/${path}`
+    }
     const blobClient = containerClient.getBlockBlobClient(path)
     const options = { blobHTTPHeaders: { blobContentType: file.mimetype } }
     await blobClient.uploadData(file.data, options)
@@ -37,8 +46,8 @@ async function uploadToAzure(file, username, caption, model, response) {
  * @param {String} username 
  * @param {String} image 
  * @param {String} caption 
+ * @returns {obj} post
  * @author Johnny Hoang
- * @returns 
  */
 function getPostData(username, image, caption) {
     let post = {
