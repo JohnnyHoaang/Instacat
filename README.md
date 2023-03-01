@@ -44,6 +44,7 @@ When successfully logged in, a user can:
 
 ## Known issues/bugs
 - Liking doesn't work. Currently, it's entirely on current website state and any changes disappear should the website reload
+- If you upload a file that has the same name as one of the files stored in the azure blob storage, the uploaded file will override the old file and change the image of the post that depended on the old file.
 - Importer application crashes should some credentials or credential data be wrong
 
 ## Authors and acknowledgment
