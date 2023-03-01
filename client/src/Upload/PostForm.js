@@ -11,15 +11,17 @@ function PostForm() {
         <div>
             <Header />
             <Navigation />
-            <form method="POST" action="post/upload" enctype="multipart/form-data">
-                <label for="image">Select image:</label>
-                <input type="file" id="image" name="image" accept="image/png, image/jpeg" required></input>
-                <br></br>
-                <label for="caption">Caption:</label>
-                <input type="text" id="caption" name="caption"></input>
-                <br></br>
-                <input type="submit" value="Submit"></input>
-            </form>
+            <div className='post-form'>
+                <form method="POST" action="post/upload" enctype="multipart/form-data">
+                    <label for="image">Select image:</label>
+                    <input type="file" id="image" name="image" accept="image/png, image/jpeg" required></input>
+                    <br></br>
+                    <label for="caption">Caption:</label>
+                    <input type="text" id="caption" name="caption"></input>
+                    <br></br>
+                    <input type="submit" value="Submit"></input>
+                </form>
+            </div>
             <Footer />
         </div>
 
