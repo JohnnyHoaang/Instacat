@@ -1,17 +1,12 @@
 import heartLike from '../images/heart2.png'
-// import { useState } from 'react';
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './Cards.css';
 import React, { useState } from 'react';
-// import CatDetails from '../CatDetails/CatDetails';
-// import axios from 'axios';
 
-// BDb8ZXb1v
 function Cards (props) {
 
     const { id } = useParams();
-    // let [eachCat, setEachCat] = useState([]);
     const [numberOfLikes, setNumberOfLikes] = useState(props.likesNum);
     const [increasing, setIncreasing] = useState(true);
 
@@ -42,7 +37,6 @@ function Cards (props) {
             <div className='caption-heart'>
                 <div className='likes'>
                     <img src={heartLike} alt="like" className="heart-like" 
-                    // onClick={ () => props.handleLike(props.index)}
                     onClick={ () => handleLike(props.index)}>
                     </img>
 

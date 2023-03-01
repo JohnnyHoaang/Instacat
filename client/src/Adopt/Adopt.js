@@ -3,7 +3,7 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 
-
+//the pages that clients are able to adapt the cats
 function Adopt() {
   
     return(
