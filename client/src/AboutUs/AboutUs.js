@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 
 
-
+//Page that has information about the website
 function AboutUs() {
   
     return(

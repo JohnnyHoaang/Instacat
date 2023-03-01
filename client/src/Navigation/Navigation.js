@@ -26,10 +26,7 @@ const Navigation = () => {
                         0-218.455 97.091-218.455 218.455z"></path></svg>
                 </button>
             </form>
-                {/* https://pagedart.com/blog/how-to-add-a-search-bar-in-html/ */}
                 {/* 🐾 */}
-            
-            
         </nav>
     );
 }
