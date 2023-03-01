@@ -1,3 +1,36 @@
-.post-form{
-    margin: 50px;
+div.post-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 99%;
+    margin: 10px 0;
+    height: 300px;
+    background-color: rgb(247, 202, 247);
 }
+
+
+#p-form{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 99%;
+    height: 250px;
+    background-color: cadetblue;
+}
+
+div.post-image{
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+    padding: 10px;
+
+}
+
+label.image-lable{
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+}
+
+
+
