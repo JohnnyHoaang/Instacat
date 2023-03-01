@@ -10,7 +10,8 @@ const AdoptionPostSchema = new mongoose.Schema({
         required: true,
     },
     age: {
-        type: Number,
+        type: String,
+        default: ""
     },
     gender: {
         type: String,
