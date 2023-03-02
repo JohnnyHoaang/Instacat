@@ -31,6 +31,22 @@ class DBHelper {
         const data = await model.find(query)
         return data
     }
+    /**
+     * Send data to the API route
+     * @param {Object} response
+     * @param {Model} model 
+     * @param {String} query 
+     */
+    async sendData(response, model, query) {
+        // Receive data from db
+        const data = await this.getQueryData(model, query)
+        if (data.length > 0) {
+            // send data to route
+            response.json(data)
+        } else {
+            response.status(404).send({ error: "data not found" })
+        }
+    }
 
 }
 export { DBHelper }
