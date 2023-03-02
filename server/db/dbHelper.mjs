@@ -32,5 +32,17 @@ class DBHelper {
         return data
     }
 
+    /**
+     * Update an object in the DB based on a condition
+     * @param {Model} model Mongo model for the object 
+     * @param {Object} filter The condition for the object to be modified
+     * @param {Object} data The data to change
+     * @author Bogdan Ivan
+     */
+    async updateData(model, filter, data) {
+        await model.findOneAndUpdate(filter, data)
+    }
+
+
 }
 export { DBHelper }
