@@ -1,16 +1,6 @@
-import { jest } from '@jest/globals'
 import request from 'supertest'
 import app from '../app.mjs'
 
-jest.mock('../db/dbHelper.mjs')
-
-const foundValue = [{result: "there is something"}]
-const errorValue = {error: "error"}
-const noValue = []
-
-afterEach(async () => {
-    jest.restoreAllMocks()
-})
 // Test for cat posts API
 describe('GET /home', () => {
     test('Should respond with 200', async () => {
