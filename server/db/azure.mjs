@@ -3,9 +3,10 @@ import dotenv from 'dotenv'
 import { generateID } from '../utils/idgenerator.mjs'
 import { lookForHashtags } from '../utils/captioncheck.mjs'
 import { DBHelper } from '../db/dbHelper.mjs'
-import { doesPathExists, generateUniquePath } from '../utils/pathHandler.mjs'
+import { PathHandler } from '../utils/pathHandler.mjs'
 
 const db = new DBHelper()
+const ph = new PathHandler()
 
 dotenv.config()
 
@@ -29,10 +30,10 @@ async function uploadToAzure(file, username, caption, model, response) {
     const blobService = new BlobServiceClient(`${baseURL}?${sasToken}`)
     const containerClient = blobService.getContainerClient(containerName)
     // check file name exists in azure cloud
-    const check = await doesPathExists(apiURL, blobURL)
+    const check = await ph.doesPathExists(apiURL, blobURL)
     if(check){
         // generate new unique file name 
-        path = await generateUniquePath(path)
+        path = await ph.generateUniquePath(path)
         blobURL = `${baseURL}${containerName}/${path}`
     }
     const blobClient = containerClient.getBlockBlobClient(path)
