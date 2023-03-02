@@ -86,4 +86,9 @@ label.image-lable{
     cursor: pointer;
     transform: scale(1.03);
     background-color: rgb(228, 117, 76);
+    font-size: 17px;
+}
+
+#submit-btn:active{
+    background-color: rgb(150, 75, 48);
 }
