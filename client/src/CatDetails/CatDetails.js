@@ -102,5 +102,3 @@ function CatDetails () {
 
  
 export default CatDetails;
-
-

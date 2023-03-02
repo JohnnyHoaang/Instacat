@@ -5,7 +5,6 @@ import App from './App';
 import AboutUs from './AboutUs/AboutUs';
 import Discover from './Discover/Discover';
 import Adopt from './Adopt/Adopt';
-// import Cards from './Main/Crads';
 import CatDetails from './CatDetails/CatDetails'
 import PostForm from './Upload/PostForm'
 import reportWebVitals from './reportWebVitals';
@@ -31,5 +30,3 @@ root.render(
 );
 
 reportWebVitals();
-
-

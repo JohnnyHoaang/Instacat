@@ -1,6 +1,5 @@
 import React from 'react';
 import './Navigation.css'
-// import searchIcon from '../images/search-icon.jpg'
  
 const Navigation = () => {
     return (
@@ -25,8 +24,7 @@ const Navigation = () => {
                         218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 
                         0-218.455 97.091-218.455 218.455z"></path></svg>
                 </button>
-            </form>
-                {/* 🐾 */}
+            </form> 
         </nav>
     );
 }
