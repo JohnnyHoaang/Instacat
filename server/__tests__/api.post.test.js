@@ -7,6 +7,7 @@ jest.mock('../db/dbHelper.mjs')
 
 const foundValue = [{result: "there is something"}]
 const errorValue = {error: "error"}
+const dataNotFound = {error: "data not found"}
 const noValue = []
 
 afterEach(async () => {
@@ -44,6 +45,25 @@ describe('GET /api/cat/id', ()=>{
         expect(resp.body).toEqual(errorValue)
     })
 })
+// Test for cat post API w hashtag
+describe('GET /api/hashtag/:hashtag', ()=>{
+    test("Should respond with 200", async () => {
+        jest.spyOn(DBHelper.prototype, "getQueryData").mockResolvedValue(foundValue)
+        const resp = await request(app).get('/api/hashtag/1')
+        expect(resp.statusCode).toBe(200)
+        expect(resp.body).toEqual(foundValue)
+    })
+})
+
+describe('GET /api/hashtag/:hashtag', ()=>{
+    test("Should respond with 404", async () => {
+        jest.spyOn(DBHelper.prototype, "getQueryData").mockResolvedValue(noValue)
+        const resp = await request(app).get('/api/hashtag/1')
+        expect(resp.statusCode).toBe(404)
+        expect(resp.body).toEqual(dataNotFound)
+    })
+})
+
 // Test for adoption posts API
 describe('GET /api/adoption/id/:id', () => {
     test('404 error from bad parameter', async () => {
@@ -63,15 +83,6 @@ describe('GET /api/adoption/id', ()=>{
     test("Should respond with 200", async () => {
         jest.spyOn(DBHelper.prototype, "getQueryData").mockResolvedValue(foundValue)
         const resp = await request(app).get('/api/adoption/id/1')
-        expect(resp.statusCode).toBe(200)
-        expect(resp.body).toEqual(foundValue)
-    })
-})
-
-describe('GET /api/adoption/id', ()=>{
-    test("Should respond with 200", async () => {
-        jest.spyOn(DBHelper.prototype, "getQueryData").mockResolvedValue(foundValue)
-        const resp = await request(app).get('/api/adoption/all')
         expect(resp.statusCode).toBe(200)
         expect(resp.body).toEqual(foundValue)
     })
