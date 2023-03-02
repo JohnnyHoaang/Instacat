@@ -5,6 +5,12 @@ function SignUp() {
     const {handleGoogleAuth, loading, error} = useFetch(
         "/signup"
       ); 
+
+    useEffect(() => {
+        if (window.Google) {
+            
+        }
+    })
 }
 
 export default SignUp
