@@ -43,6 +43,5 @@ class DBHelper {
         await model.findOneAndUpdate(filter, data)
     }
 
-
 }
 export { DBHelper }
