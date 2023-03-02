@@ -17,9 +17,7 @@ function Main(props) {
             throw new Error('fetching issue', response.Error);
         } else {
             return response.json();
-        }
-        
-        })
+        }})
         .then(data => {
             console.log(data);
             setCards(data);
@@ -52,8 +50,6 @@ function Main(props) {
                         </div>
                     ))}
             </section>
-            
-            
         </div>
     );
 }

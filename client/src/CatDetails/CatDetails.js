@@ -6,8 +6,6 @@ import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
 
 function CatDetails () { 
-
-
     const { id } = useParams();
     let [eachCat, setEachCat] = useState({
         _id: '',

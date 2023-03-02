@@ -3,7 +3,6 @@ import './Header.css'
 import myLogo from '../images/logo01.png'
 import defaultProfile from '../images/default-profile.png'
 
-
  
 const Header = (props) => {
     return (

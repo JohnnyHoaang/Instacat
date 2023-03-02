@@ -10,7 +10,6 @@ const Navigation = () => {
             <div className='nav-div'><a href='/aboutUs'>About us</a></div>
             <div id='language'><a href='url'>English</a></div>
             
-            
             <form role="search" id="form">
                 <input type="search" id="query" name="q"
                 placeholder="Search..."
