@@ -11,6 +11,10 @@ import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 
+/**
+ * creating the react routes for the website
+ * @author Maedeh hassani 
+ */
 const router = createBrowserRouter(
  [
   { path : "/",  element : <App /> },

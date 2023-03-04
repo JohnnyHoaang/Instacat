@@ -33,21 +33,43 @@ nav.navigation-bar{
     color: rgb(68, 64, 64);
   }
   
-  nav.navigation-bar a:hover{
+  div.nav-div a:hover{
     background-color: #ffc29a;
     color: black;
     border-radius: 2px;
     transform: scale(1.2);
   }
-  
+
+  #lang{
+    display: flex;
+    justify-content: right;
+    font-size: 18px;
+  }
+
+  div#lang section:hover {
+    font-weight: bold;
+    cursor: pointer;
+
+  }
+
+  div#lang section{
+    display: flex;
+    justify-content: right;
+  }
+
+  section#lang-sec{
+    width: 50px;
+  }
+
+
   form {
     background-color: #733c2d;
-    width: 320px;
+    width: 338px;
     height: 38px;
     border-radius: 5px;
     display: flex;
     align-items: center;
-    margin: 18px 8px 0 10px ;
+    margin: 18px 8px 10px 1px ;
   }
   
   input {

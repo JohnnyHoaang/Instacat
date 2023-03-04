@@ -4,6 +4,11 @@ import Main from './Main/MainContainer.js'
 import Footer from './Footer/Footer.js';
 import Navigation from './Navigation/Navigation.js';
 
+/**
+ * display the home page of the website
+ * @returns {Component} App
+ * @author Maedeh hassani 
+ */
 function App() {
 
     return(

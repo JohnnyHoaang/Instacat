@@ -1,4 +1,5 @@
-import heartLike from '../images/heart2.png'
+import heartLike from '../images/heartt.png'
+import orangeHeart from '../images/orange-haert.png'
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './Cards.css';
@@ -19,22 +20,38 @@ function Cards (props) {
     const [numberOfLikes, setNumberOfLikes] = useState(props.likesNum);
     const [increasing, setIncreasing] = useState(true);
 
-
-    function handleLike(idp){
-        const currentLikes = parseInt(document.getElementById(idp).innerHTML);
-        
-      
-        if (numberOfLikes >= 0) {
-          if (increasing) {
-            setNumberOfLikes(numberOfLikes + 1);
-          } else {
-            setNumberOfLikes(numberOfLikes - 1);
-          }
-          setIncreasing(!increasing);
-          document.getElementById(idp).innerHTML = numberOfLikes;
-        }
-      }
     
+    function handleLike(index, idp) {
+      const currentLikes = parseInt(document.getElementById(index).innerHTML);
+    
+      if (numberOfLikes >= 0) {
+        if (increasing) {
+          setNumberOfLikes((prevLikes) => prevLikes + 1);
+          document.getElementById(idp).src = orangeHeart;
+        } else {
+          setNumberOfLikes((prevLikes) => prevLikes - 1);
+          document.getElementById(idp).src = heartLike;
+        }
+        setIncreasing(!increasing);
+        document.getElementById(index).innerHTML = numberOfLikes;
+    
+        // Send the like to the API
+        const url = `/api/cat/like/${props.id}`;
+        fetch(url, {
+          method: "POST",
+          body: JSON.stringify({ likes: numberOfLikes }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).then((response) => {
+          // Handle the API response
+          console.log(response);
+        }).catch((error) => {
+          // Handle the API error
+          console.error(error);
+        });
+      }
+    }
       
     return (
         <div className='cat-card' id={id} >
@@ -44,7 +61,7 @@ function Cards (props) {
             <div className='caption-heart'>
                 <div className='likes'>
                     <img src={heartLike} alt="like" className="heart-like" 
-                    onClick={ () => handleLike(props.index)}>
+                    onClick={ () => handleLike(props.index, props.id)} id={props.id}>
                     </img>
 
                     <span className="LikeNum" id={props.index}>{props.likesNum}</span>

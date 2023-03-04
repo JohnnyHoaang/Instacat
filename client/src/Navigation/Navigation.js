@@ -1,5 +1,6 @@
 import React from 'react';
 import './Navigation.css'
+import { useState } from 'react';
 
 
 /**
@@ -8,13 +9,31 @@ import './Navigation.css'
  * @author Maedeh hassani 
  */ 
 const Navigation = () => {
+
+    const [isFrench, setIsFrench] = useState(false);
+
+    function toggleLanguage() {
+      setIsFrench(!isFrench);
+    }
+  
+    function changeLang() {
+      toggleLanguage();
+      const langSec = document.getElementById('lang-sec');
+      if (isFrench) {
+        langSec.textContent = 'Eng';
+      } else {
+        langSec.textContent = 'Fr';
+      }
+    }
+
+
     return (
         <nav className='navigation-bar'>
             <div className='nav-div'><a href='/'>Home</a></div>
             <div className='nav-div'><a href='/discover'>Discover</a></div>
             <div className='nav-div'><a href='/adopt'>Adopt</a></div>
             <div className='nav-div'><a href='/aboutUs'>About us</a></div>
-            <div id='language'><a href='url'>English</a></div>
+            <div id='lang' onClick={ () => changeLang()}><section id="lang-sec">Eng</section></div>
             
             <form role="search" id="form">
                 <input type="search" id="query" name="q"
