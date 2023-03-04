@@ -5,9 +5,13 @@ import './CatDetails.css';
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
 
+
+/***
+ * Display each cat inormation 
+ * @returns {Component} CatDetails
+ * @author Maedeh hassani 
+ */
 function CatDetails () { 
-
-
     const { id } = useParams();
     let [eachCat, setEachCat] = useState({
         _id: '',

@@ -1,7 +1,12 @@
 import React from 'react';
 import './Navigation.css'
-// import searchIcon from '../images/search-icon.jpg'
- 
+
+
+/**
+ * show all the option for the page and also user can search by hastags
+ * @returns {Component} Navigation
+ * @author Maedeh hassani 
+ */ 
 const Navigation = () => {
     return (
         <nav className='navigation-bar'>
@@ -26,7 +31,6 @@ const Navigation = () => {
                         0-218.455 97.091-218.455 218.455z"></path></svg>
                 </button>
             </form>
-                {/* 🐾 */}
         </nav>
     );
 }

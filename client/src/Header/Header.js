@@ -4,7 +4,11 @@ import myLogo from '../images/logo01.png'
 import defaultProfile from '../images/default-profile.png'
 
 
- 
+/**
+ * display the logo and user photo and the registration part
+ * @returns {Component} Header
+ * @author Maedeh hassani 
+ */
 const Header = (props) => {
     return (
         <header>

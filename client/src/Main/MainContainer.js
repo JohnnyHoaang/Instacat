@@ -3,6 +3,13 @@ import addingPost from '../images/adding-post.png';
 import { useEffect, useState } from 'react';
 
 
+/**
+ * fetch all the cats information from api
+ * and map through the list to creat each cat post 
+ * @param {*} props 
+ * @returns {Component} Main
+ * @author Maedeh hassani 
+ */
 function Main(props) {
   
     let [cards, setCards] = useState([]);

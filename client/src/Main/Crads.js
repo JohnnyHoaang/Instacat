@@ -4,6 +4,15 @@ import { Link } from "react-router-dom";
 import './Cards.css';
 import React, { useState } from 'react';
 
+
+/**
+ * creating the template for cat post in home page,
+ * and like function that use can like the post 
+ * 
+ * @param {*} props 
+  * @returns {Component} Cards
+ * @author Maedeh hassani  
+ */
 function Cards (props) {
 
     const { id } = useParams();

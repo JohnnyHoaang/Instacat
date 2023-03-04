@@ -3,7 +3,11 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 
-
+/**
+ * Check the cats which posted by other users ??????
+ * @returns {Component} Discover
+ * @author Maedeh hassani  
+ */
 function Discover() {
   
     return(

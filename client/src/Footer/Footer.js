@@ -1,6 +1,12 @@
 import React from 'react';
 import './Footer.css'
  
+
+/**
+ * show the contact information for the website
+ * @returns {Component} Footer
+ * @author Maedeh hassani
+ */
 const Footer = () => {
     return (
         <footer>
