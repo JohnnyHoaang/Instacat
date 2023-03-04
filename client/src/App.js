@@ -8,9 +8,7 @@ function App() {
 
     return(
       <div className="App">
-        <Header 
-        // username={"username"}
-        />
+        <Header />
         <Navigation />
         <Main />
         <Footer />

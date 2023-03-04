@@ -34,7 +34,6 @@ function CatDetails () {
         console.log(url);
         fetch(url)
         .then(response => {
-            console.log("Response:", response);
         if (!response.ok) {
             throw new Error('fetching issue', response.Error);
         } else {
@@ -43,10 +42,7 @@ function CatDetails () {
         
         })
         .then(data => {
-            console.log("Data", data);
             setEachCat(data[0]);
-            console.log("eachCat:", eachCat);
-            console.log("Data", data);
             
         })
         .catch(err => {
@@ -110,5 +106,3 @@ function CatDetails () {
 
  
 export default CatDetails;
-
-

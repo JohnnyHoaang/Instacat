@@ -36,9 +36,7 @@ function Cards (props) {
       }
     
       
-
     return (
-
         <div className='cat-card' id={id} >
             <Link to={`/cats/${props.id}`} style={{ textDecoration: 'none' }}>
                 <img src={props.imageUrl} alt="catImage" className="each-cat-img"></img>
@@ -60,12 +58,3 @@ function Cards (props) {
 
  
 export default Cards;
-
-
-
-
-
-
-
-
-
