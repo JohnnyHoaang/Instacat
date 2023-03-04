@@ -7,7 +7,7 @@ import Discover from './Discover/Discover';
 import Adopt from './Adopt/Adopt';
 import PostForm from './Upload/PostForm'
 import reportWebVitals from './reportWebVitals';
-
+import { GoogleOAuthProvider } from '@react-oauth/google'; 
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 const router = createBrowserRouter(
@@ -23,7 +23,9 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+      <RouterProvider router={router} />
+    </GoogleOAuthProvider>
   </React.StrictMode>
 );
 
