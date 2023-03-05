@@ -3,6 +3,10 @@
  * @author Kelsey Pereira Costa
  */
 import express from "express"
+import { DBHelper } from '../db/dbHelper.mjs'
+import { User } from '../models/User.mjs'
+const db = new DBHelper()
+
 const {OAuth2Client} = require('google-auth-library');
 
 const dotenv = require('dotenv')
@@ -15,24 +19,25 @@ const session = require('express-session');
 router.use(express.json())
 
 router.post("/", async (req, res) => {
-    const {token} = req.body;
+    const {token} = req.body
     const ticket = await client.verifyIdToken({
         idToken: token,
         audience: process.env.GOOGLE_CLIENT_ID
-  });
-    if (!ticket) 
-        return res.sendStatus(401); //unauthorized (token invalid)
-    const { name, email, picture } = ticket.getPayload();
-    
-    // TODO: upsert (update or insert if new) the user's name, email and picture in the database
-
-  req.session.regenerate((err) => {
-    if (err) {
-        return res.sendStatus(500)
-    }
-    req.session.user = user // user is a var used when the database portion is implemented
-    res.json({user: user})
   })
+    if (!ticket) 
+        return res.sendStatus(401)
+    const { name, email, picture } = ticket.getPayload()
+
+    //TODO add picture data
+    await db.insertToDB(res, User, {name: name, email: email})
+
+    req.session.regenerate((err) => {
+        if (err) {
+            return res.sendStatus(500)
+        }
+        req.session.user = email // user is a var used when the database portion is implemented
+        res.json({user: email})
+    })
 
 })
 

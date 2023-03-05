@@ -19,6 +19,8 @@ class Mongo {
     async disconnect() {
         await mongoose.disconnect()
     }
+
+    
 }
 
 export { Mongo }
