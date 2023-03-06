@@ -1,6 +1,9 @@
 import React from 'react';
 import './Navigation.css'
 import { useState } from 'react';
+import i18n from "i18next";
+import { useTranslation} from "react-i18next"; 
+
 
 
 /**
@@ -21,23 +24,26 @@ const Navigation = () => {
       const langSec = document.getElementById('lang-sec');
       if (isFrench) {
         langSec.textContent = 'Eng';
+        i18n.changeLanguage('en');
       } else {
         langSec.textContent = 'Fr';
+        i18n.changeLanguage('fr');
       }
     }
 
-
+    const { t } = useTranslation();
     return (
+       
         <nav className='navigation-bar'>
-            <div className='nav-div'><a href='/'>Home</a></div>
-            <div className='nav-div'><a href='/discover'>Discover</a></div>
-            <div className='nav-div'><a href='/adopt'>Adopt</a></div>
-            <div className='nav-div'><a href='/aboutUs'>About us</a></div>
+            <div className='nav-div'><a href='/'>{t('navigation.home')}</a></div>
+            <div className='nav-div'><a href='/discover'>{t('navigation.discover')}</a></div>
+            <div className='nav-div'><a href='/adopt'>{t('navigation.adopt')}</a></div>
+            <div className='nav-div'><a href='/aboutUs'>{t('navigation.aboutUs')}</a></div>
             <div id='lang' onClick={ () => changeLang()}><section id="lang-sec">Eng</section></div>
             
             <form role="search" id="form">
                 <input type="search" id="query" name="q"
-                placeholder="Search..."
+                placeholder={t('navigation.search')}
                 aria-label="Search through site content"/>
                 <button>
                     <svg viewBox="0 0 1024 1024">

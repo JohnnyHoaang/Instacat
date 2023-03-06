@@ -40,7 +40,7 @@ html, body , div#root, .App, .AboutUs, .Discover, .Adopt, .CatDetails
   background-image: url(./images/catBackgrnd.png);
   background-size: cover;
   background-repeat: no-repeat;
-  width: 99.3%;
+  width: 99%;
   height: auto;
   min-width: 1500px;
   min-height: 650px;
@@ -55,7 +55,7 @@ section.card-container{
   background-color: E6D5B8;
   border: 2px solid rgb(125, 125, 34);
   margin: 10px;
-
+  width: 1850px;
 }
 /* ------------------------- cards ------------------------*/
        .cat-card{
@@ -150,4 +150,14 @@ section.card-container{
         .LikeNum{
           padding: 11px;
           color: rgb(109, 96, 73);
+        }
+
+
+        /* ----------------pagination --------------*/
+        .pagination{
+          display: flex;
+          justify-content: center;
+          color: #b34628;
+          font-size: 18px;
+          margin: 7px;
         }

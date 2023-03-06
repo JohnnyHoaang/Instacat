@@ -11,8 +11,11 @@ import { useEffect, useState } from 'react';
  * @author Maedeh hassani 
  */
 function Main(props) {
-  
+    
     let [cards, setCards] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    // const [cardsPerPage, setCardsPerPage] = useState(5);
+    const cardsPerPage = 10;
 
     //npx json-server --watch data/data1.json --port 3002  
     useEffect(() => {
@@ -35,6 +38,22 @@ function Main(props) {
         })
     }, []);
 
+    // Calculate the starting and ending index of the cards to display
+    const indexOfLastCard = currentPage * cardsPerPage;
+    const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+    const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
+
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const pageNumbers = [];
+    for (
+      let i = Math.max(1, currentPage - 1);
+      i <= Math.min(Math.ceil(cards.length / cardsPerPage), currentPage + 1);
+      i++
+    ) {
+      pageNumbers.push(i);
+    }
+
     return(
         <div className="main-top"> 
             <section id='top-image'>
@@ -45,7 +64,7 @@ function Main(props) {
             </div>
 
             <section className='card-container'>
-                    {cards.map((item, index) => ( 
+                    {currentCards.map((item, index) => ( 
                         <div key={index} className='each-card-outer'>
                         <Cards 
                             id={item.id}
@@ -57,6 +76,25 @@ function Main(props) {
                         </div>
                     ))}
             </section>
+
+            <div className="pagination">
+                {currentPage > 1 && (
+                <button onClick={() => paginate(currentPage - 1)}>Pre</button>
+                )}
+                {pageNumbers.map((number) => (
+                <button 
+                    key={number}
+                    onClick={() => paginate(number)}
+                    className={currentPage === number ? "active" : null}
+                >
+                    {number}
+                </button>
+                ))}
+                {currentPage <
+                Math.ceil(cards.length / cardsPerPage) - 1 && (
+                <button onClick={() => paginate(currentPage + 1)}>Next</button>
+                )}
+            </div>
         </div>
     );
 }
