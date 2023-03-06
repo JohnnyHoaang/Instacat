@@ -76,7 +76,8 @@ function Main(props) {
                         </div>
                     ))}
             </section>
-
+            
+            {/* adding next and pre button for pagination section */}
             <div className="pagination">
                 {currentPage > 1 && (
                 <button onClick={() => paginate(currentPage - 1)}>Pre</button>
