@@ -14,13 +14,14 @@ namespace DatabaseApp
     {
         private const string CAT_API_LINK = "https://api.thecatapi.com/v1/images/search";
         private const string WORD_API_LINK = "https://random-word-api.herokuapp.com/word";
-        private const string PETFINDER_API_LINK = "";
+        private const string PETFINDER_API_LINK = "https://api.petfinder.com/v2"; // /oauth2/token"
         private const string POSTS_FILE_NAME = "posts.bson";
         private const string ADOPT_FILE_NAME = "adopt.bson";
 
         private string _catApiKey;
         private string _wordApiKey;
         private string _petFinderApiKey;
+        private string _petFinderApiSecret;
 
         public List<BsonDocument> CatPosts {get; internal set;}
         public List<BsonDocument> AdoptPosts {get; internal set;}
@@ -31,7 +32,7 @@ namespace DatabaseApp
         /// <param name="catApiKey"> Cat API key </param>
         /// <param name="wordApiKey"> API key for the Random Word API </param>
         /// <param name="petfinderApiKey"> PetFinder API key </param>
-        public APIFileIO(string catApiKey, string wordApiKey, string petfinderApiKey)
+        public APIFileIO(string catApiKey, string wordApiKey, string petfinderApiKey, string petfinderApiSecret)
         {
             CatPosts = new List<BsonDocument>();
             AdoptPosts = new List<BsonDocument>();
@@ -39,6 +40,7 @@ namespace DatabaseApp
             _catApiKey = catApiKey;
             _wordApiKey = wordApiKey;
             _petFinderApiKey = petfinderApiKey;
+            _petFinderApiSecret = petfinderApiSecret;
         }
 
         /// <summary>
@@ -104,6 +106,40 @@ namespace DatabaseApp
         public void ReadAdoptPosts()
         {
             // TODO
+        }
+
+        public async Task<string> GetAuthorizeToken()  
+        {  
+            string responseObj = "";  
+
+            using (var client = new HttpClient())  
+            {    
+                client.BaseAddress = new Uri(PETFINDER_API_LINK);  
+
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));  
+     
+                HttpResponseMessage response = new HttpResponseMessage();  
+                List<KeyValuePair<string, string>> apiParams = new List<KeyValuePair<string, string>>();  
+  
+                // Convert Request Params to Key Value Pair.  
+                apiParams.Add(new KeyValuePair<string, string>("grant_type", "client_credentials"));
+                apiParams.Add(new KeyValuePair<string, string>("client_id", _petFinderApiKey));
+                apiParams.Add(new KeyValuePair<string, string>("client_secret", _petFinderApiSecret));
+
+                // URL Request parameters.  
+                HttpContent requestParams = new FormUrlEncodedContent(apiParams);  
+  
+                response = await client.PostAsync("/oauth2/token", requestParams).ConfigureAwait(false);  
+  
+                // Verification  
+                if (response.IsSuccessStatusCode)  
+                {  
+                     System.Console.WriteLine(response.ToJson().ToString());
+                } 
+                else System.Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
+            }  
+  
+            return responseObj;  
         }
 
         private JArray GetResponseFromAPI(string url, string parameters)

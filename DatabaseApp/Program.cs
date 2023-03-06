@@ -39,7 +39,12 @@ namespace DatabaseApp
             MongoDatabase mdb = new MongoDatabase(dbName, postsCollName, "");
             Console.WriteLine("InstaCat Database App --- Connected! (=^-ω-^=)");
             
-            APIFileIO apiTool = new APIFileIO("", "", "");
+            APIFileIO apiTool = new APIFileIO(
+                "",
+                "",
+                Environment.GetEnvironmentVariable("PETFINDER_ID"),
+                Environment.GetEnvironmentVariable("PETFINDER_SECRET")
+            );
             
             while (true) {
                 Console.WriteLine("What would you like to do today?:\n\t1 - Fetch and save data to create posts\n\t2 - Push saved data to the DB collection\n\t3 - Flush data from collection\n\t4 - Exit App\n");
@@ -63,6 +68,9 @@ namespace DatabaseApp
                     case "4":
                         Console.WriteLine("Stay PAWsitive! /ᐠ｡ꞈ｡ᐟ\\");
                         Environment.Exit(0);
+                        break;
+                    case "5":
+                        await apiTool.GetAuthorizeToken();
                         break;
                     default:
                         Console.WriteLine("That's not a meowption...\n");
