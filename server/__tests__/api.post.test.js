@@ -6,7 +6,7 @@ import { DBHelper } from '../db/dbHelper.mjs'
 jest.mock('../db/dbHelper.mjs')
 
 const foundValue = [{result: "there is something"}]
-const errorValue = {error: "error"}
+const errorValue = {}
 const noValue = []
 
 afterEach(async () => {
