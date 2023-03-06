@@ -14,7 +14,6 @@ function Main(props) {
     
     let [cards, setCards] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    // const [cardsPerPage, setCardsPerPage] = useState(5);
     const cardsPerPage = 10;
 
     //npx json-server --watch data/data1.json --port 3002  
@@ -29,7 +28,6 @@ function Main(props) {
             return response.json();
         }})
         .then(data => {
-            console.log(data);
             setCards(data);
             
         })
@@ -86,7 +84,6 @@ function Main(props) {
                 <button 
                     key={number}
                     onClick={() => paginate(number)}
-                    // className={currentPage === number ? "active" : null}
                     className="btn-pagination"
                 >
                     {number}

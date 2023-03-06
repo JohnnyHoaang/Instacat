@@ -53,7 +53,8 @@ section.card-container{
   flex-wrap: wrap;
   height: auto;
   background-color: E6D5B8;
-  border: 2px solid rgb(125, 125, 34);
+  border: 2px solid rgb(230, 169, 119);
+  border-radius: 3px;
   margin: 10px;
   width: 1850px;
 }
@@ -64,8 +65,8 @@ section.card-container{
         justify-content: flex-start;
         flex-grow: 1;
         height: 380px; 
-        background: #fdf9f1;
-        border: 2px solid rgb(233, 221, 133);
+        background: #f7f6f4;
+        border: 2px solid rgb(241, 201, 174);
         border-radius: 4px;
         margin: 8px;
        }
@@ -74,6 +75,11 @@ section.card-container{
         background-color: rgb(249, 243, 216);
         transition: background-color 2s ease-out 100ms;
        }
+
+       /* .cat-home{
+        display: flex;
+        justify-content: center;
+       } */
 
        .each-cat-img{
         border: #733c2d;
@@ -93,12 +99,13 @@ section.card-container{
 
        .each-card-outer{
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
         flex-grow: 1; 
         width: calc(17% - 2px); 
         height: 400px;
         margin: 2px;
-        background: rgb(216, 184, 145);
+        background: #f4ebdd;
         border-radius: 4px;       
        }
 

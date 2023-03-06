@@ -56,7 +56,10 @@ function Cards (props) {
     return (
         <div className='cat-card' id={id} >
             <Link to={`/cats/${props.id}`} style={{ textDecoration: 'none' }}>
+              <div className='cat-home'>
                 <img src={props.imageUrl} alt="catImage" className="each-cat-img"></img>
+              </div>
+                
             </Link>   
             <div className='caption-heart'>
                 <div className='likes'>
