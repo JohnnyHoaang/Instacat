@@ -5,11 +5,11 @@ import { DBHelper } from '../db/dbHelper.mjs'
 const router = express.Router()
 const db = new DBHelper()
 
-router.post('/cat/id/like', async (req, res) => {
+router.post('/post/like', async (req, res) => {
   updateLikes({ id : req.body.id }, true)
   res.status(200).send({message: "liked!"})
 })
-router.post('/cat/id/unlike', async (req, res) => {
+router.post('/post/unlike', async (req, res) => {
   updateLikes({ id : req.body.id }, false)
   res.status(200).send({message: "unliked!"})
 })
