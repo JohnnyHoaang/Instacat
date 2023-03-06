@@ -161,3 +161,7 @@ section.card-container{
           font-size: 18px;
           margin: 7px;
         }
+
+        .pre-btn-pagination{
+          padding: 0 20px;
+        }

@@ -80,20 +80,21 @@ function Main(props) {
             {/* adding next and pre button for pagination section */}
             <div className="pagination">
                 {currentPage > 1 && (
-                <button onClick={() => paginate(currentPage - 1)}>Pre</button>
+                <button className='pre-btn-pagination' onClick={() => paginate(currentPage - 1)}>{`Pre<<`}</button>
                 )}
                 {pageNumbers.map((number) => (
                 <button 
                     key={number}
                     onClick={() => paginate(number)}
-                    className={currentPage === number ? "active" : null}
+                    // className={currentPage === number ? "active" : null}
+                    className="btn-pagination"
                 >
                     {number}
                 </button>
                 ))}
                 {currentPage <
                 Math.ceil(cards.length / cardsPerPage) - 1 && (
-                <button onClick={() => paginate(currentPage + 1)}>Next</button>
+                <button onClick={() => paginate(currentPage + 1)}>{'>>Next'}</button>
                 )}
             </div>
         </div>
