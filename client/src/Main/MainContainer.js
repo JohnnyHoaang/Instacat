@@ -27,7 +27,6 @@ function Main(props) {
         
         })
         .then(data => {
-            console.log(data);
             setCards(data);
             // setIsLoading(false);
             
