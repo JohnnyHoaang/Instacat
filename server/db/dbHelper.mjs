@@ -14,8 +14,10 @@ class DBHelper {
  * @author Johnny Hoang
  */
     async insertToDB(response, model, body) {
+        // Create object model
         const user = model(body)
         try {
+            // Save object to DB
             await user.save()
         } catch (error) {
             response.status(500).send(error)
