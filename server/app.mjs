@@ -5,7 +5,7 @@ import addPost from './routes/uploadpost.mjs'
 import auth from './routes/auth.mjs'
 
 const app = express()
-app.use(express.static('../client/build')) 
+app.use(express.static('../client/build'))
 
 app.use("/api", posts)
 app.use("/add", addPost)

@@ -9,14 +9,14 @@ router.use(express.json())
 
 // route for a specific post using id
 router.get('/cat/id/:id', async (req, res) => {
-    await sendData(res, { id : req.params.id })    
+    await sendData(res, { id: req.params.id })
 })
 // route for all posts
-router.get('/cat/all/', async (req, res)=>{
-    await sendData(res,{})
+router.get('/cat/all/', async (req, res) => {
+    await sendData(res, {})
 })
 // helper that sends data to api
-async function sendData(res,query) {
+async function sendData(res, query) {
     const data = await db.getQueryData(Post, query)
     if (data.length > 0) {
         res.json(data)
