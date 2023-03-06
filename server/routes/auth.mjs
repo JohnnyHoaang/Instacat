@@ -21,53 +21,47 @@ const users = new Array()
 router.use(express.json())
 
 router.use(session({
-    secret: process.env.SECRET,
-    name: 'id',
-    saveUninitialized: false,
-    resave: false,
-    cookie: { 
-      maxAge: 120000,
-      secure: false, 
-      httpOnly: true,
-      sameSite: 'strict'
-    }
-  }))  
+  secret: process.env.SECRET,
+  name: 'id',
+  saveUninitialized: false,
+  resave: false,
+  cookie: {
+    maxAge: 120000,
+    secure: false,
+    httpOnly: true,
+    sameSite: 'strict'
+  }
+}))
 
 router.post("/login", async (req, res) => {
-    const {token} = req.body
-    const ticket = await client.verifyIdToken({
-        idToken: token,
-        audience: process.env.GOOGLE_CLIENT_ID
+  const { token } = req.body
+  const ticket = await client.verifyIdToken({
+    idToken: token,
+    audience: process.env.GOOGLE_CLIENT_ID
   })
-    if (!ticket) 
-        return res.sendStatus(401)
-    const { name, email, picture } = ticket.getPayload()
+  if (!ticket)
+    return res.sendStatus(401)
+  const { name, email, picture } = ticket.getPayload()
 
-    //TODO insert user to the database
-    const user = {"name": name, "email": email, "picture": picture}
-    const existsAlready = users.findIndex(element => element.email === email)
-    if (existsAlready < 0) {
-      users.push(user)
-    } else {
-      users[existsAlready] = user
+  //TODO Update entry if user already exists
+  const user = { "name": name, "email": email, "picture": picture }
+  // const existsAlready = db.getQueryData(User, { email: user.email })
+  db.insertToDB(res, User, user)
+
+  //TODO add picture data
+
+  req.session.regenerate((err) => {
+    if (err) {
+      return res.sendStatus(500)
     }
-
-    //TODO add picture data
-
-    // await db.insertToDB(res, User, {name: name, email: email})
-
-    req.session.regenerate((err) => {
-        if (err) {
-            return res.sendStatus(500)
-        }
-        req.session.user = user // user is a var used when the database portion is implemented
-        res.json({user: user})
-    })
+    req.session.user = user
+    res.json({ user: user })
+  })
 
 })
 
-router.get("/logout", isAuthenticated, () => {
-  req.session.destroy(function(err) {
+router.get("/logout", isAuthenticated, (req, res) => {
+  req.session.destroy(function (err) {
     if (err) {
       return res.sendStatus(500)
     }
@@ -84,7 +78,7 @@ router.get("/logout", isAuthenticated, () => {
  * @returns 
  */
 function isAuthenticated(req, res, next) {
-  if (!req.session.user){
+  if (!req.session.user) {
     return res.sendStatus(401); //unauthorized
   }
   next();
