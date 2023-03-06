@@ -10,7 +10,7 @@ class PathHandler {
      */
     async doesPathExists(api, url) {
         // Instantly return false if path is empty
-        if(url == "" || url == undefined){
+        if(!url){
             return false
         } 
         const result = await this.fetchFromAPI(api)
