@@ -15,6 +15,7 @@ router.get('/cat/id/:id', async (req, res) => {
 router.get('/cat/all/', async (req, res)=>{
     await sendData(res,{})
 })
+
 // helper that sends data to api
 async function sendData(res,query) {
     const data = await db.getQueryData(Post, query)
