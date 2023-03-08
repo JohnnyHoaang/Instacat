@@ -20,8 +20,9 @@ router.post('/post/upload', async (req, res) => {
         try {
             await uploadToAzure(file, "username", caption, Post, res)
             res.redirect('/')
-        } catch (error) {
-            res.status(404).send({ error: "error uploading the post" })
+        } catch(error){
+            console.error(error)
+            res.status(404).send({error:"error uploading the post"})
         }
     }
 })
