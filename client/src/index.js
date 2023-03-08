@@ -8,8 +8,8 @@ import Adopt from './Adopt/Adopt';
 import CatDetails from './CatDetails/CatDetails'
 import PostForm from './Upload/PostForm'
 import reportWebVitals from './reportWebVitals';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
+import { GoogleOAuthProvider } from '@react-oauth/google'; 
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 /**
  * creating the react routes for the website
@@ -28,9 +28,11 @@ const router = createBrowserRouter(
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
-        <RouterProvider router={router} />
-    </React.StrictMode>
+  <React.StrictMode>
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+      <RouterProvider router={router} />
+    </GoogleOAuthProvider>
+  </React.StrictMode>
 );
 
 reportWebVitals();
