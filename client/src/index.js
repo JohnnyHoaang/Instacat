@@ -16,7 +16,7 @@ const router = createBrowserRouter(
   { path : "/discover", element : <Discover />},
   { path : "/adopt", element : <Adopt />},
   { path : "/aboutUs", element : <AboutUs />},
-  { path : "/add/post", element : <PostForm/>}
+  { path : "/add/post", element : <PostForm/>},
  ] 
 )
 
