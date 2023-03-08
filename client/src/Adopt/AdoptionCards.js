@@ -10,7 +10,7 @@ function AdoptionCards(props) {
             <p>{props.index}</p>
             <img src={props.imageUrl} alt="catImage" className="each-cat-img"></img>
             <div className="btn-adopt">
-                <button className="adopt-btn" type="button" onClick={() => props.deleting(props.index)}>
+                <button className="adopt-btn" type="button" onClick={() => props.deleting(props.url)}>
                     Adopt
                 </button>
             </div>

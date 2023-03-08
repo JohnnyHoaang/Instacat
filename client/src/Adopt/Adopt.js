@@ -84,6 +84,7 @@ function Adopt() {
                             id={item.id}
                             index={index}
                             imageUrl={item.image}
+                            url={item.url}
                             deleting={handleRedirect}
                         />
                     </div>
