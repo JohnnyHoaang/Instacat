@@ -21,9 +21,6 @@ const Header = () => {
             }
         })
         const data = await res.json()
-        console.log("here")
-        console.log(data)
-        // we will come back to this, since our server will be replying with our info
         setUsername(data.user.name)
     }
 
