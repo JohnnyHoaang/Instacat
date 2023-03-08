@@ -44,8 +44,7 @@ function Cards(props) {
                     "Content-Type": "application/json",
                 },
             }).then((response) => {
-                // Handle the API response
-                console.log(response);
+                // TODO Handle the API response
             }).catch((error) => {
                 // Handle the API error
                 console.error(error);

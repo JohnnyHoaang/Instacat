@@ -31,7 +31,7 @@
 
 }
 
-div.cat-adpt{
+div.cat-adopt{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,7 +54,7 @@ div.cat-adpt{
     color: #f8f1e7;
 }
 
-.btn-adp{
+.btn-adopt{
     display: flex;
     justify-content: center;
 }
