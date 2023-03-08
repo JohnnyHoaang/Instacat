@@ -1,5 +1,6 @@
 import {  saveToAzure }  from './azure.mjs'
 import { Post } from '../models/Post.mjs'
+import  { User } from '../models/User.mjs'
 import { DBHelper } from '../db/dbHelper.mjs'
 
 const db = new DBHelper()
