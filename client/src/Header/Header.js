@@ -9,6 +9,7 @@ import { GoogleLogin } from '@react-oauth/google';
 const Header = () => {
 
     const [username, setUsername] = useState("")
+    const [profilePicture, setProfilePicture] = useState("")
 
     const handleLogin = async googleData => {
         const res = await fetch("/auth/login", {
@@ -21,7 +22,9 @@ const Header = () => {
             }
         })
         const data = await res.json()
+        // Sets the username and profile picture to be used in other views
         setUsername(data.user.name)
+        setProfilePicture(data.user.picture)
     }
 
     const handleError = error => {
@@ -31,6 +34,7 @@ const Header = () => {
     const handleLogout = async () => {
         await fetch("/auth/logout");
         setUsername("");
+        setProfilePicture("");
     }
 
 
@@ -39,7 +43,7 @@ const Header = () => {
             <img src={myLogo} alt="logo" id="logo"></img>
             {/* <h1>InstaCat</h1> */}
             <div id='profile-div'>
-                <img src={defaultProfile} alt="profile" id="profile-img"></img>
+                <img src={profilePicture || defaultProfile} alt="profile" id="profile-img"></img>
                 {!username && <GoogleLogin
                     onSuccess={handleLogin}
                     onError={handleError}
