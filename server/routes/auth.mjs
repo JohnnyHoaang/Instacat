@@ -15,9 +15,6 @@ dotenv.config()
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
 const router = express.Router()
 
-// TODO replace later when users are inserted to database
-const users = new Array()
-
 router.use(express.json())
 
 router.use(session({
@@ -45,7 +42,6 @@ router.post("/login", async (req, res) => {
 
     //TODO Update entry if user already exists
     const user = { "name": name, "email": email, "picture": picture }
-    // const existsAlready = db.getQueryData(User, { email: user.email })
     db.insertToDB(res, User, user)
 
     //TODO add picture data
@@ -75,7 +71,7 @@ router.get("/logout", isAuthenticated, (req, res) => {
  * @param {*} req Request object
  * @param {*} res Result
  * @param {*} next Next function
- * @returns 
+ * @returns Status 401 if the user isnt authenticated
  */
 function isAuthenticated(req, res, next) {
     if (!req.session.user) {
