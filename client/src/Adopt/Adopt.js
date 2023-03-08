@@ -18,8 +18,8 @@ function Adopt() {
 
   // npx json-server --watch data/dataAdoption.json --port 3004
   useEffect(() => {
-    //let url = 'api/adoption/all'
-    let url = "http://localhost:3004/adoption"
+    let url = 'api/adoption/all'
+    // let url = "http://localhost:3004/adoption"
     fetch(url)
     .then(response => {
     if (!response.ok) {

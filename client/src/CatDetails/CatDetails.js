@@ -27,8 +27,8 @@ function CatDetails () {
 
     //npx json-server --watch data/data2.json --port 3003  
     useEffect(() => {
-        // let url = `http://localhost:3000/api/cat/id/${id}`;
-        let url = 'http://localhost:3003/0'
+        let url = `http://localhost:3000/api/cat/id/${id}`;
+        // let url = 'http://localhost:3003/0'
 
         console.log(url);
         fetch(url)
