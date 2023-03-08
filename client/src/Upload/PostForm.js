@@ -1,6 +1,7 @@
 import Header from '../Header/Header'
 import Navigation from '../Navigation/Navigation'
 import Footer from '../Footer/Footer'
+import './PostForm.css'
 /**
  * Returns a form that allows for post upload to database.
  * @returns {Component} PostForm
@@ -11,15 +12,21 @@ function PostForm() {
         <div>
             <Header />
             <Navigation />
-            <form method="POST" action="post/upload" enctype="multipart/form-data">
-                <label for="image">Select image:</label>
-                <input type="file" id="image" name="image" accept="image/png, image/jpeg" required></input>
-                <br></br>
-                <label for="caption">Caption:</label>
-                <input type="text" id="caption" name="caption"></input>
-                <br></br>
-                <input type="submit" value="Submit"></input>
-            </form>
+            <div className='post-form'>
+                <form id='p-form' method="POST" action="post/upload" enctype="multipart/form-data">
+                    <div className='post-image'>
+                        <label className='image-lable' for="image">Select image:</label>
+                        <input type="file" id="image-post-btn" name="image" accept="image/png, image/jpeg" required></input>
+                    </div>
+                    <div className='post-caption'>
+                        <label id='caption-label' for="caption">Caption:</label>
+                        <input type="text" id="caption-input" name="caption"></input>
+                    </div>
+                    <div className='submit-post'>
+                    <input id='submit-btn' type="submit" value="Submit"></input>
+                    </div>
+                </form>
+            </div>
             <Footer />
         </div>
 

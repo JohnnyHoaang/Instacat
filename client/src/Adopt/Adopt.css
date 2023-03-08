@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita&display=swap');
+
+
+#adopt-top{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-image: url('../images/adp04.jpg');
+    margin: 15px;
+    width: 99%;
+    height: 650px;
+    color: rgb(243, 76, 10);
+    font-size: 48px;
+    font-family: 'Sansita', sans-serif;
+}
+
+#cat-quote{
+    margin: 0 50px 10px 0;
+    box-shadow: 10px 15px 18px 0px rgba(31, 29, 29, 0.2);
+    text-shadow: 2px 2px 0 #000, 
+    -2px -2px 0 #000, 
+    2px -2px 0 #000, 
+    -2px 2px 0 #000;
+}
+
+#quote-narrator{
+    margin: 0 50px 50px;
+    font-size: 18px;
+    box-shadow: 0px 15px 18px 0px rgba(41, 31, 31, 0.2);
+
+}
+
+div.cat-adopt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(224, 224, 166);
+    margin: 5px;
+    
+}
+.adopt-btn{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(248, 132, 90);
+    width: 10%;
+    height: 25px;
+    padding: 5px 20px 0px 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin: 10px;
+    border: 1px groove rgb(199, 94, 56);
+    color: #f8f1e7;
+}
+
+.btn-adopt{
+    display: flex;
+    justify-content: center;
+}
+

@@ -1,5 +1,5 @@
 import app from '../app.mjs'
-import { Mongo } from '../db/db.mjs' 
+import { Mongo } from '../db/db.mjs'
 
 const PORT = process.env.PORT || 8080
 const mongo = new Mongo()
@@ -16,7 +16,7 @@ async function main() {
   process.on('SIGTERM', shutdown)
   process.on('SIGINT', shutdown)
 
-  async function shutdown(){
+  async function shutdown() {
     console.log("Shutting down");
     server.close(async () => {
       console.log("HTTP server closed.")

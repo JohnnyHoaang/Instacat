@@ -6,17 +6,17 @@ const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567
  * @author Johnny Hoang
  */
 function generateID(length) {
-  if (length > 0) {
-    let id = '';
-    let counter = 0;
-    while (counter < length) {
-      id += characters.charAt(Math.floor(Math.random() * characters.length));
-      counter += 1;
+    if (length > 0) {
+        let id = '';
+        let counter = 0;
+        while (counter < length) {
+            id += characters.charAt(Math.floor(Math.random() * characters.length));
+            counter += 1;
+        }
+        return id;
+    } else {
+        throw new Error("ID must have length more than 0")
     }
-    return id;
-  } else {
-    throw new Error("ID must have length more than 0")
-  }
 
 }
 

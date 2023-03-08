@@ -1,13 +1,13 @@
+/* --------------CSS for Footer -------------*/
+
 footer{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     width: 99%;
     background-color: #733c2d;
-    /* #7e5843; */
     color: rgb(212, 186, 147);
     min-width: 1510px;
-    /* padding: 50px 0 5px 400px; */
   }
   
   #footer-info, #footer-contact{
@@ -21,7 +21,3 @@ footer{
   #footer-a:hover{
     color: rgb(238, 226, 166);
   }
-  
-  /* a:visited {
-    color:rgb(219, 159, 214);
-  } */
