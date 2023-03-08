@@ -5,13 +5,14 @@ import { DBHelper } from '../db/dbHelper.mjs'
 
 jest.mock('../db/dbHelper.mjs')
 
-const foundValue = [{result: "there is something"}]
+const foundValue = [{ result: "there is something" }]
+const errorValue = { error: "error" }
 const noValue = []
 
 afterEach(async () => {
     jest.restoreAllMocks()
 })
-
+// Test for cat posts API
 describe('GET /api/cat/id', () => {
     test('404 error from bad parameter', async () => {
         const res = await request(app).get("/api/cat/id/cat/please")
@@ -26,7 +27,7 @@ describe('GET /api/cat/id', () => {
     })
 })
 
-describe('GET /api/cat/id', ()=>{
+describe('GET /api/cat/id', () => {
     test("Should respond with 200", async () => {
         jest.spyOn(DBHelper.prototype, "getQueryData").mockResolvedValue(foundValue)
         const resp = await request(app).get('/api/cat/id/1')
@@ -35,10 +36,51 @@ describe('GET /api/cat/id', ()=>{
     })
 })
 
-describe('GET /api/cat/id', ()=>{
+describe('GET /api/cat/id', () => {
     test("Should respond with 404", async () => {
         jest.spyOn(DBHelper.prototype, "getQueryData").mockResolvedValue(noValue)
         const resp = await request(app).get('/api/cat/id/')
         expect(resp.statusCode).toBe(404)
+    })
+})
+// Test for adoption posts API
+describe('GET /api/adoption/id/:id', () => {
+    test('404 error from bad parameter', async () => {
+        const res = await request(app).get("/api/adoption/please")
+        expect(res.statusCode).toBe(404)
+    })
+})
+
+describe('GET /api/adoption/id/:id', () => {
+    test('404 error from extra parameter', async () => {
+        const res = await request(app).get("/api/adoption/id/1/more")
+        expect(res.statusCode).toBe(404)
+    })
+})
+
+describe('GET /api/adoption/id', ()=>{
+    test("Should respond with 200", async () => {
+        jest.spyOn(DBHelper.prototype, "getQueryData").mockResolvedValue(foundValue)
+        const resp = await request(app).get('/api/adoption/id/1')
+        expect(resp.statusCode).toBe(200)
+        expect(resp.body).toEqual(foundValue)
+    })
+})
+
+describe('GET /api/adoption/id', ()=>{
+    test("Should respond with 200", async () => {
+        jest.spyOn(DBHelper.prototype, "getQueryData").mockResolvedValue(foundValue)
+        const resp = await request(app).get('/api/adoption/all')
+        expect(resp.statusCode).toBe(200)
+        expect(resp.body).toEqual(foundValue)
+    })
+})
+
+describe('GET /api/adoption/id', ()=>{
+    test("Should respond with 404", async () => {
+        jest.spyOn(DBHelper.prototype, "getQueryData").mockResolvedValue(noValue)
+        const resp = await request(app).get('/api/adoption/id/')
+        expect(resp.statusCode).toBe(404)
+        expect(resp.body).toEqual(errorValue)
     })
 })
