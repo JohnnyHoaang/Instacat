@@ -9,17 +9,17 @@ import Navigation from '../Navigation/Navigation';
  * @author Maedeh hassani  
  */
 function Discover() {
-  
-    return(
-      <div className="Discover">
-        <Header />
-        <Navigation />
-        <p>discover</p>
-        <div> <a href="/">home</a></div>
-        <Footer />
-      </div>
+
+    return (
+        <div className="Discover">
+            <Header />
+            <Navigation />
+            <p>discover</p>
+            <div> <a href="/">home</a></div>
+            <Footer />
+        </div>
     );
-  }
- 
- 
-export default  Discover;
+}
+
+
+export default Discover;

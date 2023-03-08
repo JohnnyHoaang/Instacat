@@ -8,7 +8,7 @@ import Adopt from './Adopt/Adopt';
 import CatDetails from './CatDetails/CatDetails'
 import PostForm from './Upload/PostForm'
 import reportWebVitals from './reportWebVitals';
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 
 /**
@@ -16,21 +16,21 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
  * @author Maedeh hassani 
  */
 const router = createBrowserRouter(
- [
-  { path : "/",  element : <App /> },
-  { path : "/discover", element : <Discover />},
-  { path : "/adopt", element : <Adopt />},
-  { path : "/aboutUs", element : <AboutUs />},
-  { path : "/cats/:id", element: <CatDetails />},
-  { path : "/add/post", element : <PostForm/>}
- ] 
+    [
+        { path: "/", element: <App /> },
+        { path: "/discover", element: <Discover /> },
+        { path: "/adopt", element: <Adopt /> },
+        { path: "/aboutUs", element: <AboutUs /> },
+        { path: "/cats/:id", element: <CatDetails /> },
+        { path: "/add/post", element: <PostForm /> }
+    ]
 )
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <React.StrictMode>
+        <RouterProvider router={router} />
+    </React.StrictMode>
 );
 
 reportWebVitals();

@@ -14,57 +14,57 @@ import React, { useState } from 'react';
   * @returns {Component} Cards
  * @author Maedeh hassani  
  */
-function Cards (props) {
+function Cards(props) {
 
     const { id } = useParams();
     const [numberOfLikes, setNumberOfLikes] = useState(props.likesNum);
     const [increasing, setIncreasing] = useState(true);
 
-    
+
     function handleLike(index, idp) {
-      const currentLikes = parseInt(document.getElementById(index).innerHTML);
-    
-      if (numberOfLikes >= 0) {
-        if (increasing) {
-          setNumberOfLikes((prevLikes) => prevLikes + 1);
-          document.getElementById(idp).src = orangeHeart;
-        } else {
-          setNumberOfLikes((prevLikes) => prevLikes - 1);
-          document.getElementById(idp).src = heartLike;
+        const currentLikes = parseInt(document.getElementById(index).innerHTML);
+
+        if (numberOfLikes >= 0) {
+            if (increasing) {
+                setNumberOfLikes((prevLikes) => prevLikes + 1);
+                document.getElementById(idp).src = orangeHeart;
+            } else {
+                setNumberOfLikes((prevLikes) => prevLikes - 1);
+                document.getElementById(idp).src = heartLike;
+            }
+            setIncreasing(!increasing);
+            document.getElementById(index).innerHTML = numberOfLikes;
+
+            // Send the like to the API
+            const url = `/api/cat/like/${props.id}`;
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify({ likes: numberOfLikes }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }).then((response) => {
+                // Handle the API response
+                console.log(response);
+            }).catch((error) => {
+                // Handle the API error
+                console.error(error);
+            });
         }
-        setIncreasing(!increasing);
-        document.getElementById(index).innerHTML = numberOfLikes;
-    
-        // Send the like to the API
-        const url = `/api/cat/like/${props.id}`;
-        fetch(url, {
-          method: "POST",
-          body: JSON.stringify({ likes: numberOfLikes }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }).then((response) => {
-          // Handle the API response
-          console.log(response);
-        }).catch((error) => {
-          // Handle the API error
-          console.error(error);
-        });
-      }
     }
-      
+
     return (
         <div className='cat-card' id={id} >
             <Link to={`/cats/${props.id}`} style={{ textDecoration: 'none' }}>
-              <div className='cat-home'>
-                <img src={props.imageUrl} alt="catImage" className="each-cat-img"></img>
-              </div>
-                
-            </Link>   
+                <div className='cat-home'>
+                    <img src={props.imageUrl} alt="catImage" className="each-cat-img"></img>
+                </div>
+
+            </Link>
             <div className='caption-heart'>
                 <div className='likes'>
-                    <img src={heartLike} alt="like" className="heart-like" 
-                    onClick={ () => handleLike(props.index, props.id)} id={props.id}>
+                    <img src={heartLike} alt="like" className="heart-like"
+                        onClick={() => handleLike(props.index, props.id)} id={props.id}>
                     </img>
 
                     <span className="LikeNum" id={props.index}>{props.likesNum}</span>
@@ -76,5 +76,5 @@ function Cards (props) {
     );
 }
 
- 
+
 export default Cards;

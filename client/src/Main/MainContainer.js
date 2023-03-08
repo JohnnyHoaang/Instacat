@@ -21,19 +21,18 @@ function Main(props) {
         let url = `/api/cat/all`;
         // let url = "http://localhost:3002/catlist"
         fetch(url)
-        .then(response => {
-        if (!response.ok) {
-            throw new Error('fetching issue', response.Error);
-        } else {
-            return response.json();
-        }})
-        .then(data => {
-            setCards(data);
-            
-        })
-        .catch(err => {
-            console.log(err.message);
-        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('fetching issue', response.Error);
+                } else {
+                    return response.json();
+                }})
+            .then(data => {
+                setCards(data);
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
     }, []);
 
     // Calculate the starting and ending index of the cards to display

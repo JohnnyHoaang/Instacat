@@ -32,21 +32,19 @@ function CatDetails () {
 
         console.log(url);
         fetch(url)
-        .then(response => {
-        if (!response.ok) {
-            throw new Error('fetching issue', response.Error);
-        } else {
-            return response.json();
-        }
-        
-        })
-        .then(data => {
-            setEachCat(data[0]);
-            
-        })
-        .catch(err => {
-            console.log(err.message);
-        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('fetching issue', response.Error);
+                } else {
+                    return response.json();
+                }
+            })
+            .then(data => {
+                setEachCat(data[0]);
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
     }, []);
 
 

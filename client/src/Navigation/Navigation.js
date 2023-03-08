@@ -2,7 +2,7 @@ import React from 'react';
 import './Navigation.css'
 import { useState } from 'react';
 import i18n from "i18next";
-import { useTranslation} from "react-i18next"; 
+import { useTranslation } from "react-i18next";
 
 
 
@@ -10,41 +10,41 @@ import { useTranslation} from "react-i18next";
  * show all the option for the page and also user can search by hastags
  * @returns {Component} Navigation
  * @author Maedeh hassani 
- */ 
+ */
 const Navigation = () => {
 
     const [isFrench, setIsFrench] = useState(false);
 
     function toggleLanguage() {
-      setIsFrench(!isFrench);
+        setIsFrench(!isFrench);
     }
-  
+
     function changeLang() {
-      toggleLanguage();
-      const langSec = document.getElementById('lang-sec');
-      if (isFrench) {
-        langSec.textContent = 'Eng';
-        i18n.changeLanguage('en');
-      } else {
-        langSec.textContent = 'Fr';
-        i18n.changeLanguage('fr');
-      }
+        toggleLanguage();
+        const langSec = document.getElementById('lang-sec');
+        if (isFrench) {
+            langSec.textContent = 'Eng';
+            i18n.changeLanguage('en');
+        } else {
+            langSec.textContent = 'Fr';
+            i18n.changeLanguage('fr');
+        }
     }
 
     const { t } = useTranslation();
     return (
-       
+
         <nav className='navigation-bar'>
             <div className='nav-div'><a href='/'>{t('navigation.home')}</a></div>
             <div className='nav-div'><a href='/discover'>{t('navigation.discover')}</a></div>
             <div className='nav-div'><a href='/adopt'>{t('navigation.adopt')}</a></div>
             <div className='nav-div'><a href='/aboutUs'>{t('navigation.aboutUs')}</a></div>
-            <div id='lang' onClick={ () => changeLang()}><section id="lang-sec">Eng</section></div>
-            
+            <div id='lang' onClick={() => changeLang()}><section id="lang-sec">Eng</section></div>
+
             <form role="search" id="form">
                 <input type="search" id="query" name="q"
-                placeholder={t('navigation.search')}
-                aria-label="Search through site content"/>
+                    placeholder={t('navigation.search')}
+                    aria-label="Search through site content" />
                 <button>
                     <svg viewBox="0 0 1024 1024">
                         <path className="path1" d="M848.471 928l-263.059-263.059c-48.941 
@@ -58,6 +58,6 @@ const Navigation = () => {
         </nav>
     );
 }
- 
- 
+
+
 export default Navigation;
