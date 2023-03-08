@@ -1,4 +1,5 @@
 import { generateID } from './idgenerator.mjs'
+import fetch from 'cross-fetch'
 
 class PathHandler {
     /**

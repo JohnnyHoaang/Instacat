@@ -4,6 +4,7 @@ import posts from './routes/post.mjs'
 import likes from './routes/likes.mjs'
 import addPost from './routes/uploadpost.mjs'
 import auth from './routes/auth.mjs'
+import editProfile from './routes/uploadprofile.mjs'
 
 const app = express()
 app.use(express.static('../client/build'))
@@ -12,6 +13,7 @@ app.use("/api", posts)
 app.use("/add", addPost)
 app.use("/auth", auth)
 app.use("/update", likes)
+app.use("/edit-profile", editProfile)
 app.use("/", main)
 
 export default app

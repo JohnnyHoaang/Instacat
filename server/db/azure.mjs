@@ -15,7 +15,7 @@ const sasToken = process.env.AZURE_SAS
 const containerName = process.env.CONTAINER_NAME
 const apiURL = "https://cattus.azurewebsites.net/api/cat/all"
 /**
- * Uploads image file to azure blob storage.
+ * Uploads image file to azure blob storage and saves model information database.
  * @param {File} file 
  * @param {String} username 
  * @param {String} caption 
@@ -23,7 +23,23 @@ const apiURL = "https://cattus.azurewebsites.net/api/cat/all"
  * @param {Object} response 
  * @author Johnny Hoang
  */
-async function uploadToAzure(file, username, caption, model, response) {
+async function uploadToAzureDB(file, username, caption, model, response) {
+    let blobURL = await saveToAzure(file)
+    const data = getPostData(username, blobURL, caption)
+    await db.insertToDB(response, model, data)
+}
+
+/**
+ * Uploads image file to azure blob storage.
+ * @param {File} file 
+ * @param {String} username 
+ * @param {String} caption 
+ * @param {Model} model 
+ * @param {Object} response 
+ * @returns blob URL of the uploaded image
+ * @author Johnny Hoang
+ */
+async function saveToAzure(file) {
     let path = file.name
     const baseURL = `https://${storageAccountName}.blob.core.windows.net/`
     let blobURL = `${baseURL}${containerName}/${path}`
@@ -31,7 +47,7 @@ async function uploadToAzure(file, username, caption, model, response) {
     const containerClient = blobService.getContainerClient(containerName)
     // check file name exists in azure cloud
     const check = await ph.doesPathExists(apiURL, blobURL)
-    if(check){
+    if (check) {
         // generate new unique file name 
         path = await ph.generateUniquePath(path)
         blobURL = `${baseURL}${containerName}/${path}`
@@ -39,10 +55,10 @@ async function uploadToAzure(file, username, caption, model, response) {
     const blobClient = containerClient.getBlockBlobClient(path)
     const options = { blobHTTPHeaders: { blobContentType: file.mimetype } }
     await blobClient.uploadData(file.data, options)
-    const data = getPostData(username, blobURL, caption)
-    await db.insertToDB(response, model, data)
-    // TODO: Refactor the code to separate upload 
+    return blobURL
 }
+
+
 /**
  * Creates a post object based on the given parameters.
  * @param {String} username 
@@ -64,4 +80,4 @@ function getPostData(username, image, caption) {
     return post
 }
 
-export { uploadToAzure }
+export { uploadToAzureDB, saveToAzure }

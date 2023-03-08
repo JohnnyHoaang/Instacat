@@ -43,7 +43,11 @@ const Header = () => {
             <img src={myLogo} alt="logo" id="logo"></img>
             {/* <h1>InstaCat</h1> */}
             <div id='profile-div'>
-                <img src={profilePicture || defaultProfile} alt="profile" id="profile-img"></img>
+                <a href="/edit/profile/">
+                <img src={profilePicture || defaultProfile} alt="profile" id="profile-img">
+                    
+                    </img>
+                </a>
                 {!username && <GoogleLogin
                     onSuccess={handleLogin}
                     onError={handleError}
