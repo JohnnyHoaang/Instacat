@@ -1,4 +1,4 @@
-import Cards from './Crads.js';
+import Cards from './Cards.js';
 import addingPost from '../images/adding-post.png';
 import { useEffect, useState } from 'react';
 
