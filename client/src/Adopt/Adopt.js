@@ -3,7 +3,7 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import './Adopt.css'
-import AdoptionCards from './AdoptionCards.js'
+import AdoptionCards from './AdoptionCards.js';
 
 /**
  * the pages that clients are able to adapt the cats
@@ -36,11 +36,21 @@ function Adopt() {
             })
     }, []);
 
-    function deleting(index) {
-        let listOfBook = [...adoptionCards];
-        listOfBook.splice(index, 1);
-        setAdoptionCards(listOfBook);
-    }
+    // function handleRedirect(index) {
+    //     let listOfBook = [...adoptionCards];
+    //     listOfBook.splice(index, 1);
+    //     setAdoptionCards(listOfBook);
+    // }
+    
+
+    function handleRedirect(catUrl) {
+        // const history = useHistory();
+        // history.push(catUrl);
+      }
+
+    // function handleRedirect() {
+    //     window.location.href = '/cats';
+    // }
 
 
     // Calculate the starting and ending index of the cards to display
@@ -74,7 +84,7 @@ function Adopt() {
                             id={item.id}
                             index={index}
                             imageUrl={item.image}
-                            deleting={deleting}
+                            deleting={handleRedirect}
                         />
                     </div>
                 ))}

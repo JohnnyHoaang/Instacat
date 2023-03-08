@@ -1,258 +1,178 @@
 { "adoption" : [
   {
-    "id": "a3",
-    "image": "https://cdn2.thecatapi.com/images/a3.jpg"
+    "id": 60189060,
+    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
+    "age": "Young",
+    "gender": "Female",
+    "size": "Medium",
+    "coat": "Short",
+    "tags": [
+      "Friendly",
+      "Affectionate",
+      "Quiet",
+      "Sweet"
+    ],
+    "name": "Bagoo",  
+    "primary_photo_cropped": {
+      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
+      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
+      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
+      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
+    },
+    "status": "adoptable"
   },
   {
-    "id": "3cm",
-    "image": "https://cdn2.thecatapi.com/images/3cm.jpg"
+    "id": 60189060,
+    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
+    "age": "Young",
+    "gender": "Female",
+    "size": "Medium",
+    "coat": "Short",
+    "tags": [
+      "Friendly",
+      "Affectionate",
+      "Quiet",
+      "Sweet"
+    ],
+    "name": "Bagoo",  
+    "primary_photo_cropped": {
+      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
+      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
+      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
+      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
+    },
+    "status": "adoptable"
   },
   {
-    "id": "47s",
-    "image": "https://cdn2.thecatapi.com/images/47s.jpg"
+    "id": 60189060,
+    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
+    "age": "Young",
+    "gender": "Female",
+    "size": "Medium",
+    "coat": "Short",
+    "tags": [
+      "Friendly",
+      "Affectionate",
+      "Quiet",
+      "Sweet"
+    ],
+    "name": "Bagoo",  
+    "primary_photo_cropped": {
+      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
+      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
+      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
+      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
+    },
+    "status": "adoptable"
   },
   {
-    "id": "a1p",
-    "image": "https://cdn2.thecatapi.com/images/a1p.jpg"
+    "id": 60189060,
+    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
+    "age": "Young",
+    "gender": "Female",
+    "size": "Medium",
+    "coat": "Short",
+    "tags": [
+      "Friendly",
+      "Affectionate",
+      "Quiet",
+      "Sweet"
+    ],
+    "name": "Bagoo",  
+    "primary_photo_cropped": {
+      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
+      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
+      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
+      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
+    },
+    "status": "adoptable"
   },
   {
-    "id": "2cm",
-    "image": "https://cdn2.thecatapi.com/images/2cm.jpg"
+    "id": 60189060,
+    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
+    "age": "Young",
+    "gender": "Female",
+    "size": "Medium",
+    "coat": "Short",
+    "tags": [
+      "Friendly",
+      "Affectionate",
+      "Quiet",
+      "Sweet"
+    ],
+    "name": "Bagoo",  
+    "primary_photo_cropped": {
+      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
+      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
+      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
+      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
+    },
+    "status": "adoptable"
   },
   {
-    "id": "27s",
-    "image": "https://cdn2.thecatapi.com/images/27s.jpg"
+    "id": 60189060,
+    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
+    "age": "Young",
+    "gender": "Female",
+    "size": "Medium",
+    "coat": "Short",
+    "tags": [
+      "Friendly",
+      "Affectionate",
+      "Quiet",
+      "Sweet"
+    ],
+    "name": "Bagoo",  
+    "primary_photo_cropped": {
+      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
+      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
+      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
+      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
+    },
+    "status": "adoptable"
   },
   {
-    "id": "b1p",
-    "image": "https://cdn2.thecatapi.com/images/b1p.jpg"
+    "id": 60189060,
+    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
+    "age": "Young",
+    "gender": "Female",
+    "size": "Medium",
+    "coat": "Short",
+    "tags": [
+      "Friendly",
+      "Affectionate",
+      "Quiet",
+      "Sweet"
+    ],
+    "name": "Bagoo",  
+    "primary_photo_cropped": {
+      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
+      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
+      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
+      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
+    },
+    "status": "adoptable"
   },
   {
-    "id": "3cn",
-    "image": "https://cdn2.thecatapi.com/images/3cn.jpg"
-  },
-  {
-    "id": "a3",
-    "image": "https://cdn2.thecatapi.com/images/a3.jpg"
-  },
-  {
-    "id": "3cm",
-    "image": "https://cdn2.thecatapi.com/images/3cm.jpg"
-  },
-  {
-    "id": "47s",
-    "image": "https://cdn2.thecatapi.com/images/47s.jpg"
-  },
-  {
-    "id": "a1p",
-    "image": "https://cdn2.thecatapi.com/images/a1p.jpg"
-  },
-  {
-    "id": "2cm",
-    "image": "https://cdn2.thecatapi.com/images/2cm.jpg"
-  },
-  {
-    "id": "27s",
-    "image": "https://cdn2.thecatapi.com/images/27s.jpg"
-  },
-  {
-    "id": "b1p",
-    "image": "https://cdn2.thecatapi.com/images/b1p.jpg"
-  },
-  {
-    "id": "3cn",
-    "image": "https://cdn2.thecatapi.com/images/3cn.jpg"
-  },
-  {
-    "id": "a3",
-    "image": "https://cdn2.thecatapi.com/images/a3.jpg"
-  },
-  {
-    "id": "3cm",
-    "image": "https://cdn2.thecatapi.com/images/3cm.jpg"
-  },
-  {
-    "id": "47s",
-    "image": "https://cdn2.thecatapi.com/images/47s.jpg"
-  },
-  {
-    "id": "a1p",
-    "image": "https://cdn2.thecatapi.com/images/a1p.jpg"
-  },
-  {
-    "id": "2cm",
-    "image": "https://cdn2.thecatapi.com/images/2cm.jpg"
-  },
-  {
-    "id": "27s",
-    "image": "https://cdn2.thecatapi.com/images/27s.jpg"
-  },
-  {
-    "id": "b1p",
-    "image": "https://cdn2.thecatapi.com/images/b1p.jpg"
-  },
-  {
-    "id": "3cn",
-    "image": "https://cdn2.thecatapi.com/images/3cn.jpg"
-  },
-  {
-    "id": "a3",
-    "image": "https://cdn2.thecatapi.com/images/a3.jpg"
-  },
-  {
-    "id": "3cm",
-    "image": "https://cdn2.thecatapi.com/images/3cm.jpg"
-  },
-  {
-    "id": "47s",
-    "image": "https://cdn2.thecatapi.com/images/47s.jpg"
-  },
-  {
-    "id": "a1p",
-    "image": "https://cdn2.thecatapi.com/images/a1p.jpg"
-  },
-  {
-    "id": "2cm",
-    "image": "https://cdn2.thecatapi.com/images/2cm.jpg"
-  },
-  {
-    "id": "27s",
-    "image": "https://cdn2.thecatapi.com/images/27s.jpg"
-  },
-  {
-    "id": "b1p",
-    "image": "https://cdn2.thecatapi.com/images/b1p.jpg"
-  },
-  {
-    "id": "3cn",
-    "image": "https://cdn2.thecatapi.com/images/3cn.jpg"
-  },
-  {
-    "id": "a3",
-    "image": "https://cdn2.thecatapi.com/images/a3.jpg"
-  },
-  {
-    "id": "3cm",
-    "image": "https://cdn2.thecatapi.com/images/3cm.jpg"
-  },
-  {
-    "id": "47s",
-    "image": "https://cdn2.thecatapi.com/images/47s.jpg"
-  },
-  {
-    "id": "a1p",
-    "image": "https://cdn2.thecatapi.com/images/a1p.jpg"
-  },
-  {
-    "id": "2cm",
-    "image": "https://cdn2.thecatapi.com/images/2cm.jpg"
-  },
-  {
-    "id": "27s",
-    "image": "https://cdn2.thecatapi.com/images/27s.jpg"
-  },
-  {
-    "id": "b1p",
-    "image": "https://cdn2.thecatapi.com/images/b1p.jpg"
-  },
-  {
-    "id": "3cn",
-    "image": "https://cdn2.thecatapi.com/images/3cn.jpg"
-  },
-  {
-    "id": "a3",
-    "image": "https://cdn2.thecatapi.com/images/a3.jpg"
-  },
-  {
-    "id": "3cm",
-    "image": "https://cdn2.thecatapi.com/images/3cm.jpg"
-  },
-  {
-    "id": "47s",
-    "image": "https://cdn2.thecatapi.com/images/47s.jpg"
-  },
-  {
-    "id": "a1p",
-    "image": "https://cdn2.thecatapi.com/images/a1p.jpg"
-  },
-  {
-    "id": "2cm",
-    "image": "https://cdn2.thecatapi.com/images/2cm.jpg"
-  },
-  {
-    "id": "27s",
-    "image": "https://cdn2.thecatapi.com/images/27s.jpg"
-  },
-  {
-    "id": "b1p",
-    "image": "https://cdn2.thecatapi.com/images/b1p.jpg"
-  },
-  {
-    "id": "3cn",
-    "image": "https://cdn2.thecatapi.com/images/3cn.jpg"
-  },
-  {
-    "id": "a3",
-    "image": "https://cdn2.thecatapi.com/images/a3.jpg"
-  },
-  {
-    "id": "3cm",
-    "image": "https://cdn2.thecatapi.com/images/3cm.jpg"
-  },
-  {
-    "id": "47s",
-    "image": "https://cdn2.thecatapi.com/images/47s.jpg"
-  },
-  {
-    "id": "a1p",
-    "image": "https://cdn2.thecatapi.com/images/a1p.jpg"
-  },
-  {
-    "id": "2cm",
-    "image": "https://cdn2.thecatapi.com/images/2cm.jpg"
-  },
-  {
-    "id": "27s",
-    "image": "https://cdn2.thecatapi.com/images/27s.jpg"
-  },
-  {
-    "id": "b1p",
-    "image": "https://cdn2.thecatapi.com/images/b1p.jpg"
-  },
-  {
-    "id": "3cn",
-    "image": "https://cdn2.thecatapi.com/images/3cn.jpg"
-  },
-  {
-    "id": "a3",
-    "image": "https://cdn2.thecatapi.com/images/a3.jpg"
-  },
-  {
-    "id": "3cm",
-    "image": "https://cdn2.thecatapi.com/images/3cm.jpg"
-  },
-  {
-    "id": "47s",
-    "image": "https://cdn2.thecatapi.com/images/47s.jpg"
-  },
-  {
-    "id": "a1p",
-    "image": "https://cdn2.thecatapi.com/images/a1p.jpg"
-  },
-  {
-    "id": "2cm",
-    "image": "https://cdn2.thecatapi.com/images/2cm.jpg"
-  },
-  {
-    "id": "27s",
-    "image": "https://cdn2.thecatapi.com/images/27s.jpg"
-  },
-  {
-    "id": "b1p",
-    "image": "https://cdn2.thecatapi.com/images/b1p.jpg"
-  },
-  {
-    "id": "3cn",
-    "image": "https://cdn2.thecatapi.com/images/3cn.jpg"
+    "id": 60189060,
+    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
+    "age": "Young",
+    "gender": "Female",
+    "size": "Medium",
+    "coat": "Short",
+    "tags": [
+      "Friendly",
+      "Affectionate",
+      "Quiet",
+      "Sweet"
+    ],
+    "name": "Bagoo",  
+    "primary_photo_cropped": {
+      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
+      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
+      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
+      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
+    },
+    "status": "adoptable"
   }
 ]}
