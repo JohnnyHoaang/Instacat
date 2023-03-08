@@ -43,14 +43,14 @@ function Adopt() {
     // }
     
 
-    function handleRedirect(catUrl) {
-        // const history = useHistory();
-        // history.push(catUrl);
-      }
-
-    // function handleRedirect() {
-    //     window.location.href = '/cats';
+    // function handleRedirect(catUrl) {
+    //     const history = useHistory();
+    //     history.push(catUrl);
     // }
+
+      function handleRedirect(catUrl) {
+        window.location.href = catUrl;
+    }
 
 
     // Calculate the starting and ending index of the cards to display
