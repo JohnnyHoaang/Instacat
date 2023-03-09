@@ -4,6 +4,6 @@ namespace DatabaseApp
     {
         public static readonly string Name = "test";
         public static readonly string PostsCollName = "posts";
-        public static readonly string AdoptCollName = "adopt";
+        public static readonly string AdoptCollName = "adoptionposts";
     }
 }
