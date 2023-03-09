@@ -21,9 +21,9 @@ header {
     width: 6%;
   }
   #profile-img{
-    width: 55%;
+    width: 58%;
     height: auto;
-    padding: 60px 0 0 8px;
+    padding: 60px 0 0 0px;
   }
   #user-name{
     font-size: 12px;
@@ -34,3 +34,25 @@ header {
   #user-name a{
     color: rgb(139, 91, 32);
   }
+
+  .profile-google-div{
+    margin: 4px 30px 0 -170px;
+    padding: 10px;
+    /* background-color: rgb(178, 92, 6); */
+    
+  }
+
+  .profile-guest-div{
+    display: flex;
+    margin: 4px 30px 0 -180px;
+    justify-content: right;
+    padding: 0 20px;
+    /* background-color: rgb(126, 178, 6); */
+  }
+
+  /* div.nsm7Bb-HzV7m-LgbsSe-MJoBVe{
+    margin: 200px;
+    color:red;
+    
+  } */
+
