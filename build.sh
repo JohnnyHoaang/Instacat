@@ -13,4 +13,5 @@ cd ..
 CI=false
 
 # Builds react project
+export REACT_APP_GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 npm run build --prefix client

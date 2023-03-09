@@ -51,7 +51,6 @@ function CatDetails () {
     return (
         
         <div className="CatDetails">
-            <Header />
             {eachCat && (
                 <div className='cat-detail' id={id} >
                     <div className="specific-cat">
@@ -94,7 +93,6 @@ function CatDetails () {
                     </div>
                 </div>
             )}
-             <Footer />
         </div>
         
 
