@@ -19,6 +19,7 @@ namespace DatabaseApp
             // Might change this to take input instead
             string dbName = DatabaseInfo.Name;
             string postsCollName = DatabaseInfo.PostsCollName;
+            string adoptCollName = DatabaseInfo.AdoptCollName;
 
             // Set up env variables (Might need some redesigning to not take ALL of them)
             if (!File.Exists(ENV_FILE_PATH))
@@ -36,8 +37,9 @@ namespace DatabaseApp
                 Environment.SetEnvironmentVariable(envVarName, envVar);
             }
 
-            MongoDatabase mdb = new MongoDatabase(dbName, postsCollName, "");
-            Console.WriteLine("InstaCat Database App --- Connected! (=^-ω-^=)");
+            Console.WriteLine("Credentials obtained. Connecting...  /ᐠ–ꞈ–ᐟ\\");
+            MongoDatabase mdb = new MongoDatabase(dbName, postsCollName, adoptCollName);
+            Console.WriteLine("\nInstaCat Database App --- Connected! /ᐠ.｡.ᐟ\\ᵐᵉᵒʷˎˊ˗");
             
             APIFileIO apiTool = new APIFileIO(
                 "",
@@ -47,30 +49,37 @@ namespace DatabaseApp
             );
             
             while (true) {
-                Console.WriteLine("What would you like to do today?:\n\t1 - Fetch and save data to create posts\n\t2 - Push saved data to the DB collection\n\t3 - Flush data from collection\n\t4 - Exit App\n");
+                Console.WriteLine("What would you like to do today?:\n\t1 - Fetch and save data to create posts\n\t2 - Push saved data to the DB collection\n\t3 - Flush data from collection\n\t4 - DB Performance Test\n\t5 - Exit App\n");
                 string input = Console.ReadLine();
                 switch (input) {
                     case "1":
                         await apiTool.MakeCatPosts();
+                        await apiTool.MakeAdoptPosts();
                         break;
                     case "2":
+                        // Might change this to be one method
                         await apiTool.ReadCatPosts();
-                        var posts = apiTool.CatPosts;
-                        if (posts.Count != 0)
+                        await apiTool.ReadAdoptPosts();
+
+                        var catPosts = apiTool.CatPosts;
+                        var adoptPosts = apiTool.AdoptPosts;
+                        if (catPosts.Count != 0 || adoptPosts.Count != 0)
                         {
-                            await mdb.InsertData(posts, mdb.PostsCollName);
+                            await mdb.InsertData(catPosts, mdb.PostsCollName);
+                            await mdb.InsertData(adoptPosts, mdb.AdoptCollName);
                         }
-                        else Console.WriteLine("No data to push");
+                        else
+                            Console.WriteLine("No data to push");
                         break;
                     case "3":
                         await mdb.DeleteCollection();
                         break;
                     case "4":
-                        Console.WriteLine("Stay PAWsitive! /ᐠ｡ꞈ｡ᐟ\\");
-                        Environment.Exit(0);
+                        Console.WriteLine("TODO!\n");
                         break;
                     case "5":
-                        await apiTool.GetAuthorizeToken();
+                        Console.WriteLine("Stay PAWsitive! /ᐠ｡ꞈ｡ᐟ\\");
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("That's not a meowption...\n");

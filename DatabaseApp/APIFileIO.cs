@@ -14,7 +14,10 @@ namespace DatabaseApp
     {
         private const string CAT_API_LINK = "https://api.thecatapi.com/v1/images/search";
         private const string WORD_API_LINK = "https://random-word-api.herokuapp.com/word";
-        private const string PETFINDER_API_LINK = "https://api.petfinder.com/v2"; // /oauth2/token"
+        private const string PETFINDER_API_LINK = "https://api.petfinder.com/v2/";
+
+        private const string MEDIA_TYPE = "application/json";
+
         private const string POSTS_FILE_NAME = "posts.bson";
         private const string ADOPT_FILE_NAME = "adopt.bson";
 
@@ -44,22 +47,21 @@ namespace DatabaseApp
         }
 
         /// <summary>
-        /// Create the posts for cats, and save it to a file
+        /// Create the posts for cats, and save them to a file
         /// </summary>
         public async Task MakeCatPosts()
         {
             // Get the cat images
-            var cats = GetResponseFromAPI(CAT_API_LINK, "?limit=10"); //&api_key=" + _catApiKey 
-
-            // Remove unnecessary k/v pairs
-            foreach (JObject j in cats) 
-            {
-                j.Remove("height");
-                j.Remove("width");
-            }
+            var cats = GetResponseFromAPI<JArray>(
+                CAT_API_LINK, 
+                "?limit=10"
+            ); //&api_key=" + _catApiKey 
 
             // Get words for captions
-            var words = GetResponseFromAPI(WORD_API_LINK, "?number=20"); // Add api key later!
+            var words = GetResponseFromAPI<JArray>(
+                WORD_API_LINK, 
+                "?number=20"
+            ); // Add api key later!
 
             // Assemble the posts
             Random rnd = new Random();
@@ -98,25 +100,60 @@ namespace DatabaseApp
             }
         }
 
-        public void MakeAdoptPosts()
+        /// <summary>
+        /// Create the adoption posts, and save them to a file
+        /// </summary>
+        public async Task MakeAdoptPosts()
         {
-            // TODO
+            // Get the Petfinder access token
+            string token = await GetAccessToken();
+            // Get the cats that are up for adoption
+            var cats = GetResponseFromAPI<JObject>(
+                PETFINDER_API_LINK + "animals", 
+                "?type=cat&location=H1N&distance=250&limit=10", 
+                token
+            );
+
+            foreach(var c in cats["animals"])
+            {
+                JObject catObj = c as JObject;
+                JObject obj = new JObject();
+
+                obj["id"] = catObj["id"];
+                obj["name"] = catObj["name"];
+                obj["gender"] = catObj["gender"];
+                obj["tags"] = catObj["tags"];
+                obj["photos"] = catObj["photos"];
+                obj["url"] = catObj["url"];
+
+                AdoptPosts.Add(BsonDocument.Parse(obj.ToString()));
+            }
+            await WriteToFile(ADOPT_FILE_NAME, AdoptPosts);
+            Console.WriteLine("Adoption posts written to file");
         }
 
-        public void ReadAdoptPosts()
+        /// <summary>
+        /// Read the adoption from the file containing them
+        /// </summary>
+        public async Task ReadAdoptPosts()
         {
-            // TODO
+            AdoptPosts = new List<BsonDocument>();
+            var lines = await File.ReadAllLinesAsync(ADOPT_FILE_NAME);
+            foreach (string line in lines)
+            {
+                AdoptPosts.Add(BsonDocument.Parse(line));
+            }
         }
 
-        public async Task<string> GetAuthorizeToken()  
+        private async Task<string> GetAccessToken()  
         {  
-            string responseObj = "";  
+            string token = "";  
 
             using (var client = new HttpClient())  
             {    
                 client.BaseAddress = new Uri(PETFINDER_API_LINK);  
 
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));  
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MEDIA_TYPE));  
      
                 HttpResponseMessage response = new HttpResponseMessage();  
                 List<KeyValuePair<string, string>> apiParams = new List<KeyValuePair<string, string>>();  
@@ -129,34 +166,45 @@ namespace DatabaseApp
                 // URL Request parameters.  
                 HttpContent requestParams = new FormUrlEncodedContent(apiParams);  
   
-                response = await client.PostAsync("/oauth2/token", requestParams).ConfigureAwait(false);  
+                response = await client.PostAsync("oauth2/token", requestParams).ConfigureAwait(false);  
   
                 // Verification  
                 if (response.IsSuccessStatusCode)  
                 {  
-                     System.Console.WriteLine(response.ToJson().ToString());
+                    HttpContent responseContent = response.Content;
+                    using (var reader = new StreamReader(await responseContent.ReadAsStreamAsync()))
+                    {
+                        JObject obj = JObject.Parse(await reader.ReadToEndAsync());
+                        token = obj["access_token"].ToString();
+                        System.Console.WriteLine("Access token obtained");
+                    }
                 } 
                 else System.Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
             }  
-  
-            return responseObj;  
+            return token;  
         }
 
-        private JArray GetResponseFromAPI(string url, string parameters)
-        {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri(url);
-
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            var response = client.GetAsync(parameters).Result;
-            if (response.IsSuccessStatusCode)
+        private dynamic GetResponseFromAPI<T>(string url, string parameters, string accessToken = null)
+        {           
+            using (var client = new HttpClient())
             {
-                var res = response.Content.ReadAsStringAsync().Result;
-                System.Console.WriteLine("Data successfully retrieved from the requested API");
-                return JsonConvert.DeserializeObject(res) as JArray;
+                // Add an access token, should one be passed
+                if (accessToken != null)
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+                client.BaseAddress = new Uri(url);
+
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MEDIA_TYPE));
+
+                var response = client.GetAsync(parameters).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    System.Console.WriteLine("Data successfully retrieved from the requested API");
+                    return (T)JsonConvert.DeserializeObject(res);
+                }
+                else System.Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
             }
-            else System.Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
             return null;
         }
 
