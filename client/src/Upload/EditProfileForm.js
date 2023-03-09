@@ -9,6 +9,7 @@ function EditPostForm() {
             <Navigation />
             <div className='post-form'>
                 <form id='p-form' method="POST" action="/edit/profile/update" enctype="multipart/form-data">
+                    <h2>Edit Profile Information:</h2>
                     <div className='post-image'>
                         <label className='image-lable' for="image">Select image:</label>
                         <input type="file" id="image-post-btn" name="image" accept="image/png, image/jpeg" required></input>
