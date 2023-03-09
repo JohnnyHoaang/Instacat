@@ -22,7 +22,7 @@ router.post('/post/upload', async (req, res) => {
             res.redirect('/')
         } catch(error){
             console.error(error)
-            res.status(404).send({error:"error uploading the post"})
+            res.status(500).send({error:"error uploading the post"})
         }
     }
 })

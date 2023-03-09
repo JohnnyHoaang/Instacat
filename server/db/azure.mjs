@@ -40,7 +40,7 @@ async function uploadToAzure(file, username, caption, model, response) {
     const options = { blobHTTPHeaders: { blobContentType: file.mimetype } }
     await blobClient.uploadData(file.data, options)
     const data = getPostData(username, blobURL, caption)
-    await db.insertToDB(response, model, data)
+    await db.insertToDB(model, data)
 }
 /**
  * Creates a post object based on the given parameters.

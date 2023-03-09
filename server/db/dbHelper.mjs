@@ -13,14 +13,14 @@ class DBHelper {
  * @param {Object} body 
  * @author Johnny Hoang
  */
-    async insertToDB(response, model, body) {
+    async insertToDB(model, body) {
         // Create object model
         const user = model(body)
         try {
             // Save object to DB
             await user.save()
         } catch (error) {
-            response.status(500).send(error)
+            throw new Error("Error saving the model")
         }
     }
     /**
@@ -33,23 +33,6 @@ class DBHelper {
         const data = await model.find(query)
         return data
     }
-    /**
-     * Send data to the API route
-     * @param {Object} response
-     * @param {Model} model 
-     * @param {String} query 
-     */
-    async sendData(response, model, query) {
-        // Receive data from db
-        const data = await this.getQueryData(model, query)
-        if (data.length > 0) {
-            // send data to route
-            response.json(data)
-        } else {
-            response.status(404).send({ error: "data not found" })
-        }
-    }
-
     /**
      * Update an object in the DB based on a condition
      * @param {Model} model Mongo model for the object 
