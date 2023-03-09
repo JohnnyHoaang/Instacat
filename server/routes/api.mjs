@@ -15,7 +15,7 @@ router.get("/posts", () => {
 
 // Returns a single post based on an id
 router.get("/post/:id", () => {
-    
+
 })
 
 export default router

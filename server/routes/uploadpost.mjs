@@ -16,12 +16,12 @@ router.use(
 router.post('/post/upload', async (req, res) => {
     const caption = req.body.caption
     const file = req.files.image
-    if(file){
+    if (file) {
         try {
             await uploadToAzure(file, "username", caption, Post, res)
             res.redirect('/')
         } catch(error){
-            console.log(error)
+            console.error(error)
             res.status(404).send({error:"error uploading the post"})
         }
     }

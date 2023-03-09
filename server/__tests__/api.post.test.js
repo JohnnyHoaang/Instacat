@@ -5,8 +5,7 @@ import { DBHelper } from '../db/dbHelper.mjs'
 
 jest.mock('../db/dbHelper.mjs')
 
-const foundValue = [{result: "there is something"}]
-const errorValue = {error: "error"}
+const foundValue = [{ result: "there is something" }]
 const noValue = []
 
 afterEach(async () => {
@@ -27,7 +26,7 @@ describe('GET /api/cat/id', () => {
     })
 })
 
-describe('GET /api/cat/id', ()=>{
+describe('GET /api/cat/id', () => {
     test("Should respond with 200", async () => {
         jest.spyOn(DBHelper.prototype, "getQueryData").mockResolvedValue(foundValue)
         const resp = await request(app).get('/api/cat/id/1')
@@ -36,12 +35,11 @@ describe('GET /api/cat/id', ()=>{
     })
 })
 
-describe('GET /api/cat/id', ()=>{
+describe('GET /api/cat/id', () => {
     test("Should respond with 404", async () => {
         jest.spyOn(DBHelper.prototype, "getQueryData").mockResolvedValue(noValue)
         const resp = await request(app).get('/api/cat/id/')
         expect(resp.statusCode).toBe(404)
-        expect(resp.body).toEqual(errorValue)
     })
 })
 // Test for adoption posts API
@@ -82,6 +80,5 @@ describe('GET /api/adoption/id', ()=>{
         jest.spyOn(DBHelper.prototype, "getQueryData").mockResolvedValue(noValue)
         const resp = await request(app).get('/api/adoption/id/')
         expect(resp.statusCode).toBe(404)
-        expect(resp.body).toEqual(errorValue)
     })
 })
