@@ -13,11 +13,8 @@ function AboutUs() {
 
     return (
         <div className="AboutUs">
-            <Header />
-            <Navigation />
             <p>AboutUs</p>
             <div> <a href="/">home</a></div>
-            <Footer />
         </div>
     );
 }

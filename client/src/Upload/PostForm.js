@@ -10,8 +10,6 @@ import './PostForm.css'
 function PostForm() {
     return (
         <div>
-            <Header />
-            <Navigation />
             <div className='post-form'>
                 <form id='p-form' method="POST" action="post/upload" enctype="multipart/form-data">
                     <div className='post-image'>
@@ -27,7 +25,6 @@ function PostForm() {
                     </div>
                 </form>
             </div>
-            <Footer />
         </div>
 
     )
