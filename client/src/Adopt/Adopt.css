@@ -36,8 +36,10 @@ div.cat-adopt{
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    background-color: rgb(224, 224, 166);
+    background-color: rgb(248, 225, 204);
     margin: 5px;
+    padding: 0 20px 0 20px;
+    border-radius: 4px;
     
 }
 .adopt-btn{
@@ -57,5 +59,12 @@ div.cat-adopt{
 .btn-adopt{
     display: flex;
     justify-content: center;
+}
+
+.cat-adopt-info{
+    display: flex;
+    justify-content: space-around;
+    color: rgb(131, 60, 21);
+    font-size: 16px;
 }
 

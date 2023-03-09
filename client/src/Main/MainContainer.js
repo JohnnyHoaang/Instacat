@@ -18,8 +18,8 @@ function Main(props) {
 
     //npx json-server --watch data/data1.json --port 3002  
     useEffect(() => {
-        let url = `/api/cat/all`;
-        // let url = "http://localhost:3002/catlist"
+        // let url = `/api/cat/all`;
+        let url = "http://localhost:3002/catlist"
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -34,6 +34,13 @@ function Main(props) {
                 console.log(err.message);
             })
     }, []);
+
+    //?????????????????????????????????????????????????????????/
+    async function fetchPostsByHashtag(hashtag) {
+        const response = await fetch(`/hashtag/:${hashtag}`);
+        const data = await response.json();
+        return data.posts;
+      }
 
     // Calculate the starting and ending index of the cards to display
     const indexOfLastCard = currentPage * cardsPerPage;
@@ -69,6 +76,8 @@ function Main(props) {
                             imageUrl={item.image}
                             caption={item.caption}
                             likesNum={item.likes}
+                            hashtags={item.hashtags}
+                            handleHashtags={fetchPostsByHashtag}
                         />
                         </div>
                     ))}

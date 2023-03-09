@@ -18,8 +18,8 @@ function Adopt() {
 
     // npx json-server --watch data/dataAdoption.json --port 3004
     useEffect(() => {
-        let url = 'api/adoption/all'
-        // let url = "http://localhost:3004/adoption"
+        // let url = 'api/adoption/all'
+        let url = "http://localhost:3004/adoption"
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -36,19 +36,8 @@ function Adopt() {
             })
     }, []);
 
-    // function handleRedirect(index) {
-    //     let listOfBook = [...adoptionCards];
-    //     listOfBook.splice(index, 1);
-    //     setAdoptionCards(listOfBook);
-    // }
-    
 
-    // function handleRedirect(catUrl) {
-    //     const history = useHistory();
-    //     history.push(catUrl);
-    // }
-
-      function handleRedirect(catUrl) {
+    function handleRedirect(catUrl) {
         window.location.href = catUrl;
     }
 
@@ -83,8 +72,10 @@ function Adopt() {
                         <AdoptionCards
                             id={item.id}
                             index={index}
-                            imageUrl={item.image}
+                            imageUrl={item.primary_photo_cropped.small}
                             url={item.url}
+                            name={item.name}
+                            gender={item.gender}
                             deleting={handleRedirect}
                         />
                     </div>

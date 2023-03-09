@@ -51,12 +51,13 @@ html, body , div#root, .App, .AboutUs, .Discover, .Adopt, .CatDetails
 section.card-container{
   display: flex;
   flex-wrap: wrap;
-  height: auto;
+  height: 910px;
   background-color: E6D5B8;
   border: 2px solid rgb(230, 169, 119);
   border-radius: 3px;
   margin: 10px;
   width: 1850px;
+  padding: 5px;
 }
 /* ------------------------- cards ------------------------*/
        .cat-card{
@@ -64,7 +65,7 @@ section.card-container{
         flex-direction: column;
         justify-content: flex-start;
         flex-grow: 1;
-        height: 380px; 
+        height: 430px; 
         background: #f7f6f4;
         border: 2px solid rgb(241, 201, 174);
         border-radius: 4px;
@@ -72,7 +73,7 @@ section.card-container{
        }
 
        .cat-card:hover{
-        background-color: rgb(249, 243, 216);
+        background-color: rgb(243, 223, 195);
         transition: background-color 2s ease-out 100ms;
        }
 
@@ -141,6 +142,7 @@ section.card-container{
 
         .heart-like:hover{
           transform: scale(1.2);
+          cursor: pointer;
         }
 
         .catCaption{
@@ -172,3 +174,20 @@ section.card-container{
         .pre-btn-pagination{
           padding: 0 20px;
         }
+
+
+        /* ------------- shere img -----------------*/
+        .share-img{
+          width: 30px;
+          margin: 5px 2px 2px 30px;
+        }
+
+        .share-img:hover{
+          transform: scale(1.2);
+          cursor: pointer;
+        }
+
+         /* --------------------hashtags -------------------*/
+         .cat-hashtags:hover{
+            cursor: pointer;
+         }

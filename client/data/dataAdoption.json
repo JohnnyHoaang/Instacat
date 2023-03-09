@@ -25,6 +25,28 @@
     "id": 60189060,
     "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
     "age": "Young",
+    "gender": "Male",
+    "size": "Medium",
+    "coat": "Short",
+    "tags": [
+      "Friendly",
+      "Affectionate",
+      "Quiet",
+      "Sweet"
+    ],
+    "name": "Smudge",  
+    "primary_photo_cropped": {
+      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
+      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
+      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
+      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
+    },
+    "status": "adoptable"
+  },
+  {
+    "id": 60189060,
+    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
+    "age": "Young",
     "gender": "Female",
     "size": "Medium",
     "coat": "Short",
@@ -34,7 +56,73 @@
       "Quiet",
       "Sweet"
     ],
-    "name": "Bagoo",  
+    "name": "Lady",  
+    "primary_photo_cropped": {
+      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
+      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
+      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
+      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
+    },
+    "status": "adoptable"
+  },
+  {
+    "id": 60189060,
+    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
+    "age": "Young",
+    "gender": "Male",
+    "size": "Medium",
+    "coat": "Short",
+    "tags": [
+      "Friendly",
+      "Affectionate",
+      "Quiet",
+      "Sweet"
+    ],
+    "name": "Lucky",  
+    "primary_photo_cropped": {
+      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
+      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
+      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
+      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
+    },
+    "status": "adoptable"
+  },
+  {
+    "id": 60189060,
+    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
+    "age": "Young",
+    "gender": "Female",
+    "size": "Medium",
+    "coat": "Short",
+    "tags": [
+      "Friendly",
+      "Affectionate",
+      "Quiet",
+      "Sweet"
+    ],
+    "name": "Luna",  
+    "primary_photo_cropped": {
+      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
+      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
+      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
+      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
+    },
+    "status": "adoptable"
+  },
+  {
+    "id": 60189060,
+    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
+    "age": "Young",
+    "gender": "Male",
+    "size": "Medium",
+    "coat": "Short",
+    "tags": [
+      "Friendly",
+      "Affectionate",
+      "Quiet",
+      "Sweet"
+    ],
+    "name": "Tigger",  
     "primary_photo_cropped": {
       "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
       "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
@@ -69,7 +157,7 @@
     "id": 60189060,
     "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
     "age": "Young",
-    "gender": "Female",
+    "gender": "Male",
     "size": "Medium",
     "coat": "Short",
     "tags": [
@@ -78,95 +166,7 @@
       "Quiet",
       "Sweet"
     ],
-    "name": "Bagoo",  
-    "primary_photo_cropped": {
-      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
-      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
-      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
-      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
-    },
-    "status": "adoptable"
-  },
-  {
-    "id": 60189060,
-    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
-    "age": "Young",
-    "gender": "Female",
-    "size": "Medium",
-    "coat": "Short",
-    "tags": [
-      "Friendly",
-      "Affectionate",
-      "Quiet",
-      "Sweet"
-    ],
-    "name": "Bagoo",  
-    "primary_photo_cropped": {
-      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
-      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
-      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
-      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
-    },
-    "status": "adoptable"
-  },
-  {
-    "id": 60189060,
-    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
-    "age": "Young",
-    "gender": "Female",
-    "size": "Medium",
-    "coat": "Short",
-    "tags": [
-      "Friendly",
-      "Affectionate",
-      "Quiet",
-      "Sweet"
-    ],
-    "name": "Bagoo",  
-    "primary_photo_cropped": {
-      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
-      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
-      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
-      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
-    },
-    "status": "adoptable"
-  },
-  {
-    "id": 60189060,
-    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
-    "age": "Young",
-    "gender": "Female",
-    "size": "Medium",
-    "coat": "Short",
-    "tags": [
-      "Friendly",
-      "Affectionate",
-      "Quiet",
-      "Sweet"
-    ],
-    "name": "Bagoo",  
-    "primary_photo_cropped": {
-      "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
-      "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",
-      "large": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=600",
-      "full": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630"
-    },
-    "status": "adoptable"
-  },
-  {
-    "id": 60189060,
-    "url": "https://www.petfinder.com/cat/bagoo-60189060/sc/myrtle-beach/grand-strand-humane-society-sc31/?referrer_id=c555c4ae-c75e-4608-905b-6c437410af49",
-    "age": "Young",
-    "gender": "Female",
-    "size": "Medium",
-    "coat": "Short",
-    "tags": [
-      "Friendly",
-      "Affectionate",
-      "Quiet",
-      "Sweet"
-    ],
-    "name": "Bagoo",  
+    "name": "Max",  
     "primary_photo_cropped": {
       "small": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=300",
       "medium": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60189060/1/?bust=1677517630&width=450",

@@ -1,4 +1,5 @@
-import heartLike from '../images/heartt.png'
+import heartLike from '../images/heart.png'
+import shareImg from '../images/share04.png'
 import orangeHeart from '../images/orange-haert.png'
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -52,6 +53,10 @@ function Cards(props) {
         }
     }
 
+    function sharePost() {
+        alert("I'm sharing this post!");
+      }
+
     return (
         <div className='cat-card' id={id} >
             <Link to={`/cats/${props.id}`} style={{ textDecoration: 'none' }}>
@@ -67,8 +72,21 @@ function Cards(props) {
                     </img>
 
                     <span className="LikeNum" id={props.index}>{props.likesNum}</span>
+                    <span className='share-btn' onClick={sharePost}> 
+                        <img src={shareImg} alt='share' className='share-img'/>
+                    </span>
                 </div>
                 <p className='catCaption'>{props.caption} {id}</p>
+                <div className='cat-hashtags'>
+                    <section className='hashtags'>{props.hashtags.map((item, index) => {
+                        return <div key={index} 
+                                    /*??????????????????????????????????????????????????????????????????????????????????*/
+                                    onClick={() => props.handleHashtagClick(item)}>
+                                    #{item}
+                               </div>
+                    })}
+                    </section>
+                </div>
             </div>
         </div>
 
