@@ -11,7 +11,6 @@ import PostForm from './Upload/PostForm'
 import i18n from "i18next";
 import { initReactI18next, I18nextProvider } from "react-i18next";
 import LanguageDetector from 'i18next-browser-languagedetector';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import languages from './languages'
 i18n
@@ -42,12 +41,10 @@ function App() {
     return (
         <I18nextProvider i18n={i18n}>
             <div className="App">
-                <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
                     <Header />
                     <Navigation />
                     <RouterProvider router={router} />
                     <Footer />
-                </GoogleOAuthProvider>
             </div>
         </I18nextProvider>
     );
