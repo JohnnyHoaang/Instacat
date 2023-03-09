@@ -41,6 +41,7 @@ namespace DatabaseApp
             MongoDatabase mdb = new MongoDatabase(dbName, postsCollName, adoptCollName);
             Console.WriteLine("\nInstaCat Database App --- Connected! /ᐠ.｡.ᐟ\\ᵐᵉᵒʷˎˊ˗");
             
+            // TODO: Add the API keys as environment variables
             APIFileIO apiTool = new APIFileIO(
                 "",
                 "",

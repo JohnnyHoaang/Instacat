@@ -62,7 +62,6 @@ namespace DatabaseApp
             string input = Console.ReadLine();
             if (input == "yes")
             {
-                // Uncomment the lines for the Adopt API when needed
                 await _db.DropCollectionAsync(PostsCollName);
                 await _db.DropCollectionAsync(AdoptCollName);
                 await _db.CreateCollectionAsync(PostsCollName);

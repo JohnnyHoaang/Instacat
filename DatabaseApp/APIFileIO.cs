@@ -55,13 +55,13 @@ namespace DatabaseApp
             var cats = GetResponseFromAPI<JArray>(
                 CAT_API_LINK, 
                 "?limit=10"
-            ); //&api_key=" + _catApiKey 
+            ); // TODO: Add the API key functionality by adding '&api_key=" + _catApiKey' in the params
 
             // Get words for captions
             var words = GetResponseFromAPI<JArray>(
                 WORD_API_LINK, 
                 "?number=20"
-            ); // Add api key later!
+            ); // TODO: See how to implement the API Key for this API
 
             // Assemble the posts
             Random rnd = new Random();
