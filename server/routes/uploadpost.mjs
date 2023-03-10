@@ -18,7 +18,7 @@ router.post('/post/upload', async (req, res) => {
     const file = req.files.image
     if (file) {
         try {
-            await uploadToAzure(file, "username", caption, Post, res)
+            await uploadToAzure(file, "username", caption, Post)
             res.redirect('/')
         } catch(error){
             console.error(error)

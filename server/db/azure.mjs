@@ -20,10 +20,9 @@ const apiURL = "https://cattus.azurewebsites.net/api/cat/all"
  * @param {String} username 
  * @param {String} caption 
  * @param {Model} model 
- * @param {Object} response 
  * @author Johnny Hoang
  */
-async function uploadToAzure(file, username, caption, model, response) {
+async function uploadToAzure(file, username, caption, model) {
     let path = file.name
     const baseURL = `https://${storageAccountName}.blob.core.windows.net/`
     let blobURL = `${baseURL}${containerName}/${path}`
