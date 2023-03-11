@@ -45,6 +45,9 @@ const Header = () => {
                 <div className='profile-img-div'>
                     <img src={profilePicture || defaultProfile} alt="profile" id="profile-img"></img>
                 </div>
+                <div className='profile-guest-div'>
+                    <p>{username ? username : "Guest"}</p>
+                </div>
                 <div className='profile-google-div'>
                     {!username && <GoogleLogin
                         onSuccess={handleLogin}
@@ -52,9 +55,7 @@ const Header = () => {
                     />}
                     {username && <button onClick={handleLogout}>Logout</button>}
                 </div>
-                <div className='profile-guest-div'>
-                    <p>{username ? username : "Guest"}</p>
-                </div>
+                
                 
             </div>
         </header>

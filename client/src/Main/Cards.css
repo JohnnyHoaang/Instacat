@@ -1,0 +1,15 @@
+/*-----------------Card css ------------------*/
+
+/* --------------------hashtags -------------------*/
+.cat-hashtags:hover{
+    cursor: pointer;
+ }
+
+.hashtag-link{
+    text-decoration: none;
+    color: rgb(97, 85, 65);
+}
+
+.hashtag-link:hover{
+    transform: scale(1.2);
+}
