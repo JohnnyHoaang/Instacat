@@ -1,6 +1,3 @@
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import Navigation from '../Navigation/Navigation';
 import { useTranslation } from "react-i18next";
 import './AboutUs.css'
 
@@ -15,8 +12,6 @@ function AboutUs() {
     const { t } = useTranslation();
     return (
         <div className="AboutUs">
-            <Header />
-            <Navigation />
             <div id="about-us">
                 <div id="about-us-main-text">
                     <div className='about-us-text-welcome'>{t("aboutUs.line01")}</div>
@@ -41,7 +36,6 @@ function AboutUs() {
             
             </div>
             
-            <Footer />
         </div>
     );
 }
