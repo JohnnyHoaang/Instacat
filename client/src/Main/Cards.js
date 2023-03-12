@@ -55,9 +55,9 @@ function Cards(props) {
     }
 
     function sharePost() {
-        alert("I'm sharing this post!");
+        navigator.clipboard.writeText(window.location.href);
+        alert("Post was copied to clipboard")
     }
-
 
     async function fetchPostsByHashtag(hashtag) {
         const response = await fetch(`/hashtag/:${hashtag}`);
