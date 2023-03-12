@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
+import App from '../App'
 
 /**
  * Check the cats which posted by other users ??????
@@ -12,11 +13,7 @@ function Discover() {
 
     return (
         <div className="Discover">
-            <Header />
-            <Navigation />
-            <p>discover</p>
-            <div> <a href="/">home</a></div>
-            <Footer />
+            <App />
         </div>
     );
 }

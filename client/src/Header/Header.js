@@ -5,7 +5,6 @@ import defaultProfile from '../images/default-profile.png'
 import { GoogleLogin } from '@react-oauth/google';
 
 
-
 const Header = () => {
 
     const [username, setUsername] = useState("")

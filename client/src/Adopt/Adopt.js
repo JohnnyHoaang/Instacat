@@ -38,7 +38,7 @@ function Adopt() {
 
 
     function handleRedirect(catUrl) {
-        window.location.href = catUrl;
+        window.open(catUrl, '_blank');
     }
 
 
@@ -72,7 +72,7 @@ function Adopt() {
                         <AdoptionCards
                             id={item.id}
                             index={index}
-                            imageUrl={item.primary_photo_cropped.small}
+                            imageUrl={item.photos[0].small}
                             url={item.url}
                             name={item.name}
                             gender={item.gender}
