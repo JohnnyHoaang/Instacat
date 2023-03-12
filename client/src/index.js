@@ -7,6 +7,7 @@ import Discover from './Discover/Discover';
 import Adopt from './Adopt/Adopt';
 import CatDetails from './CatDetails/CatDetails'
 import PostForm from './Upload/PostForm'
+import SameHashtag from './Hashtag/SameHashtag'
 import reportWebVitals from './reportWebVitals';
 import { GoogleOAuthProvider } from '@react-oauth/google'; 
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
@@ -22,7 +23,8 @@ const router = createBrowserRouter(
         { path: "/adopt", element: <Adopt /> },
         { path: "/aboutUs", element: <AboutUs /> },
         { path: "/cats/:id", element: <CatDetails /> },
-        { path: "/add/post", element: <PostForm /> }
+        { path: "/add/post", element: <PostForm /> },
+        { path: "hastag/:hastag", element: <SameHashtag />}
     ]
 )
 

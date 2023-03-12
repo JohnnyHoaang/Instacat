@@ -10,7 +10,7 @@
   }
   
   #top-image{
-    background-image: url(../images/home04.png);
+    background-image: url(../images/home0.png);
     background-size: cover;
     background-repeat: no-repeat;
     width: 99%;
@@ -26,7 +26,7 @@
     flex-wrap: wrap;
     height: 910px;
     background-color: E6D5B8;
-    border: 2px solid rgb(230, 169, 119);
+    border-top: 2px solid rgb(230, 169, 119);
     border-radius: 3px;
     margin: 10px;
     width: 1850px;

@@ -18,8 +18,8 @@ function Adopt() {
 
     // npx json-server --watch data/dataAdoption.json --port 3004
     useEffect(() => {
-        // let url = 'api/adoption/all'
-        let url = "http://localhost:3004/adoption"
+        let url = 'api/adoption/all'
+        // let url = "http://localhost:3004/adoption"
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -76,11 +76,12 @@ function Adopt() {
                             url={item.url}
                             name={item.name}
                             gender={item.gender}
-                            deleting={handleRedirect}
+                            handleRedirect={handleRedirect}
                         />
                     </div>
                 ))}
             </section>
+
             {/* adding next and pre button for pagination section */}
             <div className="pagination">
                 {currentPage > 1 && (

@@ -1,6 +1,11 @@
 import React from "react";
 
-
+/**
+ * the pages that clients are able to adapt the cats
+ * @returns {Component} AdoptionCards
+ * @author Maedeh hassani
+ * 
+ */
 function AdoptionCards(props) {
 
     return (
@@ -12,7 +17,7 @@ function AdoptionCards(props) {
             </div>
             
             <div className="btn-adopt">
-                <button className="adopt-btn" type="button" onClick={() => props.deleting(props.url)}>
+                <button className="adopt-btn" type="button" onClick={() => props.handleRedirect(props.url)}>
                     Adopt
                 </button>
             </div>

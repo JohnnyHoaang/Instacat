@@ -17,6 +17,7 @@ import React, { useState } from 'react';
  */
 function Cards(props) {
 
+    const { hashtag } = useParams();
     const { id } = useParams();
     const [numberOfLikes, setNumberOfLikes] = useState(props.likesNum);
     const [increasing, setIncreasing] = useState(true);
@@ -55,7 +56,18 @@ function Cards(props) {
 
     function sharePost() {
         alert("I'm sharing this post!");
-      }
+    }
+
+
+    async function fetchPostsByHashtag(hashtag) {
+        const response = await fetch(`/hashtag/:${hashtag}`);
+        const data = await response.json();
+        return data.posts;
+    }
+
+    function alertforhash(a) {
+        alert(`it should show all the hash post related to ${a}`);
+    }
 
     return (
         <div className='cat-card' id={id} >
@@ -80,9 +92,8 @@ function Cards(props) {
                 <div className='cat-hashtags'>
                     <section className='hashtags'>{props.hashtags.map((item, index) => {
                         return <div key={index} 
-                                    /*??????????????????????????????????????????????????????????????????????????????????*/
-                                    onClick={() => props.handleHashtagClick(item)}>
-                                    {/* #{item} */}
+                                    onClick={() => props.fetchPostsByHashtag(item)}>
+                                        
                                     <a href={item} className='hashtag-link'>#{item}</a>
                                </div>
                     })}
