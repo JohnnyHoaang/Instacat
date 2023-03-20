@@ -6,7 +6,7 @@ const router = express.Router()
 const db = new DBHelper()
 
 router.post('/post/like', async (req, res) => {
-  console.log(req.body);
+   
   updateLikes({ id : req.body.id }, true)
   res.status(200).send({message: "liked!"})
 })
