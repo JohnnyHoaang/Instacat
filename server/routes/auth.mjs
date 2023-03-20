@@ -46,6 +46,7 @@ router.post("/login", async (req, res) => {
 
     //TODO add picture data
 
+    // Creates a session and stores user in it
     req.session.regenerate((err) => {
         if (err) {
             return res.sendStatus(500)
