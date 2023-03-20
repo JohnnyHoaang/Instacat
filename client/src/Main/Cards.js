@@ -23,7 +23,7 @@ function Cards(props) {
     const [increasing, setIncreasing] = useState(true);
 
 
-    function handleLike(index, idp) {
+    async function handleLike(index, idp) {
         const currentLikes = parseInt(document.getElementById(index).innerHTML);
 
         if (numberOfLikes >= 0) {
@@ -37,19 +37,18 @@ function Cards(props) {
             setIncreasing(!increasing);
             document.getElementById(index).innerHTML = numberOfLikes;
 
+            
             // Send the like to the API
-            const url = `/api/cat/like/${props.id}`;
-            fetch(url, {
+            let object = JSON.stringify({ id : props.id});
+            const url = "/update/post/like/";
+            console.log(`${props.id}`);
+            await fetch(url, {
                 method: "POST",
-                body: JSON.stringify({ likes: numberOfLikes }),
+                body: object,
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json; charset=UTF-8",
+                
                 },
-            }).then((response) => {
-                // TODO Handle the API response
-            }).catch((error) => {
-                // Handle the API error
-                console.error(error);
             });
         }
     }

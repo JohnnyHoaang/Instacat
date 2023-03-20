@@ -32,7 +32,7 @@ const router = createBrowserRouter(
         { path: "/aboutUs", element: <AboutUs /> },
         { path: "/cats/:id", element: <CatDetails /> },
         { path: "/add/post", element: <PostForm /> },
-        { path: "/catHashtags/:hsahtag", element: <SameHashtag />}
+        { path: "/catHashtags/:hashtag", element: <SameHashtag />}
     ]
 )
 
