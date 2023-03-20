@@ -1,4 +1,4 @@
-import {generateID} from './idgenerator.mjs';
+import {generateID} from './idGenerator.mjs';
 /**
  * TODO Make JSDocs for this class
  */
