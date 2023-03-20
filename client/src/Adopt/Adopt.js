@@ -1,7 +1,4 @@
 import { useEffect, useState } from 'react';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import Navigation from '../Navigation/Navigation';
 import './Adopt.css'
 import AdoptionCards from './AdoptionCards.js';
 

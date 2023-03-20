@@ -59,15 +59,7 @@ function Cards(props) {
         alert("Post was copied to clipboard")
     }
 
-    async function fetchPostsByHashtag(hashtag) {
-        const response = await fetch(`/hashtag/:${hashtag}`);
-        const data = await response.json();
-        return data.posts;
-    }
 
-    function alertforhash(a) {
-        alert(`it should show all the hash post related to ${a}`);
-    }
 
     return (
         <div className='cat-card' id={id} >
@@ -91,10 +83,10 @@ function Cards(props) {
                 <p className='catCaption'>{props.caption} {id}</p>
                 <div className='cat-hashtags'>
                     <section className='hashtags'>{props.hashtags.map((item, index) => {
-                        return <div key={index} 
-                                    onClick={() => props.fetchPostsByHashtag(item)}>
-                                        
-                                    <a href={item} className='hashtag-link'>#{item}</a>
+                        return <div key={index} >
+                                    <Link to={`/catHashtags/${item}`} id={hashtag} style={{ textDecoration: 'none' }}>    
+                                    #{item}
+                                    </Link>
                                </div>
                     })}
                     </section>

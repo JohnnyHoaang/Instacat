@@ -1,6 +1,4 @@
 import { useEffect } from 'react';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
 import './CatDetails.css';
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
