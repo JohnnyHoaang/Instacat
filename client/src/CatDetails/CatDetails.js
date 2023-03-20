@@ -1,6 +1,4 @@
 import { useEffect } from 'react';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
 import './CatDetails.css';
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
@@ -70,7 +68,7 @@ function CatDetails () {
 
                             <div className='caption-info'>
                                 Caption: 
-                                <section className='caption'>{eachCat.caption}{id}</section>
+                                <section className='caption'>{eachCat.caption}</section>
                             </div>
 
                             <div className='hashtag-info'>

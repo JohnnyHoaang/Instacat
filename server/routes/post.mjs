@@ -42,3 +42,4 @@ async function sendData(res, model, query) {
     res.status(404).send({error: 'data not found'});
   }
 }
+
