@@ -6,7 +6,7 @@ import { GoogleLogin } from '@react-oauth/google';
 
 
 const Header = () => {
-
+    // Move to App
     const [username, setUsername] = useState("")
     const [profilePicture, setProfilePicture] = useState("")
 

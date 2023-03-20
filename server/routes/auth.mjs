@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
 
     //TODO Update entry if user already exists
     const user = { "name": name, "email": email, "picture": picture }
-    db.insertToDB(res, User, user)
+    db.insertToDB(User, user)
 
     //TODO add picture data
 

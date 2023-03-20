@@ -68,7 +68,7 @@ function CatDetails () {
 
                             <div className='caption-info'>
                                 Caption: 
-                                <section className='caption'>{eachCat.caption}{id}</section>
+                                <section className='caption'>{eachCat.caption}</section>
                             </div>
 
                             <div className='hashtag-info'>

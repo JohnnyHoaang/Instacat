@@ -13,12 +13,14 @@ class DBHelper {
  * @param {Object} body 
  * @author Johnny Hoang
  */
-    async insertToDB(response, model, body) {
+    async insertToDB(model, body) {
+        // Create object model
         const user = model(body)
         try {
+            // Save object to DB
             await user.save()
         } catch (error) {
-            response.status(500).send(error)
+            throw new Error("Error saving the model")
         }
     }
     /**
@@ -31,7 +33,6 @@ class DBHelper {
         const data = await model.find(query)
         return data
     }
-
     /**
      * Update an object in the DB based on a condition
      * @param {Model} model Mongo model for the object 
