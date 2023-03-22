@@ -7,14 +7,13 @@ async function onSubmit(e) {
     const form = document.querySelector("#p-form")
     const formData = new FormData(form)
     formData.append('email', "johnny@gmail.com")
-    fetch(`/edit/profile/update`, {
+    await fetch(`/edit/profile/update`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'multipart/form-data'
         },
         body: formData
     })
-
     console.log(formData)
 }
 function EditPostForm() {
