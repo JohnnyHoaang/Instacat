@@ -23,33 +23,44 @@ function Cards(props) {
     const [increasing, setIncreasing] = useState(true);
 
 
-    async function handleLike(index, idp) {
-        const currentLikes = parseInt(document.getElementById(index).innerHTML);
-
+    async function handleLike(index, id) {
+        console.log('id:', id);
         if (numberOfLikes >= 0) {
             if (increasing) {
-                setNumberOfLikes((prevLikes) => prevLikes + 1);
-                document.getElementById(idp).src = orangeHeart;
+                setNumberOfLikes( (prevLikes) => {
+                    const newLikes = prevLikes + 1;
+
+                    // Send the like to the API
+                    const payload = { id };
+                    console.log(payload);
+                    const urlLike = "/update/post/like/";
+                    console.log(id);
+                     fetch(urlLike, {
+                    method: "POST",
+                    body: JSON.stringify(payload),
+                    headers: { "Content-Type": "application/json", },
+                    });
+                    document.getElementById(index).innerHTML = newLikes;
+                    return newLikes;
+                });
+                document.getElementById(id).src = orangeHeart;
             } else {
-                setNumberOfLikes((prevLikes) => prevLikes - 1);
-                document.getElementById(idp).src = heartLike;
+                setNumberOfLikes((prevLikes) => {
+                    const newLikes = prevLikes - 1;
+
+                    const urlUnlike = "/update/post/unlike";
+                    console.log(id);
+                     fetch(urlUnlike, {
+                    method: "POST",
+                    body: JSON.stringify({ id }),
+                    headers: { "Content-Type": "application/json", },
+                    });
+                    document.getElementById(index).innerHTML = newLikes;
+                    return newLikes;
+                });
+                document.getElementById(id).src = heartLike;
             }
             setIncreasing(!increasing);
-            document.getElementById(index).innerHTML = numberOfLikes;
-
-            
-            // Send the like to the API
-            let object = JSON.stringify({ id : props.id});
-            const url = "/update/post/like/";
-            console.log(`${props.id}`);
-            await fetch(url, {
-                method: "POST",
-                body: object,
-                headers: {
-                    "Content-Type": "application/json; charset=UTF-8",
-                
-                },
-            });
         }
     }
 
