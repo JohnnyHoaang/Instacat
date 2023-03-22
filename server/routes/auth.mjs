@@ -41,8 +41,11 @@ router.post("/login", async (req, res) => {
     const { name, email, picture } = ticket.getPayload()
 
     //TODO Update entry if user already exists
-    const user = { "name": name, "email": email, "picture": picture }
-    db.insertToDB(User, user)
+    let user = await User.find({email: email})
+    if(data.length == 0){
+        user = { "name": name, "email": email, "picture": picture }
+        db.insertToDB(User, user)
+    }
 
     //TODO add picture data
 
