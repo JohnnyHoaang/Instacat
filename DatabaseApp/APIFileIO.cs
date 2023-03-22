@@ -22,7 +22,6 @@ namespace DatabaseApp
         private const string ADOPT_FILE_NAME = "adopt.bson";
 
         private string _catApiKey;
-        private string _wordApiKey;
         private string _petFinderApiKey;
         private string _petFinderApiSecret;
 
@@ -33,15 +32,14 @@ namespace DatabaseApp
         /// Initializes a new instance of the helper class to fetch APIs and save data to files
         /// </summary>
         /// <param name="catApiKey"> Cat API key </param>
-        /// <param name="wordApiKey"> API key for the Random Word API </param>
         /// <param name="petfinderApiKey"> PetFinder API key </param>
-        public APIFileIO(string catApiKey, string wordApiKey, string petfinderApiKey, string petfinderApiSecret)
+        /// <param name="petfinderSecret"> PetFinder API secret for OAuth </param>
+        public APIFileIO(string catApiKey, string petfinderApiKey, string petfinderApiSecret)
         {
             CatPosts = new List<BsonDocument>();
             AdoptPosts = new List<BsonDocument>();
             
             _catApiKey = catApiKey;
-            _wordApiKey = wordApiKey;
             _petFinderApiKey = petfinderApiKey;
             _petFinderApiSecret = petfinderApiSecret;
         }
@@ -51,19 +49,29 @@ namespace DatabaseApp
         /// </summary>
         public async Task MakeCatPosts()
         {
-            // Get the cat images
-            var cats = GetResponseFromAPI<JArray>(
-                CAT_API_LINK, 
-                "?limit=10"
-            ); // TODO: Add the API key functionality by adding '&api_key=" + _catApiKey' in the params
-
+            // Get the cat images. THe API only allows 100 posts at a time, hence the loop
+            JArray cats = new JArray();
+            for (int i = 0; i < 10; i++) {
+                cats.Merge(GetResponseFromAPI<JArray>(
+                    CAT_API_LINK, 
+                    "?limit=100&api_key=" + _catApiKey
+                ));
+            }
             // Get words for captions
             var words = GetResponseFromAPI<JArray>(
                 WORD_API_LINK, 
-                "?number=20"
-            ); // TODO: See how to implement the API Key for this API
+                "?number=2000"
+            );
 
-            // Assemble the posts
+            // Get random words for some hashtags 
+            var hashtags = GetResponseFromAPI<JArray>(
+                WORD_API_LINK,
+                "?number=2000"
+            );
+            Console.WriteLine("Cat posts created");
+
+
+            // Assemble the posts (TODO, associate more concrete users than admin)
             Random rnd = new Random();
             int index = 0;
             foreach (var cat in cats)
@@ -71,11 +79,14 @@ namespace DatabaseApp
                 JObject obj = new JObject();
 
                 obj["id"] = cat["id"];
-                obj["username"] = Path.GetRandomFileName().Replace(".", "").Substring(0, 8);
+                obj["username"] = "admin";
                 obj["image"] = cat["url"];
                 obj["caption"] = words[index] + " " + words[index + 1];
-                obj["hashtags"] = new JArray();
-                obj["likes"] = rnd.Next(0, 10);
+                JArray hashtagsArr = new JArray();
+                hashtagsArr.Add(hashtags[index]);
+                hashtagsArr.Add(hashtags[index + 1]);
+                obj["hashtags"] = hashtagsArr;
+                obj["likes"] = 1;
                 obj["comments"] = new JArray();
 
                 CatPosts.Add(BsonDocument.Parse(obj.ToString()));
@@ -84,7 +95,6 @@ namespace DatabaseApp
             
             // Write the posts to a file to back up data
             await WriteToFile(POSTS_FILE_NAME, CatPosts);
-            Console.WriteLine("Posts were written to file");
         }
 
         /// <summary>
@@ -107,12 +117,17 @@ namespace DatabaseApp
         {
             // Get the Petfinder access token
             string token = await GetAccessToken();
-            // Get the cats that are up for adoption
-            var cats = GetResponseFromAPI<JObject>(
-                PETFINDER_API_LINK + "animals", 
-                "?type=cat&location=H1N&distance=250&limit=10", 
-                token
-            );
+            // Get the cats that are up for adoption (Also 100 at a time)
+            JObject cats = new JObject();
+            for (int i = 0; i < 10; i++)
+            {
+                cats.Merge(GetResponseFromAPI<JObject>(
+                    PETFINDER_API_LINK + "animals", 
+                    "?type=cat&location=H1N&distance=250&limit=100&page=" + (i + 1), 
+                    token
+                ));
+            }
+            Console.WriteLine("Adoption posts created");
 
             foreach(var c in cats["animals"])
             {
@@ -129,7 +144,6 @@ namespace DatabaseApp
                 AdoptPosts.Add(BsonDocument.Parse(obj.ToString()));
             }
             await WriteToFile(ADOPT_FILE_NAME, AdoptPosts);
-            Console.WriteLine("Adoption posts written to file");
         }
 
         /// <summary>
@@ -179,7 +193,11 @@ namespace DatabaseApp
                         System.Console.WriteLine("Access token obtained");
                     }
                 } 
-                else System.Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
+                else 
+                {
+                    System.Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
+                    Environment.Exit(1);
+                }
             }  
             return token;  
         }
@@ -200,10 +218,13 @@ namespace DatabaseApp
                 if (response.IsSuccessStatusCode)
                 {
                     var res = response.Content.ReadAsStringAsync().Result;
-                    System.Console.WriteLine("Data successfully retrieved from the requested API");
                     return (T)JsonConvert.DeserializeObject(res);
                 }
-                else System.Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
+                else 
+                {
+                    System.Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
+                    Environment.Exit(1);
+                }
             }
             return null;
         }
@@ -216,6 +237,7 @@ namespace DatabaseApp
                 temp.Add(item.ToString());
 
             await File.WriteAllLinesAsync(fileName, temp);
+
             System.Console.WriteLine(fileName + " has been written");
         }
     }
