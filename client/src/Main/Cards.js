@@ -70,7 +70,6 @@ function Cards(props) {
     }
 
 
-
     return (
         <div className='cat-card' id={id} >
             <Link to={`/cats/${props.id}`} style={{ textDecoration: 'none' }}>

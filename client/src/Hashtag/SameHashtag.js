@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 function SameHashtag () {
     const { hashtag } = useParams();
-    let [eachHashtag, setEachHashtag]= useState([]);
+    let [eachHashtag, setEachHashtag]= useState({});
 
     //npx json-server --watch data/data2.json --port 3006  
     useEffect(() => {
@@ -22,8 +22,7 @@ function SameHashtag () {
                 }
             })
             .then(data => {
-                console.log(data);
-                setEachHashtag(data);
+                setEachHashtag(data[0]);
             })
             .catch(err => {
                 console.log(err.message);
@@ -33,10 +32,15 @@ function SameHashtag () {
     return(
         <div>  
             <p>
-                 test for hastags
+                test for hastags
             </p>
             <div>
-                {eachHashtag.id}
+                this is the id: {eachHashtag.id}
+                
+            </div>
+
+            <div>
+                this is the image: {eachHashtag.image}
             </div>
         </div>
 
