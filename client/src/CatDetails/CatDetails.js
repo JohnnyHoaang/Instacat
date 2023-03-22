@@ -43,7 +43,7 @@ function CatDetails () {
             .catch(err => {
                 console.log(err.message);
             })
-    }, []);
+    });
 
 
     return (
