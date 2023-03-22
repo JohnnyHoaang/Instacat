@@ -42,5 +42,30 @@ describe('GET /api/cat/', () => {
         const resp = await request(app).get('/api/cat/all')
         expect(resp.statusCode).toBe(404)
         expect(resp.body).toEqual(errorValue)
+      })
+})
+
+describe('GET /api/adoption/all', ()=>{
+    test("Should respond with 200", async () => {
+        jest.spyOn(DBHelper.prototype, "getQueryData").mockResolvedValue(foundValue)
+        const resp = await request(app).get('/api/adoption/all')
+        expect(resp.statusCode).toBe(200)
+        expect(resp.body).toEqual(foundValue)
     })
+})
+
+describe('GET /adoption/all/', ()=>{
+    test("404 error with extra param", async()=>{
+        const resp = await request(app).get("/api/adoption/1")
+        expect(resp.statusCode).toBe(404)
+    })
+})
+
+describe('GET /adoption/all/', ()=>{
+    test("Should respond with 404", async()=>{
+        jest.spyOn(DBHelper.prototype, "getQueryData").mockResolvedValue(noValue)
+        const resp = await request(app).get('/api/adoption/all')
+        expect(resp.statusCode).toBe(404)
+        expect(resp.body).toEqual(errorValue)
+      })
 })

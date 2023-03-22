@@ -20,13 +20,12 @@ const apiURL = "https://cattus.azurewebsites.net/api/cat/all"
  * @param {String} username 
  * @param {String} caption 
  * @param {Model} model 
- * @param {Object} response 
  * @author Johnny Hoang
  */
-async function uploadToAzureDB(file, username, caption, model, response) {
+async function uploadToAzureDB(file, username, caption, model) {
     let blobURL = await saveToAzure(file)
     const data = getPostData(username, blobURL, caption)
-    await db.insertToDB(response, model, data)
+    await db.insertToDB(model, data)
 }
 
 /**

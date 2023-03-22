@@ -12,11 +12,8 @@ function Discover() {
 
     return (
         <div className="Discover">
-            <Header />
-            <Navigation />
             <p>discover</p>
             <div> <a href="/">home</a></div>
-            <Footer />
         </div>
     );
 }

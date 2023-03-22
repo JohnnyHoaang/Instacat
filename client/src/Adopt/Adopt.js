@@ -61,8 +61,6 @@ function Adopt() {
 
     return (
         <div className="Adopt">
-            <Header />
-            <Navigation />
             <div id='adopt-top'>
                 <p id='cat-quote'>“There are few things in life more heartwarming than to be welcomed by a cat.”</p>
                 <p id='quote-narrator'>Tay Hohoff</p>
@@ -97,7 +95,6 @@ function Adopt() {
                         <button onClick={() => paginate(currentPage + 1)}>{'>>Next'}</button>
                     )}
             </div>
-            <Footer />
         </div>
     );
 }

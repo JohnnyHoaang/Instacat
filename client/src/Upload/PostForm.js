@@ -10,10 +10,8 @@ import './PostForm.css'
 function PostForm() {
     return (
         <div>
-            <Header />
-            <Navigation />
             <div className='post-form'>
-                <form id='p-form' method="POST" action="post/upload" enctype="multipart/form-data">
+                <form id='p-form' method="POST" action="/add/post/upload" enctype="multipart/form-data">
                     <div className='post-image'>
                         <label className='image-lable' for="image">Select image:</label>
                         <input type="file" id="image-post-btn" name="image" accept="image/png, image/jpeg" required></input>
@@ -27,7 +25,6 @@ function PostForm() {
                     </div>
                 </form>
             </div>
-            <Footer />
         </div>
 
     )
