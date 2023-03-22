@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 
 /***
- * Display each cat inormation 
+ * Display each cat information 
  * @returns {Component} CatDetails
  * @author Maedeh hassani 
  */

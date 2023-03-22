@@ -1,6 +1,6 @@
 import heartLike from '../images/heart.png'
 import shareImg from '../images/share04.png'
-import orangeHeart from '../images/orange-haert.png'
+import orangeHeart from '../images/orange-heart.png'
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './Cards.css';
@@ -13,7 +13,7 @@ import React, { useState } from 'react';
  * 
  * @param {*} props 
   * @returns {Component} Cards
- * @author Maedeh hassani  
+ * @author Maedeh Hassani  
  */
 function Cards(props) {
 

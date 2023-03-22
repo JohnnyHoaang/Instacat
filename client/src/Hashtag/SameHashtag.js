@@ -33,7 +33,7 @@ function SameHashtag () {
     return(
         <div>  
             <p>
-                 test for hastags
+                 test for hashtags
             </p>
             <div>
                 {eachHashtag.id}
