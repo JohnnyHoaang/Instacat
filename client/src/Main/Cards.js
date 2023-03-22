@@ -31,15 +31,7 @@ function Cards(props) {
                     const newLikes = prevLikes + 1;
 
                     // Send the like to the API
-                    const payload = { id };
-                    console.log(payload);
-                    const urlLike = "/update/post/like/";
-                    console.log(id);
-                     fetch(urlLike, {
-                    method: "POST",
-                    body: JSON.stringify(payload),
-                    headers: { "Content-Type": "application/json", },
-                    });
+                    updateLike(id, "/update/post/like/");
                     document.getElementById(index).innerHTML = newLikes;
                     return newLikes;
                 });
@@ -48,13 +40,7 @@ function Cards(props) {
                 setNumberOfLikes((prevLikes) => {
                     const newLikes = prevLikes - 1;
 
-                    const urlUnlike = "/update/post/unlike";
-                    console.log(id);
-                     fetch(urlUnlike, {
-                    method: "POST",
-                    body: JSON.stringify({ id }),
-                    headers: { "Content-Type": "application/json", },
-                    });
+                    updateLike(id, "/update/post/unlike");
                     document.getElementById(index).innerHTML = newLikes;
                     return newLikes;
                 });
@@ -62,6 +48,15 @@ function Cards(props) {
             }
             setIncreasing(!increasing);
         }
+    }
+
+    function updateLike(id , url) {
+        ;
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify({ id }),
+            headers: { "Content-Type": "application/json", },
+        });
     }
 
     function sharePost() {
@@ -108,3 +103,5 @@ function Cards(props) {
 
 
 export default Cards;
+
+
