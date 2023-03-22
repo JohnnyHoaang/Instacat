@@ -1,6 +1,8 @@
 import Cards from './Cards.js';
+import './MainContainer.css';
 import addingPost from '../images/adding-post.png';
 import { useEffect, useState } from 'react';
+
 
 
 /**
@@ -35,6 +37,7 @@ function Main(props) {
             })
     }, []);
 
+
     // Calculate the starting and ending index of the cards to display
     const indexOfLastCard = currentPage * cardsPerPage;
     const indexOfFirstCard = indexOfLastCard - cardsPerPage;
@@ -57,7 +60,9 @@ function Main(props) {
                 
             </section>
             <div id='adding-user-post'>
-            <a href='add/post'><img src={addingPost} alt="adding post" id="adding"></img></a>
+                <a href='add/post'>
+                    <img src={addingPost} alt="adding post" id="adding"></img>
+                </a>
             </div>
 
             <section className='card-container'>
@@ -69,6 +74,7 @@ function Main(props) {
                             imageUrl={item.image}
                             caption={item.caption}
                             likesNum={item.likes}
+                            hashtags={item.hashtags}
                         />
                         </div>
                     ))}

@@ -1,0 +1,38 @@
+#about-us{
+    display: flex;
+    justify-content: left;
+    width: 98%;
+    height: 900px;
+    background-image: url('../images/aboutUs.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size: 25px;
+    padding: 10px;
+    margin: 15px 0 10px 0;
+    
+}
+
+#about-us-main-text{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(238, 248, 225, 0.6);
+    padding: 10px;
+    margin: 30px 15px;
+    height: 610px;
+    border-radius: 2px;
+}
+
+.about-us-text-welcome{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.about-us-text{
+    margin: 3px  ;
+}
+
+.about-us-text-end{
+    margin: 0 0 20px 0;
+}
