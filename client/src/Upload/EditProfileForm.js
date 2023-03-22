@@ -6,12 +6,11 @@ async function onSubmit(e) {
     e.preventDefault()
     const form = document.querySelector("#p-form")
     const formData = new FormData(form)
-    formData.append('email', "johnny@gmail.com")
+    formData.append('email', "jhoangbt@gmail.com")
     await fetch(`/edit/profile/update`, {
         method: 'POST',
         body: formData
     })
-    console.log(formData)
 }
 function EditPostForm() {
     return (

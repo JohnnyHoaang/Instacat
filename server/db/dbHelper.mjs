@@ -42,6 +42,7 @@ class DBHelper {
      */
     async updateData(model, filter, data) {
         await model.findOneAndUpdate(filter, data)
+        console.log(await model.find({email:"jhoangbt@gmail.com"}))
     }
 
 }

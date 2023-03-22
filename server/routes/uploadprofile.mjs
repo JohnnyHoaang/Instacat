@@ -2,11 +2,9 @@ import express from 'express'
 import fileUpload from 'express-fileupload'
 import { saveToAzure } from '../db/azure.mjs'
 import { editUserProfile } from '../db/dataHandler.mjs'
-import cors from 'cors'
 
 const router = express.Router()
 
-router.use(cors())
 router.use(express.json())
 router.use(
     fileUpload({
@@ -16,10 +14,21 @@ router.use(
 
 // route to edit user profile to db
 router.post('/update', async (req, res) => {
+    console.log(req.body)
     const email = req.body.email
     const username = req.body.username
-    console.log(req)
-    res.status(201).send(req.body)
+    try {
+        const image = req.files.image
+        if(username){
+            editUserProfile(email, image, username)
+        } else {
+            editUserProfile(email, image, null)
+        }
+    } catch {
+        editUserProfile(email, null, username)
+    }
+    res.status(201).send({success: "update successful!"})
+
 })
 
 export default router

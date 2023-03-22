@@ -8,10 +8,10 @@ const db = new DBHelper()
 async function editUserProfile(email, file, username){
     if(file){
         const blobURL  = await saveToAzure(file)
-        db.updateData(User, { email: email }, { image: blobURL})
+        db.updateData(User, { email: email }, { picture: blobURL})
     }
     if(username){
-        db.updateData(User, { email: email }, { username: username})
+        db.updateData(User, { email: email }, { name: username})
     }
 }
 
