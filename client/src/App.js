@@ -14,6 +14,9 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import languages from './languages'
 import EditPostForm from './Upload/EditProfileForm.js';
+import SameHashtag from './Hashtag/SameHashtag.js';
+
+
 i18n
     .use(LanguageDetector)
     .use(initReactI18next)
@@ -30,7 +33,8 @@ const router = createBrowserRouter(
         { path: "/aboutUs", element: <AboutUs /> },
         { path: "/cats/:id", element: <CatDetails /> },
         { path: "/add/post", element: <PostForm /> },
-        { path: "/edit/profile", element: <EditPostForm />}
+        { path: "/edit/profile", element: <EditPostForm />},
+        { path: "/catHashtags/:hashtag", element: <SameHashtag />}
     ]
 )
 
@@ -52,6 +56,5 @@ function App() {
     );
 
 }
-
 
 export default App;

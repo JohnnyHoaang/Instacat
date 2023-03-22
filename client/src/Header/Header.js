@@ -5,7 +5,6 @@ import defaultProfile from '../images/default-profile.png'
 import { GoogleLogin } from '@react-oauth/google';
 
 
-
 const Header = () => {
     // Move to App
     const [username, setUsername] = useState("")
@@ -41,19 +40,22 @@ const Header = () => {
     return (
         <header>
             <img src={myLogo} alt="logo" id="logo"></img>
-            {/* <h1>InstaCat</h1> */}
             <div id='profile-div'>
-                <a href="/edit/profile/">
-                <img src={profilePicture || defaultProfile} alt="profile" id="profile-img">
-                    
-                    </img>
-                </a>
-                {!username && <GoogleLogin
-                    onSuccess={handleLogin}
-                    onError={handleError}
-                />}
-                {username && <button onClick={handleLogout}>Logout</button>}
-                <p>{username ? username : "Guest"}</p>
+                <div className='profile-img-div'>
+                    <img src={profilePicture || defaultProfile} alt="profile" id="profile-img"></img>
+                </div>
+                <div className='profile-guest-div'>
+                    <p>{username ? username : "Guest"}</p>
+                </div>
+                <div className='profile-google-div'>
+                    {!username && <GoogleLogin
+                        onSuccess={handleLogin}
+                        onError={handleError}
+                    />}
+                    {username && <button onClick={handleLogout}>Logout</button>}
+                </div>
+                
+                
             </div>
         </header>
     );

@@ -9,9 +9,6 @@ async function onSubmit(e) {
     formData.append('email', "johnny@gmail.com")
     await fetch(`/edit/profile/update`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        },
         body: formData
     })
     console.log(formData)
