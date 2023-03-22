@@ -5,11 +5,7 @@ import defaultProfile from '../images/default-profile.png'
 import { GoogleLogin } from '@react-oauth/google';
 
 
-const Header = () => {
-    // Move to App
-    const [username, setUsername] = useState("")
-    const [profilePicture, setProfilePicture] = useState("")
-
+const Header = (props) => {
     const handleLogin = async googleData => {
         const res = await fetch("/auth/login", {
             method: "POST",
@@ -22,8 +18,9 @@ const Header = () => {
         })
         const data = await res.json()
         // Sets the username and profile picture to be used in other views
-        setUsername(data.user.name)
-        setProfilePicture(data.user.picture)
+        props.setUsername(data.user.name)
+        props.setProfilePicture(data.user.picture)
+        props.setEmail(data.user.email)
     }
 
     const handleError = error => {
@@ -32,8 +29,9 @@ const Header = () => {
 
     const handleLogout = async () => {
         await fetch("/auth/logout");
-        setUsername("");
-        setProfilePicture("");
+        props.setUsername("");
+        props.setProfilePicture("");
+        props.setEmail("")
     }
 
 
@@ -43,18 +41,18 @@ const Header = () => {
             <div id='profile-div'>
                 <div className='profile-img-div'>
                     <a href="/edit/profile">
-                        <img src={profilePicture || defaultProfile} alt="profile" id="profile-img"></img>
+                        <img src={props.profilePicture || defaultProfile} alt="profile" id="profile-img"></img>
                     </a>
                     </div>
                 <div className='profile-guest-div'>
-                    <p>{username ? username : "Guest"}</p>
+                    <p>{props.username ? props.username : "Guest"}</p>
                 </div>
                 <div className='profile-google-div'>
-                    {!username && <GoogleLogin
+                    {!props.username && <GoogleLogin
                         onSuccess={handleLogin}
                         onError={handleError}
                     />}
-                    {username && <button onClick={handleLogout}>Logout</button>}
+                    {props.username && <button onClick={handleLogout}>Logout</button>}
                 </div>
                 
                 

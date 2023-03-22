@@ -1,4 +1,4 @@
-function EditPostForm() {
+function EditPostForm(props) {
 
     async function onSubmit(e) {
         e.preventDefault()
@@ -6,7 +6,7 @@ function EditPostForm() {
         // Create form data with form input
         const formData = new FormData(form)
         // Add user email
-        formData.append('email', "jhoangbt@gmail.com")
+        formData.append('email', props.email)
         await fetch(`/edit/profile/update`, {
             method: 'POST',
             body: formData
