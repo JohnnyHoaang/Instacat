@@ -14,17 +14,19 @@ router.use(
 
 // route to edit user profile to db
 router.post('/update', async (req, res) => {
-    console.log(req.body)
     const email = req.body.email
     const username = req.body.username
     try {
         const image = req.files.image
         if(username){
+            // Update user profile image and username
             editUserProfile(email, image, username)
         } else {
+            // Update user profile image
             editUserProfile(email, image, null)
         }
     } catch {
+        // Update user if user does not change image
         editUserProfile(email, null, username)
     }
     res.status(201).send({success: "update successful!"})

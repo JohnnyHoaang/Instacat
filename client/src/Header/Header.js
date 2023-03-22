@@ -42,8 +42,10 @@ const Header = () => {
             <img src={myLogo} alt="logo" id="logo"></img>
             <div id='profile-div'>
                 <div className='profile-img-div'>
-                    <img src={profilePicture || defaultProfile} alt="profile" id="profile-img"></img>
-                </div>
+                    <a href="/edit/profile">
+                        <img src={profilePicture || defaultProfile} alt="profile" id="profile-img"></img>
+                    </a>
+                    </div>
                 <div className='profile-guest-div'>
                     <p>{username ? username : "Guest"}</p>
                 </div>
