@@ -62,10 +62,16 @@ namespace DatabaseApp
                 WORD_API_LINK, 
                 "?number=2000"
             );
+
+            // Get random words for some hashtags 
+            var hashtags = GetResponseFromAPI<JArray>(
+                WORD_API_LINK,
+                "?number=2000"
+            );
             Console.WriteLine("Cat posts created");
 
 
-            // Assemble the posts
+            // Assemble the posts (TODO, associate more concrete users than admin)
             Random rnd = new Random();
             int index = 0;
             foreach (var cat in cats)
@@ -76,8 +82,11 @@ namespace DatabaseApp
                 obj["username"] = "admin";
                 obj["image"] = cat["url"];
                 obj["caption"] = words[index] + " " + words[index + 1];
-                obj["hashtags"] = new JArray();
-                obj["likes"] = rnd.Next(0, 10);
+                JArray hashtagsArr = new JArray();
+                hashtagsArr.Add(hashtags[index]);
+                hashtagsArr.Add(hashtags[index + 1]);
+                obj["hashtags"] = hashtagsArr;
+                obj["likes"] = 1;
                 obj["comments"] = new JArray();
 
                 CatPosts.Add(BsonDocument.Parse(obj.ToString()));
