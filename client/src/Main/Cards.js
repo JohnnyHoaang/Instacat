@@ -24,8 +24,6 @@ function Cards(props) {
 
 
     async function handleLike(index, idp) {
-        const currentLikes = parseInt(document.getElementById(index).innerHTML);
-
         if (numberOfLikes >= 0) {
             if (increasing) {
                 setNumberOfLikes((prevLikes) => prevLikes + 1);
@@ -37,7 +35,6 @@ function Cards(props) {
             setIncreasing(!increasing);
             document.getElementById(index).innerHTML = numberOfLikes;
 
-            
             // Send the like to the API
             let object = JSON.stringify({ id : props.id});
             const url = "/update/post/like/";
