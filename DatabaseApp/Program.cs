@@ -43,8 +43,7 @@ namespace DatabaseApp
             
             // TODO: Add the API keys as environment variables
             APIFileIO apiTool = new APIFileIO(
-                "",
-                "",
+                Environment.GetEnvironmentVariable("CAT_API_KEY"),
                 Environment.GetEnvironmentVariable("PETFINDER_ID"),
                 Environment.GetEnvironmentVariable("PETFINDER_SECRET")
             );
@@ -58,7 +57,6 @@ namespace DatabaseApp
                         await apiTool.MakeAdoptPosts();
                         break;
                     case "2":
-                        // Might change this to be one method
                         await apiTool.ReadCatPosts();
                         await apiTool.ReadAdoptPosts();
 
