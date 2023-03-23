@@ -28,7 +28,11 @@ router.get('/adoption/all', async (req, res) => {
 // Returns all posts with the specified hashtag
 router.get('/hashtag/:hashtag', async (req, res) => {
     const hashtag = req.params.hashtag
-    await sendData(res, Post, { "hashtags": { "$regex": hashtag } })
+    await sendData(res, Post, { hashtags: { "$regex": hashtag } })
+})
+router.get('/search/:query', async(req,res)=>{
+    const query = req.params.query
+    await sendData(res, Post, { caption: { "$regex": query} })
 })
 
 export default router
