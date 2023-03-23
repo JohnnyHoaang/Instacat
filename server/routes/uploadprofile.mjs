@@ -26,18 +26,18 @@ router.post('/update', async (req, res) => {
             await editUserProfile(email, image, null)
         }
         // Send updated user information with image
-        sendUpdatedUser(email)
+        sendUpdatedUser(res,email)
     } catch {
         // Update user if user does not change image
         await editUserProfile(email, null, username)
         // Send updated user information without changing image
-        sendUpdatedUser(email)
+        sendUpdatedUser(res,email)
     }
 })
 
 export default router
 
-async function sendUpdatedUser(email){
+async function sendUpdatedUser(res,email){
     const user = await User.find({email:email})
     res.status(201).send(user[0])
 }
