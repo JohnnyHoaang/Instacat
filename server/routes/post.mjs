@@ -13,7 +13,7 @@ router.get('/cat/id/:id', async (req, res) => {
   await sendData(res, Post, {id: req.params.id});
 });
 // Returns all cat posts
-router.get('/cat/all/', async (req, res)=>{
+router.get('/cat/all/', async (req, res) => {
   await sendData(res, Post, {});
 });
 // Returns specific adoption post using id
@@ -22,24 +22,31 @@ router.get('/adoption/id/:id', async (req, res) => {
 });
 
 // Returns all adoption posts
-router.get('/adoption/all', async (req, res)=>{
+router.get('/adoption/all', async (req, res) => {
   await sendData(res, AdoptionPost, {});
+});
+// Returns all posts with the specified hashtag
+router.get('/hashtag/:hashtag', async (req, res) => {
+  const hashtag = req.params.hashtag;
+  await sendData(res, Post, {'hashtags': {'$regex': hashtag}});
 });
 
 export default router;
 
 /**
- * Helper function that sends data to api
- * @param {*} res
- * @param {*} model
- * @param {*} query
+ * Send data to the API route
+ * @param {Object} response
+ * @param {Model} model
+ * @param {String} query
  */
-async function sendData(res, model, query) {
+async function sendData(response, model, query) {
+  // Receive data from db
   const data = await db.getQueryData(model, query);
   if (data.length > 0) {
-    res.json(data);
+    // send data to route
+    response.json(data);
   } else {
-    res.status(404).send({error: 'data not found'});
+    response.status(404).send({error: 'data not found'});
   }
 }
 
