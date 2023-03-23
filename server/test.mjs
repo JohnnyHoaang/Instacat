@@ -10,14 +10,12 @@ async function main() {
 
   process.on('SIGTERM', shutdown)
   process.on('SIGINT', shutdown)
-  await User.deleteMany({email:"johnnyhoangbt@gmail.com"})
+  await User.deleteMany({email:"jhoangbt@gmail.com"})
   console.log(await User.find({}))
   async function shutdown() {
     console.log("Shutting down");
-    server.close(async () => {
       console.log("HTTP server closed.")
       await mongo.disconnect()
       process.exit();
-    })
   }
 }

@@ -17,7 +17,7 @@ const Header = (props) => {
             }
         })
         const data = await res.json()
-        // Sets the username and profile picture to be used in other views
+        // Sets the username, profile picture and email to be used in other views
         props.setUsername(data.user.name)
         props.setProfilePicture(data.user.picture)
         props.setEmail(data.user.email)

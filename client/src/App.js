@@ -53,7 +53,8 @@ function App() {
             <div className="App">
                 <Header
                     username={username} profilePicture={profilePicture}
-                    setUsername={setUsername} setProfilePicture={setProfilePicture}
+                    setUsername={setUsername} 
+                    setProfilePicture={setProfilePicture}
                     setEmail={setEmail}
                 />
                 <Navigation />

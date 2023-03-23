@@ -39,23 +39,21 @@ router.post("/login", async (req, res) => {
     if (!ticket)
         return res.sendStatus(401)
     const { name, email, picture } = ticket.getPayload()
-
-    //TODO Update entry if user already exists
+    // Check if user exists with email
     let user = await User.find({email: email})
-    if(data.length == 0){
-        user = { "name": name, "email": email, "picture": picture }
+    if(user.length == 0){
+        // Create new user object and insert to database
+        const user = { "name": name, "email": email, "picture": picture }
         db.insertToDB(User, user)
+        // Regenerate session with new user
+        regenerateSession(req, res, user)
+    } else {
+        // Regenerate session with user from DB
+        regenerateSession(req,res,user[0])
     }
-
     //TODO add picture data
 
-    req.session.regenerate((err) => {
-        if (err) {
-            return res.sendStatus(500)
-        }
-        req.session.user = user
-        res.json({ user: user })
-    })
+    
 
 })
 
@@ -68,6 +66,16 @@ router.get("/logout", isAuthenticated, (req, res) => {
         res.sendStatus(200)
     })
 })
+
+function regenerateSession(req, res, user) {
+    req.session.regenerate((err) => {
+        if (err) {
+            return res.sendStatus(500)
+        }
+        req.session.user = user
+        res.json({ user: user })
+    })
+}
 
 /**
  * Function to check if a user can access a route
