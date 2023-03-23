@@ -20,6 +20,7 @@ build:
     expire_in: 1 days
     when: on_success
     paths:
+      - node_modules/
       - server/node_modules/
       - client/node_modules/
       - client/build/
@@ -35,6 +36,8 @@ eslint:
   stage: lint
   dependencies:
     - build
+  # before_script:
+  #   - npm install --save-dev eslint
   script:
     - node_modules/eslint/bin/eslint.js .
 
