@@ -2,7 +2,7 @@ import express from 'express'
 import fileUpload from 'express-fileupload'
 import { saveToAzure } from '../db/azure.mjs'
 import { editUserProfile } from '../db/dataHandler.mjs'
-
+import { User } from '../models/User.mjs'
 const router = express.Router()
 
 router.use(express.json())
@@ -20,17 +20,24 @@ router.post('/update', async (req, res) => {
         const image = req.files.image
         if(username){
             // Update user profile image and username
-            editUserProfile(email, image, username)
+            await editUserProfile(email, image, username)
         } else {
             // Update user profile image
-            editUserProfile(email, image, null)
+            await editUserProfile(email, image, null)
         }
+        // Send updated user information with image
+        sendUpdatedUser(email)
     } catch {
         // Update user if user does not change image
-        editUserProfile(email, null, username)
+        await editUserProfile(email, null, username)
+        // Send updated user information without changing image
+        sendUpdatedUser(email)
     }
-    res.status(201).send({success: "update successful!"})
-
 })
 
 export default router
+
+async function sendUpdatedUser(email){
+    const user = await User.find({email:email})
+    res.status(201).send(user[0])
+}

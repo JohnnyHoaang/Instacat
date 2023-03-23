@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1679587427904" clover="3.2.0">
+  <project timestamp="1679587427905" name="All files">
+    <metrics statements="177" coveredstatements="91" conditionals="34" coveredconditionals="10" methods="37" coveredmethods="17" elements="248" coveredelements="118" complexity="0" loc="177" ncloc="177" packages="5" files="16" classes="16"/>
+    <package name="server">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="app.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\app.mjs">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="server.db">
+      <metrics statements="47" coveredstatements="12" conditionals="10" coveredconditionals="2" methods="9" coveredmethods="1"/>
+      <file name="azure.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\db\azure.mjs">
+        <metrics statements="25" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+      </file>
+      <file name="dataHandler.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\db\dataHandler.mjs">
+        <metrics statements="11" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+      </file>
+      <file name="dbHelper.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\db\dbHelper.mjs">
+        <metrics statements="11" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="1"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="4" count="15" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="server.models">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="AdoptionPost.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\models\AdoptionPost.mjs">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
+      </file>
+      <file name="Post.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\models\Post.mjs">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+      </file>
+      <file name="User.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\models\User.mjs">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="server.routes">
+      <metrics statements="93" coveredstatements="45" conditionals="16" coveredconditionals="2" methods="19" coveredmethods="8"/>
+      <file name="auth.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\routes\auth.mjs">
+        <metrics statements="32" coveredstatements="8" conditionals="10" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="60" count="3" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="62" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="72" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="88" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+      </file>
+      <file name="likes.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\routes\likes.mjs">
+        <metrics statements="8" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+      </file>
+      <file name="main.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\routes\main.mjs">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="10" type="stmt"/>
+      </file>
+      <file name="post.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\routes\post.mjs">
+        <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="44" count="8" type="stmt"/>
+        <line num="45" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="47" count="5" type="stmt"/>
+        <line num="49" count="3" type="stmt"/>
+      </file>
+      <file name="uploadpost.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\routes\uploadpost.mjs">
+        <metrics statements="12" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+      </file>
+      <file name="uploadprofile.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\routes\uploadprofile.mjs">
+        <metrics statements="16" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="server.utils">
+      <metrics statements="23" coveredstatements="20" conditionals="8" coveredconditionals="6" methods="9" coveredmethods="8"/>
+      <file name="captioncheck.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\utils\captioncheck.mjs">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="9" count="18" type="stmt"/>
+      </file>
+      <file name="idgenerator.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\utils\idgenerator.mjs">
+        <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="9" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="9" type="stmt"/>
+        <line num="14" count="9" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+      </file>
+      <file name="pathHandler.mjs" path="C:\Users\johnn\OneDrive\Desktop\school\Web-Dev-V\project-cattus\server\utils\pathHandler.mjs">
+        <metrics statements="12" coveredstatements="9" conditionals="6" coveredconditionals="4" methods="4" coveredmethods="3"/>
+        <line num="14" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="21" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="44" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

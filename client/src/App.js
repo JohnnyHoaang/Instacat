@@ -13,7 +13,7 @@ import { initReactI18next, I18nextProvider } from "react-i18next";
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import languages from './languages'
-import EditPostForm from './Upload/EditProfileForm.js';
+import EditProfileForm from './Upload/EditProfileForm.js';
 import SameHashtag from './Hashtag/SameHashtag.js';
 import { useState } from 'react';
 
@@ -44,7 +44,13 @@ function App() {
             { path: "/aboutUs", element: <AboutUs /> },
             { path: "/cats/:id", element: <CatDetails /> },
             { path: "/add/post", element: <PostForm /> },
-            { path: "/edit/profile", element: <EditPostForm email={email}/> },
+            { path: "/edit/profile", element: 
+            <EditProfileForm 
+                email={email}
+                setUsername={setUsername}
+                setProfilePicture={setProfilePicture}
+            /> 
+            },
             { path: "/catHashtags/:hashtag", element: <SameHashtag /> }
         ]
     )
