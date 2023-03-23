@@ -15,4 +15,4 @@ app.use("/update", likes)
 app.use("/admin", admin)
 app.use("/", main)
 
-export default app
+export default app;
