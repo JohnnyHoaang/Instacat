@@ -15,7 +15,6 @@ const sasToken = process.env.AZURE_SAS;
 const containerName = process.env.CONTAINER_NAME;
 const apiURL = 'https://cattus.azurewebsites.net/api/cat/all';
 /**
-<<<<<<< HEAD
  * Uploads image file to azure blob storage and saves model information database.
  * @param {File} file 
  * @param {String} username 
@@ -56,33 +55,6 @@ async function saveToAzure(file) {
     const options = { blobHTTPHeaders: { blobContentType: file.mimetype } }
     await blobClient.uploadData(file.data, options)
     return blobURL
-=======
- * Uploads image file to azure blob storage.
- * @param {File} file
- * @param {String} username
- * @param {String} caption
- * @param {Model} model
- * @author Johnny Hoang
- */
-async function uploadToAzure(file, username, caption, model) {
-  let path = file.name;
-  const baseURL = `https://${storageAccountName}.blob.core.windows.net/`;
-  let blobURL = `${baseURL}${containerName}/${path}`;
-  const blobService = new BlobServiceClient(`${baseURL}?${sasToken}`);
-  const containerClient = blobService.getContainerClient(containerName);
-  // check file name exists in azure cloud
-  const check = await ph.doesPathExists(apiURL, blobURL);
-  if (check) {
-    // generate new unique file name
-    path = await ph.generateUniquePath(path);
-    blobURL = `${baseURL}${containerName}/${path}`;
-  }
-  const blobClient = containerClient.getBlockBlobClient(path);
-  const options = {blobHTTPHeaders: {blobContentType: file.mimetype}};
-  await blobClient.uploadData(file.data, options);
-  const data = getPostData(username, blobURL, caption);
-  await db.insertToDB(model, data);
->>>>>>> 0a6acb356cdbf68b59f0f879cf2121d31dd1020d
 }
 
 
@@ -107,8 +79,4 @@ function getPostData(username, image, caption) {
   return post;
 }
 
-<<<<<<< HEAD
 export { uploadToAzureDB, saveToAzure }
-=======
-export {uploadToAzure};
->>>>>>> 0a6acb356cdbf68b59f0f879cf2121d31dd1020d
