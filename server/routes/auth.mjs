@@ -30,32 +30,6 @@ router.use(session({
   },
 }));
 
-router.post('/login', async (req, res) => {
-  const {token} = req.body;
-  const ticket = await client.verifyIdToken({
-    idToken: token,
-    audience: process.env.GOOGLE_CLIENT_ID,
-  });
-  if (!ticket) {
-    return res.sendStatus(401);
-  };
-  const {name, email, picture} = ticket.getPayload();
-
-  // TODO Update entry if user already exists
-  const user = {'name': name, 'email': email, 'picture': picture};
-  db.insertToDB(res, User, user);
-
-  // TODO add picture data
-
-  req.session.regenerate((err) => {
-    if (err) {
-      return res.sendStatus(500);
-    }
-    req.session.user = user;
-    res.json({user: user});
-  });
-});
-
 router.post("/login", async (req, res) => {
     const { token } = req.body
     const ticket = await client.verifyIdToken({
@@ -78,8 +52,6 @@ router.post("/login", async (req, res) => {
         regenerateSession(req,res,user[0])
     }
     //TODO add picture data
-
-    
 
 })
 

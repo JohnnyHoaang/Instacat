@@ -1,6 +1,6 @@
 import express from 'express';
 import fileUpload from 'express-fileupload';
-import {uploadToAzure} from '../db/azure.mjs';
+import {uploadToAzureDB}from '../db/azure.mjs';
 import {Post} from '../models/Post.mjs';
 
 const router = new express.Router();
@@ -18,7 +18,7 @@ router.post('/post/upload', async (req, res) => {
   const file = req.files.image;
   if (file) {
     try {
-      await uploadToAzure(file, 'username', caption, Post, res);
+      await uploadToAzureDB(file, 'username', caption, Post);
       res.redirect('/');
     } catch (error) {
       console.error(error);
