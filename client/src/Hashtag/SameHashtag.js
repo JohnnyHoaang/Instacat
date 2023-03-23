@@ -28,12 +28,12 @@ function SameHashtag () {
             .catch(err => {
                 console.log(err.message);
             })
-    }, []);
+    });
 
     return(
         <div>  
             <p>
-                 test for hastags
+                 test for hashtags
             </p>
             <div>
                 {eachHashtag.id}

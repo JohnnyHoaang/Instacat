@@ -1,6 +1,6 @@
 import heartLike from '../images/heart.png'
 import shareImg from '../images/share04.png'
-import orangeHeart from '../images/orange-haert.png'
+import orangeHeart from '../images/orange-heart.png'
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './Cards.css';
@@ -13,7 +13,7 @@ import React, { useState } from 'react';
  * 
  * @param {*} props 
   * @returns {Component} Cards
- * @author Maedeh hassani  
+ * @author Maedeh Hassani  
  */
 function Cards(props) {
 
@@ -24,8 +24,6 @@ function Cards(props) {
 
 
     async function handleLike(index, idp) {
-        const currentLikes = parseInt(document.getElementById(index).innerHTML);
-
         if (numberOfLikes >= 0) {
             if (increasing) {
                 setNumberOfLikes((prevLikes) => prevLikes + 1);
@@ -37,7 +35,6 @@ function Cards(props) {
             setIncreasing(!increasing);
             document.getElementById(index).innerHTML = numberOfLikes;
 
-            
             // Send the like to the API
             let object = JSON.stringify({ id : props.id});
             const url = "/update/post/like/";
