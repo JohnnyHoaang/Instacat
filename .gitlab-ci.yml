@@ -5,6 +5,7 @@ image: node:latest
 stages:
   - build
   - test
+  - lint
   - deploy
 
 build:
@@ -29,6 +30,13 @@ test:
     - build
   script:
     - npm run test --prefix server
+
+eslint:
+  stage: lint
+  before_script:
+    - npm install --save-dev eslint
+  script:
+    - node_modules/eslint/bin/eslint.js .
 
 azure-deploy:
   stage: deploy
