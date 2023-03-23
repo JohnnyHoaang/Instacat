@@ -4,7 +4,6 @@ import posts from './routes/post.mjs';
 import likes from './routes/likes.mjs';
 import addPost from './routes/uploadpost.mjs';
 import auth from './routes/auth.mjs';
-import editProfile from './routes/uploadprofile.mjs'
 
 const app = express();
 app.use(express.static('../client/build'));
