@@ -16,7 +16,7 @@
     "plugins": [
         "react"
     ],
-    "ignorePatterns":["**/node_modules/", "./client/build/"],
+    "ignorePatterns":["**/node_modules/", "**/client/build/"],
     "rules": {
     }
 }
