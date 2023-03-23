@@ -43,7 +43,7 @@ function App() {
             { path: "/adopt", element: <Adopt /> },
             { path: "/aboutUs", element: <AboutUs /> },
             { path: "/cats/:id", element: <CatDetails /> },
-            { path: "/add/post", element: <PostForm /> },
+            { path: "/add/post", element: <PostForm username={username} /> },
             { path: "/edit/profile", element: 
             <EditProfileForm 
                 email={email}
