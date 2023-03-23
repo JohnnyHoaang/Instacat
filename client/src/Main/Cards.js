@@ -12,7 +12,7 @@ import React, { useState } from 'react';
  * and like function that use can like the post 
  * 
  * @param {*} props 
-  * @returns {Component} Cards
+ * @returns {Component} Cards
  * @author Maedeh hassani  
  */
 function Cards(props) {
@@ -40,6 +40,7 @@ function Cards(props) {
                 setNumberOfLikes((prevLikes) => {
                     const newLikes = prevLikes - 1;
 
+                     // Send the like to the API
                     updateLike(id, "/update/post/unlike");
                     document.getElementById(index).innerHTML = newLikes;
                     return newLikes;
@@ -51,7 +52,6 @@ function Cards(props) {
     }
 
     function updateLike(id , url) {
-        ;
         fetch(url, {
             method: "POST",
             body: JSON.stringify({ id }),

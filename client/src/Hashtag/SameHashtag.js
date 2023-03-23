@@ -1,16 +1,25 @@
 import { useEffect } from 'react';
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
+import HashtagCards from './HashtagCards.js'
 
-
+/**
+ * creating the template for cat hashtag,
+ * so when user click on hashtag teh code returns all the posts 
+ * with the same hashtag 
+ * 
+ * @param {*} props 
+ * @returns {Component} SameHashtag
+ * @author Maedeh hassani  
+ */
 function SameHashtag () {
     const { hashtag } = useParams();
-    let [eachHashtag, setEachHashtag]= useState({});
+    let [eachHashtag, setEachHashtag]= useState([]);
 
     //npx json-server --watch data/data2.json --port 3006  
     useEffect(() => {
         let url = `/api/hashtag/${hashtag}`;
-        // let url = 'http://localhost:3002/cats'
+        // let url = 'http://localhost:3002/subvicar'
 
         console.log(url);
         fetch(url)
@@ -22,7 +31,7 @@ function SameHashtag () {
                 }
             })
             .then(data => {
-                setEachHashtag(data[0]);
+                setEachHashtag(data);
             })
             .catch(err => {
                 console.log(err.message);
@@ -31,19 +40,22 @@ function SameHashtag () {
 
     return(
         <div>  
-            <p>
-                test for hastags
-            </p>
-            <div>
-                this is the id: {eachHashtag.id}
-                
-            </div>
-
-            <div>
-                this is the image: {eachHashtag.image}
-            </div>
+            <section className='hastag-container'>
+                {eachHashtag.map((item, index) => ( 
+                    <div key={index} className='each-hashtag'>
+                        <HashtagCards 
+                            id={item.id}
+                            index={index}   
+                            username={item.username}
+                            imageUrl={item.image}
+                            caption={item.caption}
+                            likesNum={item.likes}
+                            hashtags={item.hashtags}
+                        />
+                    </div>
+                ))}
+            </section>
         </div>
-
     )
 }
 
