@@ -100,3 +100,22 @@ describe('GET /api/adoption/id', ()=>{
     expect(resp.statusCode).toBe(404);
   });
 });
+
+describe('GET /api/search/:query', ()=>{
+  test('Should respond with 200', async () => {
+    jest
+        .spyOn(DBHelper.prototype, 'getQueryData')
+        .mockResolvedValue(foundValue);
+    const resp = await request(app).get('/api/search/something');
+    expect(resp.statusCode).toBe(200);
+    expect(resp.body).toEqual(foundValue);
+  });
+});
+
+describe('GET /api/search/:search', ()=>{
+  test('Should respond with 404', async () => {
+    jest.spyOn(DBHelper.prototype, 'getQueryData').mockResolvedValue(noValue);
+    const resp = await request(app).get('/api/search/notfound');
+    expect(resp.statusCode).toBe(404);
+  });
+});
