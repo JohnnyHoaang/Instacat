@@ -11,7 +11,7 @@ import { Link } from "react-router-dom"
  * @returns {Component} Navigation
  * @author Maedeh hassani 
  */
-const Navigation = () => {
+const Navigation = (props) => {
 
     const [isFrench, setIsFrench] = useState(false);
 
@@ -39,6 +39,7 @@ const Navigation = () => {
             <div className='nav-div'><Link to='/discover'>{t('navigation.discover')}</Link></div>
             <div className='nav-div'><Link to='/adopt'>{t('navigation.adopt')}</Link></div>
             <div className='nav-div'><Link to='/aboutUs'>{t('navigation.aboutUs')}</Link></div>
+            {props.isAdmin && <div className='nav-div'><Link to='/admin'>Admin</Link></div>}
             <div id='lang' onClick={() => changeLang()}><section id="lang-sec">Fr</section></div>
 
             <form role="search" id="form">

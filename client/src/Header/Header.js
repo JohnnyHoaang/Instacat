@@ -21,6 +21,7 @@ const Header = (props) => {
     props.setUsername(data.user.name)
     props.setProfilePicture(data.user.picture)
     props.setEmail(data.user.email)
+    props.setIsAdmin(data.user.isAdmin)
   }
 
   const handleError = error => {
@@ -31,7 +32,8 @@ const Header = (props) => {
     await fetch("/auth/logout");
     props.setUsername("");
     props.setProfilePicture("");
-    props.setEmail("")
+    props.setEmail("");
+    props.setIsAdmin(false);
   }
 
 

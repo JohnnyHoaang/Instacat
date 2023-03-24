@@ -7,7 +7,7 @@ const router = new express.Router();
 router.use(express.json());
 
 router.get(
-    ['/home', '/contact', '/discover', '/aboutUs', '/adopt', '/add/post', '/edit/profile'],
+    ['/home', '/contact', '/discover', '/aboutUs', '/adopt', '/add/post', '/edit/profile', '/admin'],
     (req, res) => {
       res.sendFile(path.join(__dirname, '../client/build/index.html'));
     });

@@ -6,6 +6,7 @@ import Footer from './Footer/Footer.js';
 import Navigation from './Navigation/Navigation.js';
 import AboutUs from './AboutUs/AboutUs';
 import Adopt from './Adopt/Adopt';
+import Admin from './Admin/Admin'
 import CatDetails from './CatDetails/CatDetails'
 import PostForm from './Upload/PostForm'
 import i18n from "i18next";
@@ -32,6 +33,7 @@ function App() {
   const [username, setUsername] = useState("")
   const [profilePicture, setProfilePicture] = useState("")
   const [email, setEmail] = useState("")
+  const [isAdmin, setIsAdmin] = useState(false)
   /**
   * creating the react routes for the website
   * @author Maedeh hassani 
@@ -53,6 +55,7 @@ function App() {
       }
       />
       <Route path="/catHashtags/:hashtag" element={<SameHashtag />} />
+      {isAdmin && <Route path="/admin" element={<Admin isAdmin={isAdmin} />} />}
     </Routes>
 
   return (
@@ -64,8 +67,9 @@ function App() {
             setUsername={setUsername}
             setProfilePicture={setProfilePicture}
             setEmail={setEmail}
+            setIsAdmin={setIsAdmin}
           />
-          <Navigation />
+          <Navigation isAdmin={isAdmin} />
           {router}
           <Footer />
         </div>
