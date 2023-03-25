@@ -1,23 +1,24 @@
 /* --------------CSS for Footer -------------*/
 
 footer{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 99%;
-    background-color: #733c2d;
-    color: rgb(212, 186, 147);
-    min-width: 1510px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 95%;
+  background-color: #733c2d;
+  color: rgb(212, 186, 147);
+  min-width: 1510px;
+  margin: 0 0 0 40px;
+}
   
-  #footer-info, #footer-contact{
-    padding: 30px 15px 0;
-  }
+#footer-info, #footer-contact{
+  padding: 30px 15px 0;
+}
   
-  #footer-a{
-    color: rgb(238, 160, 132);
-  }
+#footer-a{
+  color: rgb(238, 160, 132);
+}
   
-  #footer-a:hover{
-    color: rgb(238, 226, 166);
-  }
+#footer-a:hover{
+  color: rgb(238, 226, 166);
+}
