@@ -24,7 +24,6 @@ function Cards(props) {
 
 
     async function handleLike(index, id) {
-        console.log('id:', id);
         if (numberOfLikes >= 0) {
             if (increasing) {
                 setNumberOfLikes( (prevLikes) => {

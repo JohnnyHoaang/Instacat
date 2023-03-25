@@ -21,8 +21,6 @@ function SameHashtag () {
     useEffect(() => {
         // let url = `/api/hashtag/${hashtag}`;
         let url = 'http://localhost:3006/subvicar'
-
-        console.log(url);
         fetch(url)
             .then(response => {
                 if (!response.ok) {
