@@ -20,8 +20,8 @@ function Main(props) {
 
     //npx json-server --watch data/data1.json --port 3002  
     useEffect(() => {
-        let url = `/api/cat/all`;
-        // let url = "http://localhost:3002/catlist"
+        // let url = `/api/cat/all`;
+        let url = "http://localhost:3002/catlist"
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -66,18 +66,18 @@ function Main(props) {
             </div>
 
             <section className='card-container'>
-                    {currentCards.map((item, index) => ( 
-                        <div key={index} className='each-card-outer'>
-                        <Cards 
-                            id={item.id}
-                            index={index}   
-                            imageUrl={item.image}
-                            caption={item.caption}
-                            likesNum={item.likes}
-                            hashtags={item.hashtags}
-                        />
-                        </div>
-                    ))}
+                {currentCards.map((item, index) => ( 
+                    <div key={index} className='each-card-outer'>
+                    <Cards 
+                        id={item.id}
+                        index={index}   
+                        imageUrl={item.image}
+                        caption={item.caption}
+                        likesNum={item.likes}
+                        hashtags={item.hashtags}
+                    />
+                    </div>
+                ))}
             </section>
             
             {/* adding next and pre button for pagination section */}

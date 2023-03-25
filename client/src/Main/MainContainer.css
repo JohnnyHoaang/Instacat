@@ -1,6 +1,8 @@
 .main-top{
     display: flex;
     flex-direction: column;
+    /* changing */
+    width: 93%;
   }
   
   #mainCat{
@@ -29,6 +31,7 @@
     border-top: 2px solid rgb(230, 169, 119);
     border-radius: 3px;
     margin: 10px;
-    width: 1850px;
+    /* width: 1850px; */
+    width: 100%;
     padding: 5px;
   }

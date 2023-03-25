@@ -1,0 +1,12 @@
+/* ------ HashtagCards -------------------*/
+
+.cat-hshtag{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(248, 225, 204);
+    margin: 5px;
+    padding: 0 20px 0 20px;
+    border-radius: 4px;
+}
