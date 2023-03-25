@@ -3,8 +3,8 @@ import { Post } from "../models/Post.mjs"
 import { DBHelper } from '../db/dbHelper.mjs'
 import bodyParser from 'body-parser'
 
-const router = express.Router()
-const db = new DBHelper()
+const router = new express.Router();
+const db = new DBHelper();
 
 router.use(bodyParser.json())
 
@@ -13,10 +13,15 @@ router.post('/post/like', async (req, res) => {
   res.status(200).send({message: "liked!"})
 })
 router.post('/post/unlike', async (req, res) => {
-  updateLikes({ id : req.body.id }, false)
-  res.status(200).send({message: "unliked!"})
-})
+  updateLikes({id: req.body.id}, false);
+  res.status(200).send({message: 'unliked!'});
+});
 
+/**
+ * TODO Write JSDocs
+ * @param {*} query
+ * @param {*} isLiked
+ */
 async function updateLikes(query, isLiked) {
   let data = await db.getQueryData(Post, query)
  
