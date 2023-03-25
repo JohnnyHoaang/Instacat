@@ -2,12 +2,12 @@
 
 function HashtagCards(props){
     return(
-        <div>
+        <div className="cat-hshtag">
             <div>
-                <img src={props.imageUrl} alt="catImage" className="hashtag-cat-img"></img>
+                <img src={props.imageUrl} alt="catImage" className="each-cat-img"></img>
             </div>
             <div>
-                this is the id: {props.id}
+                Searched hashtag:  {props.hash}
             </div>
 
             <div>

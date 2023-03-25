@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
 import HashtagCards from './HashtagCards.js'
+import './SameHashtag.css'
 
 /**
  * creating the template for cat hashtag,
@@ -18,8 +19,8 @@ function SameHashtag () {
 
     //npx json-server --watch data/data2.json --port 3006  
     useEffect(() => {
-        let url = `/api/hashtag/${hashtag}`;
-        // let url = 'http://localhost:3002/subvicar'
+        // let url = `/api/hashtag/${hashtag}`;
+        let url = 'http://localhost:3006/subvicar'
 
         console.log(url);
         fetch(url)
@@ -40,10 +41,11 @@ function SameHashtag () {
 
     return(
         <div>  
-            <section className='hastag-container'>
+            <section className='card-container'>
                 {eachHashtag.map((item, index) => ( 
-                    <div key={index} className='each-hashtag'>
+                    <div key={index} className='each-card-outer'>
                         <HashtagCards 
+                            hash = {hashtag}
                             id={item.id}
                             index={index}   
                             username={item.username}
