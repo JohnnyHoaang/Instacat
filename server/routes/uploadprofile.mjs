@@ -1,7 +1,7 @@
 import express from 'express'
 import fileUpload from 'express-fileupload'
 import { saveToAzure } from '../db/azure.mjs'
-import { editUserProfile } from '../db/dataHandler.mjs'
+import { editUserProfile } from '../db/dataUpdater.mjs'
 import { User } from '../models/User.mjs'
 const router = express.Router()
 
