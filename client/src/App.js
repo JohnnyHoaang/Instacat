@@ -56,7 +56,7 @@ function App() {
       }
       />
       <Route path="/catHashtags/:hashtag" element={<SameHashtag />} />
-      {isAdmin && <Route path="/admin" element={<Admin isAdmin={isAdmin} token={token}/>} />}
+      {isAdmin && <Route path="/admin" element={<Admin email={email} isAdmin={isAdmin} token={token}/>} />}
     </Routes>
 
   return (
