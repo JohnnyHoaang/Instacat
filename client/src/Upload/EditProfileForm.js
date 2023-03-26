@@ -15,7 +15,7 @@ function EditPostForm(props) {
         })
         // Gets updated data returned from request
         if (response.ok) {
-            result = response.json()
+            result = await response.json()
         }
         // Set new profile picture and name of user
         props.setProfilePicture(result.picture)
