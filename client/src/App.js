@@ -34,6 +34,7 @@ function App() {
   const [profilePicture, setProfilePicture] = useState("")
   const [email, setEmail] = useState("")
   const [isAdmin, setIsAdmin] = useState(false)
+  const [token, setToken] = useState("")
   /**
   * creating the react routes for the website
   * @author Maedeh hassani 
@@ -55,7 +56,7 @@ function App() {
       }
       />
       <Route path="/catHashtags/:hashtag" element={<SameHashtag />} />
-      {isAdmin && <Route path="/admin" element={<Admin isAdmin={isAdmin} />} />}
+      {isAdmin && <Route path="/admin" element={<Admin isAdmin={isAdmin} token={token}/>} />}
     </Routes>
 
   return (
@@ -64,10 +65,12 @@ function App() {
         <div className="App">
           <Header
             username={username} profilePicture={profilePicture}
+            isAdmin={isAdmin}
             setUsername={setUsername}
             setProfilePicture={setProfilePicture}
             setEmail={setEmail}
             setIsAdmin={setIsAdmin}
+            setToken={setToken}
           />
           <Navigation isAdmin={isAdmin} />
           {router}

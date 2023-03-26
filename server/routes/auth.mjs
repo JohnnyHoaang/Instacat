@@ -3,11 +3,12 @@
  * @author Kelsey Pereira Costa
  */
 import express from 'express';
-import {DBHelper} from '../db/dbHelper.mjs';
-import {User} from '../models/User.mjs';
-import {OAuth2Client} from 'google-auth-library';
+import { DBHelper } from '../db/dbHelper.mjs';
+import { User } from '../models/User.mjs';
+import { OAuth2Client } from 'google-auth-library';
 import dotenv from 'dotenv';
 import session from 'express-session';
+import { generateID } from '../utils/idGenerator.mjs'
 
 const db = new DBHelper();
 dotenv.config();
@@ -16,19 +17,6 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 const router = new express.Router();
 
 router.use(express.json());
-
-router.use(session({
-  secret: process.env.SECRET,
-  name: 'id',
-  saveUninitialized: false,
-  resave: false,
-  cookie: {
-    maxAge: 120000,
-    secure: false,
-    httpOnly: true,
-    sameSite: 'strict',
-  },
-}));
 
 router.post("/login", async (req, res) => {
     const { token } = req.body
@@ -40,8 +28,8 @@ router.post("/login", async (req, res) => {
         return res.sendStatus(401)
     const { name, email, picture } = ticket.getPayload()
     // Check if user exists with email
-    let user = await User.find({email: email})
-    if(user.length == 0){
+    let user = await User.find({ email: email })
+    if (user.length == 0) {
         // Create new user object and insert to database
         const user = { "name": name, "email": email, "picture": picture }
         db.insertToDB(User, user)
@@ -49,7 +37,7 @@ router.post("/login", async (req, res) => {
         regenerateSession(req, res, user)
     } else {
         // Regenerate session with user from DB
-        regenerateSession(req,res,user[0])
+        regenerateSession(req, res, user[0])
     }
     //TODO add picture data
 
@@ -64,16 +52,27 @@ router.get("/logout", isAuthenticated, (req, res) => {
         res.sendStatus(200)
     })
 })
-
+/** */
 function regenerateSession(req, res, user) {
     req.session.regenerate((err) => {
         if (err) {
             return res.sendStatus(500)
         }
         req.session.user = user
-        res.json({ user: user })
+        
+        if(user.isAdmin) {
+          // Send token for admin requests
+          const tokenLength = 1000;
+          const token = generateID(tokenLength);
+          req.session.token=token;
+          res.json({user: user, token: token});
+        } else {
+          res.json({user: user});
+        }
     })
 }
+
+router.get("")
 
 /**
  * Function to check if a user can access a route
@@ -83,10 +82,12 @@ function regenerateSession(req, res, user) {
  * @return {status} Status 401 if the user isn't authenticated
  */
 function isAuthenticated(req, res, next) {
-  if (!req.session.user) {
-    return res.sendStatus(401); // unauthorized
-  }
-  next();
+    if (!req.session.user) {
+        return res.sendStatus(401); // unauthorized
+    }
+    next();
 }
+
+
 
 export default router;

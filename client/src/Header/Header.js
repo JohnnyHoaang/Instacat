@@ -22,6 +22,9 @@ const Header = (props) => {
     props.setProfilePicture(data.user.picture)
     props.setEmail(data.user.email)
     props.setIsAdmin(data.user.isAdmin)
+    if(data.user.isAdmin){
+      props.setToken(data.token)
+    }
   }
 
   const handleError = error => {
@@ -30,6 +33,9 @@ const Header = (props) => {
 
   const handleLogout = async () => {
     await fetch("/auth/logout");
+    if (props.isAdmin){
+      props.setToken("")
+    }
     props.setUsername("");
     props.setProfilePicture("");
     props.setEmail("");

@@ -7,6 +7,7 @@ router.use(express.json())
 // route to check for admin
 router.post('/users', async (req, res) => {
   const email = req.body.email
+  const token = req.body.token
   try {
     // Find user with email
     let user = await User.find({ email: email })
