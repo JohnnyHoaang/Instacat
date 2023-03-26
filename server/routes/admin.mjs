@@ -4,7 +4,7 @@ const router = express.Router()
 
 router.use(express.json())
 
-// route to check for admin
+// Route that returns list of users if request comes from Admin
 router.post('/users', async (req, res) => {
   const email = req.body.email
   const token = req.body.token
