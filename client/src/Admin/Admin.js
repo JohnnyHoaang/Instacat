@@ -17,7 +17,7 @@ function Admin(props) {
     fetch(url, headers)
       .then(response => {
         if (!response.ok) {
-          throw new Error('fetching issue', response.Error);
+          throw new Error(response.Error);
         } else {
           return response.json();
         }

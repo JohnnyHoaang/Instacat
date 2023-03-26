@@ -8,30 +8,24 @@ router.use(express.json())
 router.post('/users', async (req, res) => {
   const email = req.body.email
   const token = req.body.token
-  if(token == req.session.token){
+  if(token == req.session.token && email == req.session.user.email){
     try {
-      // Find user with email
-      let user = await User.find({ email: email })
-      let response = {}
-      if (user[0].isAdmin) {
+      // Find user from session
+      if (req.session.user.isAdmin) {
         const users = await User.find({})
         // User is admin and can access all users
-        response = { users }
-      } else {
-        // User is not admin and cannot access all users
-        response = { error: "Forbidden access" }
-      }
-      // Returns response of request
-      res.status(201).send(response)
-    } catch {
+        const response = { users }
+        // Returns response of request
+        res.status(201).send(response)
+      } 
+    } catch(e){
       // Internal error 
-      res.status(500).send({error: "User not found"})
+      res.status(500).send({error: "Internal Error"})
     }
   } else {
+    // User is not allowed to request from this route
     res.status(403).send({error: "Forbidden request"})
   }
-  
-
 })
 
 
