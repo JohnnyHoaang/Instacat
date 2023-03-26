@@ -50,6 +50,7 @@ function App() {
       <Route path="/edit/profile" element={
         <EditProfileForm
           email={email}
+          username={username}
           setUsername={setUsername}
           setProfilePicture={setProfilePicture}
         />

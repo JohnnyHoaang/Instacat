@@ -7,6 +7,7 @@ function EditPostForm(props) {
         const formData = new FormData(form)
         // Add user email
         formData.append('email', props.email)
+        formData.append('name', props.username)
         let result
         // Update profile information
         let response = await fetch(`/edit/profile/update`, {
@@ -17,8 +18,7 @@ function EditPostForm(props) {
         if (response.ok) {
             result = response.json()
         }
-        // Set new profile picture and name of user
-        props.setProfilePicture(result.picture)
+        // Set new name of user
         props.setUsername(result.name)
         alert("Profile updated Successfully!")
     }
