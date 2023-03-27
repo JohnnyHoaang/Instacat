@@ -3,12 +3,14 @@
  * @author Kelsey Pereira Costa
  */
 import express from 'express';
+import session from 'express-session';
 import {DBHelper} from '../db/dbHelper.mjs';
 import {User} from '../models/User.mjs';
 import {OAuth2Client} from 'google-auth-library';
 import dotenv from 'dotenv';
-import session from 'express-session';
+import connectMongodbSession from 'connect-mongodb-session';
 
+const MongoDBStore = connectMongodbSession(session);
 const db = new DBHelper();
 dotenv.config();
 
@@ -16,6 +18,18 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 const router = new express.Router();
 
 router.use(express.json());
+
+// TODO change database name and collection name to envar
+const store = new MongoDBStore({
+  uri: process.env.ATLAS_URI,
+  databaseName: 'test',
+  collection: 'sessions',
+});
+
+// Catches session store errors
+store.on('error', function(error) {
+  console.log(error);
+});
 
 router.use(session({
   secret: process.env.SECRET,
@@ -28,6 +42,7 @@ router.use(session({
     httpOnly: true,
     sameSite: 'strict',
   },
+  store: store,
 }));
 
 router.post('/login', async (req, res) => {
@@ -52,7 +67,6 @@ router.post('/login', async (req, res) => {
     // Regenerate session with user from DB
     regenerateSession(req, res, user[0]);
   }
-  // TODO add picture data
 });
 
 router.get('/logout', isAuthenticated, (req, res) => {
