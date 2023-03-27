@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -24,7 +26,11 @@ namespace DatabaseApp
         /// <param name="fetching"> What the API will be fetching </param>
         public async Task StressTestAPI(string uri, string fetching)
         {
-            Console.WriteLine(fetching + " API load testing (1 to 1000)");
+            List<String> reports = new List<string>();
+            string startMessage = fetching + " API load testing (1 to 1000)";
+            Console.WriteLine(startMessage);
+            reports.Add(startMessage);
+
             using (var client = new HttpClient())  
             {
                 int count = 1;
@@ -36,10 +42,12 @@ namespace DatabaseApp
                         await client.GetAsync(uri);
                     }
                     _watch.Stop();
-                    Console.WriteLine("\tFetching "+ count +" " + fetching.ToLower() +"(s) took " + _watch.ElapsedMilliseconds + " ms");
+                    reports.Add(count + ": " + _watch.ElapsedMilliseconds + " ms");
                     count *= 10;                
                 }
             }
+            await File.WriteAllLinesAsync("metrics/" + fetching.ToLower() + "api_metrics.txt", reports);
+            Console.WriteLine("Done\n");
         }
     }
 }
