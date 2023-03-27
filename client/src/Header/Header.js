@@ -34,6 +34,25 @@ const Header = (props) => {
         props.setEmail("")
     }
 
+    const handleLoggedIn = async () => {
+        let response = await fetch("/auth/isLoggedIn")
+        if (response.ok) {
+            let potentialUser = await response.json()
+            // sets user information according to what server side returned
+            if(potentialUser.isLoggedIn){
+                props.setUsername(potentialUser.user.name)
+                props.setProfilePicture(potentialUser.user.picture)
+                props.setEmail(potentialUser.user.email)
+            } else {
+                props.setUsername("");
+                props.setProfilePicture("");
+                props.setEmail("")
+            }
+        } else {
+            console.error(`Code: ${response.status}, Message: ${response.statusText}`)
+        }
+    }
+
 
     return (
         <header>
