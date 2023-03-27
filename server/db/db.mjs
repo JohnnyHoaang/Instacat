@@ -1,26 +1,38 @@
-import mongoose from "mongoose";
-import dotenv from 'dotenv'
-dotenv.config()
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
 
 
-let _instance = null
+let _instance = null;
+
+/**
+ * Class to connect to MongoDB
+ */
 class Mongo {
-    constructor() {
-        if (_instance) {
-            return _instance
-        }
-        _instance = this;
+  /**
+     * Checks if Mongo object already exists
+     * @return {Mongo}
+     */
+  constructor() {
+    if (_instance) {
+      return _instance;
     }
+    _instance = this;
+  }
 
-    async connect() {
-        await mongoose.connect(process.env.ATLAS_URI)
-    }
+  /**
+   * Connects to MongoDB
+   */
+  async connect() {
+    await mongoose.connect(process.env.ATLAS_URI);
+  }
 
-    async disconnect() {
-        await mongoose.disconnect()
-    }
-
-
+  /**
+   * Disconnects from MongoDB
+   */
+  async disconnect() {
+    await mongoose.disconnect();
+  }
 }
 
-export { Mongo }
+export {Mongo};

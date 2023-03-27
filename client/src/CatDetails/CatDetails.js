@@ -1,13 +1,11 @@
 import { useEffect } from 'react';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
 import './CatDetails.css';
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
 
 
 /***
- * Display each cat inormation 
+ * Display each cat information 
  * @returns {Component} CatDetails
  * @author Maedeh hassani 
  */
@@ -45,7 +43,7 @@ function CatDetails () {
             .catch(err => {
                 console.log(err.message);
             })
-    }, []);
+    });
 
 
     return (
@@ -70,7 +68,7 @@ function CatDetails () {
 
                             <div className='caption-info'>
                                 Caption: 
-                                <section className='caption'>{eachCat.caption}{id}</section>
+                                <section className='caption'>{eachCat.caption}</section>
                             </div>
 
                             <div className='hashtag-info'>

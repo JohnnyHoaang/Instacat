@@ -1,6 +1,8 @@
 import Cards from './Cards.js';
+import './MainContainer.css';
 import addingPost from '../images/adding-post.png';
 import { useEffect, useState } from 'react';
+
 
 
 /**
@@ -19,7 +21,6 @@ function Main(props) {
     //npx json-server --watch data/data1.json --port 3002  
     useEffect(() => {
         let url = `/api/cat/all`;
-        // let url = "http://localhost:3002/catlist"
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -34,6 +35,7 @@ function Main(props) {
                 console.log(err.message);
             })
     }, []);
+
 
     // Calculate the starting and ending index of the cards to display
     const indexOfLastCard = currentPage * cardsPerPage;
@@ -57,21 +59,24 @@ function Main(props) {
                 
             </section>
             <div id='adding-user-post'>
-            <a href='add/post'><img src={addingPost} alt="adding post" id="adding"></img></a>
+                <a href='add/post'>
+                    <img src={addingPost} alt="adding post" id="adding"></img>
+                </a>
             </div>
 
             <section className='card-container'>
-                    {currentCards.map((item, index) => ( 
-                        <div key={index} className='each-card-outer'>
-                        <Cards 
-                            id={item.id}
-                            index={index}   
-                            imageUrl={item.image}
-                            caption={item.caption}
-                            likesNum={item.likes}
-                        />
-                        </div>
-                    ))}
+                {currentCards.map((item, index) => ( 
+                    <div key={index} className='each-card-outer'>
+                    <Cards 
+                        id={item.id}
+                        index={index}   
+                        imageUrl={item.image}
+                        caption={item.caption}
+                        likesNum={item.likes}
+                        hashtags={item.hashtags}
+                    />
+                    </div>
+                ))}
             </section>
             
             {/* adding next and pre button for pagination section */}

@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import Navigation from '../Navigation/Navigation';
 import './Adopt.css'
-import AdoptionCards from './AdoptionCards.js'
+import AdoptionCards from './AdoptionCards.js';
 
 /**
  * the pages that clients are able to adapt the cats
@@ -36,10 +33,9 @@ function Adopt() {
             })
     }, []);
 
-    function deleting(index) {
-        let listOfBook = [...adoptionCards];
-        listOfBook.splice(index, 1);
-        setAdoptionCards(listOfBook);
+
+    function handleRedirect(catUrl) {
+        window.open(catUrl, '_blank');
     }
 
 
@@ -71,12 +67,16 @@ function Adopt() {
                         <AdoptionCards
                             id={item.id}
                             index={index}
-                            imageUrl={item.image}
-                            deleting={deleting}
+                            imageUrl={item.photos[0].small}
+                            url={item.url}
+                            name={item.name}
+                            gender={item.gender}
+                            handleRedirect={handleRedirect}
                         />
                     </div>
                 ))}
             </section>
+
             {/* adding next and pre button for pagination section */}
             <div className="pagination">
                 {currentPage > 1 && (
