@@ -1,6 +1,6 @@
 import express from 'express';
 import fileUpload from 'express-fileupload';
-import {uploadToAzureDB}from '../db/azure.mjs';
+import {uploadToAzureDB} from '../db/azure.mjs';
 import {Post} from '../models/Post.mjs';
 
 const router = new express.Router();
