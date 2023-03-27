@@ -32,14 +32,25 @@ function App() {
     const [username, setUsername] = useState("")
     const [profilePicture, setProfilePicture] = useState("")
     const [email, setEmail] = useState("")
+    const [cards, setCards] = useState([]);
     /**
     * creating the react routes for the website
     * @author Maedeh hassani 
     */
     const router = createBrowserRouter(
         [
-            { path: "/", element: <Main /> },
-            { path: "/discover", element: <Discover /> },
+            { path: "/", element: 
+            <Main 
+                cards={cards}
+                setCards={setCards}
+            /> 
+            },
+            { path: "/discover", element: 
+            <Discover 
+                cards={cards}
+                setCards={setCards}
+            /> 
+            },
             { path: "/adopt", element: <Adopt /> },
             { path: "/aboutUs", element: <AboutUs /> },
             { path: "/cats/:id", element: <CatDetails /> },
@@ -63,7 +74,10 @@ function App() {
                     setProfilePicture={setProfilePicture}
                     setEmail={setEmail}
                 />
-                <Navigation />
+                <Navigation 
+                    cards={cards}
+                    setCards={setCards}
+                />
                 <RouterProvider router={router} />
                 <Footer />
             </div>

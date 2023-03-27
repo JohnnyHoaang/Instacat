@@ -14,7 +14,6 @@ import { useEffect, useState } from 'react';
  */
 function Main(props) {
     
-    let [cards, setCards] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const cardsPerPage = 10;
 
@@ -29,7 +28,7 @@ function Main(props) {
                     return response.json();
                 }})
             .then(data => {
-                setCards(data);
+                props.setCards(data);
             })
             .catch(err => {
                 console.log(err.message);
@@ -40,14 +39,14 @@ function Main(props) {
     // Calculate the starting and ending index of the cards to display
     const indexOfLastCard = currentPage * cardsPerPage;
     const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-    const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
+    const currentCards = props.cards.slice(indexOfFirstCard, indexOfLastCard);
 
     // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
     const pageNumbers = [];
     for (
       let i = Math.max(1, currentPage - 1);
-      i <= Math.min(Math.ceil(cards.length / cardsPerPage), currentPage + 1);
+      i <= Math.min(Math.ceil(props.cards.length / cardsPerPage), currentPage + 1);
       i++
     ) {
       pageNumbers.push(i);
@@ -94,7 +93,7 @@ function Main(props) {
                 </button>
                 ))}
                 {currentPage <
-                Math.ceil(cards.length / cardsPerPage) - 1 && (
+                Math.ceil(props.cards.length / cardsPerPage) - 1 && (
                 <button onClick={() => paginate(currentPage + 1)}>{'>>Next'}</button>
                 )}
             </div>
