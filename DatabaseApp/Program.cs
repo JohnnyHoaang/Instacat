@@ -1,13 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using MongoDB.Driver;
-using MongoDB.Bson;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace DatabaseApp
 {
@@ -16,12 +9,14 @@ namespace DatabaseApp
         static async Task Main(string[] args)
         {
             const string ENV_FILE_PATH = "../.env";
-            // Might change this to take input instead
+            const string CAT_API_LINK = "https://api.thecatapi.com/v1/images/search";
+            const string WORD_API_LINK = "https://random-word-api.herokuapp.com/word";
+            
             string dbName = DatabaseInfo.Name;
             string postsCollName = DatabaseInfo.PostsCollName;
             string adoptCollName = DatabaseInfo.AdoptCollName;
 
-            // Set up env variables (Might need some redesigning to not take ALL of them)
+            // Set up env variables
             if (!File.Exists(ENV_FILE_PATH))
             {
                 System.Console.WriteLine(".env file not found. Exiting...");
@@ -47,9 +42,11 @@ namespace DatabaseApp
                 Environment.GetEnvironmentVariable("PETFINDER_ID"),
                 Environment.GetEnvironmentVariable("PETFINDER_SECRET")
             );
+
+            APIMetrics m = new APIMetrics();
             
             while (true) {
-                Console.WriteLine("What would you like to do today?:\n\t1 - Fetch and save data to create posts\n\t2 - Push saved data to the DB collection\n\t3 - Flush data from collection\n\t4 - DB Performance Test\n\t5 - Exit App\n");
+                Console.WriteLine("What would you like to do today?:\n\t1 - Fetch and save data to create posts\n\t2 - Push saved data to the DB collection\n\t3 - Flush data from collection\n\t4 - External API Performance Tests (This can take a while!)\n\t5 - Exit App\n");
                 string input = Console.ReadLine();
                 switch (input) {
                     case "1":
@@ -74,7 +71,9 @@ namespace DatabaseApp
                         await mdb.DeleteCollection();
                         break;
                     case "4":
-                        Console.WriteLine("TODO!\n");
+                        Console.WriteLine("External API load testing. Grab yourself something to drink while you wait /^.w.^\\\n");
+                        await m.StressTestAPI(CAT_API_LINK, "Cat");
+                        await m.StressTestAPI(WORD_API_LINK, "Word");
                         break;
                     case "5":
                         Console.WriteLine("Stay PAWsitive! /ᐠ｡ꞈ｡ᐟ\\");
