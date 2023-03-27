@@ -66,6 +66,9 @@ function Cards(props) {
                 }
               };
             fetch(`/delete/post`, headers)
+            let index = props.cards.findIndex(card=> card.id === props.id)
+            props.cards.splice(index,1)
+            props.setCards(props.cards)
             alert("Successfully deleted post!")
         }
     }

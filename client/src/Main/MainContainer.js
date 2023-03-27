@@ -36,7 +36,7 @@ function Main(props) {
       .catch(err => {
         console.log(err.message);
       })
-  }, []);
+  });
 
 
   // Calculate the starting and ending index of the cards to display
@@ -80,6 +80,8 @@ function Main(props) {
               caption={item.caption}
               likesNum={item.likes}
               hashtags={item.hashtags}
+              cards={cards}
+              setCards={setCards}
             />
           </div>
         ))}

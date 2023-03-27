@@ -18,6 +18,9 @@ function Admin(props) {
       let payload = JSON.stringify({ adminEmail: props.email, deleteEmail: email, token: props.token })
       sendFetchRequest(`/admin/delete/user`, payload);
       // TODO: Reload page after updating permissions successfully
+      let index = users.findIndex(user=> user.email === email)
+      users.splice(index,1)
+      setUsers(users)
     }
   }
   /**
@@ -35,7 +38,9 @@ function Admin(props) {
     if(adminCheck){
       let payload = JSON.stringify({ adminEmail: props.email, email: email, isAdmin: isAdmin, token: props.token })
       sendFetchRequest(`/admin/permissions`, payload);
-      // TODO: Reload page after deleting successfully
+      let index = users.findIndex(user=> user.email === email)
+      users[index].isAdmin = isAdmin ? true : false
+      setUsers(users)
     }
   }
 
@@ -74,7 +79,7 @@ useEffect(() => {
     .catch(err => {
       console.log(err.message);
     })
-}, []);
+});
 
 const userSection = users.map(user => {
   if (user.email !== props.email) {
