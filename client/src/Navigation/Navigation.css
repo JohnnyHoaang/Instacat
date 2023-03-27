@@ -4,7 +4,8 @@ nav.navigation-bar{
     display: flex;
     padding: 0;
     margin: 0;
-    width: 97%;
+    /* changing */
+    width: 92%;
     min-width: 1410px;
     justify-content: space-between;
   }
@@ -64,7 +65,8 @@ nav.navigation-bar{
 
   form {
     background-color: #733c2d;
-    width: 300px;
+    /* changing */
+    width: 250px;
     height: 38px;
     border-radius: 5px;
     display: flex;

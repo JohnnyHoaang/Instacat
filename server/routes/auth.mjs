@@ -30,41 +30,50 @@ router.use(session({
   },
 }));
 
-router.post('/login', async (req, res) => {
-  const {token} = req.body;
-  const ticket = await client.verifyIdToken({
-    idToken: token,
-    audience: process.env.GOOGLE_CLIENT_ID,
-  });
-  if (!ticket) {
-    return res.sendStatus(401);
-  };
-  const {name, email, picture} = ticket.getPayload();
-
-  // TODO Update entry if user already exists
-  const user = {'name': name, 'email': email, 'picture': picture};
-  db.insertToDB(res, User, user);
-
-  // TODO add picture data
-
-  req.session.regenerate((err) => {
-    if (err) {
-      return res.sendStatus(500);
+router.post("/login", async (req, res) => {
+    const { token } = req.body
+    const ticket = await client.verifyIdToken({
+        idToken: token,
+        audience: process.env.GOOGLE_CLIENT_ID
+    })
+    if (!ticket)
+        return res.sendStatus(401)
+    const { name, email, picture } = ticket.getPayload()
+    // Check if user exists with email
+    let user = await User.find({email: email})
+    if(user.length == 0){
+        // Create new user object and insert to database
+        const user = { "name": name, "email": email, "picture": picture }
+        db.insertToDB(User, user)
+        // Regenerate session with new user
+        regenerateSession(req, res, user)
+    } else {
+        // Regenerate session with user from DB
+        regenerateSession(req,res,user[0])
     }
-    req.session.user = user;
-    res.json({user: user});
-  });
-});
+    //TODO add picture data
 
-router.get('/logout', isAuthenticated, (req, res) => {
-  req.session.destroy(function(err) {
-    if (err) {
-      return res.sendStatus(500);
-    }
-    res.clearCookie('id');
-    res.sendStatus(200);
-  });
-});
+})
+
+router.get("/logout", isAuthenticated, (req, res) => {
+    req.session.destroy(function (err) {
+        if (err) {
+            return res.sendStatus(500)
+        }
+        res.clearCookie('id')
+        res.sendStatus(200)
+    })
+})
+
+function regenerateSession(req, res, user) {
+    req.session.regenerate((err) => {
+        if (err) {
+            return res.sendStatus(500)
+        }
+        req.session.user = user
+        res.json({ user: user })
+    })
+}
 
 /**
  * Function to check if a user can access a route
