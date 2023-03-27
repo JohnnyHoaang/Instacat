@@ -1,6 +1,6 @@
 import heartLike from '../images/heart.png'
 import shareImg from '../images/share04.png'
-import orangeHeart from '../images/orange-haert.png'
+import orangeHeart from '../images/orange-heart.png'
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './Cards.css';
@@ -12,7 +12,7 @@ import React, { useState } from 'react';
  * and like function that use can like the post 
  * 
  * @param {*} props 
-  * @returns {Component} Cards
+ * @returns {Component} Cards
  * @author Maedeh hassani  
  */
 function Cards(props) {
@@ -23,41 +23,45 @@ function Cards(props) {
     const [increasing, setIncreasing] = useState(true);
 
 
-    async function handleLike(index, idp) {
-        const currentLikes = parseInt(document.getElementById(index).innerHTML);
-
+    async function handleLike(index, id) {
         if (numberOfLikes >= 0) {
             if (increasing) {
-                setNumberOfLikes((prevLikes) => prevLikes + 1);
-                document.getElementById(idp).src = orangeHeart;
+                setNumberOfLikes( (prevLikes) => {
+                    const newLikes = prevLikes + 1;
+
+                    // Send the like to the API
+                    updateLike(id, "/update/post/like/");
+                    document.getElementById(index).innerHTML = newLikes;
+                    return newLikes;
+                });
+                document.getElementById(id).src = orangeHeart;
             } else {
-                setNumberOfLikes((prevLikes) => prevLikes - 1);
-                document.getElementById(idp).src = heartLike;
+                setNumberOfLikes((prevLikes) => {
+                    const newLikes = prevLikes - 1;
+
+                     // Send the like to the API
+                    updateLike(id, "/update/post/unlike");
+                    document.getElementById(index).innerHTML = newLikes;
+                    return newLikes;
+                });
+                document.getElementById(id).src = heartLike;
             }
             setIncreasing(!increasing);
-            document.getElementById(index).innerHTML = numberOfLikes;
-
-            
-            // Send the like to the API
-            let object = JSON.stringify({ id : props.id});
-            const url = "/update/post/like/";
-            console.log(`${props.id}`);
-            await fetch(url, {
-                method: "POST",
-                body: object,
-                headers: {
-                    "Content-Type": "application/json; charset=UTF-8",
-                
-                },
-            });
         }
+    }
+
+    function updateLike(id , url) {
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify({ id }),
+            headers: { "Content-Type": "application/json", },
+        });
     }
 
     function sharePost() {
         navigator.clipboard.writeText(window.location.href);
         alert("Post was copied to clipboard")
     }
-
 
 
     return (
@@ -98,3 +102,5 @@ function Cards(props) {
 
 
 export default Cards;
+
+
