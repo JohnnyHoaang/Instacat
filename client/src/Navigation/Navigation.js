@@ -3,7 +3,7 @@ import './Navigation.css'
 import { useState } from 'react';
 import i18n from "i18next";
 import { useTranslation } from "react-i18next";
-
+import { Link } from "react-router-dom"
 
 
 /**
@@ -58,10 +58,10 @@ const Navigation = (props) => {
     return (
 
         <nav className='navigation-bar'>
-            <div className='nav-div'><a href='/'>{t('navigation.home')}</a></div>
-            <div className='nav-div'><a href='/discover'>{t('navigation.discover')}</a></div>
-            <div className='nav-div'><a href='/adopt'>{t('navigation.adopt')}</a></div>
-            <div className='nav-div'><a href='/aboutUs'>{t('navigation.aboutUs')}</a></div>
+            <div className='nav-div'><Link to='/'>{t('navigation.home')}</Link></div>
+            <div className='nav-div'><Link to='/discover'>{t('navigation.discover')}</Link></div>
+            <div className='nav-div'><Link to='/adopt'>{t('navigation.adopt')}</Link></div>
+            <div className='nav-div'><Link to='/aboutUs'>{t('navigation.aboutUs')}</Link></div>
             <div id='lang' onClick={() => changeLang()}><section id="lang-sec">Fr</section></div>
 
             <form role="search" id="form" onSubmit={searchPosts}>
