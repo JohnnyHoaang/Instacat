@@ -55,7 +55,20 @@ function Cards(props) {
         alert("Post was copied to clipboard")
     }
 
-
+    function deletePost(){
+        if(props.isAdmin){
+            let payload = JSON.stringify({ token: props.token, id: props.id})
+            const headers = {
+                method: "POST",
+                body: payload,
+                headers: {
+                  "Content-Type": "application/json; charset=UTF-8",
+                }
+              };
+            fetch(`/delete/post`, headers)
+            alert("Successfully deleted post!")
+        }
+    }
 
     return (
         <div className='cat-card' id={id} >
@@ -74,8 +87,8 @@ function Cards(props) {
                     <span className="LikeNum" id={props.index}>{props.likesNum}</span>
                     <span className='share-btn' onClick={sharePost}> 
                         <img src={shareImg} alt='share' className='share-img'/>
-                    </span>
-                    <button>Delete</button>
+                    </span> 
+                    {(props.isAdmin || props.username === props.postUsername) && <button onClick={deletePost}>Delete</button>}
                 </div>
                 <p className='catCaption'>{props.caption} {id}</p>
                 <div className='cat-hashtags'>

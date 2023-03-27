@@ -70,6 +70,10 @@ function Main(props) {
         {currentCards.map((item, index) => (
           <div key={index} className='each-card-outer'>
             <Cards
+              isAdmin={props.isAdmin}
+              token={props.token}
+              username={props.username}
+              postUsername={item.username}
               id={item.id}
               index={index}
               imageUrl={item.image}

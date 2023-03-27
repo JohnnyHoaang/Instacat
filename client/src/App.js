@@ -41,7 +41,13 @@ function App() {
   */
   const router =
     <Routes>
-      <Route path="/" element={<Main />} />
+      <Route path="/" element={
+        <Main 
+        username={username} 
+        isAdmin={isAdmin}
+        token={token}
+        />
+      } />
       <Route path="/discover" element={<Discover />} />
       <Route path="/adopt" element={<Adopt />} />
       <Route path="/aboutUs" element={<AboutUs />} />
