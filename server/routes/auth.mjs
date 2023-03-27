@@ -7,7 +7,6 @@ import { DBHelper } from '../db/dbHelper.mjs';
 import { User } from '../models/User.mjs';
 import { OAuth2Client } from 'google-auth-library';
 import dotenv from 'dotenv';
-import session from 'express-session';
 import { generateID } from '../utils/idGenerator.mjs'
 
 const db = new DBHelper();

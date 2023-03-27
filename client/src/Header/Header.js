@@ -60,7 +60,7 @@ const Header = (props) => {
             onSuccess={handleLogin}
             onError={handleError}
           />}
-          {props.username && <button onClick={handleLogout}>Logout</button>}
+          {props.username && <button onClick={handleLogout}><Link to="/" >Logout</Link></button>}
         </div>
 
 
