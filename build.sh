@@ -9,7 +9,7 @@ cd ..
 cd client && npm install
 cd ..
 
-# doesnt treate warnings as errors
+# doesnt treat warnings as errors
 CI=false
 
 # Builds react project

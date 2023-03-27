@@ -26,6 +26,7 @@ const store = new MongoDBStore({
   collection: 'sessions',
 });
 
+
 // Catches session store errors
 store.on('error', function(error) {
   console.log(error);
@@ -37,7 +38,7 @@ router.use(session({
   saveUninitialized: false,
   resave: false,
   cookie: {
-    maxAge: 120000,
+    maxAge: 60 * 1000, // Expires after 1 minute
     secure: false,
     httpOnly: true,
     sameSite: 'strict',
@@ -51,9 +52,11 @@ router.post('/login', async (req, res) => {
     idToken: token,
     audience: process.env.GOOGLE_CLIENT_ID,
   });
+
   if (!ticket) {
     return res.sendStatus(401);
   };
+
   const {name, email, picture} = ticket.getPayload();
   // Check if user exists with email
   const user = await User.find({email: email});

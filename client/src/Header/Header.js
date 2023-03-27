@@ -54,8 +54,6 @@ const Header = (props) => {
                     />}
                     {props.username && <button onClick={handleLogout}>Logout</button>}
                 </div>
-                
-                
             </div>
         </header>
     );
