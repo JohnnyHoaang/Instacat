@@ -32,6 +32,7 @@ store.on('error', function(error) {
   console.log(error);
 });
 
+// Creates a new session
 router.use(session({
   secret: process.env.SECRET,
   name: 'id',
@@ -80,6 +81,22 @@ router.get('/logout', isAuthenticated, (req, res) => {
     res.clearCookie('id');
     res.sendStatus(200);
   });
+});
+
+// Checks if the user is logged in and returns user information back
+router.get('/isLoggedIn', (req, res) => {
+  if (req.session.user) {
+    res.json(
+        {
+          isLoggedIn: true,
+          user: req.session.user,
+        });
+  } else {
+    res.json(
+        {
+          isLoggedIn: false,
+        });
+  }
 });
 
 /**
