@@ -1,5 +1,14 @@
+/**
+ * Form that allows users to edit their profile
+ * @param {Object} props 
+ * @returns {Component}
+ * @author Johnny Hoang
+ */
 function EditPostForm(props) {
-
+    /**
+     * Submit handler for the form and send a request to update route
+     * @param {Event} e 
+     */
     async function onSubmit(e) {
         e.preventDefault()
         const form = document.querySelector("#p-form")
