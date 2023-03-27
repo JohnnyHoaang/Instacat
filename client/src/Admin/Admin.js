@@ -18,6 +18,7 @@ function Admin(props) {
       let payload = JSON.stringify({ adminEmail: props.email, deleteEmail: email, token: props.token })
       sendFetchRequest(`/admin/delete/user`, payload);
       // TODO: Reload page after updating permissions successfully
+      
     }
   }
   /**

@@ -75,6 +75,7 @@ function Cards(props) {
                     <span className='share-btn' onClick={sharePost}> 
                         <img src={shareImg} alt='share' className='share-img'/>
                     </span>
+                    <button>Delete</button>
                 </div>
                 <p className='catCaption'>{props.caption} {id}</p>
                 <div className='cat-hashtags'>
