@@ -58,8 +58,8 @@ function Cards(props) {
         });
     }
 
-    function sharePost() {
-        navigator.clipboard.writeText(window.location.href);
+    function sharePost(id) {
+        navigator.clipboard.writeText(`${window.location.href}cats/${props.id}`);
         alert("Post was copied to clipboard")
     }
 
@@ -79,7 +79,7 @@ function Cards(props) {
                     </img>
 
                     <span className="LikeNum" id={props.index}>{props.likesNum}</span>
-                    <span className='share-btn' onClick={sharePost}> 
+                    <span className='share-btn' onClick={()=>{sharePost(props.id)}}> 
                         <img src={shareImg} alt='share' className='share-img'/>
                     </span>
                 </div>
