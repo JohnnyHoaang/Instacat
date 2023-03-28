@@ -1,0 +1,26 @@
+/*---------------- hashtag CSS -----------------*/
+
+section.hastag-container{
+    display: flex;
+    flex-wrap: wrap;
+    height: 910px;
+    background-color: E6D5B8;
+    border-top: 2px solid rgb(230, 169, 119);
+    border-radius: 3px;
+    margin: 10px;
+    /* width: 1850px; */
+    width: 100%;
+    padding: 5px;
+}
+
+.each-hashtag-outer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-grow: 1; 
+    width: calc(17% - 2px); 
+    height: 450px;
+    margin: 2px;
+    background: #f4ebdd;
+    border-radius: 4px;
+}

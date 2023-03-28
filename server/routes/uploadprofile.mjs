@@ -1,6 +1,6 @@
 import express from 'express'
 import fileUpload from 'express-fileupload'
-import { editUserProfile } from '../db/dataHandler.mjs'
+import { editUserProfile } from '../db/dataUpdater.mjs'
 import { User } from '../models/User.mjs'
 import { Post } from '../models/Post.mjs'
 const router = express.Router()

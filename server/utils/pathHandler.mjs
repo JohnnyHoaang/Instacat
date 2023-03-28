@@ -1,4 +1,5 @@
 import {generateID} from './idGenerator.mjs';
+import fetch from 'node-fetch';
 /**
  * TODO Make JSDocs for this class
  */
