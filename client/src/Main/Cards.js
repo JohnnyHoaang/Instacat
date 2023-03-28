@@ -12,8 +12,8 @@ import React, { useState } from 'react';
  * and like function that use can like the post 
  * 
  * @param {*} props 
-  * @returns {Component} Cards
- * @author Maedeh Hassani  
+ * @returns {Component} Cards
+ * @author Maedeh hassani  
  */
 function Cards(props) {
 
@@ -23,36 +23,39 @@ function Cards(props) {
     const [increasing, setIncreasing] = useState(true);
 
 
-    async function handleLike(index, idp) {
+    async function handleLike(index, id) {
         if (numberOfLikes >= 0) {
             if (increasing) {
-                setNumberOfLikes((prevLikes) => prevLikes + 1);
-                document.getElementById(idp).src = orangeHeart;
+                setNumberOfLikes( (prevLikes) => {
+                    const newLikes = prevLikes + 1;
+
+                    // Send the like to the API
+                    updateLike(id, "/update/post/like/");
+                    document.getElementById(index).innerHTML = newLikes;
+                    return newLikes;
+                });
+                document.getElementById(id).src = orangeHeart;
             } else {
-                setNumberOfLikes((prevLikes) => prevLikes - 1);
-                document.getElementById(idp).src = heartLike;
+                setNumberOfLikes((prevLikes) => {
+                    const newLikes = prevLikes - 1;
+
+                     // Send the like to the API
+                    updateLike(id, "/update/post/unlike");
+                    document.getElementById(index).innerHTML = newLikes;
+                    return newLikes;
+                });
+                document.getElementById(id).src = heartLike;
             }
             setIncreasing(!increasing);
-            document.getElementById(index).innerHTML = numberOfLikes;
-
-            // Send the like to the API
-            let object = JSON.stringify({ id : props.id});
-            const url = "/update/post/like/";
-            console.log(`${props.id}`);
-            await fetch(url, {
-                method: "POST",
-                body: object,
-                headers: {
-                    "Content-Type": "application/json; charset=UTF-8",
-                
-                },
-            });
         }
     }
 
-    function sharePost() {
-        navigator.clipboard.writeText(window.location.href);
-        alert("Post was copied to clipboard")
+    function updateLike(id , url) {
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify({ id }),
+            headers: { "Content-Type": "application/json", },
+        });
     }
 
     function deletePost(){
@@ -72,6 +75,11 @@ function Cards(props) {
             alert("Successfully deleted post!")
         }
     }
+    function sharePost(id) {
+        navigator.clipboard.writeText(`${window.location.href}cats/${props.id}`);
+        alert("Post was copied to clipboard")
+    }
+
 
     return (
         <div className='cat-card' id={id} >
@@ -88,7 +96,7 @@ function Cards(props) {
                     </img>
 
                     <span className="LikeNum" id={props.index}>{props.likesNum}</span>
-                    <span className='share-btn' onClick={sharePost}> 
+                    <span className='share-btn' onClick={()=>{sharePost(props.id)}}> 
                         <img src={shareImg} alt='share' className='share-img'/>
                     </span> 
                     {(props.isAdmin || props.username === props.postUsername) && <button onClick={deletePost}>Delete</button>}
@@ -112,3 +120,5 @@ function Cards(props) {
 
 
 export default Cards;
+
+
