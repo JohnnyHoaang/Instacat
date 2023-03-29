@@ -8,9 +8,7 @@ import {DBHelper} from '../db/dbHelper.mjs';
 import {User} from '../models/User.mjs';
 import {OAuth2Client} from 'google-auth-library';
 import dotenv from 'dotenv';
-import connectMongodbSession from 'connect-mongodb-session';
 
-const MongoDBStore = connectMongodbSession(session);
 const db = new DBHelper();
 dotenv.config();
 
@@ -19,33 +17,7 @@ const router = new express.Router();
 
 router.use(express.json());
 
-// TODO change database name and collection name to envar
-const store = new MongoDBStore({
-  uri: process.env.ATLAS_URI,
-  databaseName: 'test',
-  collection: 'sessions',
-});
 
-
-// Catches session store errors
-store.on('error', function(error) {
-  console.log(error);
-});
-
-// Creates a new session
-router.use(session({
-  secret: process.env.SECRET,
-  name: 'id',
-  saveUninitialized: false,
-  resave: false,
-  cookie: {
-    maxAge: 60 * 1000, // Expires after 1 minute
-    secure: false,
-    httpOnly: true,
-    sameSite: 'strict',
-  },
-  store: store,
-}));
 
 router.post('/login', async (req, res) => {
   const {token} = req.body;
