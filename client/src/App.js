@@ -35,6 +35,7 @@ function App() {
   const [email, setEmail] = useState("")
   const [isAdmin, setIsAdmin] = useState(false)
   const [token, setToken] = useState("")
+  const [cards, setCards] = useState([])
   /**
   * creating the react routes for the website
   * @author Maedeh hassani 
@@ -46,13 +47,14 @@ function App() {
         username={username} 
         isAdmin={isAdmin}
         token={token}
+        cards={cards} setCards={setCards}
         />
       } />
-      <Route path="/discover" element={<Discover />} />
+      <Route path="/discover" element={<Discover cards={cards} setCards={setCards} />} />
       <Route path="/adopt" element={<Adopt />} />
       <Route path="/aboutUs" element={<AboutUs />} />
       <Route path="/cats/:id" element={<CatDetails />} />
-      <Route path="/add/post" element={<PostForm />} />
+      <Route path="/add/post" element={<PostForm username={username}/>} />
       <Route path="/edit/profile" element={
         <EditProfileForm
           email={email}
@@ -78,7 +80,7 @@ function App() {
             setIsAdmin={setIsAdmin}
             setToken={setToken}
           />
-          <Navigation isAdmin={isAdmin} />
+          <Navigation isAdmin={isAdmin} setCards={setCards} />
           {router}
           <Footer />
         </div>

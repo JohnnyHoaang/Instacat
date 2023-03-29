@@ -15,10 +15,11 @@ router.use(
 // route to upload image and caption to db
 router.post('/post/upload', async (req, res) => {
   const caption = req.body.caption;
+  const username = req.body.username;
   const file = req.files.image;
   if (file) {
     try {
-      await uploadToAzureDB(file, 'username', caption, Post);
+      await uploadToAzureDB(file, username, caption, Post);
       res.redirect('/');
     } catch (error) {
       console.error(error);
