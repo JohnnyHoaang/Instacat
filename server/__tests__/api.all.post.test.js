@@ -2,23 +2,12 @@ import {jest} from '@jest/globals';
 import request from 'supertest';
 import app from '../app.mjs';
 import {DBHelper} from '../db/dbHelper.mjs';
-import session from 'express-session';
 
 const foundValue = [{result: 'there is something'}];
 const errorValue = {error: 'data not found'};
 const noValue = [];
 
 jest.mock('../db/dbHelper.mjs');
-
-jest.mock('express-session', () => ({
-  __esModule: true,
-  default: jest.fn(() => (req, res, next) => {
-    req.session = {
-      name: "Admin"
-    };
-    next();
-  }),
-}));
 
 afterEach(async () => {
   jest.restoreAllMocks();

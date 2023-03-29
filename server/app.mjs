@@ -12,7 +12,7 @@ const app = express()
 app.use(express.static('../client/build'))
 
 app.use(session({
-    secret: process.env.SECRET,
+    secret: process.env.SECRET || 'secret',
     name: 'id',
     saveUninitialized: false,
     resave: false,
