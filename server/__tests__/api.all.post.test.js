@@ -9,7 +9,16 @@ const errorValue = {error: 'data not found'};
 const noValue = [];
 
 jest.mock('../db/dbHelper.mjs');
-jest.mock('express-session');
+
+jest.mock('express-session', () => ({
+  __esModule: true,
+  default: jest.fn(() => (req, res, next) => {
+    req.session = {
+      name: "Admin"
+    };
+    next();
+  }),
+}));
 
 afterEach(async () => {
   jest.restoreAllMocks();
