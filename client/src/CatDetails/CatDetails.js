@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import './CatDetails.css';
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
+import CommentForm from '../Upload/CommentForm';
 
 
 /***
@@ -9,7 +10,7 @@ import { useParams } from "react-router-dom";
  * @returns {Component} CatDetails
  * @author Maedeh hassani 
  */
-function CatDetails () { 
+function CatDetails (props) { 
     const { id } = useParams();
     let [eachCat, setEachCat] = useState({
         _id: '',
@@ -28,7 +29,6 @@ function CatDetails () {
         let url = `/api/cat/id/${id}`;
         // let url = 'http://localhost:3003/0'
 
-        console.log(url);
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -86,7 +86,8 @@ function CatDetails () {
                                     return <div key={index}>{item.username}: {item.comment}</div>
                                 })}
                                 </section>
-                            </div>        
+                            </div>
+                            <CommentForm id={id} username={props.username}/>       
                         </div>
                     </div>
                 </div>

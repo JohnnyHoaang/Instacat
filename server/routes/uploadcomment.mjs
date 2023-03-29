@@ -6,10 +6,11 @@ import bodyParser from 'body-parser'
 const router = new express.Router();
 const db = new DBHelper();
 
-router.use(bodyParser.json())
+router.use(express.json());
 
-router.post('/post/comment', async (req, res) => {
+router.post('/post/add', async (req, res) => {
   const postId = { id : req.body.id };
+  console.log(req.body)
   const userPost = await db.getQueryData(Post, postId);
   let allComments = userPost[0]["comments"];
   allComments.push({
