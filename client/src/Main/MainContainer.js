@@ -14,7 +14,8 @@ import { Link } from "react-router-dom"
  */
 function Main(props) {
 
-  let [cards, setCards] = useState([]);
+  const [cards, setCards] = useState([]);
+  const [state, setState] = useState([])
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 10;
 
@@ -35,7 +36,7 @@ function Main(props) {
       .catch(err => {
         console.log(err.message);
       })
-  },[]);
+  },[state]);
 
 
   // Calculate the starting and ending index of the cards to display
@@ -80,7 +81,9 @@ function Main(props) {
               likesNum={item.likes}
               hashtags={item.hashtags}
               cards={cards}
+              state={state}
               setCards={setCards}
+              setState={setState}
             />
           </div>
         ))}
