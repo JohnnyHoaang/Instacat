@@ -15,6 +15,7 @@ import { Link } from "react-router-dom"
 function Main(props) {
 
   const [cards, setCards] = useState([]);
+  // State for cards that will get deleted
   const [state, setState] = useState([])
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 10;

@@ -72,6 +72,7 @@ function Cards(props) {
             let index = props.cards.findIndex(card=> card.id === props.id)
             props.cards.splice(index,1)
             props.setCards(props.cards)
+            // change state when deleted
             props.setState(!props.state)
             alert("Successfully deleted post!")
         }
