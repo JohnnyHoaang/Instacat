@@ -3,7 +3,6 @@
  * @author Kelsey Pereira Costa
  */
 import express from 'express';
-import session from 'express-session';
 import {DBHelper} from '../db/dbHelper.mjs';
 import {User} from '../models/User.mjs';
 import {OAuth2Client} from 'google-auth-library';

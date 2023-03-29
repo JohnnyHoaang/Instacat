@@ -5,6 +5,7 @@ import likes from './routes/likes.mjs';
 import addPost from './routes/uploadpost.mjs';
 import auth from './routes/auth.mjs';
 import editProfile from './routes/uploadprofile.mjs';
+import session from 'express-session';
 import connectMongodbSession from 'connect-mongodb-session';
 
 const MongoDBStore = connectMongodbSession(session);
@@ -24,7 +25,7 @@ store.on('error', function(error) {
 });
 
 // Creates a new session
-router.use(session({
+app.use(session({
   secret: process.env.SECRET,
   name: 'id',
   saveUninitialized: false,
