@@ -11,9 +11,32 @@ import { Link } from "react-router-dom"
  * @returns {Component} Navigation
  * @author Maedeh hassani 
  */
-const Navigation = () => {
+const Navigation = (props) => {
 
     const [isFrench, setIsFrench] = useState(false);
+    /**
+     * Search for cat post using query from form
+     * @param {Event} e 
+     */
+    function searchPosts(e) {
+        e.preventDefault()
+        let query = document.querySelector('#query').value
+        let url = `/api/search/${query}`;
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(response.Error);
+                } else {
+                    return response.json();
+                }
+            })
+            .then(data => {
+                props.setCards(data)
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+    }
 
     function toggleLanguage() {
         setIsFrench(!isFrench);
@@ -41,7 +64,7 @@ const Navigation = () => {
             <div className='nav-div'><Link to='/aboutUs'>{t('navigation.aboutUs')}</Link></div>
             <div id='lang' onClick={() => changeLang()}><section id="lang-sec">Fr</section></div>
 
-            <form role="search" id="form">
+            <form role="search" id="form" onSubmit={searchPosts}>
                 <input type="search" id="query" name="q"
                     placeholder={t('navigation.search')}
                     aria-label="Search through site content" />

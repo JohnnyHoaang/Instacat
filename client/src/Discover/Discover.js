@@ -6,11 +6,11 @@ import MainContainer from '../Main/MainContainer'
  * @returns {Component} Discover
  * @author Maedeh hassani  
  */
-function Discover() {
+function Discover(props) {
 
     return (
         <div className="Discover">
-            <MainContainer />
+            <MainContainer cards={props.cards} setCards={props.setCards}/>
         </div>
     );
 }
