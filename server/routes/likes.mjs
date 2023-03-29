@@ -1,41 +1,64 @@
-import express from 'express'
-import { Post } from "../models/Post.mjs"
-import { DBHelper } from '../db/dbHelper.mjs'
-import bodyParser from 'body-parser'
+import express from 'express';
+import {Post} from '../models/Post.mjs';
+import {DBHelper} from '../db/dbHelper.mjs';
+import bodyParser from 'body-parser';
 
 const router = new express.Router();
 const db = new DBHelper();
 
-router.use(bodyParser.json())
+router.use(bodyParser.json());
 
-router.post('/post/like', async (req, res) => {
-  updateLikes({ id : req.body.id }, true)
-  res.status(200).send({message: "liked!"})
-})
-router.post('/post/unlike', async (req, res) => {
-  updateLikes({id: req.body.id}, false);
-  res.status(200).send({message: 'unliked!'});
+// Update like count of a post
+router.post('/update', async (req, res) => {
+  const username = req.body.username;
+  const id = req.body.id;
+  const posts = await db.getQueryData(Post, {id: id});
+  // Find if user liked the post
+  const isLiked = posts[0].likers.find((post) => post == username);
+  try {
+    if (isLiked) {
+      // Unlikes if user previously liked post
+      await unlikePost(id, username);
+      res.status(200).send({message: 'unliked!'});
+    } else {
+      // Likes if user has not like post
+      await likePost(id, username);
+      res.status(200).send({message: 'liked!'});
+    }
+  } catch (e) {
+    res.status(401).json({error: 'Forbidden request'});
+  }
 });
 
+export default router;
 /**
- * TODO Write JSDocs
- * @param {*} query
- * @param {*} isLiked
+ * Removes username to likers list and increments like count of a post
+ * @param {String} id
+ * @param {String} username
  */
-async function updateLikes(query, isLiked) {
-  let data = await db.getQueryData(Post, query)
- 
-  //added new if for check the likes condition
-  if (data.length > 0) {
-    if (isLiked) {
-      data[0]["likes"] += 1
-    } else {
-      data[0]["likes"] -= 1
-    }
-    await db.updateData(Post, query, {likes: data[0]["likes"]})
-  } else {
-    console.log(`No data found for query: ${JSON.stringify(query)}`);
-  }
+async function unlikePost(id, username) {
+  await Post.findOneAndUpdate({id: id}, {
+    $pullAll: {
+      likers: [username],
+    },
+    $inc: {
+      likes: -1,
+    },
+  });
 }
-
-export default router
+/**
+ * Adds username to likers list and increments like count of a post
+ * @param {String} id
+ * @param {String} username
+ */
+async function likePost(id, username) {
+  await Post.findOneAndUpdate({id: id}, {
+    $push: {
+      likers: username,
+    },
+    $inc: {
+      likes: 1,
+    },
+  },
+  );
+}
