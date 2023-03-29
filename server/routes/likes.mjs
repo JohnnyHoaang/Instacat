@@ -1,6 +1,6 @@
 import express from 'express';
-import {Post} from '../models/Post.mjs';
-import {DBHelper} from '../db/dbHelper.mjs';
+import { Post } from '../models/Post.mjs';
+import { DBHelper } from '../db/dbHelper.mjs';
 import bodyParser from 'body-parser';
 
 const router = new express.Router();
@@ -12,10 +12,10 @@ router.use(bodyParser.json());
 router.post('/update', async (req, res) => {
   const username = req.body.username;
   const id = req.body.id;
-  const posts = await db.getQueryData(Post, {id: id});
-  // Find if user liked the post
-  const isLiked = posts[0].likers.find((post) => post == username);
   try {
+    const posts = await db.getQueryData(Post, {id: id});
+    // Find if user liked the post
+    const isLiked = posts[0].likers.find((post) => post == username);
     if (isLiked) {
       // Unlikes if user previously liked post
       await unlikePost(id, username);
@@ -26,7 +26,27 @@ router.post('/update', async (req, res) => {
       res.status(200).send({message: 'liked!'});
     }
   } catch (e) {
-    res.status(401).json({error: 'Forbidden request'});
+    res.status(500).json({error: 'Internal Error'});
+  }
+});
+
+// Check if user liked post
+router.post('/by/user', async (req, res) => {
+  const username = req.body.username;
+  const id = req.body.id;
+  try {
+    const posts = await db.getQueryData(Post, {id: id});
+    // Find if user liked the post
+    const isLiked = posts[0].likers.find((post) => post == username);
+    if (isLiked) {
+      // User liked the post
+      res.status(200).send({isLiked: true});
+    } else {
+      // User did not like the post
+      res.status(200).send({isLiked: false});
+    }
+  } catch (e) {
+    res.status(500).send({error: 'Internal Error'});
   }
 });
 
