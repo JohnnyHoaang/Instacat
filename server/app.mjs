@@ -42,7 +42,7 @@ app.use(express.static('../client/build'));
 app.use('/api', posts);
 app.use('/add', addPost);
 app.use('/auth', auth);
-app.use('/update', likes);
+app.use('/like', likes);
 app.use('/edit/profile', editProfile);
 app.use('/', main);
 
