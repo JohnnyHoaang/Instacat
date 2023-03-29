@@ -65,7 +65,6 @@ function App() {
       <Route path="/catHashtags/:hashtag" element={<SameHashtag />} />
       {isAdmin && <Route path="/admin" element={<Admin email={email} isAdmin={isAdmin} token={token}/>} />}
     </Routes>
-
   return (
     <BrowserRouter>
       <I18nextProvider i18n={i18n}>

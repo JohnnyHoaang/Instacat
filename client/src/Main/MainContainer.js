@@ -35,7 +35,7 @@ function Main(props) {
       .catch(err => {
         console.log(err.message);
       })
-  });
+  },[]);
 
 
   // Calculate the starting and ending index of the cards to display
