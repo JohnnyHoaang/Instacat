@@ -7,20 +7,18 @@ const db = new DBHelper();
 router.use(express.json());
 
 // Route that returns list of users only if request comes from an admin
-router.post('/users', async (req, res) => {
+router.post('/users', isAdmin, async (req, res, next) => {
   const email = req.body.email;
   const token = req.body.token;
   // Check for correct credentials
   if (token == req.session.token && email == req.session.user.email) {
     try {
       // Find user from session
-      if (req.session.user.isAdmin) {
-        const users = await User.find({});
-        // User is admin and can access all users
-        const response = {users};
-        // Returns response of request
-        res.status(201).json(response);
-      }
+      const users = await User.find({});
+      // User is admin and can access all users
+      const response = {users};
+      // Returns response of request
+      res.status(201).json(response);
     } catch (e) {
       // Internal error
       res.status(500).json({error: 'Internal Error'});
@@ -32,19 +30,17 @@ router.post('/users', async (req, res) => {
 });
 
 // Route that deletes user only if request comes from an admin
-router.post('/delete/user', async (req, res) => {
+router.post('/delete/user', isAdmin, async (req, res) => {
   const adminEmail = req.body.adminEmail;
   const deleteEmail = req.body.deleteEmail;
   const token = req.body.token;
   // Check for correct credentials
   if (token == req.session.token && adminEmail == req.session.user.email) {
     try {
-      if (req.session.user.isAdmin) {
-        await User.deleteOne({email: deleteEmail});
-        const response = {status: 'Successfully delete user'};
-        // Returns response of request
-        res.status(201).json(response);
-      }
+      await User.deleteOne({email: deleteEmail});
+      const response = {status: 'Successfully delete user'};
+      // Returns response of request
+      res.status(201).json(response);
     } catch (e) {
       // Internal error
       res.status(500).json({error: 'Internal Error'});
@@ -64,13 +60,11 @@ router.post('/permissions', async (req, res) => {
   // Check for correct credentials
   if (token == req.session.token && adminEmail == req.session.user.email) {
     try {
-      if (req.session.user.isAdmin) {
-        // Set User admin permissions
-        db.updateData(User, {email: email}, {isAdmin: isAdmin});
-        const response = {status: 'Successfully set permissions to user'};
-        // Returns response of request
-        res.status(201).json(response);
-      }
+      // Set User admin permissions
+      db.updateData(User, {email: email}, {isAdmin: isAdmin});
+      const response = { status: 'Successfully set permissions to user'};
+      // Returns response of request
+      res.status(201).json(response);
     } catch (e) {
       // Internal error
       res.status(500).json({error: 'Internal Error'});
@@ -84,3 +78,16 @@ router.post('/permissions', async (req, res) => {
 
 export default router;
 
+/**
+ * Check if user is an admin 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @returns 
+ */
+function isAdmin(req, res, next) {
+  if (req.session.admin) {
+    return res.sendStatus(201); // Authorized
+  }
+  next();
+}
