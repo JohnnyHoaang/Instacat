@@ -16,11 +16,13 @@ import './SameHashtag.css'
 function SameHashtag () {
     const { hashtag } = useParams();
     let [eachHashtag, setEachHashtag]= useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const cardsPerPage = 10;
 
     //npx json-server --watch data/data2.json --port 3006  
     useEffect(() => {
-        // let url = `/api/hashtag/${hashtag}`;
-        let url = 'http://localhost:3006/subvicar'
+        let url = `/api/hashtag/${hashtag}`;
+        // let url = 'http://localhost:3006/subvicar'
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -35,12 +37,29 @@ function SameHashtag () {
             .catch(err => {
                 console.log(err.message);
             })
-    });
+    }, []);
+    
+
+    // Calculate the starting and ending index of the cards to display
+    const indexOfLastCard = currentPage * cardsPerPage;
+    const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+    const currentCards = eachHashtag.slice(indexOfFirstCard, indexOfLastCard);
+
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const pageNumbers = [];
+    for (
+        let i = Math.max(1, currentPage - 1);
+        i <= Math.min(Math.ceil(eachHashtag.length / cardsPerPage), currentPage + 1);
+        i++
+    ) {
+        pageNumbers.push(i);
+    }
 
     return(
         <div>  
             <section className='card-container'>
-                {eachHashtag.map((item, index) => ( 
+                {currentCards.map((item, index) => ( 
                     <div key={index} className='each-card-outer'>
                         <HashtagCards 
                             hash = {hashtag}
@@ -55,6 +74,27 @@ function SameHashtag () {
                     </div>
                 ))}
             </section>
+
+
+            {/* adding next and pre button for pagination section */}
+            <div className="pagination">
+                {currentPage > 1 && (
+                    <button className='pre-btn-pagination' onClick={() => paginate(currentPage - 1)}>{`Pre<<`}</button>
+                )}
+                {pageNumbers.map((number) => (
+                    <button
+                        key={number}
+                        className="btn-pagination"
+                    >
+                        {number}
+                    </button>
+                ))}
+                {currentPage <
+                    Math.ceil(eachHashtag.length / cardsPerPage) - 1 && (
+                        <button onClick={() => paginate(currentPage + 1)}>{'>>Next'}</button>
+                    )}
+            </div>
+
         </div>
     )
 }
