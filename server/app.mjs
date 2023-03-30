@@ -5,8 +5,25 @@ import likes from './routes/likes.mjs';
 import addPost from './routes/uploadpost.mjs';
 import auth from './routes/auth.mjs';
 import editProfile from './routes/uploadprofile.mjs';
+import session from 'express-session';
+import dotenv from 'dotenv';
 
 const app = express();
+dotenv.config();
+
+app.use(session({
+  secret: process.env.SECRET || 'secret',
+  name: 'id',
+  saveUninitialized: false,
+  resave: false,
+  cookie: {
+    maxAge: 120000,
+    secure: false,
+    httpOnly: true,
+    sameSite: 'strict',
+  },
+}));
+
 app.use(express.static('../client/build'));
 app.use('/api', posts);
 app.use('/add', addPost);

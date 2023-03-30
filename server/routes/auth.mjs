@@ -7,7 +7,6 @@ import {DBHelper} from '../db/dbHelper.mjs';
 import {User} from '../models/User.mjs';
 import {OAuth2Client} from 'google-auth-library';
 import dotenv from 'dotenv';
-import session from 'express-session';
 import isAuthenticated from '../utils/util.mjs';
 
 const db = new DBHelper();
@@ -18,18 +17,7 @@ const router = new express.Router();
 
 router.use(express.json());
 
-router.use(session({
-  secret: process.env.SECRET,
-  name: 'id',
-  saveUninitialized: false,
-  resave: false,
-  cookie: {
-    maxAge: 120000,
-    secure: false,
-    httpOnly: true,
-    sameSite: 'strict',
-  },
-}));
+
 
 router.post('/login', async (req, res) => {
   const {token} = req.body;
