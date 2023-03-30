@@ -43,7 +43,7 @@ function App() {
       <Route path="/discover" element={<Discover cards={cards} setCards={setCards} />} />
       <Route path="/adopt" element={<Adopt />} />
       <Route path="/aboutUs" element={<AboutUs />} />
-      <Route path="/cats/:id" element={<CatDetails />} />
+      <Route path="/cats/:id" element={<CatDetails username={username}/>} />
       <Route path="/add/post" element={<PostForm username={username}/>} />
       <Route path="/edit/profile" element={
         <EditProfileForm
