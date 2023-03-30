@@ -15,14 +15,11 @@ router.use(
 
 router.post('/post/add', async (req, res) => {
   const postId = { id : req.body.id };
-  const userPost = await db.getQueryData(Post, postId);
-  let allComments = userPost[0]["comments"];
-  allComments.push({
+  const userPost = {
     username : req.body.username,
     comment : req.body.comment
-  });
-
-  await db.updateData(Post, postId, {comments: allComments});
+  }
+  await db.updateData(Post, postId, { $push: { comments: userPost } });
   res.status(200).send({message: 'comment added'});
 });
 
