@@ -3,14 +3,16 @@ import './CatDetails.css';
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
 
-
 /***
  * Display each cat information 
  * @returns {Component} CatDetails
  * @author Maedeh hassani 
  */
-function CatDetails () { 
+function CatDetails (props) { 
     const { id } = useParams();
+
+    const [formState, setFormState] = useState(false)
+
     let [eachCat, setEachCat] = useState({
         _id: '',
         id: '',
@@ -20,8 +22,7 @@ function CatDetails () {
         hashtags: [],
         likes: 0,
         comments: [],
-      });
-
+    });
 
     //npx json-server --watch data/data2.json --port 3003  
     useEffect(() => {
@@ -41,8 +42,27 @@ function CatDetails () {
             .catch(err => {
                 console.log(err.message);
             })
-    },[]);
+    }, [formState]);
 
+    /**
+   * @param {*} e Event
+   * @author Johnny Hoang
+   */
+  async function onSubmit(e) {
+    e.preventDefault()
+    const form = document.querySelector("#p-form")
+    // Create form data with form input
+    const formData = new FormData(form)
+    // Add user username & post id
+    formData.append('username', props.username)
+    formData.append('id', id)
+    // Upload post to DB
+    await fetch(`/comment/post/add`, {
+      method: 'POST',
+      body: formData
+    })
+    setFormState(!formState)
+  }
 
     return (
         
@@ -84,7 +104,17 @@ function CatDetails () {
                                     return <div key={index}>{item.username}: {item.comment}</div>
                                 })}
                                 </section>
-                            </div>        
+                            </div>
+                            <div>
+                                <form id='p-form' enctype="multipart/form-data" onSubmit={onSubmit}>
+                                    <div className='post-caption'>
+                                        <input type="text" id="caption-input" name="comment"></input>
+                                    </div>
+                                    <div className='submit-post'>
+                                        <input id='submit-btn' type="submit" value="Comment"></input>
+                                    </div>
+                                </form>
+                            </div>      
                         </div>
                     </div>
                 </div>
