@@ -10,7 +10,7 @@ router.use(bodyParser.json());
 
 // Update like count of a post
 router.post('/update', async (req, res) => {
-  const username = req.body.username;
+  const username = req.body.email;
   const id = req.body.id;
   try {
     const posts = await db.getQueryData(Post, {id: id});

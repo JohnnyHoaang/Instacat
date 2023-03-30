@@ -23,44 +23,55 @@ function Cards(props) {
   const [likes, setLikes] = useState(props.likes)
 
   async function handleLike() {
-    if (props.username !== "") {
+    if (props.email !== "") {
       // Like/Dislike post
       await fetch(`like/update`, {
         method: "POST",
-        body: JSON.stringify({ username: props.username, id: props.id }),
+        body: JSON.stringify({ email: props.email, id: props.id }),
         headers: { "Content-Type": "application/json", },
       });
       // Get new data from API
-      let response = await fetch(`api/cat/id/${props.id}`);
-      if (response.ok) {
-        let result = await response.json()
-        let post = result[0]
-        // Set the number of likes
-        setLikes(post.likes)
-        // Shows if user liked or not
-        checkUserLiked(post.likers)
-      }
+      fetchData()
     } else {
       alert("Sign up for an account to like posts!")
     }
   }
   /**
+   * Fetch data of a single post using id and sets states
+   * @author Johnny Hoang
+   */
+  async function fetchData(){
+    let response = await fetch(`api/cat/id/${props.id}`);
+    if (response.ok) {
+      let result = await response.json()
+      let post = result[0]
+      // Set the number of likes
+      setLikes(post.likes)
+      // Shows if user liked or not
+      checkUserLiked(post.likers)
+    }
+  }
+  /**
    * Check if user has liked or not and sets the change to hook
    * @param {*} likers 
+   * @author Johnny Hoang
    */
   function checkUserLiked(likers){
-    let isLike = likers.find(post => post === props.username)
+    let isLike = likers.find(post => post === props.email)
     isLike ? setHeartState(true) : setHeartState(false)
   }
-  useEffect(() => {
-    // Used to show user's saved likes when user logs in or refreshes
-    checkUserLiked(likers)
-  }, [likers, props.username, props.currentPage])
 
   function sharePost() {
     navigator.clipboard.writeText(`${window.location.href}cats/${props.id}`);
     alert("Post was copied to clipboard")
   }
+  
+  useEffect(() => {
+    // Used to show user's saved likes when user logs in or refreshes
+    fetchData()
+  }, [likers, props.email, props.currentPage])
+
+  
 
   return (
     <div className='cat-card' id={id} >

@@ -39,7 +39,7 @@ function App() {
   */
   const router =
     <Routes>
-      <Route path="/" element={<Main cards={cards} setCards={setCards} username={username}/>} />
+      <Route path="/" element={<Main cards={cards} setCards={setCards} email={email}/>} />
       <Route path="/discover" element={<Discover cards={cards} setCards={setCards} />} />
       <Route path="/adopt" element={<Adopt />} />
       <Route path="/aboutUs" element={<AboutUs />} />

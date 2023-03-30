@@ -21,6 +21,7 @@ function Main(props) {
     //npx json-server --watch data/data1.json --port 3002  
     useEffect(() => {
         let url = `/api/cat/all`;
+        console.log('Switch page')
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -34,7 +35,7 @@ function Main(props) {
             .catch(err => {
                 console.log(err.message);
             })
-    });
+    },[]);
 
     // Calculate the starting and ending index of the cards to display
     const indexOfLastCard = currentPage * cardsPerPage;
@@ -73,7 +74,7 @@ function Main(props) {
               caption={item.caption}
               likes={item.likes}
               hashtags={item.hashtags}
-              username={props.username}
+              email={props.email}
               likers={item.likers}
               currentPage={currentPage}
             />
