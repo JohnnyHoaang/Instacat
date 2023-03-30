@@ -21,7 +21,6 @@ function Main(props) {
     //npx json-server --watch data/data1.json --port 3002  
     useEffect(() => {
         let url = `/api/cat/all`;
-        console.log('Switch page')
         fetch(url)
             .then(response => {
                 if (!response.ok) {
