@@ -1,16 +1,20 @@
 import express from 'express'
+import fileUpload from 'express-fileupload';
 import { Post } from "../models/Post.mjs"
 import { DBHelper } from '../db/dbHelper.mjs'
-import bodyParser from 'body-parser'
 
 const router = new express.Router();
 const db = new DBHelper();
 
 router.use(express.json());
+router.use(
+  fileUpload({
+    createParentPath: true,
+  }),
+);
 
 router.post('/post/add', async (req, res) => {
   const postId = { id : req.body.id };
-  console.log(req.body)
   const userPost = await db.getQueryData(Post, postId);
   let allComments = userPost[0]["comments"];
   allComments.push({
