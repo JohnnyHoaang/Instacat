@@ -34,7 +34,7 @@ function Main(props) {
             .catch(err => {
                 console.log(err.message);
             })
-    }, []);
+    });
 
     // Calculate the starting and ending index of the cards to display
     const indexOfLastCard = currentPage * cardsPerPage;
@@ -75,6 +75,7 @@ function Main(props) {
               hashtags={item.hashtags}
               username={props.username}
               likers={item.likers}
+              currentPage={currentPage}
             />
           </div>
         ))}

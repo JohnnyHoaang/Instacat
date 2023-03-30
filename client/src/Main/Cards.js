@@ -55,7 +55,7 @@ function Cards(props) {
   useEffect(() => {
     // Used to show user's saved likes when user logs in or refreshes
     checkUserLiked(likers)
-  }, [likers, props.username])
+  }, [likers, props.username, props.currentPage])
 
   function sharePost() {
     navigator.clipboard.writeText(`${window.location.href}cats/${props.id}`);
