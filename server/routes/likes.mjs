@@ -10,7 +10,7 @@ router.use(bodyParser.json());
 
 // Update like count of a post
 router.post('/update', async (req, res) => {
-  const username = req.body.username;
+  const username = req.body.email;
   const id = req.body.id;
   try {
     const posts = await db.getQueryData(Post, {id: id});
@@ -27,26 +27,6 @@ router.post('/update', async (req, res) => {
     }
   } catch (e) {
     res.status(500).json({error: 'Internal Error'});
-  }
-});
-
-// Check if user liked post
-router.post('/by/user', async (req, res) => {
-  const username = req.body.username;
-  const id = req.body.id;
-  try {
-    const posts = await db.getQueryData(Post, {id: id});
-    // Find if user liked the post
-    const isLiked = posts[0].likers.find((post) => post == username);
-    if (isLiked) {
-      // User liked the post
-      res.status(200).send({isLiked: true});
-    } else {
-      // User did not like the post
-      res.status(200).send({isLiked: false});
-    }
-  } catch (e) {
-    res.status(500).send({error: 'Internal Error'});
   }
 });
 
