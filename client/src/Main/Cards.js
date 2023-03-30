@@ -19,9 +19,7 @@ function Cards(props) {
   const { hashtag } = useParams();
   const { id } = useParams();
   const [heartState, setHeartState] = useState(false)
-  const [likers, setLikers] = useState(props.post.likers)
   const [likes, setLikes] = useState(props.post.likes)
-  const [deleteState, setDeleteState] = useState(false);
 
   async function handleLike() {
     if (props.email !== "") {
@@ -62,15 +60,13 @@ function Cards(props) {
     isLike ? setHeartState(true) : setHeartState(false)
   }
 
-
-
   useEffect(() => {
     // Used to show user's saved likes when user logs in or refreshes
     fetchData()
-  }, [likers, props.email, props.currentPage, deleteState])
+  }, [props.email, props.currentPage, props.cards])
   
   async function deletePost() {
-    if (props.isAdmin) {
+    if (props.isAdmin || props.username === props.post.username) {
       let payload = JSON.stringify({ token: props.token, id: props.post.id })
       const headers = {
         method: "POST",
@@ -85,7 +81,6 @@ function Cards(props) {
       props.setCards(props.cards)
       // change state when deleted
       props.setState(!props.state)
-      setDeleteState(!deleteState)
       alert("Successfully deleted post!")
     }
   }
