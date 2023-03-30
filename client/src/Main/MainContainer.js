@@ -13,7 +13,9 @@ import { Link } from "react-router-dom"
  * @author Maedeh hassani 
  */
 function Main(props) {
-    
+  
+    // State for cards that will get deleted
+    const [state, setState] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
 
     const cardsPerPage = 10;
@@ -34,7 +36,8 @@ function Main(props) {
             .catch(err => {
                 console.log(err.message);
             })
-    },[]);
+    }, [state]);
+
 
     // Calculate the starting and ending index of the cards to display
     const indexOfLastCard = currentPage * cardsPerPage;
@@ -67,15 +70,17 @@ function Main(props) {
         {currentCards.map((item, index) => (
           <div key={index} className='each-card-outer'>
             <Cards
-              id={item.id}
+              isAdmin={props.isAdmin}
+              token={props.token}
+              username={props.username}
+              post={item}
               index={index}
-              imageUrl={item.image}
-              caption={item.caption}
-              likes={item.likes}
-              hashtags={item.hashtags}
               email={props.email}
-              likers={item.likers}
               currentPage={currentPage}
+              cards={props.cards}
+              state={state}
+              setCards={props.setCards}
+              setState={setState}
             />
           </div>
         ))}

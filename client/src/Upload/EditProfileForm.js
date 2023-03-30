@@ -1,5 +1,14 @@
+/**
+ * Form that allows users to edit their profile
+ * @param {Object} props 
+ * @returns {Component}
+ * @author Johnny Hoang
+ */
 function EditPostForm(props) {
-
+    /**
+     * Submit handler for the form and send a request to update route
+     * @param {Event} e 
+     */
     async function onSubmit(e) {
         e.preventDefault()
         const form = document.querySelector("#p-form")
@@ -7,6 +16,7 @@ function EditPostForm(props) {
         const formData = new FormData(form)
         // Add user email
         formData.append('email', props.email)
+        console.log(formData)
         let result
         // Update profile information
         let response = await fetch(`/edit/profile/update`, {
@@ -17,8 +27,8 @@ function EditPostForm(props) {
         if (response.ok) {
             result = response.json()
         }
-        // Set new profile picture and name of user
-        props.setProfilePicture(result.picture)
+        // Set new name of user
+        console.log(result)
         props.setUsername(result.name)
         alert("Profile updated Successfully!")
     }

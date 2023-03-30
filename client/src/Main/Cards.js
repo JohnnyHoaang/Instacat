@@ -19,15 +19,16 @@ function Cards(props) {
   const { hashtag } = useParams();
   const { id } = useParams();
   const [heartState, setHeartState] = useState(false)
-  const [likers, setLikers] = useState(props.likers)
-  const [likes, setLikes] = useState(props.likes)
+  const [likers, setLikers] = useState(props.post.likers)
+  const [likes, setLikes] = useState(props.post.likes)
+  const [deleteState, setDeleteState] = useState(false);
 
   async function handleLike() {
     if (props.email !== "") {
       // Like/Dislike post
       await fetch(`like/update`, {
         method: "POST",
-        body: JSON.stringify({ email: props.email, id: props.id }),
+        body: JSON.stringify({ email: props.email, id: props.post.id }),
         headers: { "Content-Type": "application/json", },
       });
       // Get new data from API
@@ -40,8 +41,8 @@ function Cards(props) {
    * Fetch data of a single post using id and sets states
    * @author Johnny Hoang
    */
-  async function fetchData(){
-    let response = await fetch(`api/cat/id/${props.id}`);
+  async function fetchData() {
+    let response = await fetch(`api/cat/id/${props.post.id}`);
     if (response.ok) {
       let result = await response.json()
       let post = result[0]
@@ -56,46 +57,67 @@ function Cards(props) {
    * @param {*} likers 
    * @author Johnny Hoang
    */
-  function checkUserLiked(likers){
+  function checkUserLiked(likers) {
     let isLike = likers.find(post => post === props.email)
     isLike ? setHeartState(true) : setHeartState(false)
   }
 
-  function sharePost() {
-    navigator.clipboard.writeText(`${window.location.href}cats/${props.id}`);
-    alert("Post was copied to clipboard")
-  }
-  
+
+
   useEffect(() => {
     // Used to show user's saved likes when user logs in or refreshes
     fetchData()
-  }, [likers, props.email, props.currentPage])
-
+  }, [likers, props.email, props.currentPage, deleteState])
   
+  async function deletePost() {
+    if (props.isAdmin) {
+      let payload = JSON.stringify({ token: props.token, id: props.post.id })
+      const headers = {
+        method: "POST",
+        body: payload,
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+        }
+      };
+      await fetch(`/delete/post`, headers)
+      let index = props.cards.findIndex(card => card.id === props.post.id)
+      props.cards.splice(index, 1)
+      props.setCards(props.cards)
+      // change state when deleted
+      props.setState(!props.state)
+      setDeleteState(!deleteState)
+      alert("Successfully deleted post!")
+    }
+  }
+  function sharePost() {
+    navigator.clipboard.writeText(`${window.location.href}cats/${props.post.id}`);
+    alert("Post was copied to clipboard")
+  }
 
   return (
     <div className='cat-card' id={id} >
-      <Link to={`/cats/${props.id}`} style={{ textDecoration: 'none' }}>
+      <Link to={`/cats/${props.post.id}`} style={{ textDecoration: 'none' }}>
         <div className='cat-home'>
-          <img src={props.imageUrl} alt="catImage" className="each-cat-img"></img>
-        </div>
+          <img src={props.post.image} alt="catImage" className="each-cat-img"></img>
+          </div>
 
       </Link>
       <div className='caption-heart'>
         <div className='likes'>
           {/* Change the state of the heart icon depending on state */}
           <img src={heartState ? orangeHeart : heartLike} alt="like" className="heart-like"
-            onClick={handleLike} id={props.id}>
+            onClick={handleLike} id={props.post.id}>
           </img>
 
           <span className="LikeNum" id={props.index}>{likes}</span>
-          <span className='share-btn' onClick={() => { sharePost(props.id) }}>
+          <span className='share-btn' onClick={() => { sharePost() }}>
             <img src={shareImg} alt='share' className='share-img' />
           </span>
+          {(props.isAdmin || props.username === props.post.username) && <button onClick={deletePost}>Delete</button>}
         </div>
-        <p className='catCaption'>{props.caption} {id}</p>
+        <p className='catCaption'>{props.post.caption} {id}</p>
         <div className='cat-hashtags'>
-          <section className='hashtags'>{props.hashtags.map((item, index) => {
+          <section className='hashtags'>{props.post.hashtags.map((item, index) => {
             return <div key={index} >
               <Link to={`/catHashtags/${item}`} id={hashtag} style={{ textDecoration: 'none' }}>
                 #{item}
