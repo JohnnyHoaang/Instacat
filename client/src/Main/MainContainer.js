@@ -15,6 +15,8 @@ import { Link } from "react-router-dom"
 function Main(props) {
     
     const [currentPage, setCurrentPage] = useState(1);
+    const [state, setState] = useState(false)
+
     const cardsPerPage = 10;
 
     //npx json-server --watch data/data1.json --port 3002  
@@ -33,7 +35,7 @@ function Main(props) {
             .catch(err => {
                 console.log(err.message);
             })
-    }, []);
+    }, [state]);
 
 
     // Calculate the starting and ending index of the cards to display
@@ -73,6 +75,10 @@ function Main(props) {
               caption={item.caption}
               likesNum={item.likes}
               hashtags={item.hashtags}
+              likers={item.likers}
+              username={props.username}
+              state={state}
+              setState={setState}
             />
           </div>
         ))}
