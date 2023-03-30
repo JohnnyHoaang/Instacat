@@ -1,41 +1,84 @@
-import express from 'express'
-import { Post } from "../models/Post.mjs"
-import { DBHelper } from '../db/dbHelper.mjs'
-import bodyParser from 'body-parser'
+import express from 'express';
+import { Post } from '../models/Post.mjs';
+import { DBHelper } from '../db/dbHelper.mjs';
+import bodyParser from 'body-parser';
 
 const router = new express.Router();
 const db = new DBHelper();
 
-router.use(bodyParser.json())
+router.use(bodyParser.json());
 
-router.post('/post/like', async (req, res) => {
-  updateLikes({ id : req.body.id }, true)
-  res.status(200).send({message: "liked!"})
-})
-router.post('/post/unlike', async (req, res) => {
-  updateLikes({id: req.body.id}, false);
-  res.status(200).send({message: 'unliked!'});
+// Update like count of a post
+router.post('/update', async (req, res) => {
+  const username = req.body.username;
+  const id = req.body.id;
+  try {
+    const posts = await db.getQueryData(Post, {id: id});
+    // Find if user liked the post
+    const isLiked = posts[0].likers.find((post) => post == username);
+    if (isLiked) {
+      // Unlikes if user previously liked post
+      await unlikePost(id, username);
+      res.status(200).send({message: 'unliked!'});
+    } else {
+      // Likes if user has not like post
+      await likePost(id, username);
+      res.status(200).send({message: 'liked!'});
+    }
+  } catch (e) {
+    res.status(500).json({error: 'Internal Error'});
+  }
 });
 
-/**
- * TODO Write JSDocs
- * @param {*} query
- * @param {*} isLiked
- */
-async function updateLikes(query, isLiked) {
-  let data = await db.getQueryData(Post, query)
- 
-  //added new if for check the likes condition
-  if (data.length > 0) {
+// Check if user liked post
+router.post('/by/user', async (req, res) => {
+  const username = req.body.username;
+  const id = req.body.id;
+  try {
+    const posts = await db.getQueryData(Post, {id: id});
+    // Find if user liked the post
+    const isLiked = posts[0].likers.find((post) => post == username);
     if (isLiked) {
-      data[0]["likes"] += 1
+      // User liked the post
+      res.status(200).send({isLiked: true});
     } else {
-      data[0]["likes"] -= 1
+      // User did not like the post
+      res.status(200).send({isLiked: false});
     }
-    await db.updateData(Post, query, {likes: data[0]["likes"]})
-  } else {
-    console.log(`No data found for query: ${JSON.stringify(query)}`);
+  } catch (e) {
+    res.status(500).send({error: 'Internal Error'});
   }
-}
+});
 
-export default router
+export default router;
+/**
+ * Removes username to likers list and increments like count of a post
+ * @param {String} id
+ * @param {String} username
+ */
+async function unlikePost(id, username) {
+  await Post.findOneAndUpdate({id: id}, {
+    $pullAll: {
+      likers: [username],
+    },
+    $inc: {
+      likes: -1,
+    },
+  });
+}
+/**
+ * Adds username to likers list and increments like count of a post
+ * @param {String} id
+ * @param {String} username
+ */
+async function likePost(id, username) {
+  await Post.findOneAndUpdate({id: id}, {
+    $push: {
+      likers: username,
+    },
+    $inc: {
+      likes: 1,
+    },
+  },
+  );
+}

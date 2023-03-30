@@ -19,11 +19,15 @@ const PostSchema = new mongoose.Schema({
   },
   hashtags: {
     type: Array,
-    default: '',
+    default: [],
   },
   likes: {
     type: Number,
     default: 0,
+  },
+  likers: {
+    type: Array,
+    default: [],
   },
   comments: [{
     username: {type: String},
