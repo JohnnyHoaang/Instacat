@@ -7,6 +7,7 @@ import auth from './routes/auth.mjs';
 import editProfile from './routes/uploadprofile.mjs';
 import session from 'express-session';
 import dotenv from 'dotenv';
+import addComment from './routes/uploadcomment.mjs';
 
 const app = express();
 dotenv.config();
@@ -28,6 +29,8 @@ app.use(express.static('../client/build'));
 app.use('/api', posts);
 app.use('/add', addPost);
 app.use('/auth', auth);
+app.use('/edit/profile', editProfile);
+app.use('/comment', addComment);
 app.use('/like', likes);
 app.use('/edit/profile', editProfile);
 app.use('/', main);
