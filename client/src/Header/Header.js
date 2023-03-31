@@ -21,6 +21,10 @@ const Header = (props) => {
     props.setUsername(data.user.name)
     props.setProfilePicture(data.user.picture)
     props.setEmail(data.user.email)
+    props.setIsAdmin(data.user.isAdmin)
+    if(data.user.isAdmin){
+      props.setToken(data.token)
+    }
   }
 
   const handleError = error => {
@@ -29,9 +33,13 @@ const Header = (props) => {
 
   const handleLogout = async () => {
     await fetch("/auth/logout");
+    if (props.isAdmin){
+      props.setToken("")
+    }
     props.setUsername("");
     props.setProfilePicture("");
-    props.setEmail("")
+    props.setEmail("");
+    props.setIsAdmin(false);
   }
 
 
@@ -52,7 +60,7 @@ const Header = (props) => {
             onSuccess={handleLogin}
             onError={handleError}
           />}
-          {props.username && <button onClick={handleLogout}>Logout</button>}
+          {props.username && <button onClick={handleLogout}><Link to="/" >Logout</Link></button>}
         </div>
 
 

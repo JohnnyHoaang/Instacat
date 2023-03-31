@@ -28,7 +28,6 @@ function CatDetails (props) {
     useEffect(() => {
         let url = `/api/cat/id/${id}`;
         // let url = 'http://localhost:3003/0'
-
         fetch(url)
             .then(response => {
                 if (!response.ok) {

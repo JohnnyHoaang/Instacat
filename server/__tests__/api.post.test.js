@@ -13,6 +13,7 @@ const noValue = [];
 afterEach(async () => {
   jest.restoreAllMocks();
 });
+
 // Test for cat posts API
 describe('GET /api/cat/id', () => {
   test('404 error from bad parameter', async () => {

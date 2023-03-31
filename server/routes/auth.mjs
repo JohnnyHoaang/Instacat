@@ -3,11 +3,12 @@
  * @author Kelsey Pereira Costa
  */
 import express from 'express';
-import {DBHelper} from '../db/dbHelper.mjs';
-import {User} from '../models/User.mjs';
-import {OAuth2Client} from 'google-auth-library';
+import { DBHelper } from '../db/dbHelper.mjs';
+import { User } from '../models/User.mjs';
+import { OAuth2Client } from 'google-auth-library';
 import dotenv from 'dotenv';
-import isAuthenticated from '../utils/util.mjs';
+import { generateID } from '../utils/idGenerator.mjs'
+import { isAuthenticated } from '../utils/util.mjs';
 
 const db = new DBHelper();
 dotenv.config();
@@ -63,11 +64,20 @@ router.get('/logout', isAuthenticated, (req, res) => {
 function regenerateSession(req, res, user) {
   req.session.regenerate((err) => {
     if (err) {
-      return res.sendStatus(500);
+      return res.sendStatus(500)
     }
-    req.session.user = user;
-    res.json({user: user});
-  });
+    req.session.user = user
+
+    if (user.isAdmin) {
+      // Send token for admin requests
+      const tokenLength = 1000;
+      const token = generateID(tokenLength);
+      req.session.token = token;
+      res.json({ user: user, token: token });
+    } else {
+      res.json({ user: user });
+    }
+  })
 }
 
 
