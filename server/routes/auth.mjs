@@ -3,12 +3,12 @@
  * @author Kelsey Pereira Costa
  */
 import express from 'express';
-import { DBHelper } from '../db/dbHelper.mjs';
-import { User } from '../models/User.mjs';
-import { OAuth2Client } from 'google-auth-library';
+import {DBHelper} from '../db/dbHelper.mjs';
+import {User} from '../models/User.mjs';
+import {OAuth2Client} from 'google-auth-library';
 import dotenv from 'dotenv';
-import { generateID } from '../utils/idGenerator.mjs'
-import { isAuthenticated } from '../utils/util.mjs';
+import {generateID} from '../utils/idGenerator.mjs';
+import {isAuthenticated} from '../utils/util.mjs';
 
 const db = new DBHelper();
 dotenv.config();
@@ -18,8 +18,6 @@ const router = new express.Router();
 
 router.use(express.json());
 
-
-
 router.post('/login', async (req, res) => {
   const {token} = req.body;
   const ticket = await client.verifyIdToken({
@@ -28,7 +26,7 @@ router.post('/login', async (req, res) => {
   });
   if (!ticket) {
     return res.sendStatus(401);
-  };
+  }
   const {name, email, picture} = ticket.getPayload();
   // Check if user exists with email
   const user = await User.find({email: email});
@@ -64,20 +62,23 @@ router.get('/logout', isAuthenticated, (req, res) => {
 function regenerateSession(req, res, user) {
   req.session.regenerate((err) => {
     if (err) {
-      return res.sendStatus(500)
+      return res.sendStatus(500);
     }
-    req.session.user = user
-
+    req.session.user = user;
+    // generate user token for user requests
+    const userTokenLength = 100;
+    const userToken = generateID(userTokenLength);
+    const tokens = {user: userToken};
+    req.session.userToken = userToken;
     if (user.isAdmin) {
-      // Send token for admin requests
+      // generate tokens for admin requests
       const tokenLength = 1000;
       const token = generateID(tokenLength);
-      req.session.token = token;
-      res.json({ user: user, token: token });
-    } else {
-      res.json({ user: user });
+      tokens.admin = token;
+      req.session.adminToken = token;
     }
-  })
+    res.json({user: user, tokens: tokens});
+  });
 }
 
 

@@ -59,7 +59,6 @@ const Navigation = (props) => {
 
         <nav className='navigation-bar'>
             <div className='nav-div'><Link to='/'>{t('navigation.home')}</Link></div>
-            <div className='nav-div'><Link to='/discover'>{t('navigation.discover')}</Link></div>
             <div className='nav-div'><Link to='/adopt'>{t('navigation.adopt')}</Link></div>
             <div className='nav-div'><Link to='/aboutUs'>{t('navigation.aboutUs')}</Link></div>
             {props.isAdmin && <div className='nav-div'><Link to='/admin'>Admin</Link></div>}

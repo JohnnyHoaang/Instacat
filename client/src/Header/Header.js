@@ -22,9 +22,7 @@ const Header = (props) => {
     props.setProfilePicture(data.user.picture)
     props.setEmail(data.user.email)
     props.setIsAdmin(data.user.isAdmin)
-    if(data.user.isAdmin){
-      props.setToken(data.token)
-    }
+    props.setTokens(data.tokens)
   }
 
   const handleError = error => {
@@ -33,13 +31,11 @@ const Header = (props) => {
 
   const handleLogout = async () => {
     await fetch("/auth/logout");
-    if (props.isAdmin){
-      props.setToken("")
-    }
     props.setUsername("");
     props.setProfilePicture("");
     props.setEmail("");
     props.setIsAdmin(false);
+    props.setTokens({})
   }
 
 
@@ -48,9 +44,19 @@ const Header = (props) => {
       <img src={myLogo} alt="logo" id="logo"></img>
       <div id='profile-div'>
         <div className='profile-img-div'>
-          <Link to='/edit/profile'>
-            <img src={props.profilePicture || defaultProfile} alt="profile" id="profile-img"></img>
-          </Link>
+          {props.username ?
+             // Links to edit profile form if logged in
+            <Link to='/edit/profile'>
+              <img src={props.profilePicture || defaultProfile} alt="profile" id="profile-img">
+              </img>
+            </Link>
+            :
+            // Does not redirect to edit profile
+            <img src={props.profilePicture || defaultProfile} alt="profile" id="profile-img">
+            </img>
+
+          }
+
         </div>
         <div className='profile-guest-div'>
           <p>{props.username ? props.username : "Guest"}</p>
