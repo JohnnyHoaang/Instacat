@@ -7,7 +7,8 @@ import {DBHelper} from '../db/dbHelper.mjs';
 import {User} from '../models/User.mjs';
 import {OAuth2Client} from 'google-auth-library';
 import dotenv from 'dotenv';
-import {generateID} from '../utils/idGenerator.mjs';
+import { generateID } from '../utils/idGenerator.mjs'
+import { isAuthenticated } from '../utils/util.mjs';
 
 const db = new DBHelper();
 dotenv.config();
@@ -75,21 +76,5 @@ function regenerateSession(req, res, user) {
 }
 
 router.get("")
-
-/**
- * Function to check if a user can access a route
- * @param {*} req Request object
- * @param {*} res Result
- * @param {*} next Next function
- * @return {status} Status 401 if the user isn't authenticated
- */
-function isAuthenticated(req, res, next) {
-  if (!req.session.user) {
-    return res.sendStatus(401); // unauthorized
-  }
-  next();
-}
-
-
 
 export default router;

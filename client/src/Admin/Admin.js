@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
  */
 function Admin(props) {
   const [users, setUsers] = useState([])
-  // State that changes when user is deleted 
+  // State that changes when admin performs actions on user
   const [state, setState] = useState(false)
   /**
    * Delete Specific user by sending post request
@@ -19,6 +19,7 @@ function Admin(props) {
     if (deleteCheck) {
       let payload = JSON.stringify({ adminEmail: props.email, deleteEmail: email, adminToken: props.tokens.admin })
       sendFetchRequest(`/admin/delete/user`, payload);
+      // Notify hook that user has been deleted
       setState(!state)
     }
   }
@@ -37,7 +38,7 @@ function Admin(props) {
     if (adminCheck) {
       let payload = JSON.stringify({ adminEmail: props.email, email: email, isAdmin: isAdmin, adminToken: props.tokens.admin })
       sendFetchRequest(`/admin/permissions`, payload);
-      // Switch state indicating that the user has been deleted
+      // Notify hook indicating that the user has changed permissions
       setState(!state)
     }
   }

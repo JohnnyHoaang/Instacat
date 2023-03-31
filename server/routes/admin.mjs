@@ -1,6 +1,7 @@
 import express from 'express';
-import { User } from '../models/User.mjs';
-import { DBHelper } from '../db/dbHelper.mjs';
+import {User} from '../models/User.mjs';
+import {DBHelper} from '../db/dbHelper.mjs';
+import {isAdmin} from '../utils/util.mjs';
 const router = express.Router();
 const db = new DBHelper();
 
@@ -53,7 +54,7 @@ router.post('/delete/user', isAdmin, async (req, res) => {
 });
 
 // Route that sets admin permission of user only if request comes from an admin
-router.post('/permissions', async (req, res) => {
+router.post('/permissions', isAdmin, async (req, res) => {
   const adminEmail = req.body.adminEmail;
   const email = req.body.email;
   const token = req.body.adminToken;
@@ -79,16 +80,4 @@ router.post('/permissions', async (req, res) => {
 
 export default router;
 
-/**
- * Check if user is an admin 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
- * @returns 
- */
-function isAdmin(req, res, next) {
-  if (req.session.admin) {
-    return res.sendStatus(201); // Authorized
-  }
-  next();
-}
+
