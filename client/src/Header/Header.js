@@ -33,13 +33,11 @@ const Header = (props) => {
 
   const handleLogout = async () => {
     await fetch("/auth/logout");
-    if (props.isAdmin){
-      props.setToken("")
-    }
     props.setUsername("");
     props.setProfilePicture("");
     props.setEmail("");
     props.setIsAdmin(false);
+    props.setTokens({})
   }
 
 

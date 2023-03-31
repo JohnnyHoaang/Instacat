@@ -16,6 +16,7 @@ function EditPostForm(props) {
         const formData = new FormData(form)
         // Add user email
         formData.append('email', props.email)
+        formData.append('userToken', props.tokens.user)
         console.log(formData)
         let result
         // Update profile information
@@ -28,7 +29,6 @@ function EditPostForm(props) {
             result = response.json()
         }
         // Set new name of user
-        console.log(result)
         props.setUsername(result.name)
         alert("Profile updated Successfully!")
     }

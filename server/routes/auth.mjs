@@ -3,11 +3,11 @@
  * @author Kelsey Pereira Costa
  */
 import express from 'express';
-import { DBHelper } from '../db/dbHelper.mjs';
-import { User } from '../models/User.mjs';
-import { OAuth2Client } from 'google-auth-library';
+import {DBHelper} from '../db/dbHelper.mjs';
+import {User} from '../models/User.mjs';
+import {OAuth2Client} from 'google-auth-library';
 import dotenv from 'dotenv';
-import { generateID } from '../utils/idGenerator.mjs'
+import {generateID} from '../utils/idGenerator.mjs';
 
 const db = new DBHelper();
 dotenv.config();
@@ -17,39 +17,39 @@ const router = new express.Router();
 
 router.use(express.json());
 
-router.post("/login", async (req, res) => {
-  const { token } = req.body
+router.post('/login', async (req, res) => {
+  const {token} = req.body;
   const ticket = await client.verifyIdToken({
     idToken: token,
-    audience: process.env.GOOGLE_CLIENT_ID
+    audience: process.env.GOOGLE_CLIENT_ID,
   })
   if (!ticket)
-    return res.sendStatus(401)
-  const { name, email, picture } = ticket.getPayload()
+    return res.sendStatus(401);
+  const {name, email, picture} = ticket.getPayload();
   // Check if user exists with email
-  let user = await User.find({ email: email })
+  const user = await User.find({email: email});
   if (user.length == 0) {
     // Create new user object and insert to database
-    const user = { "name": name, "email": email, "picture": picture }
-    db.insertToDB(User, user)
+    const user = {'name': name, 'email': email, 'picture': picture};
+    db.insertToDB(User, user);
     // Regenerate session with new user
-    regenerateSession(req, res, user)
+    regenerateSession(req, res, user);
   } else {
     // Regenerate session with user from DB
-    regenerateSession(req, res, user[0])
+    regenerateSession(req, res, user[0]);
   }
   //TODO add picture data
 
 })
 
-router.get("/logout", isAuthenticated, (req, res) => {
+router.get('/logout', isAuthenticated, (req, res) => {
   req.session.destroy(function(err) {
     if (err) {
       return res.sendStatus(500);
     }
     res.clearCookie('id');
     res.sendStatus(200);
-  })
+  });
 })
 /** */
 function regenerateSession(req, res, user) {
@@ -58,14 +58,14 @@ function regenerateSession(req, res, user) {
       return res.sendStatus(500);
     }
     req.session.user = user;
+    // generate user token for user requests
     const userTokenLength = 100;
     const userToken = generateID(userTokenLength);
     const tokens = {user: userToken};
     req.session.userToken = userToken;
     if (user.isAdmin) {
-      // Send token for admin requests
+      // generate tokens for admin requests
       const tokenLength = 1000;
-
       const token = generateID(tokenLength);
       tokens.admin = token;
       req.session.adminToken = token;

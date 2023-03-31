@@ -16,9 +16,10 @@ router.use(
 router.post('/update', async (req, res) => {
   const email = req.body.email;
   const username = req.body.username;
+  const userToken = req.body.userToken;
   // Check if credentials match session credentials
   try {
-    if (email == req.session.user.email) {
+    if (email == req.session.user.email && userToken == req.session.userToken) {
       try {
         const image = req.files.image;
         if (username) {

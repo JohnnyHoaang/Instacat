@@ -13,6 +13,7 @@ function PostForm(props) {
     const formData = new FormData(form)
     // Add user username
     formData.append('username', props.username)
+    formData.append('userToken', props.tokens.user)
     // Upload post to DB
     await fetch(`/add/post/upload`, {
       method: 'POST',
