@@ -23,7 +23,7 @@ const Header = (props) => {
     props.setEmail(data.user.email)
     props.setIsAdmin(data.user.isAdmin)
     if(data.user.isAdmin){
-      props.setToken(data.token)
+      props.setTokens(data.tokens)
     }
   }
 

@@ -30,16 +30,23 @@ describe('GET /contact', () => {
   });
 });
 
-describe('GET /discover', () => {
+describe('GET /add/post', () => {
   test('Should respond with 200', async () => {
-    const res = await request(app).get('/discover');
+    const res = await request(app).get('/add/post');
     expect(res.statusCode).toBe(200);
   });
 });
 
-describe('GET /add/post', () => {
+describe('GET /edit/profile', () => {
   test('Should respond with 200', async () => {
-    const res = await request(app).get('/add/post');
+    const res = await request(app).get('/edit/profile');
+    expect(res.statusCode).toBe(200);
+  });
+});
+
+describe('GET /cats/1', () => {
+  test('Should respond with 200', async () => {
+    const res = await request(app).get('/cats/1');
     expect(res.statusCode).toBe(200);
   });
 });
@@ -50,3 +57,4 @@ describe('GET /add/post', () => {
     expect(res.statusCode).toBe(404);
   });
 });
+

@@ -11,7 +11,7 @@ router.post('/post', async (req, res) => {
   const username = req.body.username;
   const token = req.body.token;
   if (username == req.session.username ||
-    token == req.session.token && req.session.user.isAdmin) {
+    token == req.session.adminToken && req.session.user.isAdmin) {
     try {
       await Post.deleteOne({id: id});
       const response = {status: 'Successfully delete post'};

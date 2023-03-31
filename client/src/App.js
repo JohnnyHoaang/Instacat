@@ -33,7 +33,7 @@ function App() {
   const [profilePicture, setProfilePicture] = useState("")
   const [email, setEmail] = useState("")
   const [isAdmin, setIsAdmin] = useState(false)
-  const [token, setToken] = useState("")
+  const [tokens, setTokens] = useState({})
   const [cards, setCards] = useState([])
   /**
   * creating the react routes for the website
@@ -46,25 +46,26 @@ function App() {
         username={username}
         email={email} 
         isAdmin={isAdmin}
-        token={token}
+        tokens={tokens}
         cards={cards} setCards={setCards}
         />
       } />
       <Route path="/adopt" element={<Adopt />} />
       <Route path="/aboutUs" element={<AboutUs />} />
-      <Route path="/cats/:id" element={<CatDetails username={username}/>} />
-      <Route path="/add/post" element={<PostForm username={username}/>} />
+      <Route path="/cats/:id" element={<CatDetails username={username} tokens={tokens}/>} />
+      <Route path="/add/post" element={<PostForm username={username} tokens={tokens}/>} />
       <Route path="/edit/profile" element={
         <EditProfileForm
           email={email}
           username={username}
+          tokens={tokens}
           setUsername={setUsername}
           setProfilePicture={setProfilePicture}
         />
       }
       />
       <Route path="/catHashtags/:hashtag" element={<SameHashtag />} />
-      {isAdmin && <Route path="/admin" element={<Admin email={email} isAdmin={isAdmin} token={token}/>} />}
+      {isAdmin && <Route path="/admin" element={<Admin email={email} isAdmin={isAdmin} tokens={tokens}/>} />}
     </Routes>
   return (
     <BrowserRouter>
@@ -77,7 +78,7 @@ function App() {
             setProfilePicture={setProfilePicture}
             setEmail={setEmail}
             setIsAdmin={setIsAdmin}
-            setToken={setToken}
+            setTokens={setTokens}
           />
           <Navigation isAdmin={isAdmin} setCards={setCards} />
           {router}
