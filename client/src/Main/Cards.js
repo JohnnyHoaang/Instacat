@@ -61,6 +61,26 @@ function Cards(props) {
     isLike ? setHeartState(true) : setHeartState(false)
   }
 
+    function deletePost(){
+        if(props.isAdmin){
+            let payload = JSON.stringify({ token: props.token, id: props.id})
+            const headers = {
+                method: "POST",
+                body: payload,
+                headers: {
+                  "Content-Type": "application/json; charset=UTF-8",
+                }
+              };
+            fetch(`/delete/post`, headers)
+            let index = props.cards.findIndex(card=> card.id === props.id)
+            props.cards.splice(index,1)
+            props.setCards(props.cards)
+            // change state when deleted
+            props.setState(!props.state)
+            alert("Successfully deleted post!")
+        }
+    }
+
   function sharePost() {
     navigator.clipboard.writeText(`${window.location.href}cats/${props.id}`);
     alert("Post was copied to clipboard")
@@ -89,7 +109,8 @@ function Cards(props) {
           </img>
 
           <span className="LikeNum" id={props.index}>{likes}</span>
-          <span className='share-btn' onClick={() => { sharePost(props.id) }}>
+          <span className='share-btn' onClick={() => { sharePost() }}>
+          {(props.isAdmin || props.username === props.postUsername) && <button onClick={deletePost}>Delete</button>}
             <img src={shareImg} alt='share' className='share-img' />
           </span>
         </div>
