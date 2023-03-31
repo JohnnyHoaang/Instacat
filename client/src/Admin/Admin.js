@@ -17,7 +17,7 @@ function Admin(props) {
   function deleteUser(email) {
     let deleteCheck = confirm("Are you sure you want to delete this user?");
     if (deleteCheck) {
-      let payload = JSON.stringify({ adminEmail: props.email, deleteEmail: email, token: props.token })
+      let payload = JSON.stringify({ adminEmail: props.email, deleteEmail: email, adminToken: props.tokens.admin })
       sendFetchRequest(`/admin/delete/user`, payload);
       // Notify hook that user has been deleted
       setState(!state)
@@ -36,7 +36,7 @@ function Admin(props) {
       adminCheck = confirm("Are you sure you want to remove this user's admin permissions?");
     }
     if (adminCheck) {
-      let payload = JSON.stringify({ adminEmail: props.email, email: email, isAdmin: isAdmin, token: props.token })
+      let payload = JSON.stringify({ adminEmail: props.email, email: email, isAdmin: isAdmin, adminToken: props.tokens.admin })
       sendFetchRequest(`/admin/permissions`, payload);
       // Notify hook indicating that the user has changed permissions
       setState(!state)
@@ -62,7 +62,7 @@ function Admin(props) {
   }
 
   useEffect(() => {
-    let payload = JSON.stringify({ email: props.email, token: props.token })
+    let payload = JSON.stringify({ email: props.email, adminToken: props.tokens.admin })
     sendFetchRequest(`admin/users`, payload)
       .then(response => {
         if (!response.ok) {
