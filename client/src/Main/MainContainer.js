@@ -13,7 +13,8 @@ import { Link } from "react-router-dom"
  * @author Maedeh hassani 
  */
 function Main(props) {
-    
+    // State for cards that will get deleted
+    const [state, setState] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
     const cardsPerPage = 10;
 
@@ -37,21 +38,21 @@ function Main(props) {
     }, []);
 
 
-    // Calculate the starting and ending index of the cards to display
-    const indexOfLastCard = currentPage * cardsPerPage;
-    const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-    const currentCards = props.cards.slice(indexOfFirstCard, indexOfLastCard);
+  // Calculate the starting and ending index of the cards to display
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = props.cards.slice(indexOfFirstCard, indexOfLastCard);
 
-    // Change page
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
-    const pageNumbers = [];
-    for (
-      let i = Math.max(1, currentPage - 1);
-      i <= Math.min(Math.ceil(props.cards.length / cardsPerPage), currentPage + 1);
-      i++
-    ) {
-      pageNumbers.push(i);
-    }
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const pageNumbers = [];
+  for (
+    let i = Math.max(1, currentPage - 1);
+    i <= Math.min(Math.ceil(props.cards.length / cardsPerPage), currentPage + 1);
+    i++
+  ) {
+    pageNumbers.push(i);
+  }
 
   return (
     <div className="main-top">
@@ -59,21 +60,29 @@ function Main(props) {
 
       </section>
       <div id='adding-user-post'>
-        <Link to='/add/post'>
-          <img src={addingPost} alt="adding post" id="adding"></img>
-        </Link>
+        {props.username &&
+          // Links to add post form if logged in
+          <Link to='/add/post'>
+            <img src={addingPost} alt="adding post" id="adding"></img>
+          </Link> 
+        }
       </div>
 
       <section className='card-container'>
         {currentCards.map((item, index) => (
           <div key={index} className='each-card-outer'>
             <Cards
-              id={item.id}
+              isAdmin={props.isAdmin}
+              token={props.token}
+              username={props.username}
+              post={item}
               index={index}
-              imageUrl={item.image}
-              caption={item.caption}
-              likesNum={item.likes}
-              hashtags={item.hashtags}
+              email={props.email}
+              currentPage={currentPage}
+              cards={props.cards}
+              state={state}
+              setCards={props.setCards}
+              setState={setState}
             />
           </div>
         ))}

@@ -21,6 +21,8 @@ const Header = (props) => {
     props.setUsername(data.user.name)
     props.setProfilePicture(data.user.picture)
     props.setEmail(data.user.email)
+    props.setIsAdmin(data.user.isAdmin)
+    props.setTokens(data.tokens)
   }
 
   const handleError = error => {
@@ -31,7 +33,9 @@ const Header = (props) => {
     await fetch("/auth/logout");
     props.setUsername("");
     props.setProfilePicture("");
-    props.setEmail("")
+    props.setEmail("");
+    props.setIsAdmin(false);
+    props.setTokens({})
   }
 
 
@@ -40,9 +44,19 @@ const Header = (props) => {
       <img src={myLogo} alt="logo" id="logo"></img>
       <div id='profile-div'>
         <div className='profile-img-div'>
-          <Link to='/edit/profile'>
-            <img src={props.profilePicture || defaultProfile} alt="profile" id="profile-img"></img>
-          </Link>
+          {props.username ?
+             // Links to edit profile form if logged in
+            <Link to='/edit/profile'>
+              <img src={props.profilePicture || defaultProfile} alt="profile" id="profile-img">
+              </img>
+            </Link>
+            :
+            // Does not redirect to edit profile
+            <img src={props.profilePicture || defaultProfile} alt="profile" id="profile-img">
+            </img>
+
+          }
+
         </div>
         <div className='profile-guest-div'>
           <p>{props.username ? props.username : "Guest"}</p>
@@ -52,7 +66,7 @@ const Header = (props) => {
             onSuccess={handleLogin}
             onError={handleError}
           />}
-          {props.username && <button onClick={handleLogout}>Logout</button>}
+          {props.username && <button onClick={handleLogout}><Link to="/" >Logout</Link></button>}
         </div>
 
 

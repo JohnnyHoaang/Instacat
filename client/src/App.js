@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from './Header/Header.js';
 import Main from './Main/MainContainer.js'
-import Discover from './Discover/Discover';
 import Footer from './Footer/Footer.js';
 import Navigation from './Navigation/Navigation.js';
 import AboutUs from './AboutUs/AboutUs';
 import Adopt from './Adopt/Adopt';
+import Admin from './Admin/Admin'
 import CatDetails from './CatDetails/CatDetails'
 import PostForm from './Upload/PostForm'
 import i18n from "i18next";
@@ -32,6 +32,8 @@ function App() {
   const [username, setUsername] = useState("")
   const [profilePicture, setProfilePicture] = useState("")
   const [email, setEmail] = useState("")
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [tokens, setTokens] = useState({})
   const [cards, setCards] = useState([])
   /**
   * creating the react routes for the website
@@ -39,34 +41,46 @@ function App() {
   */
   const router =
     <Routes>
-      <Route path="/" element={<Main cards={cards} setCards={setCards}/>} />
-      <Route path="/discover" element={<Discover cards={cards} setCards={setCards} />} />
+      <Route path="/" element={
+        <Main 
+        username={username}
+        email={email} 
+        isAdmin={isAdmin}
+        tokens={tokens}
+        cards={cards} setCards={setCards}
+        />
+      } />
       <Route path="/adopt" element={<Adopt />} />
       <Route path="/aboutUs" element={<AboutUs />} />
-      <Route path="/cats/:id" element={<CatDetails username={username}/>} />
-      <Route path="/add/post" element={<PostForm username={username}/>} />
+      <Route path="/cats/:id" element={<CatDetails username={username} tokens={tokens}/>} />
+      <Route path="/add/post" element={<PostForm username={username} tokens={tokens}/>} />
       <Route path="/edit/profile" element={
         <EditProfileForm
           email={email}
+          username={username}
+          tokens={tokens}
           setUsername={setUsername}
           setProfilePicture={setProfilePicture}
         />
       }
       />
       <Route path="/catHashtags/:hashtag" element={<SameHashtag />} />
+      {isAdmin && <Route path="/admin" element={<Admin email={email} isAdmin={isAdmin} tokens={tokens}/>} />}
     </Routes>
-
   return (
     <BrowserRouter>
       <I18nextProvider i18n={i18n}>
         <div className="App">
           <Header
             username={username} profilePicture={profilePicture}
+            isAdmin={isAdmin}
             setUsername={setUsername}
             setProfilePicture={setProfilePicture}
             setEmail={setEmail}
+            setIsAdmin={setIsAdmin}
+            setTokens={setTokens}
           />
-          <Navigation setCards={setCards}/>
+          <Navigation isAdmin={isAdmin} setCards={setCards} />
           {router}
           <Footer />
         </div>
