@@ -22,9 +22,7 @@ const Header = (props) => {
     props.setProfilePicture(data.user.picture)
     props.setEmail(data.user.email)
     props.setIsAdmin(data.user.isAdmin)
-    if (data.user.isAdmin) {
-      props.setTokens(data.tokens)
-    }
+    props.setTokens(data.tokens)
   }
 
   const handleError = error => {

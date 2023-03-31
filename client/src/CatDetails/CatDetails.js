@@ -57,6 +57,7 @@ function CatDetails(props) {
         // Add user username & post id
         formData.append('username', props.username)
         formData.append('id', id)
+        console.log(props.tokens.user)
         formData.append('userToken', props.tokens.user)
         // Upload post to DB
         await fetch(`/comment/post/add`, {
