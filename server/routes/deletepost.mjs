@@ -1,12 +1,12 @@
 import express from 'express';
 import {Post} from '../models/Post.mjs';
-
+import {isAuthenticated} from '../utils/util.mjs';
 const router = new express.Router();
 
 router.use(express.json());
 
 // route to delete post from db
-router.post('/post', async (req, res) => {
+router.post('/post', isAuthenticated, async (req, res) => {
   const id = req.body.id;
   const username = req.body.username;
   const token = req.body.token;

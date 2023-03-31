@@ -2,6 +2,7 @@ import express from 'express';
 import fileUpload from 'express-fileupload';
 import {uploadToAzureDB} from '../db/azure.mjs';
 import {Post} from '../models/Post.mjs';
+import {isAuthenticated} from '../utils/util.mjs';
 
 const router = new express.Router();
 
@@ -13,7 +14,7 @@ router.use(
 );
 
 // route to upload image and caption to db
-router.post('/post/upload', async (req, res) => {
+router.post('/post/upload', isAuthenticated, async (req, res) => {
   const caption = req.body.caption;
   const username = req.body.username;
   const file = req.files.image;

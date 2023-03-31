@@ -2,6 +2,7 @@ import express from 'express';
 import fileUpload from 'express-fileupload';
 import {Post} from '../models/Post.mjs';
 import {DBHelper} from '../db/dbHelper.mjs';
+import {isAuthenticated} from '../utils/util.mjs';
 
 const router = new express.Router();
 const db = new DBHelper();
@@ -13,7 +14,7 @@ router.use(
     }),
 );
 
-router.post('/post/add', async (req, res) => {
+router.post('/post/add', isAuthenticated, async (req, res) => {
   const postId = {id: req.body.id};
   const username = req.body.username;
   const comment = req.body.comment;
