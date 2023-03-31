@@ -17,7 +17,7 @@ function SameHashtag () {
     const { hashtag } = useParams();
     let [eachHashtag, setEachHashtag]= useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const cardsPerPage = 10;
+    const cardsPerPage = 5;
 
     //npx json-server --watch data/data2.json --port 3006  
     useEffect(() => {
@@ -58,7 +58,7 @@ function SameHashtag () {
 
     return(
         <div>  
-            <section className='card-container'>
+            <section className='card-container-hashtag'>
                 {currentCards.map((item, index) => ( 
                     <div key={index} className='each-card-outer'>
                         <HashtagCards 

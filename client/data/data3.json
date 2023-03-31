@@ -1,0 +1,22 @@
+{ "cat" : [
+    {
+      "id": "a3",
+      "image": "https://cdn2.thecatapi.com/images/a3.jpg",
+      "username": "bob",
+      "caption": "attentiveness alternate",
+      "hashtags": [
+          "cats",
+          "subvicar"
+      ],
+      "likes": 0,
+      "comments": [
+          {
+              "username": "alice",
+              "comment": "snakes"
+          },
+          {
+              "username": "marc",
+              "comment": "septuagenarian"
+          }
+    ]}
+]}

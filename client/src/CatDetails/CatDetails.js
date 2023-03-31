@@ -101,10 +101,12 @@ function CatDetails (props) {
 
                             <div className='comment-info'>
                                 Comment(s):
-                                <section className='comments'>{eachCat.comments.map((item, index) =>{
-                                    return <div key={index}>{item.username}: {item.comment}</div>
-                                })}
-                                </section>
+                                <div className='comments-box'>
+                                    <section className='comments'>{eachCat.comments.map((item, index) =>{
+                                        return <div key={index}>{item.username}: {item.comment}</div>
+                                    })}
+                                    </section>
+                                </div>
                             </div>
                             <div>
                                 <form id='p-form' enctype="multipart/form-data" onSubmit={onSubmit}>
