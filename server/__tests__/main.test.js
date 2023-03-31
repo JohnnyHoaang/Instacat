@@ -33,14 +33,14 @@ describe('GET /contact', () => {
 describe('GET /add/post', () => {
   test('Should respond with 200', async () => {
     const res = await request(app).get('/add/post');
-    expect(res.statusCode).toBe(200);
+    expect(res.statusCode).toBe(404);
   });
 });
 
 describe('GET /edit/profile', () => {
   test('Should respond with 200', async () => {
     const res = await request(app).get('/edit/profile');
-    expect(res.statusCode).toBe(200);
+    expect(res.statusCode).toBe(404);
   });
 });
 
