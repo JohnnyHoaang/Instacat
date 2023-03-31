@@ -50,19 +50,23 @@ function CatDetails(props) {
  */
   async function onSubmit(e) {
     e.preventDefault()
-    const form = document.querySelector("#p-form")
-    // Create form data with form input
-    const formData = new FormData(form)
-    // Add user username & post id
-    formData.append('username', props.username)
-    formData.append('id', id)
-    formData.append('userToken', props.tokens.user)
-    // Upload post to DB
-    await fetch(`/comment/post/add`, {
-      method: 'POST',
-      body: formData
-    })
-    setFormState(!formState)
+    if(props.username!==""){
+        const form = document.querySelector("#p-form")
+        // Create form data with form input
+        const formData = new FormData(form)
+        // Add user username & post id
+        formData.append('username', props.username)
+        formData.append('id', id)
+        formData.append('userToken', props.tokens.user)
+        // Upload post to DB
+        await fetch(`/comment/post/add`, {
+          method: 'POST',
+          body: formData
+        })
+        setFormState(!formState)
+    } else {
+        alert("Sign up for an account if you want to comment.")
+    }
   }
 
   return (

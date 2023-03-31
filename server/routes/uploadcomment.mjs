@@ -14,7 +14,6 @@ router.use(
 );
 
 router.post('/post/add', async (req, res) => {
-  console.log(req.body)
   const postId = {id: req.body.id};
   const username = req.body.username;
   const comment = req.body.comment;
