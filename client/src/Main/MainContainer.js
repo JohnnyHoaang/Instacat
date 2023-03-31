@@ -17,6 +17,7 @@ function Main(props) {
     // State for cards that will get deleted
     const [state, setState] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
+
     const cardsPerPage = 10;
 
     //npx json-server --watch data/data1.json --port 3002  
@@ -77,12 +78,15 @@ function Main(props) {
               index={index}
               imageUrl={item.image}
               caption={item.caption}
-              likesNum={item.likes}
+              likes={item.likes}
               hashtags={item.hashtags}
               cards={props.setCards}
               state={state}
               setCards={props.cards}
               setState={setState}
+              email={props.email}
+              likers={item.likers}
+              currentPage={currentPage}
             />
           </div>
         ))}

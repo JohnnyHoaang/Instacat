@@ -5,6 +5,7 @@ import posts from './routes/post.mjs'
 import likes from './routes/likes.mjs'
 import addPost from './routes/uploadpost.mjs'
 import deletePost from './routes/deletepost.mjs'
+import addComment from './routes/uploadcomment.mjs'
 import auth from './routes/auth.mjs'
 import admin from './routes/admin.mjs'
 import editProfile from './routes/uploadprofile.mjs'
@@ -28,7 +29,8 @@ app.use("/api", posts)
 app.use("/add", addPost)
 app.use("/delete", deletePost)
 app.use("/auth", auth)
-app.use("/update", likes)
+app.use('/comment', addComment)
+app.use("/like", likes)
 app.use("/edit/profile", editProfile)
 app.use("/admin", admin)
 app.use("/", main)
