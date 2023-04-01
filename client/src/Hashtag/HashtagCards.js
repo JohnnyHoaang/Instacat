@@ -1,7 +1,7 @@
 import './HashtagCards.css'
 
 /**
- * Page that has information about the website
+ * create the card for the same hashtag
  * @returns {Component} HashtagCards
  * @author Maedeh hassani
  */

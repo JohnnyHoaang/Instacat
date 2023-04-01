@@ -7,10 +7,12 @@ import { Link } from "react-router-dom"
 
 
 /**
- * Page that has information about the website
- * @returns {Component} AboutUs
+ * Header page
+ * @returns {Component} Header
  * @author Maedeh hassani
+ * react part
  * @author Kelsey Pereira Costa
+ * google authentication
  */
 const Header = (props) => {
   const handleLogin = async googleData => {
