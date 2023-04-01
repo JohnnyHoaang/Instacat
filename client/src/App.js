@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './Header/Header.js';
 import Main from './Main/MainContainer.js'
-import Discover from './Discover/Discover';
 import Footer from './Footer/Footer.js';
 import Navigation from './Navigation/Navigation.js';
 import AboutUs from './AboutUs/AboutUs';
