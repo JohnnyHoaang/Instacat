@@ -5,6 +5,13 @@ import defaultProfile from '../images/default-profile.png'
 import { GoogleLogin } from '@react-oauth/google';
 import { Link } from "react-router-dom"
 
+
+/**
+ * Page that has information about the website
+ * @returns {Component} AboutUs
+ * @author Maedeh hassani
+ * @author Kelsey Pereira Costa
+ */
 const Header = (props) => {
   const handleLogin = async googleData => {
     const res = await fetch("/auth/login", {

@@ -18,10 +18,8 @@ function Main(props) {
     const [currentPage, setCurrentPage] = useState(1);
     const cardsPerPage = 10;
 
-    //npx json-server --watch data/data1.json --port 3002  
     useEffect(() => {
-        // let url = `/api/cat/all`;
-        let url = 'http://localhost:3002/catlist'
+        let url = `/api/cat/all`;
         fetch(url)
             .then(response => {
                 if (!response.ok) {

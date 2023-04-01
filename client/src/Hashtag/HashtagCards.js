@@ -1,5 +1,10 @@
 import './HashtagCards.css'
 
+/**
+ * Page that has information about the website
+ * @returns {Component} HashtagCards
+ * @author Maedeh hassani
+ */
 function HashtagCards(props){
     return(
         <div className="cat-hashtag">

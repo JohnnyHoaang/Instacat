@@ -84,6 +84,11 @@ function Cards(props) {
       alert("Successfully deleted post!")
     }
   }
+
+  /***
+    * @author Maedeh hassani 
+  */
+
   function sharePost() {
     navigator.clipboard.writeText(`${window.location.href}cats/${props.post.id}`);
     alert("Post was copied to clipboard")
@@ -129,5 +134,3 @@ function Cards(props) {
 
 
 export default Cards;
-
-

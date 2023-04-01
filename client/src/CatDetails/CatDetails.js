@@ -23,11 +23,9 @@ function CatDetails(props) {
     likes: 0,
     comments: [],
   });
-
-  //npx json-server --watch data/data2.json --port 3003  
+ 
   useEffect(() => {
-    // let url = `/api/cat/id/${id}`;
-    let url = 'http://localhost:3003/0'
+    let url = `/api/cat/id/${id}`;
     fetch(url)
       .then(response => {
         if (!response.ok) {
@@ -70,6 +68,9 @@ function CatDetails(props) {
     }
   }
 
+ /***
+ * @author Maedeh hassani 
+ */
   return (
 
     <div className="CatDetails">
