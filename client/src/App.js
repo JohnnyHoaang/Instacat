@@ -44,7 +44,7 @@ function App() {
       <Route path="/" element={<Main cards={cards} setCards={setCards} email={email} 
         isAdmin={isAdmin}
         token={token} />} />
-      <Route path="/discover" element={<Discover cards={cards} setCards={setCards} />} />
+      {/* <Route path="/discover" element={<Discover cards={cards} setCards={setCards} />} /> */}
       <Route path="/adopt" element={<Adopt />} />
       <Route path="/aboutUs" element={<AboutUs />} />
       <Route path="/cats/:id" element={<CatDetails username={username}/>} />
