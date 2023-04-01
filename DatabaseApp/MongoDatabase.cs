@@ -36,6 +36,9 @@ namespace DatabaseApp
 
                 _db = _client.GetDatabase(databaseName);
 
+                CheckCollection(postsCollectionName);
+                CheckCollection(postsCollectionName);
+
                 PostsCollName = postsCollectionName;
                 AdoptCollName = adoptCollectionName;
             }
@@ -84,6 +87,14 @@ namespace DatabaseApp
             }
             else
                 Console.WriteLine("Input was not the same. Aborting...");
+        }
+
+        private void CheckCollection(string collectionName)
+        {
+            var filter = new BsonDocument("name", collectionName);
+            var connectionCursor = _db.ListCollections(new ListCollectionsOptions { Filter = filter });
+            if (!connectionCursor.Any())
+                throw new ArgumentException("One of the collections you specified in DatabaseInfo is not there! /ᐠ>ꞈ<ᐟ\\");
         }
     }
 }
