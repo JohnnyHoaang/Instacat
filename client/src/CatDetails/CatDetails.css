@@ -27,7 +27,7 @@ div.specific-cat{
 div.cat-info{
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    /* justify-content: start; */
     width: 50%;
     font-size: 20px;
     padding: 15px;
@@ -35,7 +35,7 @@ div.cat-info{
 }
 
 div.specific-catImg{
-    display: flex;
+    /* display: flex; */
     width: 40%;
     justify-content: center;
     margin: 30px;
@@ -43,6 +43,10 @@ div.specific-catImg{
     background-repeat: no-repeat;
     border-radius: 1%;
 }
+
+.specific-catImg img {
+    width: 100%;
+  }  
 
 div.username{
     display: flex;

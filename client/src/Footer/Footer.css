@@ -4,11 +4,10 @@ footer{
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  width: 95%;
+  width: 100%;
   background-color: #733c2d;
   color: rgb(212, 186, 147);
   min-width: 1510px;
-  margin: 0 0 0 40px;
 }
   
 #footer-info, #footer-contact{
