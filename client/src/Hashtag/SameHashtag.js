@@ -21,8 +21,8 @@ function SameHashtag () {
 
     //npx json-server --watch data/data2.json --port 3006  
     useEffect(() => {
-        let url = `/api/hashtag/${hashtag}`;
-        // let url = 'http://localhost:3006/subvicar'
+        // let url = `/api/hashtag/${hashtag}`;
+        let url = 'http://localhost:3006/subvicar'
         fetch(url)
             .then(response => {
                 if (!response.ok) {

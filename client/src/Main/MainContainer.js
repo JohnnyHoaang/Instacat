@@ -20,8 +20,8 @@ function Main(props) {
 
     //npx json-server --watch data/data1.json --port 3002  
     useEffect(() => {
-        let url = `/api/cat/all`;
-        // let url = 'http://localhost:3002/catlist'
+        // let url = `/api/cat/all`;
+        let url = 'http://localhost:3002/catlist'
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -57,15 +57,17 @@ function Main(props) {
   return (
     <div className="main-top">
       <section id='top-image'>
-
+        <div id='main-top-paragraph'>
+          Happiness is Cats
+        </div>
       </section>
       <div id='adding-user-post'>
-        {props.username &&
-          // Links to add post form if logged in
+        {/* {props.username && */}
+          {/* // Links to add post form if logged in */}
           <Link to='/add/post'>
             <img src={addingPost} alt="adding post" id="adding"></img>
           </Link> 
-        }
+        {/* } */}
       </div>
 
       <section className='card-container'>

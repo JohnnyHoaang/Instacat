@@ -11,7 +11,7 @@ function HashtagCards(props){
             </div>
 
             <div className='div-hashtag'>
-                this is the username: {props.username}
+                Username: {props.username}
             </div>
         </div>
     );

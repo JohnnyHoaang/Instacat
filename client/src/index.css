@@ -19,9 +19,8 @@ html, body , div#root, .App, .AboutUs, .Discover, .Adopt, .CatDetails
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* changing */
   width: 90%;
   font-family: "Lato","Trebuchet MS",sans-serif;
   background-color: #f4ebdd;
-  min-width: 1600px;
+  min-width: 1550px;
 }
