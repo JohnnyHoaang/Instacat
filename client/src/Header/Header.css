@@ -5,9 +5,9 @@ header {
     display: flex;
     justify-content: space-between;
     /* changing */
-    width: 94%;
+    /* width: 94%; */
     /* changing */
-    min-width: 1510px;
+    /* min-width: 1510px; */
     padding: 0;
     margin: 3px ;
   }
