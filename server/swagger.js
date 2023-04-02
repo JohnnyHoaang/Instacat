@@ -447,35 +447,28 @@ export default {
     },
     'delete/post': {
       post: {
-        summary: 'Uploads post to database',
+        summary: 'Deletes specific post from database',
         description: 'Updates the database with new post consisted of caption and image. This will get called when user submits a post through the add post form',
         produces: [
           'application/json',
         ],
         parameters: [
           {
-            name: 'file',
+            name: 'id',
             in: 'path',
-            description: 'File sent to the form',
+            description: 'Id of the post in order to delete post',
             required: true,
             type: 'string',
           },
           {
             name: 'username',
             in: 'path',
-            description: 'Username of user provided to add post',
+            description: 'Username of user provided to delete post',
             required: true,
             type: 'string',
           },
           {
-            name: 'caption',
-            in: 'path',
-            description: 'Caption for new post',
-            required: true,
-            type: 'string',
-          },
-          {
-            name: 'userToken',
+            name: 'token',
             in: 'path',
             description: 'User token generated on log in',
             required: true,
@@ -491,7 +484,7 @@ export default {
               properties: {
                 message: {
                   type: 'string',
-                  example: 'post upload successful',
+                  example: 'Succesfully delete post',
                 },
               },
             },
@@ -509,7 +502,7 @@ export default {
             },
           },
           500: {
-            description: 'There is an internal error during the post upload',
+            description: 'There is an internal error during the post deletion',
             schema: {
               type: 'object',
               properties: {
