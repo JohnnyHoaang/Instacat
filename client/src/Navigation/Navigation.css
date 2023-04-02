@@ -6,7 +6,7 @@ nav.navigation-bar{
     padding: 0;
     margin: 0;
     /* changing */
-    width: 92%;
+    /* width: 92%; */
     min-width: 1410px;
     justify-content: space-between;
   }

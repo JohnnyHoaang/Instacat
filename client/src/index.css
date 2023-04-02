@@ -18,7 +18,7 @@ code {
 
 html, body , div#root, .App, .AboutUs, .Discover, .Adopt, .CatDetails
 {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   flex-direction: column;
   /* width: 90%; */
@@ -27,8 +27,9 @@ html, body , div#root, .App, .AboutUs, .Discover, .Adopt, .CatDetails
   /* min-width: 1550px; */
 }
 
-.AboutUs
+div.AboutUs
 {
+  align-items: normal;
   background-color: #f4ebdd;
   display: flex;
   flex-direction: column;
