@@ -33,7 +33,7 @@ function App() {
   const [profilePicture, setProfilePicture] = useState("")
   const [email, setEmail] = useState("")
   const [isAdmin, setIsAdmin] = useState(false)
-  const [token, setToken] = useState("")
+  const [tokens, setTokens] = useState({})
   const [cards, setCards] = useState([])
   /**
   * creating the react routes for the website
@@ -44,7 +44,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Main cards={cards} setCards={setCards} email={email} 
         isAdmin={isAdmin}
-        token={token} />} />
+        tokens={tokens} />} />
       {/* <Route path="/discover" element={<Discover cards={cards} setCards={setCards} />} /> */}
       <Route path="/adopt" element={<Adopt />} />
       <Route path="/aboutUs" element={<AboutUs />} />
@@ -60,7 +60,7 @@ function App() {
       }
       />
       <Route path="/catHashtags/:hashtag" element={<SameHashtag />} />
-      {isAdmin && <Route path="/admin" element={<Admin email={email} isAdmin={isAdmin} token={token}/>} />}
+      {isAdmin && <Route path="/admin" element={<Admin email={email} isAdmin={isAdmin} tokens={tokens}/>} />}
     </Routes>
   return (
     <BrowserRouter>
@@ -73,7 +73,7 @@ function App() {
             setProfilePicture={setProfilePicture}
             setEmail={setEmail}
             setIsAdmin={setIsAdmin}
-            setToken={setToken}
+            setTokens={setTokens}
           />
           <Navigation isAdmin={isAdmin} setCards={setCards} />
           {router}
