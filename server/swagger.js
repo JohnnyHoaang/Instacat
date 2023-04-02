@@ -191,6 +191,164 @@ export default {
         }
       }
     },
+    "edit/profile/update": {
+      post: {
+        summary: "Updates user profile information",
+        description: "Updates the user profile information with given credentials",
+        produces: [
+          "application/json"
+        ],
+        parameters: [
+          {
+            name: "email",
+            in: "path",
+            description: "Email of user provided to edit profile",
+            required: true,
+            type: "string"
+          },
+          {
+            name: "username",
+            in: "path",
+            description: "Username of user provided to edit profile",
+            required: true,
+            type: "string"
+          },
+          {
+            name: "userToken",
+            in: "path",
+            description: "User token generated on log in",
+            required: true,
+            type: "string"
+          },
+          
+        ],
+        responses: {
+          201: {
+            description: "successful operation",
+            schema: {
+              type: "object",
+              properties: {
+                user: {
+                  type: "object",
+                },
+              }
+            }
+          },
+          403: {
+            description: "Requester is not allowed to perform this action",
+            schema: {
+              type: "object",
+              properties: {
+                error: {
+                  type: "string",
+                  example: "Forbidden access"
+                },
+              }
+            }
+          }
+        }
+      }
+    },
+    "add/post/upload": {
+      post: {
+        summary: "Uploads post to database",
+        description: "Updates the database with new post consisted of caption and image. This will get called when user submits a post through the add post form",
+        produces: [
+          "application/json"
+        ],
+        parameters: [
+          {
+            name: "file",
+            in: "path",
+            description: "File sent to the form",
+            required: true,
+            type: "string"
+          },
+          {
+            name: "username",
+            in: "path",
+            description: "Username of user provided to add post",
+            required: true,
+            type: "string"
+          },
+          {
+            name: "caption",
+            in: "path",
+            description: "Caption for new post",
+            required: true,
+            type: "string"
+          },
+          {
+            name: "userToken",
+            in: "path",
+            description: "User token generated on log in",
+            required: true,
+            type: "string"
+          },
+          
+        ],
+        responses: {
+          201: {
+            description: "successful operation",
+            schema: {
+              type: "object",
+              properties: {
+                user: {
+                  type: "object",
+                },
+              }
+            }
+          },
+          403: {
+            description: "Requester is not allowed to perform this action",
+            schema: {
+              type: "object",
+              properties: {
+                error: {
+                  type: "string",
+                  example: "Forbidden access"
+                },
+              }
+            }
+          }
+        }
+      }
+    },
+    todob: {
+      delete: {
+        summary: "Delete the task",
+        description: "Delete the task",
+        produces: [
+          "application/json"
+        ],
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            description: "task id that needs to be deleted",
+            required: true,
+            type: "string"
+          }
+        ],
+        responses: {
+          200: {
+            description: "successful operation",
+            schema: {
+              type: "array",
+              items: {
+                $ref: "#/definitions/todosResponse"
+              }
+            }
+          },
+          400: {
+            description: "Invalid status value",
+            schema: {
+              $ref: "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
     todob: {
       delete: {
         summary: "Delete the task",
