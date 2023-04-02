@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './Header/Header.js';
 import Main from './Main/MainContainer.js'
-import Discover from './Discover/Discover';
 import Footer from './Footer/Footer.js';
 import Navigation from './Navigation/Navigation.js';
 import AboutUs from './AboutUs/AboutUs';
@@ -46,7 +45,7 @@ function App() {
       <Route path="/" element={<Main cards={cards} setCards={setCards} email={email} 
         isAdmin={isAdmin}
         token={token} />} />
-      <Route path="/discover" element={<Discover cards={cards} setCards={setCards} />} />
+      {/* <Route path="/discover" element={<Discover cards={cards} setCards={setCards} />} /> */}
       <Route path="/adopt" element={<Adopt />} />
       <Route path="/aboutUs" element={<AboutUs />} />
       <Route path="/cats/:id" element={<CatDetails username={username}/>} />
