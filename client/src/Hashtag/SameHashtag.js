@@ -82,6 +82,7 @@ function SameHashtag () {
                 {pageNumbers.map((number) => (
                     <button
                         key={number}
+                        onClick={() => paginate(number)}
                         className="btn-pagination"
                     >
                         {number}
