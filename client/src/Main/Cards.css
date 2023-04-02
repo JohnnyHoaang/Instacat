@@ -1,6 +1,5 @@
 /*-----------------Card css ------------------*/
-
-/* ------------------------- cards ------------------------*/
+/* --------- author: Maedeh Hassani-----------*/
 .cat-card{
     display: flex;
     flex-direction: column;
@@ -8,9 +7,9 @@
     flex-grow: 1;
     height: 430px; 
     background: #f7f6f4;
-    border: 2px solid rgb(241, 201, 174);
+    border: 2px solid rgb(244, 226, 214);
     border-radius: 4px;
-    margin: 8px;
+    margin: 5px;
    }
 
    .cat-card:hover{
@@ -21,7 +20,7 @@
    .each-cat-img{
     border: #733c2d;
     margin: 8px 10px 0 ;
-    width: 260px;
+    width: 240px;
     height: 250px;        
     border-radius: 4px;
    }
@@ -72,8 +71,8 @@
     #adding-user-post:hover:after {
       content: "Click to add post"; 
       position: absolute;
-      top: 104%;
-      left: 88.7%;
+      top: 135%;
+      left: 83.7%;
       transform: translate(-50%, 5px); /* Position the message box below the image */
       padding: 4px 10px;
       background-color: #b8590c;
