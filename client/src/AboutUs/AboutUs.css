@@ -3,14 +3,14 @@
 #about-us{
     display: flex;
     justify-content: left;
-    width: 98%;
+    /* width: 98%; */
     height: 900px;
     background-image: url('../images/aboutUs.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     font-size: 25px;
     padding: 10px;
-    margin: 15px 0 10px 0;
+    margin: 15px;
     
 }
 
