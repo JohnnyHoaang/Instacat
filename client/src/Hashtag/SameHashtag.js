@@ -17,7 +17,7 @@ function SameHashtag () {
     const { hashtag } = useParams();
     let [eachHashtag, setEachHashtag]= useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const cardsPerPage = 3;
+    const cardsPerPage = 5;
 
     useEffect(() => {
         let url = `/api/hashtag/${hashtag}`;
@@ -82,7 +82,7 @@ function SameHashtag () {
                 {pageNumbers.map((number) => (
                     <button
                         key={number}
-                        onClick={() => paginate(number)}
+                        onClick={() => paginate(currentPage)}
                         className="btn-pagination"
                     >
                         {number}
