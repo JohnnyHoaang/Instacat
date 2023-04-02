@@ -224,7 +224,7 @@ export default {
         ],
         responses: {
           201: {
-            description: "successful operation",
+            description: "Successful operation",
             schema: {
               type: "object",
               properties: {
@@ -289,12 +289,13 @@ export default {
         ],
         responses: {
           201: {
-            description: "successful operation",
+            description: "Successful operation",
             schema: {
               type: "object",
               properties: {
-                user: {
-                  type: "object",
+                message: {
+                  type: "string",
+                  example: "post upload successful"
                 },
               }
             }
@@ -306,11 +307,23 @@ export default {
               properties: {
                 error: {
                   type: "string",
-                  example: "Forbidden access"
+                  example: "Forbidden request"
                 },
               }
             }
-          }
+          },
+          500: {
+            description: "There is an internal error during the post upload",
+            schema: {
+              type: "object",
+              properties: {
+                error: {
+                  type: "string",
+                  example: "Internal error"
+                },
+              }
+            }
+          },
         }
       }
     },
@@ -367,7 +380,7 @@ export default {
         ],
         responses: {
           200: {
-            description: "successful operation",
+            description: "Successful operation",
             schema: {
               type: "array",
               items: {
