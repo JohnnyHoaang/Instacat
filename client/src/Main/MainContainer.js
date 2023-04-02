@@ -73,7 +73,7 @@ function Main(props) {
           <div key={index} className='each-card-outer'>
             <Cards
               isAdmin={props.isAdmin}
-              token={props.token}
+              tokens={props.tokens}
               username={props.username}
               post={item}
               index={index}

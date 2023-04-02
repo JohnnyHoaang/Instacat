@@ -9,9 +9,11 @@ router.use(express.json());
 router.post('/post', isAuthenticated, async (req, res) => {
   const id = req.body.id;
   const username = req.body.username;
-  const token = req.body.token;
-  if (username == req.session.username ||
-    token == req.session.adminToken && req.session.user.isAdmin) {
+  const adminToken = req.body.adminToken;
+  const userToken = req.body.userToken;
+  // Check if user is the user that created the post or is an admin
+  if (username == req.session.username && userToken == req.session.userToken ||
+    adminToken == req.session.adminToken && req.session.user.isAdmin) {
     try {
       await Post.deleteOne({id: id});
       const response = {status: 'Successfully delete post'};
