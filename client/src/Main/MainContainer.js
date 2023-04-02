@@ -60,12 +60,12 @@ function Main(props) {
         </div>
       </section>
       <div id='adding-user-post'>
-        {/* {props.username && */}
-          {/* // Links to add post form if logged in */}
+        {props.username &&
+          // Links to add post form if logged in
           <Link to='/add/post'>
             <img src={addingPost} alt="adding post" id="adding"></img>
           </Link> 
-        {/* } */}
+        }
       </div>
 
       <section className='card-container'>
