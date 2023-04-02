@@ -445,6 +445,84 @@ export default {
         },
       },
     },
+    'delete/post': {
+      post: {
+        summary: 'Uploads post to database',
+        description: 'Updates the database with new post consisted of caption and image. This will get called when user submits a post through the add post form',
+        produces: [
+          'application/json',
+        ],
+        parameters: [
+          {
+            name: 'file',
+            in: 'path',
+            description: 'File sent to the form',
+            required: true,
+            type: 'string',
+          },
+          {
+            name: 'username',
+            in: 'path',
+            description: 'Username of user provided to add post',
+            required: true,
+            type: 'string',
+          },
+          {
+            name: 'caption',
+            in: 'path',
+            description: 'Caption for new post',
+            required: true,
+            type: 'string',
+          },
+          {
+            name: 'userToken',
+            in: 'path',
+            description: 'User token generated on log in',
+            required: true,
+            type: 'string',
+          },
+
+        ],
+        responses: {
+          201: {
+            description: 'Successful operation',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string',
+                  example: 'post upload successful',
+                },
+              },
+            },
+          },
+          403: {
+            description: 'Requester is not allowed to perform this action',
+            schema: {
+              type: 'object',
+              properties: {
+                error: {
+                  type: 'string',
+                  example: 'Forbidden request',
+                },
+              },
+            },
+          },
+          500: {
+            description: 'There is an internal error during the post upload',
+            schema: {
+              type: 'object',
+              properties: {
+                error: {
+                  type: 'string',
+                  example: 'Internal error',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   models: {
     Post: {
