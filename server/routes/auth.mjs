@@ -7,8 +7,8 @@ import {DBHelper} from '../db/dbHelper.mjs';
 import {User} from '../models/User.mjs';
 import {OAuth2Client} from 'google-auth-library';
 import dotenv from 'dotenv';
-import { generateID } from '../utils/idGenerator.mjs'
-import { isAuthenticated } from '../utils/util.mjs';
+import {generateID} from '../utils/idGenerator.mjs';
+import {isAuthenticated} from '../utils/util.mjs';
 
 const db = new DBHelper();
 dotenv.config();
@@ -23,9 +23,10 @@ router.post('/login', async (req, res) => {
   const ticket = await client.verifyIdToken({
     idToken: token,
     audience: process.env.GOOGLE_CLIENT_ID,
-  })
-  if (!ticket)
+  });
+  if (!ticket) {
     return res.sendStatus(401);
+  }
   const {name, email, picture} = ticket.getPayload();
   // Check if user exists with email
   const user = await User.find({email: email});
@@ -39,9 +40,8 @@ router.post('/login', async (req, res) => {
     // Regenerate session with user from DB
     regenerateSession(req, res, user[0]);
   }
-  //TODO add picture data
-
-})
+  // TODO add picture data
+});
 
 router.get('/logout', isAuthenticated, (req, res) => {
   req.session.destroy(function(err) {
@@ -51,8 +51,14 @@ router.get('/logout', isAuthenticated, (req, res) => {
     res.clearCookie('id');
     res.sendStatus(200);
   });
-})
-/** */
+});
+
+/**
+ * Regenerates a session
+ * @param {*} req
+ * @param {*} res
+ * @param {*} user
+ */
 function regenerateSession(req, res, user) {
   req.session.regenerate((err) => {
     if (err) {
@@ -75,6 +81,5 @@ function regenerateSession(req, res, user) {
   });
 }
 
-router.get("")
 
 export default router;
