@@ -9,8 +9,13 @@ import auth from './routes/auth.mjs';
 import admin from './routes/admin.mjs';
 import editProfile from './routes/uploadprofile.mjs';
 import addComment from './routes/uploadcomment.mjs';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDoc from './swagger.js';
+
+
 const app = express()
 app.use(express.static('../client/build'));
+app.use('/api-docs', swaggerUi.serve,swaggerUi.setup(swaggerDoc))
 app.use(session({
   secret: process.env.SECRET || 'secret',
   name: 'id',
