@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -29,17 +30,33 @@ namespace DatabaseApp
                     Environment.GetEnvironmentVariable("ATLAS_URI")
                 );
                 // This checks if connection is valid
-                _client.ListDatabases().ToList();
+                var databases = _client.ListDatabases().ToList();
+                bool isThere = databases.Where(s => s.ToString().Contains(databaseName)).Any();
+                if (!isThere) throw new ArgumentException("The database you specified in DatabaseInfo is not there! /ᐠ>ꞈ<ᐟ\\");
+
+                _db = _client.GetDatabase(databaseName);
+
+                CheckCollection(postsCollectionName);
+                CheckCollection(postsCollectionName);
+
+                PostsCollName = postsCollectionName;
+                AdoptCollName = adoptCollectionName;
             }
             catch (MongoAuthenticationException)
             {
-                System.Console.WriteLine("The connection is invalid, your credentials might have been wrong! /ᐠ>ꞈ<ᐟ\\");
+                Console.WriteLine("The connection is invalid, your credentials might have been wrong! /ᐠ>ꞈ<ᐟ\\");
                 Environment.Exit(0);
             }
-
-            _db = _client.GetDatabase(databaseName);
-            PostsCollName = postsCollectionName;
-            AdoptCollName = adoptCollectionName;
+            catch (ArgumentNullException)
+            {
+                Console.WriteLine("The URI for the database was not found! /ᐠ>ꞈ<ᐟ\\");
+                Environment.Exit(0);
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                Environment.Exit(0);
+            }
         }
 
         /// <summary>
@@ -70,6 +87,14 @@ namespace DatabaseApp
             }
             else
                 Console.WriteLine("Input was not the same. Aborting...");
+        }
+
+        private void CheckCollection(string collectionName)
+        {
+            var filter = new BsonDocument("name", collectionName);
+            var connectionCursor = _db.ListCollections(new ListCollectionsOptions { Filter = filter });
+            if (!connectionCursor.Any())
+                throw new ArgumentException("One of the collections you specified in DatabaseInfo is not there! /ᐠ>ꞈ<ᐟ\\");
         }
     }
 }

@@ -32,7 +32,7 @@ namespace DatabaseApp
                 Environment.SetEnvironmentVariable(envVarName, envVar);
             }
 
-            Console.WriteLine("Credentials obtained. Connecting...  /ᐠ–ꞈ–ᐟ\\");
+            Console.WriteLine("Environment variables were obtained. Connecting...  /ᐠ–ꞈ–ᐟ\\");
             MongoDatabase mdb = new MongoDatabase(dbName, postsCollName, adoptCollName);
             Console.WriteLine("\nInstaCat Database App --- Connected! /ᐠ.｡.ᐟ\\ᵐᵉᵒʷˎˊ˗");
             
