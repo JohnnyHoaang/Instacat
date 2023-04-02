@@ -1,11 +1,15 @@
+/* ---------------- css for PostForm ----------------*/
+/* ---------------- author: Maedeh Hassani-----------*/
+
 div.post-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 99%;
+    width: 1480px;
     margin: 10px 0;
-    height: 300px;
-    background-color:  #f4ebdd;
+    height: 350px;
+    margin: 20px 0 10px 35px;
+    background-color:  #f3d8b5;
     font-size: 18px;
     color: rgb(36, 35, 35);
 }
@@ -14,9 +18,10 @@ div.post-form{
 #p-form{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     text-align: left;
     width: 99%;
-    height: 250px;
+    height: 200px;
     background-color:  #f3d8b5;
 }
 
