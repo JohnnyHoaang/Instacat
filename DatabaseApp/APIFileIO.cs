@@ -71,7 +71,7 @@ namespace DatabaseApp
             Console.WriteLine("Cat posts created");
 
 
-            // Assemble the posts (TODO, associate more concrete users than admin)
+            // Assemble the posts
             Random rnd = new Random();
             int index = 0;
             foreach (var cat in cats)
@@ -133,16 +133,19 @@ namespace DatabaseApp
             foreach(var c in cats["animals"])
             {
                 JObject catObj = c as JObject;
-                JObject obj = new JObject();
 
-                obj["id"] = catObj["id"];
-                obj["name"] = catObj["name"];
-                obj["gender"] = catObj["gender"];
-                obj["tags"] = catObj["tags"];
-                obj["photos"] = catObj["photos"];
-                obj["url"] = catObj["url"];
+                if (catObj["photos"].HasValues)
+                {
+                    JObject obj = new JObject();
 
-                AdoptPosts.Add(BsonDocument.Parse(obj.ToString()));
+                    obj["id"] = catObj["id"];
+                    obj["name"] = catObj["name"];
+                    obj["gender"] = catObj["gender"];
+                    obj["photos"] = catObj["photos"];
+                    obj["url"] = catObj["url"];
+
+                    AdoptPosts.Add(BsonDocument.Parse(obj.ToString()));
+                }
             }
             await WriteToFile(ADOPT_FILE_NAME, AdoptPosts);
         }
