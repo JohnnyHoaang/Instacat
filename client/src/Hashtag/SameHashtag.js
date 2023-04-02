@@ -17,7 +17,7 @@ function SameHashtag () {
     const { hashtag } = useParams();
     let [eachHashtag, setEachHashtag]= useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const cardsPerPage = 5;
+    const cardsPerPage = 3;
 
     useEffect(() => {
         let url = `/api/hashtag/${hashtag}`;
