@@ -42,7 +42,7 @@ div.cat-adopt{
     justify-content: center;
     text-align: center;
     background-color: rgb(248, 225, 204);
-    margin: 5px;
+    margin: 4px;
     padding: 0 20px 0 20px;
     border-radius: 4px;
     
@@ -70,5 +70,5 @@ div.cat-adopt{
     display: flex;
     justify-content: space-around;
     color: rgb(131, 60, 21);
-    font-size: 16px;
+    font-size: 14px;
 }
