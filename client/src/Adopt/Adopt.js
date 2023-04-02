@@ -29,7 +29,7 @@ function Adopt() {
             .catch(err => {
                 console.log(err.message);
             })
-    }, []);
+    }, [this.state]);
 
 
     function handleRedirect(catUrl) {
