@@ -48,7 +48,7 @@ async function sendData(response, model, query) {
   const data = await db.getQueryData(model, query);
   if (data.length > 0) {
     // send data to route
-    response.json(data);
+    response.status(200).json(data);
   } else {
     response.status(404).send({error: 'data not found'});
   }

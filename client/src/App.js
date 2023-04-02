@@ -39,6 +39,7 @@ function App() {
   /**
   * creating the react routes for the website
   * @author Maedeh hassani 
+  * @author Johnny Hoang
   */
   const router =
     <Routes>

@@ -8,9 +8,15 @@ import editProfile from './routes/uploadprofile.mjs';
 import session from 'express-session';
 import dotenv from 'dotenv';
 import addComment from './routes/uploadcomment.mjs';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDoc from './swagger.js';
 
 const app = express();
 dotenv.config();
+
+app.use(express.static('../client/build'));
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 app.use(session({
   secret: process.env.SECRET || 'secret',

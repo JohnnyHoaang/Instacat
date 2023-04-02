@@ -23,11 +23,9 @@ function CatDetails(props) {
     likes: 0,
     comments: [],
   });
-
-  //npx json-server --watch data/data2.json --port 3003  
+ 
   useEffect(() => {
     let url = `/api/cat/id/${id}`;
-    // let url = 'http://localhost:3003/0'
     fetch(url)
       .then(response => {
         if (!response.ok) {
@@ -70,59 +68,63 @@ function CatDetails(props) {
     }
   }
 
+ /***
+ * @author Maedeh hassani 
+ */
   return (
 
     <div className="CatDetails">
       {eachCat && (
         <div className='cat-detail' id={id} >
           <div className="specific-cat">
-            <div className="specific-catImg">
-              <img src={eachCat.image} alt="specific-cat-img" ></img>
-            </div>
-            <div className='cat-info'>
-              <div className='username'>
-                User name:
-                <section className='user'>{eachCat.username}</section>
+              <div className="specific-catImg">
+                <img src={eachCat.image} alt="specific-cat-img" ></img>
               </div>
+              <div className='cat-info'>
+                <div className='username'>
+                  User name:
+                  <section className='user'>{eachCat.username}</section>
+                </div>
 
-              <div className='likes-info'>
-                Like:
-                <section className="likes"> {eachCat.likes}</section>
-              </div>
+                <div className='likes-info'>
+                  Like:
+                  <section className="likes"> {eachCat.likes}</section>
+                </div>
 
-              <div className='caption-info'>
-                Caption:
-                <section className='caption'>{eachCat.caption}</section>
-              </div>
+                <div className='caption-info'>
+                  Caption:
+                  <section className='caption'>{eachCat.caption}</section>
+                </div>
 
-              <div className='hashtag-info'>
-                Hashtag(s):
-                <section className='hashtags'>{eachCat.hashtags.map((item, index) => {
-                  return <div key={index}>#{item}</div>
-                })}
-                </section>
+                <div className='hashtag-info'>
+                      Hashtag(s):
+                      <section className='hashtags'>{eachCat.hashtags.map((item, index) => {
+                      return <div key={index}>#{item}</div>
+                      })}
+                      </section>
+                </div>
 
-              </div>
-
-              <div className='comment-info'>
-                Comment(s):
-                <section className='comments'>{eachCat.comments.map((item, index) => {
-                  return <div key={index}>{item.username}: {item.comment}</div>
-                })}
-                </section>
-              </div>
-              <div>
-                <form id='p-form' enctype="multipart/form-data" onSubmit={onSubmit}>
-                  <div className='post-caption'>
-                    <input type="text" id="caption-input" name="comment"></input>
-                  </div>
-                  <div className='submit-post'>
-                    <input id='submit-btn' type="submit" value="Comment"></input>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+                <div className='comment-info'>
+                    Comment(s):
+                    <div className='comments-box'>
+                        <section className='comments'>{eachCat.comments.map((item, index) =>{
+                            return <div key={index}>{item.username}: {item.comment}</div>
+                        })}
+                        </section>
+                    </div>
+                </div>
+                <div>
+                    <form id='p-form' enctype="multipart/form-data" onSubmit={onSubmit}>
+                        <div className='post-caption'>
+                            <input type="text" id="caption-input" name="comment"></input>
+                        </div>
+                        <div className='submit-post'>
+                            <input id='submit-btn' type="submit" value="Comment"></input>
+                        </div>
+                    </form>
+                </div>      
+           </div>
+         </div>
         </div>
       )}
     </div>

@@ -86,7 +86,8 @@ namespace DatabaseApp
                 hashtagsArr.Add(hashtags[index]);
                 hashtagsArr.Add(hashtags[index + 1]);
                 obj["hashtags"] = hashtagsArr;
-                obj["likes"] = 1;
+                obj["likes"] = 0;
+                obj["likers"] = new JArray();
                 obj["comments"] = new JArray();
 
                 CatPosts.Add(BsonDocument.Parse(obj.ToString()));
