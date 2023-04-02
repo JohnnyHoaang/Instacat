@@ -416,6 +416,13 @@ export default {
             required: true,
             type: 'string',
           },
+          {
+            name: 'userToken',
+            in: 'path',
+            description: 'User token generated on log in',
+            required: true,
+            type: 'string',
+          },
         ],
         responses: {
           200: {
@@ -438,6 +445,18 @@ export default {
                 error: {
                   type: 'string',
                   example: 'Forbidden request',
+                },
+              },
+            },
+          },
+          500: {
+            description: 'There is an internal error during the post upload',
+            schema: {
+              type: 'object',
+              properties: {
+                error: {
+                  type: 'string',
+                  example: 'Internal error',
                 },
               },
             },

@@ -26,7 +26,7 @@ function Cards(props) {
       // Like/Dislike post
       await fetch(`like/update`, {
         method: "POST",
-        body: JSON.stringify({ email: props.email, id: props.post.id }),
+        body: JSON.stringify({ email: props.email, id: props.post.id, userToken: props.tokens.user}),
         headers: { "Content-Type": "application/json", },
       });
       // Get new data from API
@@ -66,8 +66,14 @@ function Cards(props) {
   }, [props.email, props.currentPage, props.cards])
   
   async function deletePost() {
+    let payload
     if (props.isAdmin || props.username === props.post.username) {
-      let payload = JSON.stringify({ token: props.token, id: props.post.id })
+      // set correct payload for user or admin
+      if(props.isAdmin){
+        payload = JSON.stringify({ adminToken: props.tokens.admin, id: props.post.id })
+      } else {
+        payload = JSON.stringify({ userToken: props.tokens.user, id: props.post.id })
+      }
       const headers = {
         method: "POST",
         body: payload,
