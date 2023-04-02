@@ -43,8 +43,8 @@ export default {
     },
     "/api/cat/id/{id}": {
       get: {
-        summary: "Returns all cat posts",
-        description: "Returns all cat posts containing information of each post",
+        summary: "Returns all cat posts searching by id",
+        description: "Returns all cat posts searching by id containing information of each post",
         parameters: [
           {
             name: "id",
@@ -85,8 +85,17 @@ export default {
     },
     "/api/hashtag/{hashtag}": {
       get: {
-        summary: "Returns all cat posts",
-        description: "Returns all cat posts containing information of each post",
+        summary: "Returns all cat posts searching by hashtag",
+        description: "Returns all cat posts containing similar hashtags",
+        parameters: [
+          {
+            name: "hashtag",
+            in: "path",
+            description: "Hashtag that needs to be searched",
+            required: true,
+            type: "string"
+          }
+        ],
         produces: [
           "application/json"
         ],
@@ -118,8 +127,8 @@ export default {
     },
     "/api/search/{query}": {
       get: {
-        summary: "Returns all cat posts",
-        description: "Returns all cat posts containing information of each post",
+        summary: "Returns all cat posts with a search query",
+        description: "Returns all cat posts corresponding to a search query. Query returns posts based on post's caption",
         produces: [
           "application/json"
         ],
@@ -145,6 +154,39 @@ export default {
               }
             }
 
+
+          }
+        }
+      }
+    },
+    "/api/adoption/all": {
+      get: {
+        summary: "Returns all adoption cat posts",
+        description: "Returns all adoption cat posts in need of foster care",
+        produces: [
+          "application/json"
+        ],
+        responses: {
+          200: {
+            description: "Successful returned all posts",
+            schema: {
+              type: "array",
+              items: {
+                $ref: "#/models/Adoption"
+              }
+            }
+          },
+          404: {
+            description: "Data has not been found",
+            schema: {
+              type: "object",
+              properties: {
+                error: {
+                  type: "string",
+                  example: "data not found"
+                },
+              }
+            }
           }
         }
       }
@@ -221,7 +263,6 @@ export default {
             type: "string",
             example: ["Bob", "Alice"]
           }
-
         },
         comments: {
           type: "array",
@@ -239,24 +280,15 @@ export default {
             }
           }
         },
-        // comments: [{
-        //   username: { type: "string" },
-        //   comment: { type: "string" },
-        // }],
       }
     },
-    Task: {
+    apiError: {
       type: "object",
       properties: {
-        task: {
-          type: "string"
+        error: {
+          type: "string",
+          example: "data not found"
         },
-        assignee: {
-          type: "string"
-        },
-        status: {
-          type: "string"
-        }
       }
     },
     InvalidResponse: {
@@ -269,6 +301,93 @@ export default {
           type: "string"
         }
       }
-    }
+    },
+    Adoption: {
+      type: "object",
+      properties: {
+        primary_photo_cropped: {
+          type: "object",
+          properties: {
+            medium: {
+              type: "string",
+              example: "https://azure.com/medium-cat-pic.png"
+            },
+            large: {
+              type: "string",
+              example: "https://azure.com/large-cat-pic.png"
+            },
+            full: {
+              "type": "string",
+              example: "https://azure.com/full-cat-pic.png"
+            }
+          }
+        },
+        age: {
+          type: "string",
+          example: "5"
+        },
+        size: {
+          type: "string",
+          example: ""
+        },
+        coat: {
+          type: "string",
+          example: ""
+        },
+        status: {
+          type: "string",
+          example: ""
+        },
+        _id: {
+          type: "string",
+          example: "_0343afb21s"
+        },
+        id: {
+          type: "string",
+          example: "abc"
+        },
+        name: {
+          type: "string",
+          example: "Bee"
+        },
+        gender: {
+          type: "string",
+          example: "Female"
+        },
+        tags: {
+          type: "array",
+          items: {
+            type: "string",
+            example: "Affectionate"
+          }
+        },
+        photos: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              small: {
+                type: "string",
+                example: "https://azure.com/small-cat-pic.png"
+              },
+              medium: {
+                type: "string",
+                example: "https://azure.com/medium-cat-pic.png"
+              },
+              large: {
+                type: "string",
+                example: "https://azure.com/large-cat-pic.png"
+              },
+              full: {
+                type: "string",
+                example: "https://azure.com/full-cat-pic.png"
+              }
+            }
+          }
+        }
+      }
+
+    },
   }
+
 }
