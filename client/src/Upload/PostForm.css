@@ -18,9 +18,10 @@ div.post-form{
 #p-form{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     text-align: left;
     width: 99%;
-    height: 140px;
+    height: 200px;
     background-color:  #f3d8b5;
 }
 
