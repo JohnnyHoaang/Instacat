@@ -59,7 +59,7 @@ namespace DatabaseApp
 
                         var catPosts = apiTool.CatPosts;
                         var adoptPosts = apiTool.AdoptPosts;
-                        if (catPosts.Count != 0 || adoptPosts.Count != 0)
+                        if (catPosts.Count != 0 && adoptPosts.Count != 0)
                         {
                             await mdb.InsertData(catPosts, mdb.PostsCollName);
                             await mdb.InsertData(adoptPosts, mdb.AdoptCollName);
