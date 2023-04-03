@@ -8,9 +8,9 @@ const router = new express.Router();
 
 router.use(express.json());
 router.use(
-    fileUpload({
-      createParentPath: true,
-    }),
+  fileUpload({
+    createParentPath: true,
+  }),
 );
 
 // route to upload image and caption to db

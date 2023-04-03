@@ -17,7 +17,6 @@ function EditPostForm(props) {
         // Add user email
         formData.append('email', props.email)
         formData.append('userToken', props.tokens.user)
-        console.log(formData)
         let result
         // Update profile information
         let response = await fetch(`/edit/profile/update`, {

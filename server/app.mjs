@@ -7,6 +7,8 @@ import auth from './routes/auth.mjs';
 import editProfile from './routes/uploadprofile.mjs';
 import session from 'express-session';
 import dotenv from 'dotenv';
+import admin from './routes/admin.mjs'
+import deletePost from './routes/deletepost.mjs'
 import addComment from './routes/uploadcomment.mjs';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDoc from './swagger.js';
@@ -35,10 +37,11 @@ app.use(express.static('../client/build'));
 app.use('/api', posts);
 app.use('/add', addPost);
 app.use('/auth', auth);
+app.use('/admin', admin);
+app.use('/delete', deletePost);
 app.use('/edit/profile', editProfile);
 app.use('/comment', addComment);
 app.use('/like', likes);
-app.use('/edit/profile', editProfile);
 app.use('/', main);
 
 export default app;
