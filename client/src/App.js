@@ -48,14 +48,15 @@ function App() {
       {/* <Route path="/discover" element={<Discover cards={cards} setCards={setCards} />} /> */}
       <Route path="/adopt" element={<Adopt />} />
       <Route path="/aboutUs" element={<AboutUs />} />
-      <Route path="/cats/:id" element={<CatDetails username={username}/>} />
-      <Route path="/add/post" element={<PostForm username={username}/>} />
+      <Route path="/cats/:id" element={<CatDetails username={username} tokens={tokens}/>} />
+      <Route path="/add/post" element={<PostForm username={username} tokens={tokens}/>} />
       <Route path="/edit/profile" element={
         <EditProfileForm
           email={email}
           username={username}
           setUsername={setUsername}
           setProfilePicture={setProfilePicture}
+          tokens={tokens}
         />
       }
       />
