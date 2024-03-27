@@ -1,0 +1,56 @@
+/* ---------------- Css for Header ------------------- */
+/* ---------------- author: Maedeh Hassani-----------*/
+
+header {
+    display: flex;
+    justify-content: space-between;
+    /* changing */
+    /* width: 94%; */
+    /* changing */
+    /* min-width: 1510px; */
+    padding: 0;
+    margin: 3px ;
+  }
+   
+  #logo{
+    width: 10%;
+    height: 9%;
+  }
+  
+  div#profile-div{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    width: 6%;
+  }
+  #profile-img{
+    width: 52%;
+    height: auto;
+    padding: 25px 0 0 0px;
+  }
+  #user-name{
+    font-size: 12px;
+    margin:  2px;
+    font-weight: bold;
+  }
+  
+  #user-name a{
+    color: rgb(139, 91, 32);
+  }
+
+  .profile-google-div{
+    margin: 4px 30px 0 -170px;
+    padding: 10px;
+    text-align: right;
+    /* background-color: rgb(178, 92, 6); */
+    
+  }
+
+  .profile-guest-div{
+    display: flex;
+    margin: 0 35px 0 -180px;
+    justify-content: right;
+    padding: 0 20px;
+    color: rgb(68, 64, 64);;
+  }
+

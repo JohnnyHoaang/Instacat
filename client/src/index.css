@@ -1,0 +1,37 @@
+/* --------------- General CSS -------------- */
+/*--------------- author: Maedeh Hassani-----*/
+
+body {
+  width: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+html, body , div#root, .App, .AboutUs, .Discover, .Adopt, .CatDetails
+{
+  /* display: flex; */
+  align-items: center;
+  flex-direction: column;
+  /* width: 90%; */
+  font-family: "Lato","Trebuchet MS",sans-serif;
+  background-color: #f4ebdd;
+  /* min-width: 1550px; */
+}
+
+div.AboutUs
+{
+  align-items: normal;
+  background-color: #f4ebdd;
+  display: flex;
+  flex-direction: column;
+  font-family: Lato,Trebuchet MS,sans-serif;
+}

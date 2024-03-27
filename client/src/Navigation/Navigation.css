@@ -1,0 +1,105 @@
+/* ----------- Css Navigation bar ----------- */
+/* ----------- author: Maedeh Hassani---------*/
+
+nav.navigation-bar{
+    display: flex;
+    padding: 0;
+    margin: 0;
+    /* changing */
+    /* width: 92%; */
+    min-width: 1410px;
+    justify-content: space-between;
+  }
+  
+  nav.navigation-bar div{
+    display: flex;
+    border-left: 2px solid rgb(213, 199, 199);
+    list-style-type: none;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 29px;
+    padding: 12px;
+    margin: 0 60px 0 50px;
+  }
+  
+  #search{
+    width: 25%;
+    height: 60%;
+  }
+  
+  
+  nav.navigation-bar  a{
+    text-decoration: none;
+    padding: 4px;
+    width: 114px;
+    color: rgb(68, 64, 64);
+  }
+  
+  div.nav-div a:hover{
+    background-color: #ffc29a;
+    color: black;
+    border-radius: 2px;
+    transform: scale(1.2);
+  }
+
+  #lang{
+    display: flex;
+    justify-content: right;
+    font-size: 18px;
+  }
+
+  div#lang section:hover {
+    font-weight: bold;
+    cursor: pointer;
+
+  }
+
+  div#lang section{
+    display: flex;
+    justify-content: right;
+  }
+
+  section#lang-sec{
+    width: 50px;
+  }
+
+
+  form {
+    background-color: #733c2d;
+    /* changing */
+    width: 250px;
+    height: 38px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin: 18px 8px 10px 1px ;
+  }
+  
+  input {
+    all: unset;
+    font: 16px system-ui;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    margin: 10px;
+  }
+  
+  ::placeholder {
+    color: #fafafa;
+    opacity: 0.7; 
+  }
+  
+  button {
+    all: unset;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+  }
+  
+  svg {
+    color: #fff;
+    fill: currentColor;
+    width: 23px;
+    height: 24px;
+    padding: 9px;
+  }  

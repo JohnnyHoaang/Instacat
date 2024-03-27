@@ -1,0 +1,24 @@
+/* --------------CSS for Footer -------------*/
+/* ---------- author: Maedeh Hassani---------*/
+
+footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  background-color: #733c2d;
+  color: rgb(212, 186, 147);
+  min-width: 1510px;
+}
+  
+#footer-info, #footer-contact{
+  padding: 30px 15px 0;
+}
+  
+#footer-a{
+  color: rgb(238, 160, 132);
+}
+  
+#footer-a:hover{
+  color: rgb(238, 226, 166);
+}

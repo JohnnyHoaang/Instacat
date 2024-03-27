@@ -1,0 +1,105 @@
+/* ------------Css for CatDetails ------------- */
+/* ----------- author: Maedeh Hassani-----------*/
+
+div.cat-detail{
+    display: flex;
+    justify-content: center;
+    width: 98.5%;
+    height: 650px;
+    margin: 14px;
+    border: 2px solid rgb(236, 223, 152);
+    border-radius: 1%;
+    background-image: url("../images/catDetail.jpg");
+    background-repeat: repeat;
+}
+
+div.specific-cat{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(239, 224, 194);
+    width: 85%;
+    height: 550px;
+    margin: 40px;
+    border-radius: 1%;
+    justify-content: space-between;
+    padding: 10px;
+    
+}
+
+div.cat-info{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: start; */
+    width: 50%;
+    font-size: 20px;
+    padding: 15px;
+    justify-content: space-around;
+}
+
+div.specific-catImg{
+    /* display: flex; */
+    width: 40%;
+    justify-content: center;
+    margin: 30px;
+    background-image: url("../images/b2.jpg");
+    background-repeat: no-repeat;
+    border-radius: 1%;
+}
+
+.specific-catImg img {
+    width: 100%;
+  }  
+
+div.username{
+    display: flex;
+}
+section.user{
+    padding: 0 0 0 10px;
+    color: rgb(115, 96, 75);
+}
+
+div.likes-info{
+    display: flex;
+}
+section.likes{
+    padding: 0 0 0 10px;
+    color: rgb(115, 96, 75);
+}
+
+div.caption-info{
+    display: flex;
+}
+section.caption{
+    padding: 0 0 0 10px;
+    color: rgb(115, 96, 75);
+}
+
+div.hashtag-info{
+    display: flex;
+}
+section.hashtags{
+    padding: 0 0 0 10px;
+    color: rgb(115, 96, 75);
+    font-size: 15px;
+}
+
+div.comment-info{
+    display: flex;
+    /* overflow-y: auto; */
+    
+}
+
+section.comments{
+    padding: 0 0 0 10px;
+    color: rgb(115, 96, 75);
+    font-size: 17px;
+}
+
+div.comments-box{
+    display: flex;
+    width: 600px;
+    height: 200px;
+    background-color:  #f3d8b5;
+    border-radius: 2px;
+    overflow-y: auto
+}

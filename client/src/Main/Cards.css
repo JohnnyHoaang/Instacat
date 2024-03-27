@@ -1,0 +1,153 @@
+/*-----------------Card css ------------------*/
+/* --------- author: Maedeh Hassani-----------*/
+.cat-card{
+  background: #f7f6f4;
+  border: 2px solid #f4e2d6;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 430px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 10%;
+   }
+
+   .cat-card:hover{
+    background-color: rgb(243, 223, 195);
+    transition: background-color 2s ease-out 100ms;
+   }
+
+   .each-cat-img{
+    border: #733c2d;
+    margin: 8px 10px 0 ;
+    width: 240px;
+    height: 250px;        
+    border-radius: 4px;
+   }
+
+   .caption-heart{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin: 5px;
+    
+   } 
+
+   .each-card-outer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-grow: 1; 
+    width: calc(17% - 2px); 
+    height: 450px;
+    margin: 2px;
+    background: #f4ebdd;
+    border-radius: 4px;       
+   }
+
+   .each-card-outer:hover{
+    transform: scale(1.01);
+   }
+
+    /*----------- adding post + -------------*/
+    #adding{
+      width: 53%;
+      height: auto;
+      margin: 5px;
+    }
+
+    #adding-user-post{
+      display: flex;
+      justify-content: right;
+      margin: 5px 5px 5px 5px;
+    }
+    
+    #adding:hover{
+      background-color: rgb(147, 90, 16);
+      border-radius: 5px;
+      transform: scale(1.2);
+    }
+
+    #adding-user-post:hover:after {
+      content: "Click to add post"; 
+      position: absolute;
+      top: 135%;
+      left: 83.7%;
+      transform: translate(-50%, 5px); /* Position the message box below the image */
+      padding: 4px 10px;
+      background-color: #b8590c;
+      color: #fff;
+      font-size: 16px;
+      white-space: nowrap;
+      border-radius: 2px;
+    }
+
+    /*-------------caption-----------------------*/
+    .heart-like{
+      width: 35px;
+      padding: 2px 20px;
+      transform: rotateY(180deg);
+    }
+
+    .heart-like:hover{
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    .catCaption{
+      color: rgb(109, 96, 73);
+      padding: 5px;
+      margin: inherit;
+    }
+
+    /*------------- likes -----------------------*/
+    .likes{
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .LikeNum{
+      padding: 10px;
+      color: rgb(109, 96, 73);
+    }
+
+
+    /* ----------------pagination --------------*/
+    .pagination{
+      display: flex;
+      justify-content: center;
+      color: #b34628;
+      font-size: 18px;
+      margin: 7px;
+    }
+
+    .pre-btn-pagination{
+      padding: 0 20px;
+    }
+
+
+    /* ------------- shere img -----------------*/
+    .share-img{
+      width: 30px;
+      margin: 5px 2px 2px 30px;
+    }
+
+    .share-img:hover{
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+    
+/* --------------------hashtags -------------------*/
+.cat-hashtags:hover{
+    cursor: pointer;
+ }
+
+.hashtag-link{
+    text-decoration: none;
+    color: rgb(97, 85, 65);
+}
+
+.hashtag-link:hover{
+    transform: scale(1.2);
+}

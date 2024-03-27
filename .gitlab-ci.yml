@@ -1,0 +1,53 @@
+#inspiration: https://gist.github.com/rishitells/3c4536131819cff4eba2c8ab5bbb4570
+# package.json jest path discovered in https://stackoverflow.com/questions/60671752/deploying-via-google-cloud-build-trigger-sh-1-jest-permission-denied
+image: node:latest
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - . ./build.sh
+  cache:
+    paths:
+      - server/node_modules/
+      - client/node_modules/
+  artifacts:
+    expire_in: 1 days
+    when: on_success
+    paths:
+      - server/node_modules/
+      - client/node_modules/
+      - client/build/
+
+test:
+  stage: test
+  dependencies:
+    - build
+  script:
+    - npm run test --prefix server
+
+eslint:
+  stage: test
+  before_script:
+    - npm install --save-dev eslint
+  script:
+    - node_modules/eslint/bin/eslint.js .
+
+azure-deploy:
+  stage: deploy
+  image:  mcr.microsoft.com/azure-cli
+  dependencies:
+    - build
+  only:
+    - main
+    - dev
+  before_script:
+    - "az login --allow-no-subscriptions --service-principal -u $AZ_SP_ID -p $AZ_SP_SECRET --tenant $AZ_TENANT"
+  script:
+    - . ./deploy.sh
+
+
